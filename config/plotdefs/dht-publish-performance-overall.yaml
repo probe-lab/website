@@ -1,0 +1,47 @@
+frequency: daily
+datasets:
+  - name: "main"
+    source: "parsec"
+    query: >
+      with period as (
+        select d::date-'1 day'::interval AS start, d::date as end, tstzrange(d::date-'1 day'::interval, d::date) as range, extract(epoch from '1 day'::interval) as duration
+        from generate_series({{ .StartOfDay | timestamptz }}-'30 day'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) d
+      ),
+      m as (
+        select m1.created_at, duration
+        from provides m1
+          inner join nodes n on n.id = m1.node_id
+        where m1.error is null
+          and m1.rt_size > 200
+          and n.instance_type = 't3.small'
+        union all
+        select m2.created_at, duration
+        from provides_ecs m2
+          inner join nodes n on n.id = m2.node_id
+        where m2.error is null
+          and m2.rt_size > 200
+          and n.instance_type = 't3.small'
+      )
+      select period.end, percentile_disc(0.5) within group (order by m.duration)
+      from period, m
+      where m.created_at >= period.start
+        and m.created_at < period.end
+      group by period.end;
+
+series:
+  - type: "line"
+    name: "median"
+    dataset: "main"
+    labels: "date"
+    values: "median"
+
+layout:
+  title:
+    text: "Overall DHT publish performance (last 30 days)"
+  xaxis:
+    type: "date"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Median publish time (seconds)"

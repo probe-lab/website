@@ -1,0 +1,88 @@
+frequency: daily
+datasets:
+  - name: "main"
+    source: "parsec"
+    query: >
+      with m as (
+        select n.region, m1.created_at, m1.duration
+        from provides m1
+          inner join nodes n on n.id = m1.node_id
+        where m1.error is null
+          and m1.rt_size > 200
+          and n.instance_type = 't3.small'
+        union all
+        select n.region, m2.created_at, m2.duration
+        from provides_ecs m2
+          inner join nodes n on n.id = m2.node_id
+        where m2.error is null
+          and m2.rt_size > 200
+          and n.instance_type = 't3.small'
+      ),
+      cdf as (
+        select m.region, m.duration, cume_dist() over (partition by m.region order by m.duration) as cumedist
+        from m
+        where m.created_at >= {{ .StartOfDay | timestamptz }}-'30 day'::interval
+          and m.created_at < {{ .StartOfDay | timestamptz }}
+      )
+      select cdf.region as region, round(cast(cdf.duration as numeric),4) as dur, max(cdf.cumedist) as fraction
+      from cdf
+      group by region, dur
+      having max(cdf.cumedist) <= 0.999
+      order by dur;
+
+series:
+  - type: "line"
+    name: ""
+    dataset: "main"
+    labels: "dur"
+    values: "fraction"
+    groupfield: "region"
+    groupvalue: "*"
+
+layout:
+  title:
+    text: "DHT publish performance CDF by region (over 30 days)"
+  xaxis:
+    type: "linear"
+    autorange: true
+    rangemode: "tozero"
+    showspikes: true
+    spikedash: "dot"
+    spikethickness: 1
+    title:
+      text: "Publish time (seconds)"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    showspikes: true
+    spikedash: "dot"
+    spikethickness: 1
+    title:
+      text: "Cumulative fraction"
+  shapes:
+    - type: "line"
+      label:
+        text: "median"
+        textposition: "end"
+      layer": "above"
+      line:
+        dash: "dot"
+        width: 1
+      xref: "paper"
+      x0: 0
+      x1: 1
+      y0: 0.5
+      y1: 0.5
+    - type: "line"
+      label:
+        text: "0.9"
+        textposition: "end"
+      layer": "above"
+      line:
+        dash: "dot"
+        width: 1
+      xref: "paper"
+      x0: 0
+      x1: 1
+      y0: 0.9
+      y1: 0.9
