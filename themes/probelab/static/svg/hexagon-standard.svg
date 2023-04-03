@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="868px" height="970px" viewBox="0 0 868 970" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>hexagon-standard</title>
+    <g id="hexagon-standard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M484,13.8675135 L817.012702,206.132487 C847.95281,223.995766 867.012702,257.008468 867.012702,292.735027 L867.012702,677.264973 C867.012702,712.991532 847.95281,746.004234 817.012702,763.867513 L484,956.132487 C453.059892,973.995766 414.940108,973.995766 384,956.132487 L50.9872981,763.867513 C20.0471904,746.004234 0.987298108,712.991532 0.987298108,677.264973 L0.987298108,292.735027 C0.987298108,257.008468 20.0471904,223.995766 50.9872981,206.132487 L384,13.8675135 C414.940108,-3.99576604 453.059892,-3.99576604 484,13.8675135 Z" id="Polygon" fill="#06263D"></path>
+        <g id="lines" transform="translate(434.000000, 485.000000) rotate(-360.000000) translate(-434.000000, -485.000000) translate(232.000000, 271.000000)" fill="#E8F6FF" fill-rule="nonzero">
+            <rect id="short-2" x="328" y="284" width="10" height="144"></rect>
+            <rect id="short-1" x="197" y="284" width="10" height="144"></rect>
+            <rect id="short-0" x="66" y="284" width="10" height="144"></rect>
+            <rect id="long-3" x="394" y="5.68434189e-14" width="10" height="428"></rect>
+            <rect id="long-2" x="263" y="1.13686838e-13" width="10" height="428"></rect>
+            <rect id="long-1" x="131" y="1.13686838e-13" width="10" height="428"></rect>
+            <rect id="long-0" x="3.06557847e-14" y="1.70530257e-13" width="10" height="428"></rect>
+        </g>
+    </g>
+</svg>
