@@ -3,7 +3,7 @@
     {
       "type": "indicator",
       "delta": {
-        "reference": 0.53,
+        "reference": 0.5334,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -21,12 +21,12 @@
       "title": {
         "text": "Median"
       },
-      "value": 0.5293
+      "value": 0.5314
     },
     {
       "type": "indicator",
       "delta": {
-        "reference": 1.2728,
+        "reference": 1.2874,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -45,12 +45,12 @@
       "title": {
         "text": "P90"
       },
-      "value": 1.1158
+      "value": 1.1521
     },
     {
       "type": "indicator",
       "delta": {
-        "reference": 4.6299,
+        "reference": 4.7442,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -69,12 +69,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 2.3341
+      "value": 3.5103
     }
   ],
   "layout": {
     "title": {
-      "text": "Websites Time to First Byte (current week compared with previous)"
+      "text": "Websites Time to First Byte\n(7 days to 3 Apr 2023 compared with previous 7 days)"
     }
   }
 }

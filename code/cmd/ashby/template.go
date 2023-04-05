@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"text/template"
 	"time"
+
+	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
 )
 
 func ExecuteTemplate(ctx context.Context, source string, cfg *PlotConfig) (string, error) {
@@ -18,6 +20,7 @@ func ExecuteTemplate(ctx context.Context, source string, cfg *PlotConfig) (strin
 	t, err := template.New("").Funcs(template.FuncMap{
 		"timestamptz": pgTimestampTZ,
 		"timestamp":   pgTimestamp,
+		"simpledate":  simpleDateFormat,
 	}).Parse(source)
 	if err != nil {
 		return "", fmt.Errorf("parse query template: %w", err)
@@ -44,4 +47,30 @@ func pgTimestampTZ(t time.Time) string {
 
 func pgTimestamp(t time.Time) string {
 	return "'" + t.Format("2006-01-02 15:04:05") + "'::timestamp"
+}
+
+func simpleDateFormat(t time.Time) string {
+	return t.Format("2 Jan 2006")
+}
+
+func ExecuteTemplateGrobString(ctx context.Context, str grob.String, cfg *PlotConfig) (grob.String, error) {
+	switch tstr := str.(type) {
+	case string:
+		text, err := ExecuteTemplate(ctx, tstr, cfg)
+		if err != nil {
+			return str, fmt.Errorf("execute template: %w", err)
+		}
+		return text, nil
+	case []string:
+		for i, s := range tstr {
+			text, err := ExecuteTemplate(ctx, s, cfg)
+			if err != nil {
+				return str, fmt.Errorf("execute template: %w", err)
+			}
+			tstr[i] = text
+		}
+		return tstr, nil
+	}
+
+	return str, nil
 }

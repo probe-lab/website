@@ -36,6 +36,31 @@ func (pd *PlotDef) ExecuteTemplates(ctx context.Context, cfg *PlotConfig) error 
 		}
 	}
 
+	// Apply templates to plot titles and axis names
+	if pd.Layout.Title != nil {
+		text, err := ExecuteTemplateGrobString(ctx, pd.Layout.Title.Text, cfg)
+		if err != nil {
+			return fmt.Errorf("failed to expand layout title for plot %q: %w", pd.Name, err)
+		}
+		pd.Layout.Title.Text = text
+	}
+
+	if pd.Layout.Xaxis != nil && pd.Layout.Xaxis.Title != nil {
+		text, err := ExecuteTemplateGrobString(ctx, pd.Layout.Xaxis.Title.Text, cfg)
+		if err != nil {
+			return fmt.Errorf("failed to expand x-axis title for plot %q: %w", pd.Name, err)
+		}
+		pd.Layout.Xaxis.Title.Text = text
+	}
+
+	if pd.Layout.Yaxis != nil && pd.Layout.Yaxis.Title != nil {
+		text, err := ExecuteTemplateGrobString(ctx, pd.Layout.Yaxis.Title.Text, cfg)
+		if err != nil {
+			return fmt.Errorf("failed to expand y-axis title for plot %q: %w", pd.Name, err)
+		}
+		pd.Layout.Yaxis.Title.Text = text
+	}
+
 	return nil
 }
 

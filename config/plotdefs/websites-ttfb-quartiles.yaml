@@ -6,8 +6,8 @@ datasets:
       with m as (
         select extract(epoch from m.ttfb) as ttfb
         from measurements m
-        where m.created_at >= {{ .StartOfDay | timestamptz }}-'1 week'::interval
-          and m.created_at < {{ .StartOfDay | timestamptz }}
+        where m.created_at >= {{ .StartOfWeek | timestamptz }}-'1 week'::interval
+          and m.created_at < {{ .StartOfWeek | timestamptz }}
           and m.error is null
       )
       select percentile_disc(0.50) within group (order by m.ttfb) as p50,
@@ -20,8 +20,8 @@ datasets:
       with m as (
         select extract(epoch from m.ttfb) as ttfb
         from measurements m
-        where m.created_at >= {{ .StartOfDay | timestamptz }}-'2 week'::interval
-          and m.created_at < {{ .StartOfDay | timestamptz }}-'1 week'::interval
+        where m.created_at >= {{ .StartOfWeek | timestamptz }}-'2 week'::interval
+          and m.created_at < {{ .StartOfWeek | timestamptz }}-'1 week'::interval
           and m.error is null
       )
       select percentile_disc(0.50) within group (order by m.ttfb) as p50,
@@ -59,4 +59,4 @@ scalars:
 
 layout:
   title:
-    text: "Websites Time to First Byte (current week compared with previous)"
+    text: "Websites Time to First Byte\n(7 days to {{ .StartOfWeek | simpledate }} compared with previous 7 days)"
