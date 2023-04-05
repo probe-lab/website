@@ -1,0 +1,69 @@
+frequency: daily
+datasets:
+  - name: "current"
+    source: "nebula_ipfs"
+    query: >
+      with u as (
+      select s.peer_id,
+        extract(epoch from sum(upper(s.uptime * tstzrange({{ .StartOfWeek | timestamptz }}-'1 week'::interval, {{ .StartOfWeek | timestamptz }})) - lower(s.uptime * tstzrange({{ .StartOfWeek | timestamptz }}-'1 week'::interval, {{ .StartOfWeek | timestamptz }})))::interval)/extract(epoch from '1 week'::interval) as uptime
+        from sessions s
+        where s.uptime && tstzrange({{ .StartOfWeek | timestamptz }}-'1 week'::interval, {{ .StartOfWeek | timestamptz }})
+        group by peer_id
+      )
+      select
+        sum(case when uptime >= 0.8 then 1 else 0 end) as online,
+        sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
+        sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
+        sum(case when uptime < 0.1 then 1 else 0 end) as offline
+      from u;
+  - name: "previous"
+    source: "nebula_ipfs"
+    query: >
+      with u as (
+      select s.peer_id,
+        extract(epoch from sum(upper(s.uptime * tstzrange({{ .StartOfWeek | timestamptz }}-'2 week'::interval, {{ .StartOfWeek | timestamptz }}-'1 week'::interval)) - lower(s.uptime * tstzrange({{ .StartOfWeek | timestamptz }}-'2 week'::interval, {{ .StartOfWeek | timestamptz }}-'1 week'::interval)))::interval)/extract(epoch from '1 week'::interval) as uptime
+        from sessions s
+        where s.uptime && tstzrange({{ .StartOfWeek | timestamptz }}-'2 week'::interval, {{ .StartOfWeek | timestamptz }}-'1 week'::interval)
+        group by peer_id
+      )
+      select
+        sum(case when uptime >= 0.8 then 1 else 0 end) as online,
+        sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
+        sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
+        sum(case when uptime < 0.1 then 1 else 0 end) as offline
+      from u;
+
+scalars:
+  - type: "number"
+    name: "Online"
+    dataset: "current"
+    value: "online"
+    deltaDataset: "previous"
+    deltaValue: "online"
+    deltaType: "relative"
+  # - type: "number"
+  #   name: "Mostly Online"
+  #   dataset: "current"
+  #   value: "mostlyonline"
+  #   deltaDataset: "previous"
+  #   deltaValue: "mostlyonline"
+  #   deltaType: "relative"
+  # - type: "number"
+  #   name: "Mostly Offline"
+  #   dataset: "current"
+  #   value: "mostlyoffline"
+  #   deltaDataset: "previous"
+  #   deltaValue: "mostlyoffline"
+  #   deltaType: "relative"
+  # - type: "number"
+  #   name: "Offline"
+  #   dataset: "current"
+  #   value: "offline"
+  #   deltaDataset: "previous"
+  #   deltaValue: "offline"
+  #   deltaType: "relative"
+
+
+layout:
+  title:
+    text: "DHT server availability (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"

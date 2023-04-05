@@ -1,0 +1,9 @@
+{{ $json := .Get "json" }}
+{{ $id := .Get "id" | default $json | anchorize }}
+{{ $height := .Get "height" | default "200px" }}
+<div id="{{$id}}" class="plotly" style="height:{{$height}};"></div>
+<script>
+  d3.json({{ $json }}).then(function (fig) {
+      Plotly.newPlot('{{$id}}', fig.data, fig.layout, { responsive: true });
+  });
+</script>

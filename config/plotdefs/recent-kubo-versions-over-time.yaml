@@ -1,0 +1,60 @@
+frequency: weekly
+datasets:
+  - name: "main"
+    source: "nebula_ipfs"
+    query: >
+      with kubos as (
+        with av as (
+          select id,
+               case
+              when position('@' in agent_version) = 0 then
+                case
+                  when position('github.com' in agent_version) != 0 then split_part(agent_version, '/',3)
+                  else split_part(agent_version, '/',1)
+                end
+              else
+                case
+                  when position('github.com' in agent_version) != 0 then split_part(split_part(agent_version, '@',1), '/',3)
+                  else split_part(split_part(agent_version, '@',1), '/',1)
+                end
+                end as agent,
+               case
+              when position('@' in agent_version) = 0 then split_part(split_part(agent_version, '/',2), '-',1)
+              else split_part(agent_version, '@',2)
+               end as version
+          from agent_versions
+        ), period as (
+          select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
+          from generate_series({{ .StartOfWeek | timestamptz }}-'9 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+        ) -- 10 weeks
+
+        select period.start, concat(av.agent, ' ', av.version) as agentversion, count(DISTINCT v.peer_id) as number, rank() over (partition by period.start order by concat(av.agent, ' ', av.version) desc) as rank
+        from period, visits v join av on av.id=v.agent_version_id
+          where
+                  v.visit_started_at >= period.start
+                  and v.visit_started_at < period.end
+                  AND v.type = 'crawl' AND v.connect_error IS NULL
+                  and (av.agent = 'go-ipfs' or av.agent = 'kubo')
+          group by period.start, av.agent, av.version
+          order by period.start, cast(split_part(av.version, '.',1) as numeric)*10000+cast(split_part(av.version, '.',2) as numeric)*100+cast(split_part(av.version, '.',3) as numeric) desc
+      )
+      select start+'1 week'::interval as date, case when rank<=6 then agentversion else 'all others' end as version, sum(number) as number, max(rank) as rank
+      from kubos
+      group by start, version
+      order by start, max(rank);
+
+series:
+  - type: "bar"
+    name: ""
+    dataset: "main"
+    labels: "date"
+    values: "number"
+    groupfield: "version"
+    groupvalue: "*"
+
+layout:
+  barmode: stack
+  title:
+    text: "Recent Kubo versions over time"
+  xaxis:
+    type: "date"

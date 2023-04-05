@@ -1,0 +1,10 @@
+default: "004488"
+colors:
+  - name: offline
+    color: BBBBBB
+  - name: mostlyoffline
+    color: EECC66
+  - name: mostlyonline
+    color: 6699cc
+  - name: online
+    color: 004488
