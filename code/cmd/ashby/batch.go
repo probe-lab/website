@@ -244,7 +244,7 @@ func Batch(cc *cli.Context) error {
 			slog.Info("generating plot", "name", pd.Name)
 			fig, err := generateFig(ctx, &pd, cfg)
 			if err != nil {
-				return fmt.Errorf("failed to generate plot: %w", err)
+				return fmt.Errorf("failed to generate plot %q: %w", pd.Name, err)
 			}
 
 			var data []byte

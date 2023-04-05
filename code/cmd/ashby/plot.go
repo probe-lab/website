@@ -93,14 +93,14 @@ func Plot(cc *cli.Context) error {
 	}
 
 	if cc.NArg() != 1 {
-		return fmt.Errorf("plot defintion must be supplied as an argument")
+		return fmt.Errorf("plot definition must be supplied as an argument")
 	}
 
 	fname := cc.Args().Get(0)
 
 	fcontent, err := os.ReadFile(fname)
 	if err != nil {
-		return fmt.Errorf("failed to read plot specification: %w", err)
+		return fmt.Errorf("failed to read plot definition: %w", err)
 	}
 
 	var pd PlotDef

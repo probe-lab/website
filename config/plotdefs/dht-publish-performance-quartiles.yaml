@@ -1,0 +1,82 @@
+frequency: daily
+datasets:
+  - name: "current"
+    source: "parsec"
+    query: >
+      with m as (
+        select m1.created_at, duration
+        from provides m1
+          inner join nodes n on n.id = m1.node_id
+        where m1.error is null
+          and m1.rt_size > 200
+          and n.instance_type = 't3.small'
+        union all
+        select m2.created_at, duration
+        from provides_ecs m2
+          inner join nodes n on n.id = m2.node_id
+        where m2.error is null
+          and m2.rt_size > 200
+          and n.instance_type = 't3.small'
+      )
+      select percentile_disc(0.5) within group (order by m.duration) as p50,
+        percentile_disc(0.90) within group (order by m.duration) as p90,
+        percentile_disc(0.99) within group (order by m.duration) as p99
+      from m
+      where m.created_at >= {{ .StartOfDay | timestamptz }}-'1 week'::interval
+        and m.created_at < {{ .StartOfDay | timestamptz }};
+  - name: "previous"
+    source: "parsec"
+    query: >
+      with m as (
+       select m1.created_at, duration
+        from provides m1
+          inner join nodes n on n.id = m1.node_id
+        where m1.error is null
+          and m1.rt_size > 200
+          and n.instance_type = 't3.small'
+        union all
+        select m2.created_at, duration
+        from provides_ecs m2
+          inner join nodes n on n.id = m2.node_id
+        where m2.error is null
+          and m2.rt_size > 200
+          and n.instance_type = 't3.small'
+      )
+      select percentile_disc(0.5) within group (order by m.duration) as p50,
+        percentile_disc(0.90) within group (order by m.duration) as p90,
+        percentile_disc(0.99) within group (order by m.duration) as p99
+      from m
+      where m.created_at >= {{ .StartOfDay | timestamptz }}-'2 week'::interval
+        and m.created_at < {{ .StartOfDay | timestamptz }}-'1 week'::interval;
+
+
+scalars:
+  - type: "number"
+    name: "Median"
+    dataset: "current"
+    value: "p50"
+    valueSuffix: "s"
+    deltaDataset: "previous"
+    deltaValue: "p50"
+    deltaType: "relative"
+  - type: "number"
+    name: "P90"
+    dataset: "current"
+    value: "p90"
+    valueSuffix: "s"
+    deltaDataset: "previous"
+    deltaValue: "p90"
+    deltaType: "relative"
+  - type: "number"
+    name: "P99"
+    dataset: "current"
+    value: "p99"
+    valueSuffix: "s"
+    deltaDataset: "previous"
+    deltaValue: "p99"
+    deltaType: "relative"
+
+
+layout:
+  title:
+    text: "DHT publish performance (current week compared with previous)"

@@ -1,0 +1,78 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "agents",
+      "orientation": "h",
+      "x": [
+        26093,
+        4851,
+        2025,
+        1882,
+        929,
+        261,
+        76,
+        64,
+        30,
+        29,
+        20,
+        14,
+        14,
+        12,
+        11,
+        10,
+        10,
+        10,
+        9,
+        8,
+        6,
+        6,
+        5,
+        4,
+        3
+      ],
+      "y": [
+        "kubo",
+        "go-ipfs",
+        "SybilNode",
+        "hydra-booster",
+        "storm",
+        "ipfs-counter",
+        "Taubyte Node v1.0",
+        "parsec",
+        "edgevpn",
+        "main",
+        "go.vocdoni.io",
+        "uplink",
+        "rust-ipfs",
+        "estuary",
+        "ipfs-nucleus",
+        "gitlab.com",
+        "protonet",
+        "0.8.2",
+        "P2P_Example",
+        "go-libp2p",
+        "validation-bot",
+        "ipfs-server",
+        "delta",
+        "go-photon",
+        ""
+      ]
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Top DHT server agents"
+    },
+    "xaxis": {
+      "autorange": true,
+      "title": {
+        "text": "Number of unique peers seen in DHT (log scale)"
+      },
+      "type": "log"
+    },
+    "yaxis": {
+      "categoryorder": "total descending"
+    }
+  }
+}

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"math"
 	"sort"
 
 	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
@@ -28,8 +29,35 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 		}
 	}
 
+	fig.Data = grob.Traces{}
+
+	traces, err := seriesTraces(dataSets, pd.Series)
+	if err != nil {
+		return nil, fmt.Errorf("series traces: %w", err)
+	}
+	fig.Data = append(fig.Data, traces...)
+
+	traces, err = scalarTraces(dataSets, pd.Scalars)
+	if err != nil {
+		return nil, fmt.Errorf("scalar tracess: %w", err)
+	}
+	fig.Data = append(fig.Data, traces...)
+
+	return fig, nil
+}
+
+type LabeledSeries struct {
+	Name      string
+	SeriesDef *SeriesDef
+	Labels    []any
+	Values    []any
+}
+
+func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.Trace, error) {
+	var traces []grob.Trace
+
 	seriesByDataSet := make(map[string][]SeriesDef)
-	for i, s := range pd.Series {
+	for i, s := range seriesDefs {
 		if _, ok := dataSets[s.DataSet]; !ok {
 			slog.Error(fmt.Sprintf("unknown dataset name %q in series %d", s.DataSet, i))
 			continue
@@ -37,19 +65,11 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 		seriesByDataSet[s.DataSet] = append(seriesByDataSet[s.DataSet], s)
 	}
 
-	type LabeledSeries struct {
-		Name      string
-		SeriesDef *SeriesDef
-		Labels    []any
-		Values    []any
-	}
-
-	fig.Data = grob.Traces{}
+	// data is ordered in the same way as the definition
+	// if series are generated from a groupfield then it uses that ordering
 	for dsname, series := range seriesByDataSet {
 		ds := dataSets[dsname]
 
-		// data is ordered in the same way as the definition
-		// if series are generated from a groupfield then it uses that ordering
 		data := make([]*LabeledSeries, 0)
 		dataIndex := make(map[string]*LabeledSeries)
 
@@ -71,7 +91,7 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 
 				ls, ok := dataIndex[name]
 				if !ok {
-					slog.Debug("creating series", "plot", pd.Name, "series", name)
+					slog.Debug("creating series", "series", name)
 					ls = &LabeledSeries{
 						Name:      name,
 						SeriesDef: &s,
@@ -111,7 +131,7 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 					}
 				}
 
-				fig.Data = append(fig.Data, trace)
+				traces = append(traces, trace)
 			case SeriesTypeHBar:
 				trace := &grob.Bar{
 					Type:        grob.TraceTypeBar,
@@ -126,7 +146,7 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 					}
 				}
 
-				fig.Data = append(fig.Data, trace)
+				traces = append(traces, trace)
 			case SeriesTypeLine:
 				trace := &grob.Scatter{
 					Type: grob.TraceTypeScatter,
@@ -140,7 +160,7 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 						Color: ls.SeriesDef.Color,
 					}
 				}
-				fig.Data = append(fig.Data, trace)
+				traces = append(traces, trace)
 			case SeriesTypeBox:
 				trace := &grob.Box{
 					Type: grob.TraceTypeBox,
@@ -153,7 +173,7 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 						Color: ls.SeriesDef.Color,
 					}
 				}
-				fig.Data = append(fig.Data, trace)
+				traces = append(traces, trace)
 			case SeriesTypeHBox:
 				trace := &grob.Box{
 					Type: grob.TraceTypeBox,
@@ -166,7 +186,7 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 						Color: ls.SeriesDef.Color,
 					}
 				}
-				fig.Data = append(fig.Data, trace)
+				traces = append(traces, trace)
 			default:
 				return nil, fmt.Errorf("unsupported series type: %s", ls.SeriesDef.Type)
 			}
@@ -174,5 +194,107 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 
 	}
 
-	return fig, nil
+	return traces, nil
+}
+
+func scalarTraces(dataSets map[string]DataSet, scalarDefs []ScalarDef) ([]grob.Trace, error) {
+	// work out which dataset fields need to be read
+	datasetFieldsUsed := make(map[string][]string)
+	for _, s := range scalarDefs {
+		if _, ok := dataSets[s.DataSet]; !ok {
+			slog.Error(fmt.Sprintf("unknown dataset name %q for scalar %s", s.DataSet, s.Name))
+			continue
+		}
+		datasetFieldsUsed[s.DataSet] = append(datasetFieldsUsed[s.DataSet], s.Value)
+
+		if s.DeltaDataSet != "" {
+			if _, ok := dataSets[s.DeltaDataSet]; !ok {
+				slog.Error(fmt.Sprintf("unknown delta dataset name %q for scalar %s", s.DeltaDataSet, s.Name))
+				continue
+			}
+			datasetFieldsUsed[s.DeltaDataSet] = append(datasetFieldsUsed[s.DeltaDataSet], s.DeltaValue)
+		}
+	}
+
+	// read one row from each referenced dataset and record the relevant fields
+	dsValues := make(map[string]map[string]float64)
+	for dsname, fields := range datasetFieldsUsed {
+		ds := dataSets[dsname]
+
+		if !ds.Next() {
+			if ds.Err() != nil {
+				slog.Error(fmt.Sprintf("error reading dataset %q: %v", dsname, ds.Err()))
+				continue
+			}
+			slog.Error(fmt.Sprintf("no rows found for dataset %q", dsname))
+			continue
+		}
+
+		dsValues[dsname] = make(map[string]float64)
+
+		for _, f := range fields {
+			v := ds.Field(f)
+			if vf, ok := v.(float64); ok {
+				dsValues[dsname][f] = vf
+			} else {
+				dsValues[dsname][f] = math.NaN()
+			}
+		}
+	}
+
+	var traces []grob.Trace
+
+	domainX := 1.0 / float64(len(scalarDefs))
+	for idx, s := range scalarDefs {
+		switch s.Type {
+		case ScalarTypeNumber:
+			trace := &grob.Indicator{
+				Type: grob.TraceTypeIndicator,
+				Name: s.Name,
+				Mode: "number",
+				Number: &grob.IndicatorNumber{
+					Suffix: s.ValueSuffix,
+				},
+				Domain: &grob.IndicatorDomain{
+					Column: int64(idx),
+					X:      []float64{domainX * float64(idx), domainX * float64(idx+1)},
+				},
+				Title: &grob.IndicatorTitle{
+					Text: s.Name,
+				},
+			}
+
+			v, ok := dsValues[s.DataSet][s.Value]
+			if !ok {
+				slog.Error(fmt.Sprintf("missing value field for scalar %s", s.Name))
+				continue
+			}
+			trace.Value = v
+
+			if s.DeltaDataSet != "" {
+				dv, ok := dsValues[s.DeltaDataSet][s.DeltaValue]
+				if !ok {
+					slog.Error(fmt.Sprintf("missing delta value field for scalar %s", s.Name))
+					continue
+				}
+				switch s.DeltaType {
+				case DeltaTypeRelative:
+					trace.Delta = &grob.IndicatorDelta{
+						Reference:   dv,
+						Relative:    grob.True,
+						Valueformat: ".2%",
+					}
+					trace.Mode = "number+delta"
+				default:
+					return nil, fmt.Errorf("unsupported delta type: %s", s.DeltaType)
+				}
+			}
+
+			traces = append(traces, trace)
+		default:
+			return nil, fmt.Errorf("unsupported scalar type: %s", s.Type)
+
+		}
+	}
+	return traces, nil
 }
