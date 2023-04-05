@@ -3,7 +3,7 @@ SHELL=/usr/bin/env bash
 
 PLOTS?=./content.en/plots
 PLOTDEFS?=./config/plotdefs
-
+CONF?=./config
 
 ASHBY?=./ashby
 NEBULA_IPFS?=
@@ -20,4 +20,4 @@ ashby:
 
 .PHONY: build
 build: ashby
-	@${ASHBY} batch -s nebula_ipfs=${NEBULA_IPFS} -s parsec=${PARSEC} -s tiros=${TIROS} --version -vv --out ${PLOTS} --in ${PLOTDEFS}
+	@${ASHBY} batch -s nebula_ipfs=${NEBULA_IPFS} -s parsec=${PARSEC} -s tiros=${TIROS} --version -vv --out ${PLOTS} --in ${PLOTDEFS} --conf ${CONF}

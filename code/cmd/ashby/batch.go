@@ -15,6 +15,7 @@ import (
 	"github.com/urfave/cli/v2"
 	"golang.org/x/exp/slog"
 	"golang.org/x/sync/errgroup"
+	"gopkg.in/yaml.v3"
 )
 
 var batchCommand = &cli.Command{
@@ -79,6 +80,12 @@ var batchCommand = &cli.Command{
 			Destination: &batchOpts.concurrency,
 			Value:       6,
 		},
+		&cli.StringFlag{
+			Name:        "conf",
+			Required:    false,
+			Usage:       "Path of directory containing configuration.",
+			Destination: &batchOpts.confDir,
+		},
 	}, loggingFlags...),
 }
 
@@ -88,6 +95,7 @@ var batchOpts struct {
 	sources     cli.StringSlice
 	inDir       string
 	outDir      string
+	confDir     string
 	validate    bool
 	version     bool
 	force       bool
@@ -108,6 +116,7 @@ func Batch(cc *cli.Context) error {
 		Sources: map[string]DataSource{
 			"demo": &DemoDataSource{},
 		},
+		Colors: map[string]string{},
 	}
 
 	if batchOpts.basis == "now" {
@@ -145,6 +154,21 @@ func Batch(cc *cli.Context) error {
 			cfg.Sources[name] = NewPgDataSource(url)
 		} else {
 			return fmt.Errorf("unsupported source url: %s", url)
+		}
+	}
+
+	if batchOpts.confDir != "" {
+		conffs := os.DirFS(batchOpts.confDir)
+		colorConfContent, err := fs.ReadFile(conffs, "colors.yaml")
+		if err == nil {
+			var cd ColorDoc
+			if err := yaml.Unmarshal(colorConfContent, &cd); err != nil {
+				return fmt.Errorf("failed to unmarshal colors.yaml: %w", err)
+			}
+			cfg.DefaultColor = cd.Default
+			cfg.Colors = cd.Colors
+		} else if !errors.Is(err, fs.ErrNotExist) {
+			return fmt.Errorf("failed to read colors: %w", err)
 		}
 	}
 

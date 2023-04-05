@@ -18,6 +18,22 @@ type PlotConfig struct {
 	// Sources is a mapping of names to datasources. The names can be
 	// referenced in a dataset definition
 	Sources map[string]DataSource
+
+	DefaultColor string
+
+	// Colors is a mapping of friendly names to hex values of colors
+	Colors map[string]string
+}
+
+func (c *PlotConfig) MaybeLookupColor(name string) string {
+	if name == "" {
+		return c.DefaultColor
+	}
+	v, ok := c.Colors[name]
+	if ok {
+		return v
+	}
+	return name
 }
 
 type PlotDef struct {
@@ -144,5 +160,6 @@ type DataSet interface {
 
 // ColorDoc represents a document that defines a set of named colors
 type ColorDoc struct {
-	Colors map[string]string `yaml:"name"`
+	Default string            `yaml:"default"`
+	Colors  map[string]string `yaml:"colors"`
 }

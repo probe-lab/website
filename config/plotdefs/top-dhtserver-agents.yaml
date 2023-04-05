@@ -46,4 +46,4 @@ layout:
       text: "Number of unique peers seen in DHT (log scale)"
     autorange: true
   yaxis:
-    categoryorder: "total descending"
+    categoryorder: "total ascending"

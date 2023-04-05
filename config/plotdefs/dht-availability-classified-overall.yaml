@@ -6,7 +6,7 @@ datasets:
       with u as (
         with period as (
           select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
-          from generate_series({{ .StartOfWeek | timestamptz }}-'16 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+          from generate_series({{ .StartOfWeek | timestamptz }}-'15 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
         ) -- 10 weeks
         select period.end as date, s.peer_id,
           extract(epoch from sum(upper(s.uptime * period.range) - lower(s.uptime * period.range ))::interval)/period.duration as uptime
@@ -15,7 +15,7 @@ datasets:
         group by period.end, s.peer_id, period.duration
       )
       select date,
-        sum(case when uptime >= 0.8 then 1 else 0 end)/count(*) as online,
+        sum(case when uptime >= 0.8 then 1 else 0 end) as online,
         sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
         sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
         sum(case when uptime < 0.1 then 1 else 0 end) as offline
@@ -48,11 +48,11 @@ series:
     dataset: "main"
     labels: "date"
     values: "offline"
-    color: "EE99AA"
+    color: "BBBBBB"
 
 layout:
   barmode: stack
   title:
-    text: "DHT availability, classified over time"
+    text: "DHT server availability, classified over time"
   xaxis:
     type: "date"

@@ -30,13 +30,13 @@ func generateFig(ctx context.Context, pd *PlotDef, cfg *PlotConfig) (*grob.Fig, 
 
 	fig.Data = grob.Traces{}
 
-	traces, err := seriesTraces(dataSets, pd.Series)
+	traces, err := seriesTraces(dataSets, pd.Series, cfg)
 	if err != nil {
 		return nil, fmt.Errorf("series traces: %w", err)
 	}
 	fig.Data = append(fig.Data, traces...)
 
-	traces, err = scalarTraces(dataSets, pd.Scalars)
+	traces, err = scalarTraces(dataSets, pd.Scalars, cfg)
 	if err != nil {
 		return nil, fmt.Errorf("scalar tracess: %w", err)
 	}
@@ -52,7 +52,7 @@ type LabeledSeries struct {
 	Values    []any
 }
 
-func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.Trace, error) {
+func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef, cfg *PlotConfig) ([]grob.Trace, error) {
 	var traces []grob.Trace
 
 	seriesByDataSet := make(map[string][]SeriesDef)
@@ -129,9 +129,9 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 					Y:           ls.Values,
 				}
 
-				if ls.SeriesDef.Color != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
 					trace.Marker = &grob.BarMarker{
-						Color: ls.SeriesDef.Color,
+						Color: c,
 					}
 				}
 
@@ -144,9 +144,9 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 					X:           ls.Values,
 					Y:           ls.Labels,
 				}
-				if ls.SeriesDef.Color != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
 					trace.Marker = &grob.BarMarker{
-						Color: ls.SeriesDef.Color,
+						Color: c,
 					}
 				}
 
@@ -159,9 +159,9 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 					Y:    ls.Values,
 				}
 
-				if ls.SeriesDef.Color != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
 					trace.Marker = &grob.ScatterMarker{
-						Color: ls.SeriesDef.Color,
+						Color: c,
 					}
 				}
 				traces = append(traces, trace)
@@ -172,9 +172,9 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 					Y:    ls.Values,
 				}
 
-				if ls.SeriesDef.Color != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
 					trace.Marker = &grob.BoxMarker{
-						Color: ls.SeriesDef.Color,
+						Color: c,
 					}
 				}
 				traces = append(traces, trace)
@@ -185,9 +185,9 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 					X:    ls.Values,
 				}
 
-				if ls.SeriesDef.Color != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
 					trace.Marker = &grob.BoxMarker{
-						Color: ls.SeriesDef.Color,
+						Color: c,
 					}
 				}
 				traces = append(traces, trace)
@@ -201,7 +201,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 	return traces, nil
 }
 
-func scalarTraces(dataSets map[string]DataSet, scalarDefs []ScalarDef) ([]grob.Trace, error) {
+func scalarTraces(dataSets map[string]DataSet, scalarDefs []ScalarDef, cfg *PlotConfig) ([]grob.Trace, error) {
 	// work out which dataset fields need to be read
 	datasetFieldsUsed := make(map[string][]string)
 	for _, s := range scalarDefs {

@@ -23,6 +23,7 @@ assess the health and overall efficiency of the network.
 
 {{< plotly json="/website/plots/dht-availability-classified-overall-latest.json" height="600px" >}}
 
+{{< plotly json="/website/plots/dht-availability-classified-region-latest.json" height="600px" >}}
 
 
 ## Performance

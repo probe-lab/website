@@ -72,7 +72,7 @@
       "type": "log"
     },
     "yaxis": {
-      "categoryorder": "total descending"
+      "categoryorder": "total ascending"
     }
   }
 }
