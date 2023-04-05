@@ -1,0 +1,3 @@
+export IPFS_NEBULA=postgres://user:password@host:5432/nebula_ipfs?sslmode=prefer
+export PARSEC=postgres://user:password@host:5432/parsec?sslmode=prefer
+export TIROS=postgres://user:password@host:5432/tiros?sslmode=prefer

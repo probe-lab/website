@@ -1,0 +1,45 @@
+frequency: daily
+datasets:
+  - name: "main"
+    source: "parsec"
+    query: >
+      with m as (
+        select m1.duration
+        from retrievals m1
+          inner join nodes n on n.id = m1.node_id
+        where m1.error is null
+          and m1.rt_size > 200
+          and n.instance_type = 't3.small'
+          and m1.created_at >= {{ .StartOfDay | timestamptz }}-'30 day'::interval
+          and m1.created_at < {{ .StartOfDay | timestamptz }}
+        union all
+        select m2.duration
+        from retrievals_ecs m2
+          inner join nodes_ecs n on n.id = m2.node_id
+        where m2.error is null
+          and m2.rt_size > 200
+          and n.fleet = 'default'
+          and m2.created_at >= {{ .StartOfDay | timestamptz }}-'30 day'::interval
+          and m2.created_at < {{ .StartOfDay | timestamptz }}
+      ),
+      cdf as (
+        select round(cast(m.duration as numeric)*1000)/1000.0 as duration, cume_dist() over (order by m.duration) as cumedist
+        from m
+        group by duration
+      )
+      select duration, max(cumedist)
+      from cdf
+      where cumedist <= 0.999
+      group by duration
+      order by duration;
+
+series:
+  - type: "hbox"
+    name: "distribution"
+    dataset: "main"
+    values: "duration"
+
+layout:
+  title:
+    text: "Overall DHT lookup distribution (last 30 days)"
+  boxpoints: false

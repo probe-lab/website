@@ -1,0 +1,62 @@
+frequency: daily
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      with m as (
+        select extract(epoch from m.ttfb) as ttfb
+        from measurements m
+        where m.created_at >= {{ .StartOfWeek | timestamptz }}-'1 week'::interval
+          and m.created_at < {{ .StartOfWeek | timestamptz }}
+          and m.error is null
+      )
+      select percentile_disc(0.50) within group (order by m.ttfb) as p50,
+        percentile_disc(0.90) within group (order by m.ttfb) as p90,
+        percentile_disc(0.99) within group (order by m.ttfb) as p99
+      from m;
+  - name: "previous"
+    source: "tiros"
+    query: >
+      with m as (
+        select extract(epoch from m.ttfb) as ttfb
+        from measurements m
+        where m.created_at >= {{ .StartOfWeek | timestamptz }}-'2 week'::interval
+          and m.created_at < {{ .StartOfWeek | timestamptz }}-'1 week'::interval
+          and m.error is null
+      )
+      select percentile_disc(0.50) within group (order by m.ttfb) as p50,
+        percentile_disc(0.90) within group (order by m.ttfb) as p90,
+        percentile_disc(0.99) within group (order by m.ttfb) as p99
+      from m;
+
+
+scalars:
+  - type: "number"
+    name: "Median"
+    dataset: "current"
+    value: "p50"
+    valueSuffix: "s"
+    deltaDataset: "previous"
+    deltaValue: "p50"
+    deltaType: "relative"
+  - type: "number"
+    name: "P90"
+    dataset: "current"
+    value: "p90"
+    valueSuffix: "s"
+    deltaDataset: "previous"
+    deltaValue: "p90"
+    deltaType: "relative"
+  - type: "number"
+    name: "P99"
+    dataset: "current"
+    value: "p99"
+    valueSuffix: "s"
+    deltaDataset: "previous"
+    deltaValue: "p99"
+    deltaType: "relative"
+
+
+layout:
+  title:
+    text: "Websites Time to First Byte (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"

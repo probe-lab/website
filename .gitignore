@@ -1,0 +1,9 @@
+.env
+.envrc
+.direnv
+.hugo_build.lock
+/public
+/node_modules
+/resources
+/ashby
+/code/cmd/ashby/ashby

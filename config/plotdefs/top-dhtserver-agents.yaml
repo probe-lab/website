@@ -1,0 +1,49 @@
+frequency: weekly
+datasets:
+  - name: "main"
+    source: "nebula_ipfs"
+    query: >
+      with av as (
+        select id,
+             case
+            when position('@' in agent_version) = 0 then
+              case
+                when position('github.com' in agent_version) != 0 then split_part(agent_version, '/',3)
+                else split_part(agent_version, '/',1)
+              end
+            else
+              case
+                when position('github.com' in agent_version) != 0 then split_part(split_part(agent_version, '@',1), '/',3)
+                else split_part(split_part(agent_version, '@',1), '/',1)
+              end
+              end as agent
+        from agent_versions
+      )
+
+      select av.agent, count(DISTINCT v.peer_id) as number
+      from visits v join av on av.id=v.agent_version_id
+      where
+        v.visit_started_at >= {{ .StartOfWeek | timestamptz }}-'1 week'::interval
+        and v.visit_started_at < {{ .StartOfWeek | timestamptz }}
+        and v.type = 'crawl' and v.connect_error is null
+        group by av.agent
+        order by number desc
+        limit 25;
+
+series:
+  - type: "hbar"
+    name: "agents"
+    dataset: "main"
+    labels: "agent"
+    values: "number"
+
+layout:
+  title:
+    text: "Top DHT server agents"
+  xaxis:
+    type: "log"
+    title:
+      text: "Number of unique peers seen in DHT (log scale)"
+    autorange: true
+  yaxis:
+    categoryorder: "total ascending"
