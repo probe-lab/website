@@ -17,6 +17,8 @@ One of the core components of IPFS is the Distributed Hash Table (DHT), which en
 
 ## Performance
 
+Measuring the time it takes to publish and retrieve information from the IPFS DHT is crucial for understanding the network's performance and identifying areas for improvement. It allows us to assess the network's efficiency in different regions, which is essential for global-scale applications that rely on the IPFS DHT. Measuring performance across different regions helps identify potential bottlenecks and optimize content delivery. 
+
 ### Lookup Performance
 
 {{< plotly json="/website/plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
@@ -35,6 +37,7 @@ One of the core components of IPFS is the Distributed Hash Table (DHT), which en
 
 ## Participation in the DHT
 
+Measuring participation in the IPFS DHT is crucial to understanding the health and effectiveness of the network. A diverse and wide participation of software agents and peers helps ensure a robust and resilient network. Such diversity helps prevent centralization, provides greater redundancy, and increases the chances of content availability. Moreover, a wide participation allows for a more efficient distribution of content, improves load balancing, and can lead to faster content retrieval. 
 
 ### DHT Server Software
 
