@@ -166,7 +166,10 @@ func Batch(cc *cli.Context) error {
 				return fmt.Errorf("failed to unmarshal colors.yaml: %w", err)
 			}
 			cfg.DefaultColor = cd.Default
-			cfg.Colors = cd.Colors
+			cfg.Colors = make(map[string]string, len(cd.Colors))
+			for _, nc := range cd.Colors {
+				cfg.Colors[nc.Name] = nc.Color
+			}
 		} else if !errors.Is(err, fs.ErrNotExist) {
 			return fmt.Errorf("failed to read colors: %w", err)
 		}

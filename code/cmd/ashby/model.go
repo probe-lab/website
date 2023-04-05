@@ -160,6 +160,11 @@ type DataSet interface {
 
 // ColorDoc represents a document that defines a set of named colors
 type ColorDoc struct {
-	Default string            `yaml:"default"`
-	Colors  map[string]string `yaml:"colors"`
+	Default string       `yaml:"default"`
+	Colors  []NamedColor `yaml:"colors"`
+}
+
+type NamedColor struct {
+	Name  string `yaml:"name"`
+	Color string `yaml:"color"`
 }
