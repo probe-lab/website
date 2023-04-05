@@ -21,7 +21,7 @@
       "title": {
         "text": "Median"
       },
-      "value": 0.476384904
+      "value": 7.9565686719999995
     },
     {
       "type": "indicator",
@@ -45,7 +45,7 @@
       "title": {
         "text": "P90"
       },
-      "value": 9.197805388
+      "value": 25.609582304
     },
     {
       "type": "indicator",
@@ -69,12 +69,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 52.121285527
+      "value": 100.068517422
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT publish performance (current week compared with previous)"
+      "text": "DHT publish performance (week ending 2 Apr 2023 compared with previous)"
     }
   }
 }

@@ -12,6 +12,7 @@ import (
 
 	"github.com/MetalBlueberry/go-plotly/offline"
 	"github.com/urfave/cli/v2"
+	"golang.org/x/exp/slog"
 	"gopkg.in/yaml.v3"
 )
 
@@ -103,15 +104,10 @@ func Plot(cc *cli.Context) error {
 		return fmt.Errorf("failed to read plot definition: %w", err)
 	}
 
-	var pd PlotDef
-	if err := yaml.Unmarshal(fcontent, &pd); err != nil {
-		return fmt.Errorf("failed to unmarshal plot definition: %w", err)
+	pd, err := parsePlotDef(fname, fcontent)
+	if err != nil {
+		return fmt.Errorf("failed to parse plot definition: %w", err)
 	}
-
-	if pd.Name == "" {
-		pd.Name = plotname(fname)
-	}
-
 	if err := pd.ExecuteTemplates(ctx, cfg); err != nil {
 		return fmt.Errorf("failed to execute templates for plot definition: %w", err)
 	}
@@ -131,7 +127,7 @@ func Plot(cc *cli.Context) error {
 		return nil
 	}
 
-	fig, err := generateFig(ctx, &pd, cfg)
+	fig, err := generateFig(ctx, pd, cfg)
 	if err != nil {
 		return fmt.Errorf("failed to generate plot: %w", err)
 	}
@@ -187,4 +183,23 @@ func indent(s string, prefix string) string {
 func plotname(fname string) string {
 	base := filepath.Base(fname)
 	return strings.TrimSuffix(base, filepath.Ext(fname))
+}
+
+func parsePlotDef(fname string, content []byte) (*PlotDef, error) {
+	slog.Info("parsing plot definition file", "filename", fname)
+	var pd PlotDef
+	if err := yaml.Unmarshal(content, &pd); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal plot definition: %w", err)
+	}
+
+	if pd.Name == "" {
+		pd.Name = plotname(fname)
+	}
+
+	// annotate series with order in definition
+	for i := range pd.Series {
+		pd.Series[i].order = i
+	}
+
+	return &pd, nil
 }

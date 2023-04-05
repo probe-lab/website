@@ -13,10 +13,10 @@ datasets:
         union all
         select n.region, m2.created_at, m2.duration
         from retrievals_ecs m2
-          inner join nodes n on n.id = m2.node_id
+          inner join nodes_ecs n on n.id = m2.node_id
         where m2.error is null
           and m2.rt_size > 200
-          and n.instance_type = 't3.small'
+          and n.fleet = 'default'
       ),
       cdf as (
         select m.region, m.duration, cume_dist() over (partition by m.region order by m.duration) as cumedist
@@ -41,7 +41,7 @@ series:
 
 layout:
   title:
-    text: "DHT lookup performance CDF by region (over 30 days)"
+    text: "DHT lookup performance CDF by region (30 days up to {{ .EndOfPreviousDay | simpledate }})"
   xaxis:
     type: "linear"
     autorange: true

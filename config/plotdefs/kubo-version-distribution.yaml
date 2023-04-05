@@ -1,7 +1,7 @@
 frequency: weekly
 datasets:
   - name: "main"
-    source: "ipfs_nebula"
+    source: "nebula_ipfs"
     query: >
       with av as (
         select id,

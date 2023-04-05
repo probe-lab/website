@@ -9,6 +9,9 @@ plotly: true
 TBD
 {{< /hint >}}
 
+{{< plotly json="/website/plots/dht-availability-classified-online-latest.json" height="250px" >}}
+
+
 {{< plotly json="/website/plots/websites-ttfb-quartiles-latest.json" height="250px" >}}
 
 ## IPFS DHT

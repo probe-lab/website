@@ -13,10 +13,10 @@ datasets:
         union all
         select m2.created_at, duration
         from retrievals_ecs m2
-          inner join nodes n on n.id = m2.node_id
+          inner join nodes_ecs n on n.id = m2.node_id
         where m2.error is null
           and m2.rt_size > 200
-          and n.instance_type = 't3.small'
+          and n.fleet = 'default'
       )
       select percentile_disc(0.5) within group (order by m.duration) as p50,
         percentile_disc(0.90) within group (order by m.duration) as p90,
@@ -37,10 +37,10 @@ datasets:
         union all
         select m2.created_at, duration
         from retrievals_ecs m2
-          inner join nodes n on n.id = m2.node_id
+          inner join nodes_ecs n on n.id = m2.node_id
         where m2.error is null
           and m2.rt_size > 200
-          and n.instance_type = 't3.small'
+          and n.fleet = 'default'
       )
       select percentile_disc(0.5) within group (order by m.duration) as p50,
         percentile_disc(0.90) within group (order by m.duration) as p90,
@@ -79,4 +79,4 @@ scalars:
 
 layout:
   title:
-    text: "DHT lookup performance (current week compared with previous)"
+    text: "DHT lookup performance (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"

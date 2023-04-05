@@ -59,4 +59,4 @@ scalars:
 
 layout:
   title:
-    text: "Websites Time to First Byte\n(7 days to {{ .StartOfWeek | simpledate }} compared with previous 7 days)"
+    text: "Websites Time to First Byte (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"

@@ -31,6 +31,12 @@ func ExecuteTemplate(ctx context.Context, source string, cfg *PlotConfig) (strin
 		"StartOfHour": cfg.BasisTime.Truncate(time.Hour),
 		"StartOfDay":  cfg.BasisTime.Truncate(24 * time.Hour),
 		"StartOfWeek": cfg.BasisTime.Truncate(7 * 24 * time.Hour),
+
+		// The following are useful when formatting dates that are immediately before the start of the period
+		// They are not really suitable for use as the end of a range in a query.
+		"EndOfPreviousHour": cfg.BasisTime.Truncate(time.Hour).Add(-time.Nanosecond),
+		"EndOfPreviousDay":  cfg.BasisTime.Truncate(24 * time.Hour).Add(-time.Nanosecond),
+		"EndOfPreviousWeek": cfg.BasisTime.Truncate(7 * 24 * time.Hour).Add(-time.Nanosecond),
 	}
 
 	buf := new(bytes.Buffer)

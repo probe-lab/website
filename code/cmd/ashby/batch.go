@@ -15,7 +15,6 @@ import (
 	"github.com/urfave/cli/v2"
 	"golang.org/x/exp/slog"
 	"golang.org/x/sync/errgroup"
-	"gopkg.in/yaml.v3"
 )
 
 var batchCommand = &cli.Command{
@@ -162,19 +161,14 @@ func Batch(cc *cli.Context) error {
 	for _, fname := range fnames {
 		fname := fname
 		grp.Go(func() error {
-			slog.Info("parsing plot definition file", "filename", fname)
 			fcontent, err := fs.ReadFile(infs, fname)
 			if err != nil {
-				return fmt.Errorf("failed to read plot specification: %w", err)
+				return fmt.Errorf("failed to read plot definition: %w", err)
 			}
 
-			var pd PlotDef
-			if err := yaml.Unmarshal(fcontent, &pd); err != nil {
-				return fmt.Errorf("failed to unmarshal plot definition: %w", err)
-			}
-
-			if pd.Name == "" {
-				pd.Name = plotname(fname)
+			pd, err := parsePlotDef(fname, fcontent)
+			if err != nil {
+				return fmt.Errorf("failed to parse plot definition: %w", err)
 			}
 
 			outFname := pd.Name + ".json"
@@ -242,7 +236,7 @@ func Batch(cc *cli.Context) error {
 			}
 
 			slog.Info("generating plot", "name", pd.Name)
-			fig, err := generateFig(ctx, &pd, cfg)
+			fig, err := generateFig(ctx, pd, cfg)
 			if err != nil {
 				return fmt.Errorf("failed to generate plot %q: %w", pd.Name, err)
 			}

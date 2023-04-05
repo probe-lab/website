@@ -15,10 +15,10 @@ datasets:
         union all
         select m2.duration
         from retrievals_ecs m2
-          inner join nodes n on n.id = m2.node_id
+          inner join nodes_ecs n on n.id = m2.node_id
         where m2.error is null
           and m2.rt_size > 200
-          and n.instance_type = 't3.small'
+          and n.fleet = 'default'
           and m2.created_at >= {{ .StartOfDay | timestamptz }}-'30 day'::interval
           and m2.created_at < {{ .StartOfDay | timestamptz }}
       ),

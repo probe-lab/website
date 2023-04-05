@@ -89,6 +89,7 @@ type SeriesDef struct {
 	GroupField string     `yaml:"groupfield"` // optional name of a field the series should use for grouping into related series
 	GroupValue string     `yaml:"groupvalue"` // optional value of a field the series should use for grouping into related series
 	Percent    bool       `yaml:"percent"`
+	order      int        // used for retaining ordering of series
 }
 
 type SeriesType string

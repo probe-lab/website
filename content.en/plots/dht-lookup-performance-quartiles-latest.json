@@ -21,7 +21,7 @@
       "title": {
         "text": "Median"
       },
-      "value": 0.384091751
+      "value": 0.729710772
     },
     {
       "type": "indicator",
@@ -45,7 +45,7 @@
       "title": {
         "text": "P90"
       },
-      "value": 1.00958521
+      "value": 1.5001532069999999
     },
     {
       "type": "indicator",
@@ -69,12 +69,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 2.127114559
+      "value": 3.896654884
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT lookup performance (current week compared with previous)"
+      "text": "DHT lookup performance (week ending 2 Apr 2023 compared with previous)"
     }
   }
 }

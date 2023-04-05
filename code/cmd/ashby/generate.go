@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"math"
 	"sort"
 
 	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
@@ -66,6 +65,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 	}
 
 	// data is ordered in the same way as the definition
+	// TODO: fix ordering
 	// if series are generated from a groupfield then it uses that ordering
 	for dsname, series := range seriesByDataSet {
 		ds := dataSets[dsname]
@@ -76,6 +76,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 		slog.Info("reading dataset", "name", dsname)
 		for ds.Next() {
 			for _, s := range series {
+				s := s
 				name := s.Name
 				if s.GroupField != "" {
 					if s.GroupValue == "*" {
@@ -110,6 +111,9 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef) ([]grob.T
 		}
 
 		sort.Slice(data, func(i, j int) bool {
+			if data[i].SeriesDef.order != data[j].SeriesDef.order {
+				return data[i].SeriesDef.order < data[j].SeriesDef.order
+			}
 			return data[i].Name < data[j].Name
 		})
 
@@ -234,10 +238,14 @@ func scalarTraces(dataSets map[string]DataSet, scalarDefs []ScalarDef) ([]grob.T
 
 		for _, f := range fields {
 			v := ds.Field(f)
-			if vf, ok := v.(float64); ok {
-				dsValues[dsname][f] = vf
-			} else {
-				dsValues[dsname][f] = math.NaN()
+			switch tv := v.(type) {
+			case float64:
+				dsValues[dsname][f] = tv
+			case int64:
+				dsValues[dsname][f] = float64(tv)
+			default:
+				slog.Error(fmt.Sprintf("field %q not read from dataset %q: (type %T)", f, dsname, v))
+				dsValues[dsname][f] = 0
 			}
 		}
 	}
