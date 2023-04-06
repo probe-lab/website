@@ -26,3 +26,7 @@ colors:
     color: "117733"
   - name: grey
     color: "BBBBBB"
+  - name: deltabetter
+    color: "228833"
+  - name: deltaworse
+    color: "EE6677"

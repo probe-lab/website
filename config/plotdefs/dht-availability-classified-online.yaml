@@ -41,6 +41,9 @@ scalars:
     deltaDataset: "previous"
     deltaValue: "online"
     deltaType: "relative"
+    increaseColor: deltabetter
+    decreaseColor: deltaworse
+
   # - type: "number"
   #   name: "Mostly Online"
   #   dataset: "current"

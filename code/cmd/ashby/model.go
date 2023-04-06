@@ -119,16 +119,18 @@ const (
 )
 
 type ScalarDef struct {
-	Type         ScalarType `yaml:"type"`
-	Name         string     `yaml:"name"` // name of the scalar
-	Color        string     `yaml:"color"`
-	DataSet      string     `yaml:"dataset"`
-	Value        string     `yaml:"value"`        // the name of the field in the dataset that should be used for the scalar value
-	ValueSuffix  string     `yaml:"valueSuffix"`  // a string to append after the value
-	ValuePrefix  string     `yaml:"valuePrefix"`  // a string to prepend to the value
-	DeltaDataSet string     `yaml:"deltaDataset"` // the name of a dataset to use for a delta value
-	DeltaValue   string     `yaml:"deltaValue"`   // the name of the field in the delta dataset that should be used for the scalar value
-	DeltaType    DeltaType  `yaml:"deltaType"`    // the type of delta contained in the value field
+	Type          ScalarType `yaml:"type"`
+	Name          string     `yaml:"name"` // name of the scalar
+	Color         string     `yaml:"color"`
+	DataSet       string     `yaml:"dataset"`
+	Value         string     `yaml:"value"`         // the name of the field in the dataset that should be used for the scalar value
+	ValueSuffix   string     `yaml:"valueSuffix"`   // a string to append after the value
+	ValuePrefix   string     `yaml:"valuePrefix"`   // a string to prepend to the value
+	DeltaDataSet  string     `yaml:"deltaDataset"`  // the name of a dataset to use for a delta value
+	DeltaValue    string     `yaml:"deltaValue"`    // the name of the field in the delta dataset that should be used for the scalar value
+	DeltaType     DeltaType  `yaml:"deltaType"`     // the type of delta contained in the value field
+	IncreaseColor string     `yaml:"increaseColor"` // the color to use for delta that show an increase
+	DecreaseColor string     `yaml:"decreaseColor"` // the color to use for delta that show an increase
 }
 
 type ScalarType string

@@ -3,6 +3,12 @@
     {
       "type": "indicator",
       "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
         "reference": 0.5334,
         "relative": true,
         "valueformat": ".2%"
@@ -26,6 +32,12 @@
     {
       "type": "indicator",
       "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
         "reference": 1.2874,
         "relative": true,
         "valueformat": ".2%"
@@ -50,6 +62,12 @@
     {
       "type": "indicator",
       "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
         "reference": 4.7442,
         "relative": true,
         "valueformat": ".2%"

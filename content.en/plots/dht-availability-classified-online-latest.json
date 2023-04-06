@@ -3,6 +3,12 @@
     {
       "type": "indicator",
       "delta": {
+        "decreasing": {
+          "color": "EE6677"
+        },
+        "increasing": {
+          "color": "228833"
+        },
         "reference": 21623,
         "relative": true,
         "valueformat": ".2%"

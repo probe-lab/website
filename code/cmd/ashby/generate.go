@@ -293,6 +293,16 @@ func scalarTraces(dataSets map[string]DataSet, scalarDefs []ScalarDef, cfg *Plot
 						Valueformat: ".2%",
 					}
 					trace.Mode = "number+delta"
+					if c := cfg.MaybeLookupColor(s.IncreaseColor); c != "" {
+						trace.Delta.Increasing = &grob.IndicatorDeltaIncreasing{
+							Color: c,
+						}
+					}
+					if c := cfg.MaybeLookupColor(s.DecreaseColor); c != "" {
+						trace.Delta.Decreasing = &grob.IndicatorDeltaDecreasing{
+							Color: c,
+						}
+					}
 				default:
 					return nil, fmt.Errorf("unsupported delta type: %s", s.DeltaType)
 				}
