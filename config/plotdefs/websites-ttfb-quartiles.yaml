@@ -39,6 +39,8 @@ scalars:
     deltaDataset: "previous"
     deltaValue: "p50"
     deltaType: "relative"
+    increaseColor: deltaworse
+    decreaseColor: deltabetter
   - type: "number"
     name: "P90"
     dataset: "current"
@@ -47,6 +49,8 @@ scalars:
     deltaDataset: "previous"
     deltaValue: "p90"
     deltaType: "relative"
+    increaseColor: deltaworse
+    decreaseColor: deltabetter
   - type: "number"
     name: "P99"
     dataset: "current"
@@ -55,6 +59,8 @@ scalars:
     deltaDataset: "previous"
     deltaValue: "p99"
     deltaType: "relative"
+    increaseColor: deltaworse
+    decreaseColor: deltabetter
 
 
 layout:

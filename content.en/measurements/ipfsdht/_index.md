@@ -58,6 +58,10 @@ Measuring the time it takes to publish and retrieve information from the IPFS DH
 
 Measuring participation in the IPFS DHT is crucial to understanding the health and effectiveness of the network. A diverse and wide participation of software agents and peers helps ensure a robust and resilient network. Such diversity helps prevent centralization, provides greater redundancy, and increases the chances of content availability. Moreover, a wide participation allows for a more efficient distribution of content, improves load balancing, and can lead to faster content retrieval. 
 
+### Client vs Server Node Estimate
+
+TBD
+
 ### DHT Server Software
 
 The Nebula crawler records the software agents announced by peers registered in the IPFS DHT. 
@@ -79,8 +83,3 @@ populations of software agents compared to the much larger use of Kubo (previous
 
 
 
-### Client vs Server Node Estimate
-
-
-
-## Health
