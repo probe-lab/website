@@ -20,11 +20,19 @@ availability and long term stability of DHT servers over time can give insight i
 can make content harder to locate and lead to longer retrieval times. Measuring DHT server availability and expected lifetimes can help 
 assess the health and overall efficiency of the network.
 
+### Availability
+
+The Nebula crawler attempts to connect to peers in the IPFS DHT periodically. When a new peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. In the accompanying plots, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
 
 {{< plotly json="../../plots/dht-availability-classified-overall-latest.json" height="600px" >}}
 
 {{< plotly json="../../plots/dht-availability-classified-region-latest.json" height="600px" >}}
 
+### Churn
+
+{{< plotly json="../../plots/dht-peers-entering-leaving-latest.json" height="600px" >}}
+
+Thiis plot displays the count of unique peer IDs that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the period but appeared within it and remained online throughout. "left" refers to a peer that was online at the start of the period but went offline and did not come back online before the end of the measurement period.
 
 ## Performance
 
@@ -56,10 +64,11 @@ The Nebula crawler records the software agents announced by peers registered in 
 These peers act as DHT servers and record provider records pointing to content available from other peers in the
 network.
 
-Note that the x-axis in the following plot is represented using a log scale, which emphasizes the relatively smaller 
+{{< plotly json="../../plots/top-dhtserver-agents-latest.json" height="800px" >}}
+
+Note that the x-axis in the above plot is represented using a log scale, which emphasizes the relatively smaller 
 populations of software agents compared to the much larger use of Kubo (previously known as go-ipfs) within the DHT. 
 
-{{< plotly json="../../plots/top-dhtserver-agents-latest.json" height="800px" >}}
 
 
 ### Kubo Breakdown
