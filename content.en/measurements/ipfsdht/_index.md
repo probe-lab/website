@@ -21,9 +21,9 @@ can make content harder to locate and lead to longer retrieval times. Measuring 
 assess the health and overall efficiency of the network.
 
 
-{{< plotly json="/website/plots/dht-availability-classified-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-availability-classified-overall-latest.json" height="600px" >}}
 
-{{< plotly json="/website/plots/dht-availability-classified-region-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-availability-classified-region-latest.json" height="600px" >}}
 
 
 ## Performance
@@ -32,19 +32,19 @@ Measuring the time it takes to publish and retrieve information from the IPFS DH
 
 ### Lookup Performance
 
-{{< plotly json="/website/plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
 
-{{< plotly json="/website/plots/dht-lookup-performance-cdf-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-lookup-performance-cdf-latest.json" height="600px" >}}
 
-{{< plotly json="/website/plots/dht-lookup-performance-cdf-region-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-lookup-performance-cdf-region-latest.json" height="600px" >}}
 
 ### Publish Performance
 
-{{< plotly json="/website/plots/dht-publish-performance-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-publish-performance-overall-latest.json" height="600px" >}}
 
-{{< plotly json="/website/plots/dht-publish-performance-cdf-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-publish-performance-cdf-latest.json" height="600px" >}}
 
-{{< plotly json="/website/plots/dht-publish-performance-cdf-region-latest.json" height="600px" >}}
+{{< plotly json="../../plots/dht-publish-performance-cdf-region-latest.json" height="600px" >}}
 
 ## Participation in the DHT
 
@@ -59,14 +59,14 @@ network.
 Note that the x-axis in the following plot is represented using a log scale, which emphasizes the relatively smaller 
 populations of software agents compared to the much larger use of Kubo (previously known as go-ipfs) within the DHT. 
 
-{{< plotly json="/website/plots/top-dhtserver-agents-latest.json" height="800px" >}}
+{{< plotly json="../../plots/top-dhtserver-agents-latest.json" height="800px" >}}
 
 
 ### Kubo Breakdown
 
-{{< plotly json="/website/plots/kubo-version-distribution-latest.json" height="800px" >}}
+{{< plotly json="../../plots/kubo-version-distribution-latest.json" height="800px" >}}
 
-{{< plotly json="/website/plots/recent-kubo-versions-over-time-latest.json" height="600px" >}}
+{{< plotly json="../../plots/recent-kubo-versions-over-time-latest.json" height="600px" >}}
 
 
 
