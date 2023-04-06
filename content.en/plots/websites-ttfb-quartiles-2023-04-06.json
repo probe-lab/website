@@ -3,7 +3,7 @@
     {
       "type": "indicator",
       "delta": {
-        "reference": 0.647546686,
+        "reference": 0.5334,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -21,12 +21,12 @@
       "title": {
         "text": "Median"
       },
-      "value": 0.695539699
+      "value": 0.5314
     },
     {
       "type": "indicator",
       "delta": {
-        "reference": 1.26313291,
+        "reference": 1.2874,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -45,12 +45,12 @@
       "title": {
         "text": "P90"
       },
-      "value": 1.433087006
+      "value": 1.1521
     },
     {
       "type": "indicator",
       "delta": {
-        "reference": 1.7592127579999999,
+        "reference": 4.7442,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -69,12 +69,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 3.577586979
+      "value": 3.5103
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT lookup performance (week ending 2 Apr 2023 compared with previous)"
+      "text": "Websites Time to First Byte (week ending 2 Apr 2023 compared with previous)"
     }
   }
 }

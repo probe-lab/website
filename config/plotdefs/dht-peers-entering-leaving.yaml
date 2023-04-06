@@ -1,0 +1,64 @@
+frequency: daily
+datasets:
+  - name: "leaving"
+    source: "nebula_ipfs"
+    query: >
+      with period as (
+        select d::date-'1 day'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 day'::interval) as duration
+        from generate_series({{ .StartOfDay | timestamptz }}-'30 day'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) d
+      )
+      select period.end as date, count(distinct s.peer_id) as number
+      from period, sessions as s
+      left join (
+        select s.peer_id from period, sessions s
+            where uptime && period.range
+              and uptime &> period.range
+        ) as entered on s.peer_id=entered.peer_id
+        where s.uptime && period.range
+          and s.uptime &< period.range
+          and entered.peer_id is null -- excludes any that entered
+      group by period.end;
+
+  - name: "entering"
+    source: "nebula_ipfs"
+    query: >
+      with period as (
+        select d::date-'1 day'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 day'::interval) as duration
+        from generate_series({{ .StartOfDay | timestamptz }}-'30 day'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) d
+      )
+      select period.end as date, count(distinct s.peer_id) as number
+      from period, sessions as s
+      left join (
+        select s.peer_id from period, sessions s
+            where uptime && period.range
+              and uptime &< period.range
+        ) as exited on s.peer_id=exited.peer_id
+        where s.uptime && period.range
+          and s.uptime &> period.range
+          and exited.peer_id is null -- excludes any that exited
+      group by period.end;
+
+series:
+  - type: "line"
+    name: "left"
+    dataset: "leaving"
+    labels: "date"
+    values: "number"
+    color: "red"
+  - type: "line"
+    name: "entered"
+    dataset: "entering"
+    labels: "date"
+    values: "number"
+    color: "blue"
+
+layout:
+  title:
+    text: "Peers entering and leaving network (30 days up to {{ .StartOfDay | simpledate }})"
+  xaxis:
+    type: "date"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Unique peers"
