@@ -10,7 +10,7 @@ IPFS relies on the coordinated participation of a swarm of independent peers to 
 
 ### Client vs Server Node Estimate
 
-TBD: client vs server nodes, over time
+{{< plotly json="../plots/ipfs-servers-vs-clients-latest.json" height="400px" >}}
 
 ## Content Routing 
 

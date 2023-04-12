@@ -54,5 +54,7 @@ layout:
   barmode: stack
   title:
     text: "DHT server availability, classified over time"
+  legend:
+    orientation: "h"
   xaxis:
     type: "date"

@@ -179,6 +179,9 @@
   ],
   "layout": {
     "barmode": "stack",
+    "legend": {
+      "orientation": "h"
+    },
     "title": {
       "text": "DHT server availability, classified over time"
     },
