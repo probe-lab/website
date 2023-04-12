@@ -22,7 +22,9 @@ assess the health and overall efficiency of the network.
 
 ### Availability
 
-The Nebula crawler attempts to connect to peers in the IPFS DHT periodically. When a new peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. In the accompanying plots, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
+The Nebula crawler attempts to connect to peers in the IPFS DHT periodically. When a new peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. 
+
+In the following plots, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
 
 {{< plotly json="../../plots/dht-availability-classified-overall-latest.json" height="600px" >}}
 
@@ -32,13 +34,18 @@ The Nebula crawler attempts to connect to peers in the IPFS DHT periodically. Wh
 
 {{< plotly json="../../plots/dht-peers-entering-leaving-latest.json" height="600px" >}}
 
-Thiis plot displays the count of unique peer IDs that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the period but appeared within it and remained online throughout. "left" refers to a peer that was online at the start of the period but went offline and did not come back online before the end of the measurement period.
+This plot displays the count of unique peer IDs that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the period but appeared within it and remained online throughout. "left" refers to a peer that was online at the start of the period but went offline and did not come back online before the end of the measurement period.
 
 ## Performance
 
 Measuring the time it takes to publish and retrieve information from the IPFS DHT is crucial for understanding the network's performance and identifying areas for improvement. It allows us to assess the network's efficiency in different regions, which is essential for global-scale applications that rely on the IPFS DHT. Measuring performance across different regions helps identify potential bottlenecks and optimize content delivery. 
 
+(TBD: link to explanation of methodology)
+
+
 ### Lookup Performance
+
+The following plots show the distribution of timings for looking up provider records from various points across the world. 
 
 {{< plotly json="../../plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
 
@@ -47,6 +54,8 @@ Measuring the time it takes to publish and retrieve information from the IPFS DH
 {{< plotly json="../../plots/dht-lookup-performance-cdf-region-latest.json" height="600px" >}}
 
 ### Publish Performance
+
+The following plots show the distribution of timings for publishing provider records from various points across the world.
 
 {{< plotly json="../../plots/dht-publish-performance-overall-latest.json" height="600px" >}}
 
@@ -65,17 +74,17 @@ TBD
 ### DHT Server Software
 
 The Nebula crawler records the software agents announced by peers registered in the IPFS DHT. 
-These peers act as DHT servers and record provider records pointing to content available from other peers in the
-network.
+These peers act as DHT servers and record provider records pointing to content available from other peers in the network.
 
 {{< plotly json="../../plots/top-dhtserver-agents-latest.json" height="800px" >}}
 
-Note that the x-axis in the above plot is represented using a log scale, which emphasizes the relatively smaller 
-populations of software agents compared to the much larger use of Kubo (previously known as go-ipfs) within the DHT. 
+Note that the x-axis in the above plot is represented using a log scale, which emphasizes the relatively smaller  populations of software agents compared to the much larger use of Kubo (previously known as go-ipfs) within the DHT. 
 
 
 
 ### Kubo Breakdown
+
+Kubo is the most prevelant software used for peers participating in the DHT. It adheres to a regular release cycle to introduces new features and improvements in performance, stability, and security. Measuring the distribution of Kubo versions provides insights into the adoption rate of new features and improvements and potential issues related to backward compatibility during protocol upgrades. 
 
 {{< plotly json="../../plots/kubo-version-distribution-latest.json" height="800px" >}}
 

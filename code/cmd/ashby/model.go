@@ -25,10 +25,10 @@ type PlotConfig struct {
 	Colors map[string]string
 }
 
-func (c *PlotConfig) MaybeLookupColor(name string) string {
-	if name == "" {
-		return c.DefaultColor
-	}
+func (c *PlotConfig) MaybeLookupColor(name string, seriesName string) string {
+	// if name == "" {
+	// 	return c.DefaultColor
+	// }
 	v, ok := c.Colors[name]
 	if ok {
 		return v
