@@ -18,15 +18,21 @@ IPFS employs several content routing systems, with the Kademlia distributed hash
 
 ### DHT server availability
 
+{{< plotly json="../plots/dht-availability-classified-online-latest.json" height="250px" >}}
+
 {{< plotly json="../../plots/dht-availability-classified-overall-latest.json" height="600px" >}}
 
 ### DHT server performance
+
+{{< plotly json="../plots/dht-lookup-performance-quartiles-latest.json" height="250px" >}}
 
 {{< plotly json="../../plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
 
 ## Websites and Traffic
 
 A common use-case for IPFS is hosting websites, addressed using IPNS or DNSLink. We monitor the time it takes to load sample websites through a browser and the number of requests to the public Protocol Labs operated IPFS gateways. 
+
+{{< plotly json="../plots/websites-ttfb-quartiles-latest.json" height="250px" >}}
 
 TBD: IPFS hosted websites, time to first byte, median, over time
 
