@@ -71,7 +71,8 @@ func Plot(cc *cli.Context) error {
 	cfg := &PlotConfig{
 		BasisTime: time.Now().UTC(),
 		Sources: map[string]DataSource{
-			"demo": &DemoDataSource{},
+			"static": &StaticDataSource{},
+			"demo":   &DemoDataSource{},
 		},
 	}
 
@@ -127,6 +128,7 @@ func Plot(cc *cli.Context) error {
 		return nil
 	}
 
+	slog.Info("generating figure", "filename", fname)
 	fig, err := generateFig(ctx, pd, cfg)
 	if err != nil {
 		return fmt.Errorf("failed to generate plot: %w", err)

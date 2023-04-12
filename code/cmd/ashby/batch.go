@@ -114,7 +114,8 @@ func Batch(cc *cli.Context) error {
 
 	cfg := &PlotConfig{
 		Sources: map[string]DataSource{
-			"demo": &DemoDataSource{},
+			"static": &StaticDataSource{},
+			"demo":   &DemoDataSource{},
 		},
 		Colors: map[string]string{},
 	}

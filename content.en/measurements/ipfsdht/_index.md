@@ -69,7 +69,9 @@ Measuring participation in the IPFS DHT is crucial to understanding the health a
 
 ### Client vs Server Node Estimate
 
-TBD
+The plot presented below illustrates an estimate of the number of peers that exclusively function as clients. This estimate is derived by deducting the total number of unique peer IDs observed by the bootstrap nodes, operated by Protocol Labs, from the number of unique peer IDs visited by the Nebula crawler during the same period. Additionally, the plot also shows the number of unique IP addresses observed by the Nebula crawler.
+
+{{< plotly json="../../plots/ipfs-servers-vs-clients-latest.json" height="400px" >}}
 
 ### DHT Server Software
 
