@@ -4,9 +4,12 @@ title: IPFS Gateways
 
 # IPFS Gateways
 
-{{< hint info >}}
-TBD
+{{< hint warning >}}
+Please note that this website is a preview and is subject to change at any time. 
+We strive to provide accurate and up-to-date information, but we cannot guarantee 
+the completeness or reliability of the information presented during the preview. 
 {{< /hint >}}
+
 
 An IPFS gateway is a web-based interface that allows users to access IPFS content using a regular web browser. The gateway acts as a bridge between the IPFS network and the traditional web, allowing users to browse and retrieve IPFS content without having to install any specialized software or run a full IPFS node.
 
