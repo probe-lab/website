@@ -10,6 +10,8 @@ IPFS relies on the coordinated participation of a swarm of independent peers to 
 
 ### Client vs Server Node Estimate
 
+The total number of peers in the network is estimated using the number of unique peer IDs seen by Protocol Labs' bootstrap nodes. The number of unique DHT server peer IDs visited by the Nebula crawler is subtracted estimate the number of peers that exclusively function as clients.
+
 {{< plotly json="../plots/ipfs-servers-vs-clients-latest.json" height="400px" >}}
 
 ## Content Routing 
