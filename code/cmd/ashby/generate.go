@@ -129,7 +129,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef, cfg *Plot
 					Y:           ls.Values,
 				}
 
-				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color, ls.Name); c != "" {
 					trace.Marker = &grob.BarMarker{
 						Color: c,
 					}
@@ -144,7 +144,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef, cfg *Plot
 					X:           ls.Values,
 					Y:           ls.Labels,
 				}
-				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color, ls.Name); c != "" {
 					trace.Marker = &grob.BarMarker{
 						Color: c,
 					}
@@ -159,7 +159,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef, cfg *Plot
 					Y:    ls.Values,
 				}
 
-				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color, ls.Name); c != "" {
 					trace.Marker = &grob.ScatterMarker{
 						Color: c,
 					}
@@ -172,7 +172,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef, cfg *Plot
 					Y:    ls.Values,
 				}
 
-				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color, ls.Name); c != "" {
 					trace.Marker = &grob.BoxMarker{
 						Color: c,
 					}
@@ -185,7 +185,7 @@ func seriesTraces(dataSets map[string]DataSet, seriesDefs []SeriesDef, cfg *Plot
 					X:    ls.Values,
 				}
 
-				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color); c != "" {
+				if c := cfg.MaybeLookupColor(ls.SeriesDef.Color, ls.Name); c != "" {
 					trace.Marker = &grob.BoxMarker{
 						Color: c,
 					}
@@ -293,12 +293,12 @@ func scalarTraces(dataSets map[string]DataSet, scalarDefs []ScalarDef, cfg *Plot
 						Valueformat: ".2%",
 					}
 					trace.Mode = "number+delta"
-					if c := cfg.MaybeLookupColor(s.IncreaseColor); c != "" {
+					if c := cfg.MaybeLookupColor(s.IncreaseColor, ""); c != "" {
 						trace.Delta.Increasing = &grob.IndicatorDeltaIncreasing{
 							Color: c,
 						}
 					}
-					if c := cfg.MaybeLookupColor(s.DecreaseColor); c != "" {
+					if c := cfg.MaybeLookupColor(s.DecreaseColor, ""); c != "" {
 						trace.Delta.Decreasing = &grob.IndicatorDeltaDecreasing{
 							Color: c,
 						}
