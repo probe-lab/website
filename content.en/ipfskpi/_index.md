@@ -4,6 +4,13 @@ plotly: true
 ---
 # IPFS KPIs
 
+{{< hint warning >}}
+Please note that this website is a preview and is subject to change at any time. 
+We strive to provide accurate and up-to-date information, but we cannot guarantee 
+the completeness or reliability of the information presented during the preview. 
+{{< /hint >}}
+
+
 IPFS relies on the coordinated participation of a swarm of independent peers to function correctly. Therefore, measuring the performance and health of the network is crucial for ensuring its reliability and efficiency. In this context, we summarise a number of network characteristics as key performance indicators. 
 
 ## Network Size & Stability
