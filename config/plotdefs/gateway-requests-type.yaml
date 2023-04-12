@@ -1,0 +1,77 @@
+frequency: daily
+datasets:
+  - name: "Bifrost total requests ipfs"
+    source: "static"
+    query: >
+      {
+        "x": [
+          "2023-02-20T00:00:00Z",
+          "2023-02-27T00:00:00Z",
+          "2023-03-06T00:00:00Z",
+          "2023-03-13T00:00:00Z",
+          "2023-03-20T00:00:00Z",
+          "2023-03-27T00:00:00Z",
+          "2023-04-03T00:00:00Z",
+          "2023-04-10T00:00:00Z"
+        ],
+        "y": [
+          1101641550,
+          985134403,
+          1028217115,
+          822388172,
+          988679057,
+          1136809085,
+          799926385,
+          691964456
+        ]
+      }
+  - name: "Bifrost total requests ipns"
+    source: "static"
+    query: >
+      {
+        "x": [
+          "2023-02-20T00:00:00Z",
+          "2023-02-27T00:00:00Z",
+          "2023-03-06T00:00:00Z",
+          "2023-03-13T00:00:00Z",
+          "2023-03-20T00:00:00Z",
+          "2023-03-27T00:00:00Z",
+          "2023-04-03T00:00:00Z",
+          "2023-04-10T00:00:00Z"
+        ],
+        "y": [
+          58862447,
+          67443318,
+          76380307,
+          57313675,
+          54795142,
+          68109426,
+          55736105,
+          54111637
+        ]
+      }
+
+series:
+  - type: "bar"
+    name: "IPFS"
+    dataset: "Bifrost total requests ipfs"
+    labels: "x"
+    values: "y"
+
+  - type: "bar"
+    name: "IPNS"
+    dataset: "Bifrost total requests ipns"
+    labels: "x"
+    values: "y"
+
+
+layout:
+  title:
+    text: "HTTP Originated Requests, by type (8 weeks up to 9 Apr 2023)"
+  legend:
+    orientation: "h"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Number of requests"
