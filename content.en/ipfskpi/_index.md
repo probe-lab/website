@@ -43,6 +43,6 @@ A common use-case for IPFS is hosting websites, addressed using IPNS or DNSLink.
 
 {{< plotly json="../plots/websites-ttfb-quartiles-latest.json" height="250px" >}}
 
-TBD: IPFS hosted websites, time to first byte, median, over time
+The following plot shows total number of requests made per week to the public IPFS gateways operated by Protocol Labs (ipfs.io and dweb.link).
 
-TBD: HTTP Originated Requests (gateways), over time
+{{< plotly json="../plots/gateway-requests-overall-latest.json" height="600px" >}}
