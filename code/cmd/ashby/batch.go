@@ -191,12 +191,12 @@ func Batch(cc *cli.Context) error {
 		grp.Go(func() error {
 			fcontent, err := fs.ReadFile(infs, fname)
 			if err != nil {
-				return fmt.Errorf("failed to read plot definition: %w", err)
+				return fmt.Errorf("failed to read plot definition %q: %w", fname, err)
 			}
 
 			pd, err := parsePlotDef(fname, fcontent)
 			if err != nil {
-				return fmt.Errorf("failed to parse plot definition: %w", err)
+				return fmt.Errorf("failed to parse plot definition %q: %w", fname, err)
 			}
 
 			outFname := pd.Name + ".json"

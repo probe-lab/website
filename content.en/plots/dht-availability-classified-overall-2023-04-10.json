@@ -183,7 +183,7 @@
       "orientation": "h"
     },
     "title": {
-      "text": "DHT server availability, classified over time"
+      "text": "DHT server availability, classified over time (10 weeks up to 9 Apr 2023)"
     },
     "xaxis": {
       "type": "date"

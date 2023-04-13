@@ -2,9 +2,6 @@
   "data": [
     {
       "type": "bar",
-      "marker": {
-        "color": "004488"
-      },
       "name": "versions",
       "orientation": "h",
       "x": [
@@ -74,6 +71,9 @@
   "layout": {
     "title": {
       "text": "Kubo version distribution"
+    },
+    "yaxis": {
+      "automargin": true
     }
   }
 }
