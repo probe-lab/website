@@ -22,7 +22,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 [menu]
 # [[menu.before]]
 # [[menu.after]]
-[[menu.before]]
+[[menu.after]]
   name = "Discuss ⇢"
   url = "https://discuss.ipfs.tech/c/testing-and-experiments/35"
   weight = 10
