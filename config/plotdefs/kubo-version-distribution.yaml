@@ -44,3 +44,5 @@ series:
 layout:
   title:
     text: "Kubo version distribution"
+  yaxis:
+    automargin: true

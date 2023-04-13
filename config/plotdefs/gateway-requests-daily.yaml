@@ -73,7 +73,6 @@ datasets:
       }
 
 
-
 series:
   - type: "bar"
     name: "Total"

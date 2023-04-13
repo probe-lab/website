@@ -71,4 +71,6 @@ series:
 layout:
   barmode: stack
   title:
-    text: "DHT server availability, classified, by region"
+    text: "DHT server availability, classified, by region (10 weeks up to {{ .EndOfPreviousWeek | simpledate }})"
+  yaxis:
+    automargin: true

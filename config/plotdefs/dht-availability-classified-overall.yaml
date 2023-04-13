@@ -53,7 +53,7 @@ series:
 layout:
   barmode: stack
   title:
-    text: "DHT server availability, classified over time"
+    text: "DHT server availability, classified over time (10 weeks up to {{ .EndOfPreviousWeek | simpledate }})"
   legend:
     orientation: "h"
   xaxis:
