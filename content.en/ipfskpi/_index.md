@@ -1,5 +1,6 @@
 ---
 title: IPFS KPIs
+weight: 10
 plotly: true
 ---
 # IPFS KPIs

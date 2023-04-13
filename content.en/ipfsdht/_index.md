@@ -1,5 +1,6 @@
 ---
 title: IPFS DHT
+weight: 20
 plotly: true
 ---
 
@@ -24,6 +25,7 @@ assess the health and overall efficiency of the network.
 
 The Nebula crawler attempts to connect to peers in the IPFS DHT periodically. When a new peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. 
 
+{{< plotly json="../../plots/dht-availability-classified-current-latest.json" height="250px" >}}
 
 
 In the following plots, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
