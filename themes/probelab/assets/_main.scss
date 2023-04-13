@@ -7,7 +7,6 @@ html {
 body {
   min-width: $body-min-width;
   color: var(--body-font-color);
-  background: var(--body-background);
 
   letter-spacing: 0.33px;
   font-weight: $body-font-weight;
@@ -20,6 +19,8 @@ body {
     box-sizing: inherit;
   }
 
+  background: var(--body-background) url("/images/previewbg.png") repeat-y;
+  background-position: top center;
 }
 
 h1,
