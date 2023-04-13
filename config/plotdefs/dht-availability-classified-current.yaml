@@ -43,28 +43,33 @@ scalars:
     deltaType: "relative"
     increaseColor: deltabetter
     decreaseColor: deltaworse
-
-  # - type: "number"
-  #   name: "Mostly Online"
-  #   dataset: "current"
-  #   value: "mostlyonline"
-  #   deltaDataset: "previous"
-  #   deltaValue: "mostlyonline"
-  #   deltaType: "relative"
-  # - type: "number"
-  #   name: "Mostly Offline"
-  #   dataset: "current"
-  #   value: "mostlyoffline"
-  #   deltaDataset: "previous"
-  #   deltaValue: "mostlyoffline"
-  #   deltaType: "relative"
-  # - type: "number"
-  #   name: "Offline"
-  #   dataset: "current"
-  #   value: "offline"
-  #   deltaDataset: "previous"
-  #   deltaValue: "offline"
-  #   deltaType: "relative"
+  - type: "number"
+    name: "Mostly Online"
+    dataset: "current"
+    value: "mostlyonline"
+    deltaDataset: "previous"
+    deltaValue: "mostlyonline"
+    deltaType: "relative"
+    increaseColor: deltabetter
+    decreaseColor: deltaworse
+  - type: "number"
+    name: "Mostly Offline"
+    dataset: "current"
+    value: "mostlyoffline"
+    deltaDataset: "previous"
+    deltaValue: "mostlyoffline"
+    deltaType: "relative"
+    increaseColor: deltaworse
+    decreaseColor: deltabetter
+  - type: "number"
+    name: "Offline"
+    dataset: "current"
+    value: "offline"
+    deltaDataset: "previous"
+    deltaValue: "offline"
+    deltaType: "relative"
+    increaseColor: deltaworse
+    decreaseColor: deltabetter
 
 
 layout:

@@ -1,5 +1,6 @@
 ---
 title: IPFS Gateways
+weight: 30
 plotly: true
 ---
 
