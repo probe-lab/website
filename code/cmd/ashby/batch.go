@@ -264,7 +264,24 @@ func Batch(cc *cli.Context) error {
 			}
 
 			slog.Info("generating plot", "name", pd.Name)
+			// set up a monitoring loop that reports progress for long running queries
+			done := make(chan struct{})
+			t := time.NewTicker(time.Minute)
+			go func() {
+				start := time.Now()
+				defer t.Stop()
+				for {
+					select {
+					case <-t.C:
+						slog.Info("still generating plot", "name", pd.Name, "elapsed", time.Since(start))
+					case <-done:
+						return
+					}
+				}
+			}()
 			fig, err := generateFig(ctx, pd, cfg)
+			close(done) // stop the monitoring loop
+
 			if err != nil {
 				return fmt.Errorf("failed to generate plot %q: %w", pd.Name, err)
 			}
