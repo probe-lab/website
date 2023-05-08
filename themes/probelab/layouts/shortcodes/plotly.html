@@ -1,9 +1,10 @@
-{{ $json := .Get "json" }}
-{{ $id := .Get "id" | default $json | anchorize }}
+{{ $jsonurl := .Get "json" }}
+{{ $id := .Get "id" | default (strings.TrimSuffix ".json" (path.Base $jsonurl) ) | anchorize }}
 {{ $height := .Get "height" | default "200px" }}
 <div id="{{$id}}" class="plotly" style="height:{{$height}};"></div>
+<div class="text-right"><small><a href="#{{$id}}">link to plot</a></small></div>
 <script>
-  d3.json({{ $json }}).then(function (fig) {
+  d3.json({{ $jsonurl }}).then(function (fig) {
       Plotly.newPlot('{{$id}}', fig.data, fig.layout, { responsive: true });
   });
 </script>

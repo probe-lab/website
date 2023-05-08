@@ -177903,7 +177903,7 @@
       }
     ],
     "title": {
-      "text": "DHT publish performance CDF by region (30 days up to 7 May 2023)"
+      "text": "DHT publish performance CDF by region (using date from 30 days up to 7 May 2023)"
     },
     "xaxis": {
       "autorange": true,

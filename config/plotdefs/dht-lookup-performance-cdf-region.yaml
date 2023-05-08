@@ -41,7 +41,7 @@ series:
 
 layout:
   title:
-    text: "DHT lookup performance CDF by region (30 days up to {{ .EndOfPreviousDay | simpledate }})"
+    text: "DHT lookup performance CDF by region (using data from 30 days up to {{ .EndOfPreviousDay | simpledate }})"
   xaxis:
     type: "linear"
     autorange: true
