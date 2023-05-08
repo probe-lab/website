@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "versions",
+      "orientation": "h",
+      "x": [
+        14,
+        34,
+        40,
+        10,
+        6,
+        98,
+        91,
+        2708,
+        45,
+        98,
+        182,
+        241,
+        2,
+        141,
+        29,
+        144,
+        145,
+        40,
+        757,
+        4,
+        313,
+        2261,
+        3491,
+        78,
+        14406,
+        625,
+        1799,
+        174,
+        31,
+        29
+      ],
+      "y": [
+        "go-ipfs 0.4.21",
+        "go-ipfs 0.4.22",
+        "go-ipfs 0.4.23",
+        "go-ipfs 0.5.0",
+        "go-ipfs 0.5.1",
+        "go-ipfs 0.6.0",
+        "go-ipfs 0.7.0",
+        "go-ipfs 0.8.0",
+        "go-ipfs 0.9.0",
+        "go-ipfs 0.9.1",
+        "go-ipfs 0.10.0",
+        "go-ipfs 0.11.0",
+        "go-ipfs 0.11.1",
+        "go-ipfs 0.12.0",
+        "go-ipfs 0.12.1",
+        "go-ipfs 0.12.2",
+        "go-ipfs 0.13.0",
+        "go-ipfs 0.13.1",
+        "kubo 0.14.0",
+        "go-ipfs 0.14.0",
+        "kubo 0.15.0",
+        "kubo 0.16.0",
+        "kubo 0.17.0",
+        "kubo 0.18.0",
+        "kubo 0.18.1",
+        "kubo 0.19.0",
+        "kubo 0.19.1",
+        "kubo 0.19.2",
+        "kubo 0.20.0",
+        "kubo 0.21.0"
+      ]
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Kubo version distribution"
+    },
+    "yaxis": {
+      "automargin": true
+    }
+  }
+}

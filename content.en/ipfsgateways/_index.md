@@ -21,8 +21,8 @@ When a user requests content through an IPFS gateway, the gateway retrieves the 
 IPFS gateways can be run by anyone who has access to an IPFS node, and there are many public gateways available on the internet. The following measurements are made using data from the gateway services operated by Protocol Labs.
 
 
-{{< plotly json="../../plots/gateway-requests-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
-{{< plotly json="../../plots/gateway-requests-region-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-region.json" height="600px" >}}
 
-{{< plotly json="../../plots/gateway-requests-type-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-type.json" height="600px" >}}
