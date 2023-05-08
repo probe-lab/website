@@ -20,7 +20,7 @@ IPFS relies on the coordinated participation of a swarm of independent peers to 
 
 The total number of peers in the network is estimated using the number of unique peer IDs seen by Protocol Labs' bootstrap nodes. The number of unique DHT server peer IDs visited by the Nebula crawler is subtracted estimate the number of peers that exclusively function as clients.
 
-{{< plotly json="../plots/ipfs-servers-vs-clients-latest.json" height="400px" >}}
+{{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
 
 ## Content Routing 
 
@@ -28,31 +28,31 @@ IPFS employs several content routing systems, with the Kademlia distributed hash
 
 ### DHT server availability
 
-{{< plotly json="../plots/dht-availability-classified-online-latest.json" height="250px" >}}
+{{< plotly json="../../plots/latest/dht-availability-classified-online.json" height="250px" >}}
 
-{{< plotly json="../../plots/dht-availability-classified-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
 
 ### DHT server performance
 
-{{< plotly json="../plots/dht-lookup-performance-quartiles-latest.json" height="250px" >}}
+{{< plotly json="../../plots/latest/dht-lookup-performance-quartiles.json" height="250px" >}}
 
-{{< plotly json="../../plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/dht-lookup-performance-overall.json" height="600px" >}}
 
 ### IPNI utilization
 
 IPNI is set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the IPFS DHT to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by cid.contact.
 
-{{< plotly json="../plots/ipni-requests-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}}
 
 
 ## Websites and Traffic
 
 A common use-case for IPFS is hosting websites, addressed using IPNS or DNSLink. We monitor the time it takes to load sample websites through a browser and the number of requests to the public Protocol Labs operated IPFS gateways. 
 
-{{< plotly json="../plots/websites-ttfb-quartiles-latest.json" height="250px" >}}
+{{< plotly json="../../plots/latest/websites-ttfb-quartiles.json" height="250px" >}}
 
 The following plot shows the total number of requests made per day to the public IPFS gateways operated by Protocol Labs (ipfs.io and dweb.link).
 
-{{< plotly json="../plots/gateway-requests-daily-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-daily.json" height="600px" >}}
 
 
