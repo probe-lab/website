@@ -3,20 +3,7 @@ datasets:
   - name: "Bifrost total requests by day"
     source: "caracol"
     query: >
-      with q as (
-        select id, start, case
-          when interval='hourly' then '1 hour'::interval
-          when interval='daily'  then '1 day'::interval
-          when interval='weekly' then '1 week'::interval
-        end as step
-        from queries
-      )
-      select c.seq, q.start+c.seq*q.step as date, c.value as value
-      from q left join collections c on c.query_id = q.id
-      where c.query_id=4
-        and q.start+c.seq*q.step >= {{ .StartOfWeek | timestamptz }} - '8 week'::interval
-        and q.start+c.seq*q.step < {{ .StartOfWeek | timestamptz }};
-
+      select date, value from get_collected_values(4, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
 
 series:
   - type: "bar"
@@ -28,7 +15,7 @@ series:
 
 layout:
   title:
-    text: "HTTP Originated Requests (30 days up to 12 Apr 2023)"
+    text: "Daily HTTP Originated Requests (90 days up to {{ .EndOfPreviousDay | simpledate }})"
   legend:
     orientation: "h"
   yaxis:

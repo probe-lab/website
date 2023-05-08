@@ -144797,7 +144797,7 @@
       }
     ],
     "title": {
-      "text": "DHT lookup performance CDF by region (30 days up to 7 May 2023)"
+      "text": "DHT lookup performance CDF by region (using data from 30 days up to 7 May 2023)"
     },
     "xaxis": {
       "autorange": true,

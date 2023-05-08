@@ -53,6 +53,6 @@ A common use-case for IPFS is hosting websites, addressed using IPNS or DNSLink.
 
 The following plot shows the total number of requests made per day to the public IPFS gateways operated by Protocol Labs (ipfs.io and dweb.link).
 
-{{< plotly json="../../plots/latest/gateway-requests-daily.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
 
