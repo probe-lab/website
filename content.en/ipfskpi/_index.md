@@ -36,7 +36,7 @@ IPFS employs several content routing systems, with the Kademlia distributed hash
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-quartiles.json" height="250px" >}}
 
-{{< plotly json="../../plots/latest/dht-lookup-performance-overall.json" height="600px" >}}
+{{< plotly json="../../plots/latest/dht-lookup-performance-long.json" height="600px" >}}
 
 ### IPNI utilization
 
