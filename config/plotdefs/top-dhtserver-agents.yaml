@@ -39,7 +39,7 @@ series:
 
 layout:
   title:
-    text: "Top DHT server agents"
+    text: "Top DHT server agents (week up to {{ .EndOfPreviousWeek | simpledate }})"
   xaxis:
     type: "log"
     title:

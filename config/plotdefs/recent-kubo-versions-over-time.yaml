@@ -25,7 +25,7 @@ datasets:
           from agent_versions
         ), period as (
           select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
-          from generate_series({{ .StartOfWeek | timestamptz }}-'9 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+          from generate_series({{ .StartOfWeek | timestamptz }}-'8 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
         ) -- 10 weeks
 
         select period.start, concat(av.agent, ' ', av.version) as agentversion, count(DISTINCT v.peer_id) as number, rank() over (partition by period.start order by concat(av.agent, ' ', av.version) desc) as rank
@@ -55,6 +55,6 @@ series:
 layout:
   barmode: stack
   title:
-    text: "Recent Kubo versions over time"
+    text: "Recent Kubo versions over time (8 weeks up to {{ .EndOfPreviousWeek | simpledate }})"
   xaxis:
     type: "date"
