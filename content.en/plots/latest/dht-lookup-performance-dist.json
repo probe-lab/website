@@ -1853,15 +1853,13 @@
         1.8470000000000000,
         1.8480000000000000,
         1.8490000000000000,
-        1.8500000000000000,
-        1.8510000000000000,
-        1.8520000000000000
+        1.8500000000000000
       ]
     }
   ],
   "layout": {
     "title": {
-      "text": "Overall DHT lookup distribution (30 days up to 7 May 2023)"
+      "text": "Overall DHT lookup distribution (30 days up to 8 May 2023)"
     }
   }
 }

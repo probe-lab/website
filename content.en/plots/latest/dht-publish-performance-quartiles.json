@@ -9,7 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 8.110158169,
+        "reference": 8.069538361,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -27,7 +27,7 @@
       "title": {
         "text": "Median"
       },
-      "value": 8.157550942
+      "value": 8.227679744
     },
     {
       "type": "indicator",
@@ -38,7 +38,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 27.004464598,
+        "reference": 26.72411413,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -57,7 +57,7 @@
       "title": {
         "text": "P90"
       },
-      "value": 22.906487193
+      "value": 22.92291641
     },
     {
       "type": "indicator",
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 99.619936665,
+        "reference": 99.425370091,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -87,7 +87,7 @@
       "title": {
         "text": "P99"
       },
-      "value": 92.885362049
+      "value": 96.566233814
     }
   ],
   "layout": {
