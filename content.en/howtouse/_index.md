@@ -21,8 +21,8 @@ We do not provide commentary on the results presented on this website. Instead, 
 
 If you spot inconsistencies, inaccurate claims, or want to request additional results, please reach out using any of the following channels:
 
-- The IPFS Discussion forum, under the “Testing & Experiments” category and the “Measurements” tab
-- The #probe-lab channel in IPFS Discord, or Filecoin Slack (bridged channel)
+- The IPFS Discussion forum, under the “Testing & Experiments” category and the “Measurements” tab.
+- The #probe-lab channel in IPFS Discord, or Filecoin Slack (bridged channel).
 - The team’s email: probelab@protocol.ai
 
 We also hold bi-weekly Office Hours where we invite the community and our collaborators to join and bring up questions, challenges they face and topics for discussion. You can sign up through this lu.ma page: https://lu.ma/ipfs-network-measurements
