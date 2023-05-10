@@ -1,142 +1,95 @@
 frequency: daily
 datasets:
+  # unique peers is calculated from total unique peers seen connecting to preload and bootstrap servers
+  # caracol started collecting this data automatically from week ending 20 Mar 2023
+  - name: "unique peers"
+    source: "caracol"
+    query: >
+      select * from (values
+        ('2023-01-09 00:00:00 Z'::timestamptz, 317798),
+        ('2023-01-16 00:00:00 Z'::timestamptz, 420280),
+        ('2023-01-23 00:00:00 Z'::timestamptz, 487695),
+        ('2023-01-30 00:00:00 Z'::timestamptz, 458967),
+        ('2023-02-06 00:00:00 Z'::timestamptz, 490907),
+        ('2023-02-13 00:00:00 Z'::timestamptz, 397445),
+        ('2023-02-20 00:00:00 Z'::timestamptz, 342812),
+        ('2023-02-27 00:00:00 Z'::timestamptz, 327501),
+        ('2023-03-06 00:00:00 Z'::timestamptz, 401014),
+        ('2023-03-13 00:00:00 Z'::timestamptz, 304623)
+      ) as t (date,value)
+      union
+      select date, value from get_collected_values(3, '2023-03-20 00:00:00 Z'::timestamptz, {{ .Now | timestamptz }})
+      order by date;
+
   - name: "dht servers"
-    source: "static"
+    source: "nebula_ipfs"
     query: >
-      {
-        "x": [
-          "2023-01-09T00:00:00Z",
-          "2023-01-16T00:00:00Z",
-          "2023-01-23T00:00:00Z",
-          "2023-01-30T00:00:00Z",
-          "2023-02-06T00:00:00Z",
-          "2023-02-13T00:00:00Z",
-          "2023-02-20T00:00:00Z",
-          "2023-02-27T00:00:00Z",
-          "2023-03-06T00:00:00Z",
-          "2023-03-13T00:00:00Z",
-          "2023-03-20T00:00:00Z",
-          "2023-03-27T00:00:00Z",
-          "2023-04-03T00:00:00Z",
-          "2023-04-10T00:00:00Z"
-        ],
-        "y": [
-          79221,
-          144960,
-          219378,
-          208142,
-          216403,
-          104986,
-          87661,
-          65236,
-          55011,
-          41388,
-          43561,
-          43938,
-          48835,
-          46151
-        ]
-      }
-  - name: "dht clients"
-    source: "static"
-    query: >
-      {
-        "x": [
-          "2023-01-09T00:00:00Z",
-          "2023-01-16T00:00:00Z",
-          "2023-01-23T00:00:00Z",
-          "2023-01-30T00:00:00Z",
-          "2023-02-06T00:00:00Z",
-          "2023-02-13T00:00:00Z",
-          "2023-02-20T00:00:00Z",
-          "2023-02-27T00:00:00Z",
-          "2023-03-06T00:00:00Z",
-          "2023-03-13T00:00:00Z",
-          "2023-03-20T00:00:00Z",
-          "2023-03-27T00:00:00Z",
-          "2023-04-03T00:00:00Z",
-          "2023-04-10T00:00:00Z"
-        ],
-        "y": [
-          238577,
-          275320,
-          268317,
-          250825,
-          274504,
-          292459,
-          255151,
-          262265,
-          346003,
-          263235,
-          228503,
-          203660,
-          174017,
-          193583
-        ]
-      }
+      with period as (
+        select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
+        from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+      )
+      SELECT period.end as date, count(DISTINCT peer_id) as value
+      FROM period, visits v
+      WHERE visit_started_at >= period.start
+        AND visit_started_at < period.end
+        AND type = 'crawl'
+      group by period.end;
   - name: "dht server ip addresses"
-    source: "static"
+    source: "nebula_ipfs"
     query: >
-      {
-        "x": [
-          "2023-01-09T00:00:00Z",
-          "2023-01-16T00:00:00Z",
-          "2023-01-23T00:00:00Z",
-          "2023-01-30T00:00:00Z",
-          "2023-02-06T00:00:00Z",
-          "2023-02-13T00:00:00Z",
-          "2023-02-20T00:00:00Z",
-          "2023-02-27T00:00:00Z",
-          "2023-03-06T00:00:00Z",
-          "2023-03-13T00:00:00Z",
-          "2023-03-20T00:00:00Z",
-          "2023-03-27T00:00:00Z",
-          "2023-04-03T00:00:00Z",
-          "2023-04-10T00:00:00Z"
-        ],
-        "y": [
-          60434,
-          64876,
-          61897,
-          56609,
-          54465,
-          50780,
-          52800,
-          54095,
-          53508,
-          54012,
-          53639,
-          55202,
-          54202,
-          46049
-        ]
-      }
+      with period as (
+          select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
+          from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+        ), peers AS (
+          select period.end, v.peer_id, unnest(v.multi_address_ids) multi_address_id
+          from period, visits v
+          where visit_started_at >= period.start
+            and visit_started_at < period.end
+          and type = 'crawl'
+          group by period.end, v.peer_id, unnest(v.multi_address_ids)
+        )
+        select period.end as date, count(distinct ma.addr) as value
+          from peers inner join multi_addresses ma on ma.id = peers.multi_address_id
+          join period on peers.end = period.end
+        group by period.end;
+
+computed:
+  - name: "dht clients"
+    function: "diff"
+    datasets:
+      - dataset: "unique peers"
+        joinField: "date"
+        valueField: "value"
+      - dataset: "dht servers"
+        joinField: "date"
+        valueField: "value"
 
 series:
   - type: "bar"
     name: "DHT Servers"
     dataset: "dht servers"
-    labels: "x"
-    values: "y"
+    labels: "date"
+    values: "value"
     color: "lightblue"
   - type: "bar"
     name: "DHT Clients"
     dataset: "dht clients"
-    labels: "x"
-    values: "y"
+    labels: "field"
+    values: "value"
     color: "lightred"
   - type: "line"
     name: "DHT Server IP Addresses"
     dataset: "dht server ip addresses"
-    labels: "x"
-    values: "y"
+    labels: "date"
+    values: "value"
     color: "black"
+    marker: "circle"
 
 
 layout:
   barmode: stack
   title:
-    text: "DHT Servers vs Clients (up to week ending 9 Apr 2023)"
+    text: "DHT Servers vs Clients (14 weeks up to {{ .EndOfPreviousWeek | simpledate }})"
   legend:
     orientation: "h"
   yaxis:

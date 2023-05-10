@@ -2,6 +2,8 @@
   "data": [
     {
       "type": "scatter",
+      "marker": {},
+      "mode": "lines",
       "name": "median",
       "x": [
         "2023-03-03T00:00:00Z",
@@ -71,7 +73,8 @@
         "2023-05-06T00:00:00Z",
         "2023-05-07T00:00:00Z",
         "2023-05-08T00:00:00Z",
-        "2023-05-09T00:00:00Z"
+        "2023-05-09T00:00:00Z",
+        "2023-05-10T00:00:00Z"
       ],
       "y": [
         8.503882821,
@@ -141,13 +144,14 @@
         8.122375145,
         8.292251146,
         8.472141484,
-        8.537498086
+        8.537498086,
+        8.350859861
       ]
     }
   ],
   "layout": {
     "title": {
-      "text": "Daily DHT publish performance (90 days up to 9 May 2023)"
+      "text": "Daily DHT publish performance (90 days up to 10 May 2023)"
     },
     "xaxis": {
       "type": "date"
