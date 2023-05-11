@@ -9,7 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 7.98881747,
+        "reference": 0.5154,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -27,7 +27,7 @@
       "title": {
         "text": "Median"
       },
-      "value": 8.275477371000001
+      "value": 0.5147
     },
     {
       "type": "indicator",
@@ -38,7 +38,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 25.987626132,
+        "reference": 1.1424,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -57,7 +57,7 @@
       "title": {
         "text": "P90"
       },
-      "value": 22.497435263
+      "value": 1.1496
     },
     {
       "type": "indicator",
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 97.246929654,
+        "reference": 3.2353,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -87,12 +87,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 100.720470427
+      "value": 2.3016
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT publish performance (week ending 7 May 2023 compared with previous)"
+      "text": "Websites Time to First Byte (week ending 7 May 2023 compared with previous)"
     }
   }
 }
