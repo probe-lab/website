@@ -25,10 +25,9 @@ assess the health and overall efficiency of the network.
 
 The Nebula crawler attempts to connect to peers in the IPFS DHT periodically. When a new peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. 
 
+In the following, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
+
 {{< plotly json="../../plots/latest/dht-availability-classified-current.json" height="250px" >}}
-
-
-In the following plots, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
 
 {{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
 
@@ -38,14 +37,15 @@ In the following plots, a peer is classified as "online" if it was available for
 
 {{< plotly json="../../plots/latest/dht-peers-entering-leaving.json" height="600px" >}}
 
-This plot displays the count of unique peer IDs that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the period but appeared within it and remained online throughout. "left" refers to a peer that was online at the start of the period but went offline and did not come back online before the end of the measurement period.
+This plot displays the count of unique peer IDs that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the measurement period but appeared within it and remained online throughout. The term "left" refers to a peer that was online at the start of the measurement period but went offline and did not come back online before the end of the measurement period.
 
 ## Performance
 
 Measuring the time it takes to publish and retrieve information from the IPFS DHT is crucial for understanding the network's performance and identifying areas for improvement. It allows us to assess the network's efficiency in different regions, which is essential for global-scale applications that rely on the IPFS DHT. Measuring performance across different regions helps identify potential bottlenecks and optimize content delivery. 
 
-(TBD: link to explanation of methodology)
-
+We have instrumented the following experiment to capture the DHT Lookup performance over time and from several different geographic locations.
+We have set up IPFS DHT Server nodes in seven (7) different geographic locations. Each node periodically publishes a unique CID and makes it known to the rest of the nodes, who subsequently request it through the DHT (acting as clients). This way we capture the entire performance spectrum of the DHT, i.e., both the DHT Publish and the Lookup performance from each location.
+In this section we present the average performance over all regions, as well as per region for both the DHT Lookup Performance and the DHT Publish Performance.
 
 ### Lookup Performance
 
@@ -94,7 +94,7 @@ Note that the x-axis in the above plot is represented using a log scale, which e
 
 ### Kubo Breakdown
 
-Kubo is the most prevelant software used for peers participating in the DHT. It adheres to a regular release cycle to introduces new features and improvements in performance, stability, and security. Measuring the distribution of Kubo versions provides insights into the adoption rate of new features and improvements and potential issues related to backward compatibility during protocol upgrades. 
+[Kubo](https://github.com/ipfs/kubo) is the most prevelant software used for peers participating in the DHT. It adheres to a regular release cycle to introduce new features and improvements in performance, stability, and security. Measuring the distribution of Kubo versions provides insights into the adoption rate of new features and improvements and potential issues related to backward compatibility during protocol upgrades. 
 
 {{< plotly json="../../plots/latest/kubo-version-distribution.json" height="800px" >}}
 
