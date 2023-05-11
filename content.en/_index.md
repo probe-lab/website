@@ -9,7 +9,7 @@ The Protocol Benchmarking & Optimization Team (ProbeLab) is on a mission to meas
 
 We focus on understanding the mechanics of internal network protocols, as well as how they interact with other parts of the system. Our expertise lies in network-layer protocols, and we are particularly active in the IPFS and filecoin space, though our work is not limited to that. We dive deep into the protocol as an independent entity and investigate the exogenous factors that influence its performance.
 
-Our team is dedicated to providing solutions for optimizing the performance of web3 network protocols. We specialize in cross-protocol interoperation and network architecture and work to identify potential bottlenecks and inefficiencies in the system.
+Our team specializes in cross-protocol interoperation and network architecture, works to identify potential bottlenecks and inefficiencies in the system and provide solutions, accordingly.
 
 {{< hint warning >}}
 Please note that this website is a preview and is subject to change at any time. 

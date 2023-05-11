@@ -13,26 +13,37 @@ the completeness or reliability of the information presented during the preview.
 
 
 IPFS relies on the coordinated participation of a swarm of independent peers to function correctly. Therefore, measuring the performance and health of the network is crucial for ensuring its reliability and efficiency. In this context, we summarise a number of network characteristics as key performance indicators. 
+Our KPIs are currently focusing primarily on the public IPFS DHT (although we do report on other parts of the architecture too). Understanding that IPFS is an ecosystem of content routing subsystems, over time, we plan to expand to other content routing subsystems too.
 
 ## Network Size & Stability
 
 ### Client vs Server Node Estimate
 
-The total number of peers in the network is estimated using the number of unique peer IDs seen by Protocol Labs' bootstrap nodes. The number of unique DHT server peer IDs visited by the Nebula crawler is subtracted estimate the number of peers that exclusively function as clients.
+The total number of peers in the network is estimated using the number of unique peer IDs seen by Protocol Labs' bootstrap nodes. The number of unique DHT Server peer IDs identified by the Nebula crawler is then subtracted from the total number of peers (seen by the bootstrappers) to estimate the number of peers that exclusively function as DHT Clients.
 
 {{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
 
 ## Content Routing 
 
-IPFS employs several content routing systems, with the Kademlia distributed hash table being the most established. Within the network, peers commonly use this system to locate other peers that hold the content being requested. We measure the availability of DHT server nodes and the latency of DHT lookups for random content.
+IPFS employs several content routing subsystems, with the Kademlia Distributed Hash Table (DHT) being the most established. Within the network, peers commonly use this system to locate other peers that hold the content being requested. We measure the availability of DHT server nodes and the latency of DHT lookups for random content.
 
 ### DHT server availability
+
+We categorize DHT Server nodes with regard to their "availability" as follows:
+- "Online": the node has been found online for 80% of time or more.
+- "Mostly Online": the node has been found online between 40%-80% of time.
+- "Mostly Offline": the node has been found online between 10%-40% of time.
+- "Offline": the node has been found online less than 10% of time.  
 
 {{< plotly json="../../plots/latest/dht-availability-classified-online.json" height="250px" >}}
 
 {{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
 
-### DHT server performance
+### DHT Lookup performance
+
+We have instrumented the following experiment to capture the DHT Lookup performance over time and from several different geographic locations.
+We have set up IPFS DHT Server nodes in seven (7) different geographic locations. Each node periodically publishes a unique CID and makes it known to the rest of the nodes, who subsequently request it through the DHT (acting as clients). This way we capture the DHT Lookup performance from each location.
+In this section we present the average performance over all regions.
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-quartiles.json" height="250px" >}}
 
@@ -40,7 +51,7 @@ IPFS employs several content routing systems, with the Kademlia distributed hash
 
 ### IPNI utilization
 
-IPNI is set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the IPFS DHT to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by cid.contact.
+IPNI is a set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the IPFS DHT to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by cid.contact.
 
 {{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}}
 
