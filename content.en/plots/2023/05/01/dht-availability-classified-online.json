@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "EE6677"
+        },
+        "increasing": {
+          "color": "228833"
+        },
+        "reference": 21615,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "x": [
+          0,
+          1
+        ]
+      },
+      "mode": "number+delta",
+      "name": "Online",
+      "number": {
+        "suffix": ""
+      },
+      "title": {
+        "text": "Online"
+      },
+      "value": 21675
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "DHT server availability (week ending 30 Apr 2023 compared with previous)"
+    }
+  }
+}

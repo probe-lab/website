@@ -21,7 +21,7 @@ Our KPIs are currently focusing primarily on the public IPFS DHT (although we do
 
 The total number of peers in the network is estimated using the number of unique peer IDs seen by Protocol Labs' bootstrap nodes. The number of unique DHT Server peer IDs identified by the Nebula crawler is then subtracted from the total number of peers (seen by the bootstrappers) to estimate the number of peers that exclusively function as DHT Clients.
 
-{{< plotly json="../plots/ipfs-servers-vs-clients-latest.json" height="400px" >}}
+{{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
 
 ## Content Routing 
 
@@ -35,9 +35,9 @@ We categorize DHT Server nodes with regard to their "availability" as follows:
 - "Mostly Offline": the node has been found online between 10%-40% of time.
 - "Offline": the node has been found online less than 10% of time.  
 
-{{< plotly json="../plots/dht-availability-classified-online-latest.json" height="250px" >}}
+{{< plotly json="../../plots/latest/dht-availability-classified-online.json" height="250px" >}}
 
-{{< plotly json="../../plots/dht-availability-classified-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
 
 ### DHT Lookup performance
 
@@ -45,25 +45,25 @@ We have instrumented the following experiment to capture the DHT Lookup performa
 We have set up IPFS DHT Server nodes in seven (7) different geographic locations. Each node periodically publishes a unique CID and makes it known to the rest of the nodes, who subsequently request it through the DHT (acting as clients). This way we capture the DHT Lookup performance from each location.
 In this section we present the average performance over all regions.
 
-{{< plotly json="../plots/dht-lookup-performance-quartiles-latest.json" height="250px" >}}
+{{< plotly json="../../plots/latest/dht-lookup-performance-quartiles.json" height="250px" >}}
 
-{{< plotly json="../../plots/dht-lookup-performance-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/dht-lookup-performance-long.json" height="600px" >}}
 
 ### IPNI utilization
 
 IPNI is a set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the IPFS DHT to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by cid.contact.
 
-{{< plotly json="../plots/ipni-requests-overall-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}}
 
 
 ## Websites and Traffic
 
 A common use-case for IPFS is hosting websites, addressed using IPNS or DNSLink. We monitor the time it takes to load sample websites through a browser and the number of requests to the public Protocol Labs operated IPFS gateways. 
 
-{{< plotly json="../plots/websites-ttfb-quartiles-latest.json" height="250px" >}}
+{{< plotly json="../../plots/latest/websites-ttfb-quartiles.json" height="250px" >}}
 
 The following plot shows the total number of requests made per day to the public IPFS gateways operated by Protocol Labs (ipfs.io and dweb.link).
 
-{{< plotly json="../plots/gateway-requests-daily-latest.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
 

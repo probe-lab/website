@@ -39,7 +39,7 @@ series:
 
 layout:
   title:
-    text: "DHT publish performance CDF (30 days up to {{ .EndOfPreviousDay | simpledate }})"
+    text: "DHT publish performance CDF (using data from 30 days up to {{ .EndOfPreviousDay | simpledate }})"
   xaxis:
     type: "linear"
     autorange: true

@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "agents",
+      "orientation": "h",
+      "x": [
+        23773,
+        4070,
+        860,
+        272,
+        73,
+        54,
+        22,
+        19,
+        17,
+        17,
+        15,
+        14,
+        13,
+        12,
+        11,
+        11,
+        10,
+        9,
+        7,
+        4,
+        3,
+        3,
+        2,
+        2,
+        2
+      ],
+      "y": [
+        "kubo",
+        "go-ipfs",
+        "storm",
+        "ipfs-counter",
+        "edgevpn",
+        "SybilNode",
+        "",
+        "uplink",
+        "0.11.3",
+        "go.vocdoni.io",
+        "Taubyte Node v1.0",
+        "parsec",
+        "gitlab.com",
+        "go-libp2p",
+        "hydra-booster",
+        "0.11.1",
+        "estuary",
+        "ipfs-nucleus",
+        "P2P_Example",
+        "go-p2ptunnel",
+        "rust-libp2p",
+        "delta",
+        "punchr",
+        "ipns-server",
+        "go-threads"
+      ]
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Top DHT server agents (week up to 7 May 2023)"
+    },
+    "xaxis": {
+      "autorange": true,
+      "title": {
+        "text": "Number of unique peers seen in DHT (log scale)"
+      },
+      "type": "log"
+    },
+    "yaxis": {
+      "automargin": true,
+      "categoryorder": "total ascending"
+    }
+  }
+}

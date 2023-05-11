@@ -1,0 +1,128 @@
+{
+  "data": [
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "EE6677"
+        },
+        "increasing": {
+          "color": "228833"
+        },
+        "reference": 21675,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "x": [
+          0,
+          0.25
+        ]
+      },
+      "mode": "number+delta",
+      "name": "Online",
+      "number": {
+        "suffix": ""
+      },
+      "title": {
+        "text": "Online"
+      },
+      "value": 21525
+    },
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "EE6677"
+        },
+        "increasing": {
+          "color": "228833"
+        },
+        "reference": 1150,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "column": 1,
+        "x": [
+          0.25,
+          0.5
+        ]
+      },
+      "mode": "number+delta",
+      "name": "Mostly Online",
+      "number": {
+        "suffix": ""
+      },
+      "title": {
+        "text": "Mostly Online"
+      },
+      "value": 1115
+    },
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
+        "reference": 1570,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "column": 2,
+        "x": [
+          0.5,
+          0.75
+        ]
+      },
+      "mode": "number+delta",
+      "name": "Mostly Offline",
+      "number": {
+        "suffix": ""
+      },
+      "title": {
+        "text": "Mostly Offline"
+      },
+      "value": 1754
+    },
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
+        "reference": 5481,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "column": 3,
+        "x": [
+          0.75,
+          1
+        ]
+      },
+      "mode": "number+delta",
+      "name": "Offline",
+      "number": {
+        "suffix": ""
+      },
+      "title": {
+        "text": "Offline"
+      },
+      "value": 5297
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "DHT server availability (week ending 7 May 2023 compared with previous)"
+    }
+  }
+}

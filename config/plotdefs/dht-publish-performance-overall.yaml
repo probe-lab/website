@@ -5,7 +5,7 @@ datasets:
     query: >
       with period as (
         select d::date-'1 day'::interval AS start, d::date as end, tstzrange(d::date-'1 day'::interval, d::date) as range, extract(epoch from '1 day'::interval) as duration
-        from generate_series({{ .StartOfDay | timestamptz }}-'30 day'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) d
+        from generate_series({{ .StartOfDay | timestamptz }}-'90 day'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) d
       ),
       m as (
         select m1.created_at, duration
@@ -37,7 +37,7 @@ series:
 
 layout:
   title:
-    text: "Overall DHT publish performance (last 30 days)"
+    text: "Daily DHT publish performance (90 days up to {{ .StartOfDay | simpledate }})"
   xaxis:
     type: "date"
   yaxis:

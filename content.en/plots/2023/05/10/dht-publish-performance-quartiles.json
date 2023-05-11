@@ -1,0 +1,98 @@
+{
+  "data": [
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
+        "reference": 8.039371178,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "x": [
+          0,
+          0.3333333333333333
+        ]
+      },
+      "mode": "number+delta",
+      "name": "Median",
+      "number": {
+        "suffix": "s"
+      },
+      "title": {
+        "text": "Median"
+      },
+      "value": 8.278840277
+    },
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
+        "reference": 26.473512548,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "column": 1,
+        "x": [
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      },
+      "mode": "number+delta",
+      "name": "P90",
+      "number": {
+        "suffix": "s"
+      },
+      "title": {
+        "text": "P90"
+      },
+      "value": 22.804755136
+    },
+    {
+      "type": "indicator",
+      "delta": {
+        "decreasing": {
+          "color": "228833"
+        },
+        "increasing": {
+          "color": "EE6677"
+        },
+        "reference": 97.478543595,
+        "relative": true,
+        "valueformat": ".2%"
+      },
+      "domain": {
+        "column": 2,
+        "x": [
+          0.6666666666666666,
+          1
+        ]
+      },
+      "mode": "number+delta",
+      "name": "P99",
+      "number": {
+        "suffix": "s"
+      },
+      "title": {
+        "text": "P99"
+      },
+      "value": 104.137010277
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "DHT publish performance (week ending 7 May 2023 compared with previous)"
+    }
+  }
+}

@@ -43,6 +43,6 @@ series:
 
 layout:
   title:
-    text: "Kubo version distribution"
+    text: "Kubo version distribution (week up to {{ .EndOfPreviousWeek | simpledate }})"
   yaxis:
     automargin: true

@@ -14,10 +14,6 @@ TIROS?=
 serve:
 	hugo server
 
-.PHONY: ashby
-ashby:
-	go build ./code/cmd/ashby
-
 .PHONY: build
-build: ashby
+build:
 	@${ASHBY} batch -s nebula_ipfs=${NEBULA_IPFS} -s parsec=${PARSEC} -s tiros=${TIROS} --version -vv --out ${PLOTS} --in ${PLOTDEFS} --conf ${CONF}
