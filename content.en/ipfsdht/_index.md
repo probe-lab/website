@@ -91,12 +91,15 @@ These peers act as DHT servers and record provider records pointing to content a
 Note that the x-axis in the above plot is represented using a log scale, which emphasizes the relatively smaller  populations of software agents compared to the much larger use of Kubo (previously known as go-ipfs) within the DHT. 
 
 
-
-### Kubo Breakdown
+### Active Kubo Versions
 
 [Kubo](https://github.com/ipfs/kubo) is the most prevelant software used for peers participating in the DHT. It adheres to a regular release cycle to introduce new features and improvements in performance, stability, and security. Measuring the distribution of Kubo versions provides insights into the adoption rate of new features and improvements and potential issues related to backward compatibility during protocol upgrades. 
 
 {{< plotly json="../../plots/latest/kubo-version-distribution.json" height="800px" >}}
+
+### Kubo Versions Over Time
+
+In the following we show the change in distribution of the nine most recent releases of Kubo each week, grouping all prior releases into the "all others" category. When a new version appears, the oldest of the nine is moved to the "other" category.
 
 {{< plotly json="../../plots/latest/recent-kubo-versions-over-time.json" height="600px" >}}
 
