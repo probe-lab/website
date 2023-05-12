@@ -1,10 +1,53 @@
 {{ $jsonurl := .Get "json" }}
 {{ $id := .Get "id" | default (strings.TrimSuffix ".json" (path.Base $jsonurl) ) | anchorize }}
 {{ $height := .Get "height" | default "200px" }}
-<div id="{{$id}}" class="plotly" style="height:{{$height}};"></div>
-<div class="text-right"><small><a href="#{{$id}}">link to plot</a></small></div>
+<div id="{{ $id }}-plot" class="plotly" style="height:{{ $height }};"></div>
+<div class="text-right">
+    <small><a href="#{{ $id }}-btn" id="{{ $id }}-btn">Copy Link to Plot</a></small>
+</div>
+
 <script>
   d3.json({{ $jsonurl }}).then(function (fig) {
-      Plotly.newPlot('{{$id}}', fig.data, fig.layout, { responsive: true });
+      const btn = document.getElementById("{{ $id }}-btn");
+      btn.addEventListener("click", function (evt) {
+          evt.preventDefault();
+          const url = new URL(window.location);
+
+          if (document.getElementById("{{ $id }}")) {
+            url.hash = '#{{ $id }}';
+          } else {
+            url.hash = '#{{ $id }}-plot';
+          }
+          navigator.clipboard.writeText(url.toString());
+          btn.innerText = "Copied to Clipboard!";
+      })
+
+      const config = {
+          responsive: true,
+          displaylogo: false,
+          modeBarButtonsToAdd: [
+          {
+              name: 'Download Data',
+              icon: {
+                  width: 384,
+                  height: 512,
+                  path: "M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"
+              },
+              click: function(gd) {
+                  const link = document.createElement("a");
+                  link.setAttribute("href", "{{ $jsonurl }}");
+                  link.setAttribute("download", "{{ $id }}.json");
+                  link.click();
+              }},
+          ],
+          toImageButtonOptions: {
+              format: 'png',
+              filename: '{{ $id }}',
+              scale: 2
+          },
+          ...fig.config,
+      };
+
+      Plotly.newPlot('{{ $id }}-plot', fig.data, fig.layout, config);
   });
 </script>
