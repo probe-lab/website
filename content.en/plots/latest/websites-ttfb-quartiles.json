@@ -9,7 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.5154,
+        "reference": 0.5147,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -27,7 +27,7 @@
       "title": {
         "text": "Median"
       },
-      "value": 0.5147
+      "value": 0.5103
     },
     {
       "type": "indicator",
@@ -38,7 +38,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.1424,
+        "reference": 1.1496,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -57,7 +57,7 @@
       "title": {
         "text": "P90"
       },
-      "value": 1.1496
+      "value": 1.1674
     },
     {
       "type": "indicator",
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 3.2353,
+        "reference": 2.3016,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -87,12 +87,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 2.3016
+      "value": 2.1479
     }
   ],
   "layout": {
     "title": {
-      "text": "Websites Time to First Byte (week ending 7 May 2023 compared with previous)"
+      "text": "Websites Time to First Byte (week ending 14 May 2023 compared with previous)"
     }
   }
 }

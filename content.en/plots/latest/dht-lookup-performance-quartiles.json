@@ -9,7 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.557865169,
+        "reference": 0.556971099,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -27,7 +27,7 @@
       "title": {
         "text": "Median"
       },
-      "value": 0.557822042
+      "value": 0.558330504
     },
     {
       "type": "indicator",
@@ -38,7 +38,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.113331985,
+        "reference": 1.109390293,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -57,7 +57,7 @@
       "title": {
         "text": "P90"
       },
-      "value": 1.102334854
+      "value": 1.10116155
     },
     {
       "type": "indicator",
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.520040296,
+        "reference": 1.51655204,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -87,12 +87,12 @@
       "title": {
         "text": "P99"
       },
-      "value": 1.505030995
+      "value": 1.508333154
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT lookup performance (week ending 7 May 2023 compared with previous)"
+      "text": "DHT lookup performance (week ending 14 May 2023 compared with previous)"
     }
   }
 }

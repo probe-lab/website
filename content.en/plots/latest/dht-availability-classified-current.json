@@ -9,7 +9,7 @@
         "increasing": {
           "color": "228833"
         },
-        "reference": 21675,
+        "reference": 21525,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -27,7 +27,7 @@
       "title": {
         "text": "Online"
       },
-      "value": 21525
+      "value": 21482
     },
     {
       "type": "indicator",
@@ -38,7 +38,7 @@
         "increasing": {
           "color": "228833"
         },
-        "reference": 1150,
+        "reference": 1115,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -57,7 +57,7 @@
       "title": {
         "text": "Mostly Online"
       },
-      "value": 1115
+      "value": 1176
     },
     {
       "type": "indicator",
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1570,
+        "reference": 1754,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -87,7 +87,7 @@
       "title": {
         "text": "Mostly Offline"
       },
-      "value": 1754
+      "value": 1904
     },
     {
       "type": "indicator",
@@ -98,7 +98,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 5481,
+        "reference": 5297,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -117,12 +117,12 @@
       "title": {
         "text": "Offline"
       },
-      "value": 5297
+      "value": 5639
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT server availability (week ending 7 May 2023 compared with previous)"
+      "text": "DHT server availability (week ending 14 May 2023 compared with previous)"
     }
   }
 }

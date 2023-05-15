@@ -9,7 +9,7 @@
         "increasing": {
           "color": "228833"
         },
-        "reference": 21675,
+        "reference": 21525,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -27,12 +27,12 @@
       "title": {
         "text": "Online"
       },
-      "value": 21525
+      "value": 21482
     }
   ],
   "layout": {
     "title": {
-      "text": "DHT server availability (week ending 7 May 2023 compared with previous)"
+      "text": "DHT server availability (week ending 14 May 2023 compared with previous)"
     }
   }
 }

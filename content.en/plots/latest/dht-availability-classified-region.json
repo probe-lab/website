@@ -108,7 +108,7 @@
   "layout": {
     "barmode": "stack",
     "title": {
-      "text": "DHT server availability, classified, by region (10 weeks up to 7 May 2023)"
+      "text": "DHT server availability, classified, by region (10 weeks up to 14 May 2023)"
     },
     "yaxis": {
       "automargin": true
