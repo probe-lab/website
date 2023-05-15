@@ -20,6 +20,8 @@ When a user requests content through an IPFS gateway, the gateway retrieves the 
 
 IPFS gateways can be run by anyone who has access to an IPFS node, and there are many public gateways available on the internet. The following measurements are made using data from the gateway services operated by Protocol Labs.
 
+In the following plots, requests are _not_ deduplicated, i.e., if there are two requests for the same CID, they count as two requests and not one. This is what makes sense for requests. Deduplicating requests would effectively count the number of CIDs requested and not the requests themselves.
+
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
