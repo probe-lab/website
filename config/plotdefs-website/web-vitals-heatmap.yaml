@@ -1,0 +1,61 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      select
+          m.website,
+          r.region,
+          percentile_cont(0.5)  within group (order by m.ttfb) p50,
+          percentile_cont(0.9)  within group (order by m.ttfb) p90,
+          percentile_cont(0.99)  within group (order by m.ttfb) p99
+      from measurements m
+               inner join runs r on r.id = m.run_id
+      where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+        and m.created_at < {{ .StartOfWeek | timestamptz }}
+        and m.type = '{{ .Params.type }}'
+      group by r.region, m.website;
+
+tables:
+  - type: "heatmap"
+    name: "TTFB"
+    dataset: "current"
+    xLabels: "website"
+    yLabels: "region"
+    values: "p50"
+
+layout:
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }})"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left
+  xaxis:
+    title:
+      text: Website
+    autorange: true
+  yaxis:
+    title:
+      text: AWS Region
+  dragmode: false
+  margin:
+    t: 30
+    l: 120
+    b: 150
+
+config:
+  modebarbuttonstoremove:
+    - zoom2d
+    - pan2d
+    - select2d
+    - lasso2d
+    - zoomIn2d
+    - zoomOut2d
+    - autoScale2d
+    - resetScale2d
+
+params:
+  heading: "Web-Vitals Metrics ({{ .Params.type }})"
