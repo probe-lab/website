@@ -13,7 +13,7 @@ the completeness or reliability of the information presented during the preview.
 
 
 IPFS relies on the coordinated participation of a swarm of independent peers to function correctly. Therefore, measuring the performance and health of the network is crucial for ensuring its reliability and efficiency. In this context, we summarise a number of network characteristics as key performance indicators. 
-Our KPIs are currently focusing primarily on the public [IPFS DHT](https://docs.ipfs.tech/concepts/dht/) (although we do report on other parts of the architecture too). Understanding that IPFS is an ecosystem of content routing subsystems, over time, we plan to expand to other content routing subsystems too.
+Our KPIs are currently focusing primarily on the public [IPFS DHT](https://docs.ipfs.tech/concepts/dht/) (although we do report on other parts of the architecture too). Understanding that IPFS is an ecosystem of [content routing subsystems](https://docs.ipfs.tech/concepts/how-ipfs-works/#subsystems-overview), over time, we plan to expand to other content routing subsystems too.
 
 ## Network Size & Stability
 
