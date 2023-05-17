@@ -35,9 +35,14 @@ In the following, a peer is classified as "online" if it was available for at le
 
 ### Churn
 
+The following displays the count of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the measurement period but appeared within it and remained online throughout. The term "left" refers to a DHT Server peer that was online at the start of the measurement period but went offline and did not come back online before the end of the measurement period.
+
 {{< plotly json="../../plots/latest/dht-peers-entering-leaving.json" height="600px" >}}
 
-This plot displays the count of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) that joined and left the network during the measurement period. The term "entered" refers to a peer that was offline at the start of the measurement period but appeared within it and remained online throughout. The term "left" refers to a DHT Server peer that was online at the start of the measurement period but went offline and did not come back online before the end of the measurement period.
+The cumulative distribution of session lengths for peers found in the network is shown below. It plots the cumulative fraction of sessions longer than a given time, shown along the x-axis.
+
+{{< plotly json="../../plots/latest/dht-peers-churn-cdf-overall.json" height="600px" >}}
+
 
 ## Performance
 
