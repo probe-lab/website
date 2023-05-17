@@ -15,7 +15,13 @@ series:
 
 layout:
   title:
-    text: "Daily IPNI Requests (90 days up to {{ .EndOfPreviousDay | simpledate }})"
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-90"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   legend:
     orientation: "h"
   yaxis:

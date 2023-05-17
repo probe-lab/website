@@ -27,9 +27,16 @@ The Nebula crawler attempts to connect to [DHT Server](https://docs.ipfs.tech/co
 
 In the following, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
 
+#### DHT Server Availability
+
 {{< plotly json="../../plots/latest/dht-availability-classified-current.json" height="250px" >}}
 
+
+#### DHT Server Availability, classified over time
+
 {{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
+
+#### DHT Server Availability, classified by region
 
 {{< plotly json="../../plots/latest/dht-availability-classified-region.json" height="600px" >}}
 
@@ -58,9 +65,15 @@ In this section we present the average performance over all regions, as well as 
 
 The following plots show the distribution of timings for looking up [provider records](https://docs.ipfs.tech/concepts/dht/#provider-records) from various points across the world. 
 
+#### Median DHT Lookup Performance over time
+
 {{< plotly json="../../plots/latest/dht-lookup-performance-overall.json" height="600px" >}}
 
+#### DHT Lookup Performance Distribution
+
 {{< plotly json="../../plots/latest/dht-lookup-performance-cdf.json" height="600px" >}}
+
+#### DHT Lookup Performance Distribution, by region
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-cdf-region.json" height="600px" >}}
 
@@ -70,9 +83,15 @@ The following plots show the distribution of timings for looking up [provider re
 
 The following plots show the distribution of timings for publishing provider records from various points across the world.
 
+#### Median DHT Publish Performance over time
+
 {{< plotly json="../../plots/latest/dht-publish-performance-overall.json" height="600px" >}}
 
+#### DHT Publish Performance Distribution
+
 {{< plotly json="../../plots/latest/dht-publish-performance-cdf.json" height="600px" >}}
+
+#### DHT Publish Performance Distribution, by region
 
 {{< plotly json="../../plots/latest/dht-publish-performance-cdf-region.json" height="600px" >}}
 
@@ -91,6 +110,8 @@ The plot presented below illustrates an estimate of the number of peers that exc
 The Nebula crawler records the software agents announced by peers registered in the IPFS DHT. 
 These peers act as DHT servers and record provider records pointing to content available from other peers in the network.
 
+#### Most Frequent DHT Server Agents
+
 {{< plotly json="../../plots/latest/top-dhtserver-agents.json" height="800px" >}}
 
 Note that the x-axis in the above plot is represented using a log scale, which emphasizes the relatively smaller  populations of software agents compared to the much larger use of [Kubo](https://github.com/ipfs/kubo) (previously known as go-ipfs) within the DHT. 
@@ -100,9 +121,11 @@ Note that the x-axis in the above plot is represented using a log scale, which e
 
 [Kubo](https://github.com/ipfs/kubo) is the most prevelant software used for peers participating in the DHT. It adheres to a regular release cycle to introduce new features and improvements in performance, stability, and security. Measuring the distribution of Kubo versions provides insights into the adoption rate of new features and improvements and potential issues related to backward compatibility during protocol upgrades. 
 
+#### Kubo Version Distribution
+
 {{< plotly json="../../plots/latest/kubo-version-distribution.json" height="800px" >}}
 
-### Kubo Versions Over Time
+#### Recent Kubo Versions Over Time
 
 In the following we show the change in distribution of the nine most recent releases of Kubo each week, grouping all prior releases into the "all others" category. When a new version appears, the oldest of the nine is moved to the "other" category.
 

@@ -74,4 +74,10 @@ scalars:
 
 layout:
   title:
-    text: "DHT server availability (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+    text: "Data: week ending {{ .EndOfPreviousWeek | simpledate }}"
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"

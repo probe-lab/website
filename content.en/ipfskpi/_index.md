@@ -35,7 +35,12 @@ We categorize [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) 
 - "Mostly Offline": the node has been found online between 10%-40% of time.
 - "Offline": the node has been found online less than 10% of time.  
 
-{{< plotly json="../../plots/latest/dht-availability-classified-online.json" height="250px" >}}
+#### DHT Server Availability
+
+{{< plotly json="../../plots/latest/dht-availability-classified-current.json" height="250px" >}}
+
+
+#### DHT Server Availability, classified over time
 
 {{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
 
@@ -45,7 +50,11 @@ We have instrumented the following experiment to capture the [DHT Lookup](https:
 We have set up IPFS DHT Server nodes in seven (7) different geographic locations. Each node periodically publishes a unique [Content Identifier (CID)](https://docs.ipfs.tech/concepts/content-addressing/#content-identifiers-cids) and makes it known to the rest of the nodes, who subsequently request it through the DHT (acting as clients). This way we capture the DHT Lookup performance from each location.
 In this section we present the average performance over all regions.
 
+#### DHT Lookup Performance
+
 {{< plotly json="../../plots/latest/dht-lookup-performance-quartiles.json" height="250px" >}}
+
+#### Historic DHT Lookup Performance
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-long.json" height="600px" >}}
 
@@ -60,9 +69,14 @@ In this section we present the average performance over all regions.
 
 A common use-case for IPFS is hosting websites, addressed using [IPNS](https://docs.ipfs.tech/concepts/dht/) or [DNSLink](https://docs.ipfs.tech/concepts/dnslink/). We monitor the time it takes to load sample websites through a browser and the number of requests to the public Protocol Labs operated [IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/). 
 
+#### Time to First Byte for IPFS Hosted Websites
+
 {{< plotly json="../../plots/latest/websites-ttfb-quartiles.json" height="250px" >}}
 
+#### Gateway Requests
+
 The following plot shows the total number of requests made per day to the [public IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/#gateway-providers) operated by Protocol Labs (ipfs.io and dweb.link).
+
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 

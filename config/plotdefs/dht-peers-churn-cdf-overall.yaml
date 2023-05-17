@@ -26,13 +26,13 @@ series:
 
 layout:
   title:
-    text: "Data:  {{ .EndOfPreviousDay | dayModify "-30"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}"
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-30"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}'
     font:
       size: 10
-    x: 0.01
-    xanchor: "left"
+    x: 0.99
+    xanchor: "right"
     y: 0.01
-    yanchor: "left"
+    yanchor: "bottom"
   xaxis:
     type: "linear"
     autorange: true
