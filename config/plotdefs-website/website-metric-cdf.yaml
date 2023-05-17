@@ -54,7 +54,7 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }})"
     x: 0.01
     xanchor: left
     'y': 0.01

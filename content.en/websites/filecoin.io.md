@@ -1,48 +1,48 @@
 ---
-title: protocol.ai
+title: filecoin.ai
 plotly: true
 ---
 
-# protocol.ai
+# filecoin.ai
 
 This page shows performance metrics for the
-website [protocol.ai](https://protocol.ai).
+website [filecoin.ai](https://filecoin.ai).
 
 ## Website Probes
 
-{{< plotly json="../../plots/latest/web-vitals-probes-count-protocol.ai.json" height="150px" >}}
+{{< plotly json="../../plots/latest/web-vitals-probes-count-filecoin.ai.json" height="150px" >}}
 
-## Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-protocolai-kubo-eu-central-1}
+## Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-filecoinai-kubo-eu-central-1}
 
 <small>[What do `CLS`, `FCP`, `LCP`, etc. mean?](#metrics) | [What do `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
-{{< plotly json="../../plots/latest/web-vitals-barchart-protocol.ai-KUBO-eu-central-1.json" height="400px" >}}
+{{< plotly json="../../plots/latest/web-vitals-barchart-filecoin.ai-KUBO-eu-central-1.json" height="400px" >}}
 
-## Website Probing Success rate from different Regions {#website-retrieval-errors-protocolai}
+## Website Probing Success rate from different Regions {#website-retrieval-errors-filecoinai}
 
-{{< plotly json="../../plots/latest/website-retrieval-errors-protocol.ai.json" height="350px" >}}
+{{< plotly json="../../plots/latest/website-retrieval-errors-filecoin.ai.json" height="350px" >}}
 
-## Unique Website Providers per Day {#website-providers-protocolai}
+## Unique Website Providers per Day {#website-providers-filecoinai}
 
-{{< plotly json="../../plots/latest/website-providers-protocol.ai.json" height="350px" >}}
+{{< plotly json="../../plots/latest/website-providers-filecoin.ai.json" height="350px" >}}
 
 ## Kubo Metrics by Region
 
-### Time To First Byte {#website-metric-cdf-protocolai-kubo-ttfb}
+### Time To First Byte {#website-metric-cdf-filecoinai-kubo-ttfb}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-protocol.ai-KUBO-ttfb.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.ai-KUBO-ttfb.json" height="300px" >}}
 
-### First Contentful Paint {#website-metric-cdf-protocolai-kubo-fcp}
+### First Contentful Paint {#website-metric-cdf-filecoinai-kubo-fcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-protocol.ai-KUBO-fcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.ai-KUBO-fcp.json" height="300px" >}}
 
-### Largest Contentful Paint {#website-metric-cdf-protocolai-kubo-lcp}
+### Largest Contentful Paint {#website-metric-cdf-filecoinai-kubo-lcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-protocol.ai-KUBO-lcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.ai-KUBO-lcp.json" height="300px" >}}
 
-## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-protocolai}
+## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-filecoinai}
 
-{{< plotly json="../../plots/latest/website-http-ratio-protocol.ai.json" height="500px" >}}
+{{< plotly json="../../plots/latest/website-http-ratio-filecoin.ai.json" height="500px" >}}
 
 We caluclated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
 Then we divided the values of Kubo by the ones from HTTP. A resulting number greater than `1` means that Kubo was slower than HTTP in that region for that percentile.

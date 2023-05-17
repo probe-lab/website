@@ -12,19 +12,21 @@ datasets:
           and m.website = '{{ .Params.website }}'
       )
       select
-        sum(1) filter ( where cte.type = 'KUBO' and not cte.has_error) count_kubo,
-        sum(1) filter ( where cte.type = 'HTTP' and not cte.has_error) count_http
+        sum(1) filter ( where cte.type = 'KUBO' and not cte.has_error) successful_kubo,
+        sum(1) filter ( where cte.type = 'HTTP' and not cte.has_error) successful_http,
+        sum(1) filter ( where cte.type = 'KUBO' ) total_kubo,
+        sum(1) filter ( where cte.type = 'HTTP' ) total_http
       from cte
 
 scalars:
   - type: "number"
     name: "Kubo"
     dataset: "current"
-    value: "count_kubo"
+    value: "successful_kubo"
   - type: "number"
     name: "HTTP"
     dataset: "current"
-    value: "count_http"
+    value: "successful_http"
 
 layout:
   margin:
