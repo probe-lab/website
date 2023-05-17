@@ -24,7 +24,7 @@ datasets:
         where m.created_at >= {{ .StartOfDay | timestamptz }}-'30 day'::interval
           and m.created_at < {{ .StartOfDay | timestamptz }}
       )
-      select round(cast(cdf.duration as numeric),2) as dur, round(cast(max(cdf.cumedist) as numeric),2) as fraction
+      select round(cast(cdf.duration as numeric),2) as dur, round(cast(max(cdf.cumedist) as numeric),4) as fraction
       from cdf
       group by dur
       having max(cdf.cumedist) <= 0.999

@@ -1,0 +1,3 @@
+  - directory: ./plotdefs
+    output: '{{.PlotDefFilename}}.json'
+
