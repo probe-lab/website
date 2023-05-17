@@ -286,7 +286,13 @@ series:
 
 layout:
   title:
-    text: "Weekly DHT lookup performance (since 12 Feb 2021)"
+    text: 'Data: 12 Feb 2021 to {{ .EndOfPreviousWeek | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   xaxis:
     type: "date"
     rangeselector:

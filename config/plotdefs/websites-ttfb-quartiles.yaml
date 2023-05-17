@@ -65,4 +65,10 @@ scalars:
 
 layout:
   title:
-    text: "Websites Time to First Byte (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
