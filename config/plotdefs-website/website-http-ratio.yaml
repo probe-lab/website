@@ -32,7 +32,7 @@ tables:
     values: "ratio"
     colorbar:
       title:
-        text: "Kubo/HTTP Latency Ratio"
+        text: "← Kubo faster | HTTP faster →"
         side: "right"
 
 layout:
