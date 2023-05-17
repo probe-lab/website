@@ -43,6 +43,12 @@ series:
 
 layout:
   title:
-    text: "Kubo version distribution (week up to {{ .EndOfPreviousWeek | simpledate }})"
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   yaxis:
     automargin: true

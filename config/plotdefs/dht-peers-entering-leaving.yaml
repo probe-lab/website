@@ -54,7 +54,13 @@ series:
 
 layout:
   title:
-    text: "Peers entering and leaving network (30 days up to {{ .StartOfDay | simpledate }})"
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-30"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   xaxis:
     type: "date"
   yaxis:

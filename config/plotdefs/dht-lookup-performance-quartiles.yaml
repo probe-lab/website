@@ -84,4 +84,10 @@ scalars:
 
 layout:
   title:
-    text: "DHT lookup performance (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"

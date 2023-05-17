@@ -5,9 +5,8 @@ datasets:
     query: >
       with u as (
         with period as (
-          select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
-          from generate_series('2023-03-13 00:00:00'::timestamptz, '2023-03-13 00:00:00'::timestamptz, '1 week'::interval) d
-        ) -- 10 weeks
+          select {{ .StartOfWeek | timestamptz }}-'1 week'::interval AS start,{{ .StartOfWeek | timestamptz }} as end, tstzrange({{ .StartOfWeek | timestamptz }}-'1 week'::interval, {{ .StartOfWeek | timestamptz }}) as range, extract(epoch from '1 week'::interval) as duration
+        )
         , vma as (
           select v.peer_id, unnest(v.multi_address_ids) multi_address_id
           from period, visits v
@@ -24,8 +23,7 @@ datasets:
         where s.uptime && period.range
         group by period.end, ma.continent, s.peer_id, period.duration
       )
-      select date,
-        case
+      select case
           when continent = 'NA' then 'North America'
           when continent = 'AS' then 'Asia'
           when continent = 'EU' then 'Europe'
@@ -39,8 +37,8 @@ datasets:
         sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
         sum(case when uptime < 0.1 then 1 else 0 end) as offline
       from u
-      group by date, continent
-      order by date, continent;
+      group by continent
+      order by continent;
 
 series:
   - type: "hbar"
@@ -71,6 +69,12 @@ series:
 layout:
   barmode: stack
   title:
-    text: "DHT server availability, classified, by region (10 weeks up to {{ .EndOfPreviousWeek | simpledate }})"
+    text: 'Data: {{ .EndOfPreviousWeek | weekModify "-1"  | simpledate}} to {{ .EndOfPreviousWeek | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   yaxis:
     automargin: true
