@@ -131,7 +131,7 @@ layout:
       text: "Metric"
   yaxis:
     title:
-      text: "Share of Probes in %"
+      text: "Share of all Probes in %"
   hovermode: "closest"
   dragmode: false
 
@@ -145,6 +145,3 @@ config:
     - zoomOut2d
     - autoScale2d
     - resetScale2d
-
-params:
-  heading: "Web-Vitals Metrics ({{ .Params.type }})"

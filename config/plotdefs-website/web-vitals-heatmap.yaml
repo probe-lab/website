@@ -6,9 +6,7 @@ datasets:
       select
           m.website,
           r.region,
-          percentile_cont(0.5)  within group (order by m.ttfb) p50,
-          percentile_cont(0.9)  within group (order by m.ttfb) p90,
-          percentile_cont(0.99)  within group (order by m.ttfb) p99
+          percentile_cont(0.{{ .Params.percentile }}) within group (order by m.{{ .Params.metric }}) p{{ .Params.percentile }}
       from measurements m
                inner join runs r on r.id = m.run_id
       where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
@@ -18,33 +16,38 @@ datasets:
 
 tables:
   - type: "heatmap"
-    name: "TTFB"
+    name: "{{ .Params.metric | toUpper }}"
     dataset: "current"
-    xLabels: "website"
-    yLabels: "region"
-    values: "p50"
+    xLabels: "region"
+    yLabels: "website"
+    values: "p{{ .Params.percentile }}"
+    colorbar:
+      title:
+        text: "Latency in s"
+        side: "right"
 
 layout:
+  automargin: true
+  margin:
+    b: 30
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }})"
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }}, {{ .Params.type }})"
     x: 0.01
     xanchor: left
     'y': 0.01
     yanchor: left
   xaxis:
     title:
-      text: Website
-    autorange: true
+      text: AWS Region
+    side: top
+    automargin: true
   yaxis:
     title:
-      text: AWS Region
+      text: Website
+    automargin: true
   dragmode: false
-  margin:
-    t: 30
-    l: 120
-    b: 150
 
 config:
   modebarbuttonstoremove:
@@ -56,6 +59,3 @@ config:
     - zoomOut2d
     - autoScale2d
     - resetScale2d
-
-params:
-  heading: "Web-Vitals Metrics ({{ .Params.type }})"

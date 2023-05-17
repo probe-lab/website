@@ -8,23 +8,26 @@ plotly: true
 This page shows performance metrics for the
 website [protocol.ai](https://protocol.ai).
 
-## Web-Vitals Metrics (Kubo) {#web-vitals-barchart-protocolai-kubo-eu-central-1}
+## Website Probes
+
+{{< plotly json="../../plots/latest/web-vitals-probes-count-protocol.ai.json" height="150px" >}}
+
+
+## Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-protocolai-kubo-eu-central-1}
+
+<small>[What does `CLS`, `FCP`, `LCP`, etc. mean?](#metrics) | [What does `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
 {{< plotly json="../../plots/latest/web-vitals-barchart-protocol.ai-KUBO-eu-central-1.json" height="400px" >}}
 
-
-
-
-
 ## Metrics
 
-| Metric   | Description                                                                                 |    Good | Needs Improvement |    Poor |
-|----------|---------------------------------------------------------------------------------------------|--------:|------------------:|--------:|
-| **CLS**  | [Cumulative Layout Shift](https://web.dev/cls/)                                             | < 0.10s |           < 0.25s | > 0.25s |
-| **FCP**  | [First Contentful Paint](https://web.dev/fcp/)                                              | < 1.80s |           < 3.00s | > 3.00s |
-| **LCP**  | [Largest Contentful Paint](https://web.dev/lcp/)                                            | < 2.50s |           < 4.00s | > 4.00s |
-| **TTFB** | [Time To First Byte](https://web.dev/ttfb/)                                                 | < 0.80s |           < 1.80s | > 1.80s |
-| **TTI**  | [Time To Interactive](https://developer.chrome.com/docs/lighthouse/performance/interactive) | < 3.80s |           < 7.30s | > 7.30s |
+| Metric   | Description                                                                                 |    Good | Needs Improvement |     Poor |
+|----------|---------------------------------------------------------------------------------------------|--------:|------------------:|---------:|
+| **CLS**  | [Cumulative Layout Shift](https://web.dev/cls/)                                             | < 0.10s |           < 0.25s | >= 0.25s |
+| **FCP**  | [First Contentful Paint](https://web.dev/fcp/)                                              | < 1.80s |           < 3.00s | >= 3.00s |
+| **LCP**  | [Largest Contentful Paint](https://web.dev/lcp/)                                            | < 2.50s |           < 4.00s | >= 4.00s |
+| **TTFB** | [Time To First Byte](https://web.dev/ttfb/)                                                 | < 0.80s |           < 1.80s | >= 1.80s |
+| **TTI**  | [Time To Interactive](https://developer.chrome.com/docs/lighthouse/performance/interactive) | < 3.80s |           < 7.30s | >= 7.30s |
 
 ## Values
 
