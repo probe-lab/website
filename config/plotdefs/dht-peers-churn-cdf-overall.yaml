@@ -1,0 +1,84 @@
+frequency: daily
+datasets:
+  - name: "main"
+    source: "nebula_ipfs"
+    query: >
+      with cdf as (
+        select extract(epoch from s.last_successful_visit - s.first_successful_visit)/3600 as duration_hours,  cume_dist() over (order by extract(epoch from s.last_successful_visit - s.first_successful_visit)/3600) as cumedist
+        from sessions s
+        where s.uptime && tstzrange({{ .StartOfDay | timestamptz }}-'30 day'::interval, {{ .StartOfDay | timestamptz }})
+          and s.uptime &> tstzrange({{ .StartOfDay | timestamptz }}-'30 day'::interval, {{ .StartOfDay | timestamptz }})
+      )
+      select round(cast(cdf.duration_hours as numeric),2) as dur, round(cast(max(cdf.cumedist) as numeric),4) as fraction
+      from cdf
+      where cdf.duration_hours<=24
+      group by dur
+      having max(cdf.cumedist) <= 0.999
+      order by dur;
+
+
+series:
+  - type: "line"
+    name: "cdf"
+    dataset: "main"
+    labels: "dur"
+    values: "fraction"
+
+layout:
+  title:
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-30"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+  xaxis:
+    type: "linear"
+    autorange: true
+    rangemode: "tozero"
+    showspikes: true
+    spikedash: "dot"
+    spikethickness: 1
+    ticksuffix: "h"
+    tickmode: "linear"
+    ticklabelstep: 2
+    dtick: 1
+    title:
+      text: "Uptime (hours)"
+  yaxis:
+    range: [0,1]
+    showspikes: true
+    spikedash: "dot"
+    spikethickness: 1
+    title:
+      text: "Cumulative fraction of online peers"
+  shapes:
+    - type: "line"
+      label:
+        text: "50%"
+        font:
+          size: 10
+      layer: "above"
+      line:
+        dash: "dot"
+        width: 1
+      xref: "paper"
+      x0: 0
+      x1: 1
+      y0: 0.5
+      y1: 0.5
+    - type: "line"
+      label:
+        text: "90%"
+        font:
+          size: 10
+      layer: "above"
+      line:
+        dash: "dot"
+        width: 1
+      xref: "paper"
+      x0: 0
+      x1: 1
+      y0: 0.9
+      y1: 0.9

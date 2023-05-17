@@ -39,7 +39,13 @@ series:
 
 layout:
   title:
-    text: "Top DHT server agents (week up to {{ .EndOfPreviousWeek | simpledate }})"
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   xaxis:
     type: "log"
     title:

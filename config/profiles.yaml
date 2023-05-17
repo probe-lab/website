@@ -121,5 +121,6 @@
       percentile: 99
       metric: lcp
 
-#- source: ./plotdefs-limited
-#  output: "{{.PlotDefFilename}}.json"
+- source: ./plotdefs
+  output: '{{.PlotDefFilename}}.json'
+
