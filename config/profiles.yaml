@@ -1,12 +1,45 @@
-#- source: ./plotdefs-website/web-vitals-heatmap-single.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
-#  variants:
-#    - type: KUBO
-#      website: protocol.ai
-- source: ./plotdefs-website/web-vitals-probes-count.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+- source: ./plotdefs-website/website-metric-cdf.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
   variants:
     - website: protocol.ai
+      type: KUBO
+      metric: ttfb
+    - website: protocol.ai
+      type: KUBO
+      metric: fcp
+    - website: protocol.ai
+      type: KUBO
+      metric: lcp
+#    - website: filecoin.io
+#      type: KUBO
+#      metric: ttfb
+#      ymax: 2
+#    - website: filecoin.io
+#      type: KUBO
+#      metric: fcp
+#      ymax: 4
+#    - website: filecoin.io
+#      type: KUBO
+#      metric: lcp
+#      ymax: 25
+
+
+#- source: ./plotdefs-website/web-vitals-barchart-categorial.yaml
+#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+#  variants:
+#    - website: protocol.ai
+#      type: KUBO
+#    - website: filecoin.io
+#      type: KUBO
+#- source: ./plotdefs-website/website-retrieval-errors.yaml
+#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+#  variants:
+#    - website: protocol.ai
+#    - website: filecoin.io
+#- source: ./plotdefs-website/web-vitals-probes-count.yaml
+#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+#  variants:
+#    - website: protocol.ai
 #- source: ./plotdefs-website/web-vitals-heatmap.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
 #  variants:

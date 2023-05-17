@@ -15,11 +15,27 @@ website [protocol.ai](https://protocol.ai).
 
 ## Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-protocolai-kubo-eu-central-1}
 
-<small>[What does `CLS`, `FCP`, `LCP`, etc. mean?](#metrics) | [What does `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
+<small>[What do `CLS`, `FCP`, `LCP`, etc. mean?](#metrics) | [What do `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
 {{< plotly json="../../plots/latest/web-vitals-barchart-protocol.ai-KUBO-eu-central-1.json" height="400px" >}}
 
-## Metrics
+## Website Probing Success rate from different Regions {#website-retrieval-errors-protocolai}
+
+{{< plotly json="../../plots/latest/website-retrieval-errors-protocol.ai.json" height="350px" >}}
+
+## Metrics by Region
+
+### Time To First Byte {#website-metric-cdf-protocolai-kubo-ttfb}
+
+{{< plotly json="../../plots/latest/website-metric-cdf-protocol.ai-KUBO-ttfb.json" height="300px" >}}
+
+### First Contentful Paint {#website-metric-cdf-protocolai-kubo-lcp}
+
+{{< plotly json="../../plots/latest/website-metric-cdf-protocol.ai-KUBO-fcp.json" height="300px" >}}
+
+## Glossary
+
+### Metrics
 
 | Metric   | Description                                                                                 |    Good | Needs Improvement |     Poor |
 |----------|---------------------------------------------------------------------------------------------|--------:|------------------:|---------:|
@@ -29,7 +45,7 @@ website [protocol.ai](https://protocol.ai).
 | **TTFB** | [Time To First Byte](https://web.dev/ttfb/)                                                 | < 0.80s |           < 1.80s | >= 1.80s |
 | **TTI**  | [Time To Interactive](https://developer.chrome.com/docs/lighthouse/performance/interactive) | < 3.80s |           < 7.30s | >= 7.30s |
 
-## Values
+### Values
 
 | Value                 | Description                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------|

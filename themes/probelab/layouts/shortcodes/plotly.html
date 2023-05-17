@@ -48,6 +48,11 @@
           ...fig.config,
       };
 
-      Plotly.newPlot('{{ $id }}-plot', fig.data, fig.layout, config);
+      const layout = {
+          ...fig.layout,
+          ...fig.dynamicLayout,
+      }
+
+      Plotly.newPlot('{{ $id }}-plot', fig.data, layout, config);
   });
 </script>

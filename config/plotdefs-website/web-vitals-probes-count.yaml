@@ -3,15 +3,18 @@ datasets:
   - name: "current"
     source: "tiros"
     query: >
+      WITH cte AS (
+        select *, m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+        from measurements m
+          inner join runs r on r.id = m.run_id
+        where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+          and m.created_at < {{ .StartOfWeek | timestamptz }}
+          and m.website = '{{ .Params.website }}'
+      )
       select
-        sum(1) filter ( where m.type = 'KUBO' ) count_kubo,
-        sum(1) filter ( where m.type = 'HTTP' ) count_http
-      from measurements m
-               inner join runs r on r.id = m.run_id
-      where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
-        and m.created_at < {{ .StartOfWeek | timestamptz }}
-        and m.website = '{{ .Params.website }}'
-      group by r.region, m.website;
+        sum(1) filter ( where cte.type = 'KUBO' and not cte.has_error) count_kubo,
+        sum(1) filter ( where cte.type = 'HTTP' and not cte.has_error) count_http
+      from cte
 
 scalars:
   - type: "number"
