@@ -31,8 +31,9 @@ For instance, bucket
 0 includes nodes without any shared prefix bits, and each bucket contains a
 maximum of 20 entries.
 
-To begin the crawl process, Nebula connects to a set of bootstrap peers and
-constructs a routing table for each peer it connects to. Next, it generates
+To begin the crawl process, Nebula connects to a configurable set of bootstrap peers and
+constructs a routing table for each peer it connects to. There are bootstrap nodes
+preconfigured for a variety of networks (IPFS, Filecoin, Polkadot, and more). Next, it generates
 random keys with common prefix lengths that fall into each peer's buckets and
 asks remote peers if they know any peers that are closer (in XOR distance) to
 the ones Nebula just constructed. This provides a list of all PeerIDs that a
