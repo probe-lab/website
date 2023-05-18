@@ -7,7 +7,7 @@ ProbeLab is running multiple sets of experiments that aim to push
 the boundaries of what is possible in the fields of networking, distributed
 systems, and measurement of decentralized networks. On this page, we give an overview of
 the tools and infrastructure that we have developed to monitor live distributed
-networks.
+networks. Currently, our efforts focus primarily on IPFS and its underlying, libp2p-based protocol stack.
 
 ## Nebula
 
