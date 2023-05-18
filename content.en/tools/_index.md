@@ -35,7 +35,7 @@ algorithms for routing and data retrieval.
 
 ProbeLab is conducting an experiment called [`tiros`](https://github.com/plprobelab/tiros).
 Tiros is a website measurement tool that is designed to help developers optimize
-the performance of their websites. This experiment measures retrieval and
+the performance of their IPFS-hosted websites. `Tiros`-based experiments measure retrieval and
 rendering metrics of websites loaded over IPFS. It also measures and compares
 the IPFS metrics with their HTTPS counterparts.
 
