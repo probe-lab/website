@@ -35,8 +35,8 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
-    x: 0.01
-    xanchor: left
-    'y': 0.01
-    yanchor: left
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"

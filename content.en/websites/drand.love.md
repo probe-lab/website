@@ -30,21 +30,21 @@ website [drand.love](https://drand.love).
 
 ### Time To First Byte {#website-metric-cdf-drandlove-kubo-ttfb}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-ttfb.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-ttfb.json" height="320px" >}}
 
 ### First Contentful Paint {#website-metric-cdf-drandlove-kubo-fcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-fcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-fcp.json" height="320px" >}}
 
 ### Largest Contentful Paint {#website-metric-cdf-drandlove-kubo-lcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-lcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-lcp.json" height="320px" >}}
 
 ## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-drandlove}
 
 {{< plotly json="../../plots/latest/website-http-ratio-drand.love.json" height="500px" >}}
 
-We caluclated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
+We calculated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
 Then we divided the values of Kubo by the ones from HTTP. A resulting number greater than `1` means that Kubo was slower than HTTP in that region for that percentile.
 Conversely, a number less than `1` means that Kubo was faster.
 
