@@ -1,0 +1,147 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              m.website,
+              m.ttfb_rating,
+              m.lcp_rating,
+              m.fcp_rating,
+              m.tti_rating,
+              m.cls_rating,
+              m.ttfb is null and lcp is null and fcp is null and tti is null and cls is null error
+          from measurements m
+                   inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfWeek | timestamptz }}
+            and r.region = '{{ .Params.region }}'
+            and m.type = '{{ .Params.type }}'
+            and m.website = '{{ .Params.website }}'
+      ), agg as (
+          select
+              'TTFB' metric,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'GOOD'), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'POOR'), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+          from cte
+          union
+          select
+              'FCP' metric,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'GOOD'), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'POOR'), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+          from cte
+          union
+          select
+              'LCP' metric,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'GOOD'), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'POOR'), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+          from cte
+          union
+          select
+              'TTI' metric,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'GOOD'), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'POOR'), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+          from cte
+          union
+          select
+              'CLS' metric,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'GOOD'), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'POOR'), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+          from cte
+      )
+      select * from agg order by metric;
+
+series:
+  - type: "bar"
+    name: "Good"
+    dataset: "current"
+    labels: "metric"
+    values: "count_good"
+    color: "deltabetter"
+    hovertemplate: "%{x} %{y:.1f}%"
+  - type: "bar"
+    name: "Needs Improvement"
+    dataset: "current"
+    labels: "metric"
+    values: "count_needs_improvement"
+    color: "lightyellow"
+    hovertemplate: "%{x} %{y:.1f}%"
+  - type: "bar"
+    name: "Poor"
+    dataset: "current"
+    labels: "metric"
+    values: "count_poor"
+    color: "deltaworse"
+    hovertemplate: "%{x} %{y:.1f}%"
+  - type: "bar"
+    name: "Undefined"
+    dataset: "current"
+    labels: "metric"
+    values: "count_undefined"
+    color: "lightgray"
+    hovertemplate: "%{x} %{y:.1f}%"
+  - type: "bar"
+    name: "Fatal"
+    dataset: "current"
+    labels: "metric"
+    values: "count_fatal"
+    color: "red"
+    hovertemplate: "%{x} %{y:.1f}%"
+
+layout:
+  barmode: "stack"
+  title:
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.region }})"
+    font:
+      size: 10
+    x: 0.01
+    xanchor: "left"
+    y: 0.01
+    yanchor: "left"
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 20
+    b: 40
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.05
+    xanchor: "left"
+  bargap: 0.05
+  xaxis:
+    title:
+      text: "Metric"
+  yaxis:
+    title:
+      text: "Share of all Probes in %"
+  hovermode: "closest"
+  dragmode: false
+
+config:
+  modebarbuttonstoremove:
+    - zoom2d
+    - pan2d
+    - select2d
+    - lasso2d
+    - zoomIn2d
+    - zoomOut2d
+    - autoScale2d
+    - resetScale2d

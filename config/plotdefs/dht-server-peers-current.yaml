@@ -1,0 +1,33 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "nebula_ipfs"
+    query: >
+      select started_at, crawled_peers, dialable_peers, undialable_peers
+      from crawls
+      where started_at >= {{ .StartOfWeek | timestamptz }} - '17 week'::interval
+        and finished_at < {{ .StartOfWeek | timestamptz }}
+      order by started_at
+
+series:
+  - type: "line"
+    name: "Crawled Peers"
+    dataset: "current"
+    labels: "started_at"
+    values: "crawled_peers"
+  - type: "line"
+    name: "Dialable Peers"
+    dataset: "current"
+    labels: "started_at"
+    values: "dialable_peers"
+  - type: "line"
+    name: "Undialable Peers"
+    dataset: "current"
+    labels: "started_at"
+    values: "undialable_peers"
+
+layout:
+  title:
+    text: "DHT crawled peers (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+  legend:
+    orientation: "h"

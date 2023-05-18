@@ -1,0 +1,586 @@
+{
+  "data": [
+    {
+      "type": "heatmap",
+      "colorbar": {
+        "title": {
+          "side": "right",
+          "text": "← Kubo faster | HTTP faster →"
+        }
+      },
+      "colorscale": "Viridis",
+      "name": "name",
+      "reversescale": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "yaxis": "",
+      "z": [
+        [
+          3.3604088219472836,
+          2.1592292089249496,
+          2.3755656108597285,
+          5.3733681462141,
+          3.670342097823014,
+          2.9725776965265083,
+          1.4024242424242424
+        ],
+        [
+          3.4475284166005813,
+          2.4276606179499756,
+          2.418389955686854,
+          6.488038277511962,
+          3.734794520547945,
+          3.175417661097852,
+          1.7328605200945628
+        ],
+        [
+          2.8537300922045263,
+          2.4457425297685913,
+          2.697716563972454,
+          9.841201716738198,
+          3.826018396846255,
+          3.3781268179173938,
+          2.189655172413793
+        ],
+        [
+          2.706591483569901,
+          2.1756730582994384,
+          2.837258347978911,
+          17.219281663516067,
+          3.7797780517879156,
+          3.637561779242174,
+          2.664440734557596
+        ],
+        [
+          2.1083951695038556,
+          2.0049811061490894,
+          2.3738665426644965,
+          27.55133079847909,
+          3.45907058137274,
+          5.462284820031299,
+          4.837064029151484
+        ],
+        [
+          1.7736430694704393,
+          1.4190582959641256,
+          1.6618243685381495,
+          6.4846614291058735,
+          4.648288751314099,
+          3.3418520745640405,
+          2.385850085709833
+        ],
+        [
+          1.834845916026728,
+          1.6433677521842731,
+          3.2412475345167655,
+          7.388986629134413,
+          4.836803662923798,
+          3.4623594706133485,
+          2.492880770890263
+        ]
+      ]
+    }
+  ],
+  "layout": {
+    "annotations": [
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 30,
+        "text": "3.360",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 30,
+        "text": "2.159",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 30,
+        "text": "2.376",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 30,
+        "text": "5.373",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 30,
+        "text": "3.670",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 30,
+        "text": "2.973",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 30,
+        "text": "1.402",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 40,
+        "text": "3.448",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 40,
+        "text": "2.428",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 40,
+        "text": "2.418",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 40,
+        "text": "6.488",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 40,
+        "text": "3.735",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 40,
+        "text": "3.175",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 40,
+        "text": "1.733",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 50,
+        "text": "2.854",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 50,
+        "text": "2.446",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 50,
+        "text": "2.698",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 50,
+        "text": "9.841",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 50,
+        "text": "3.826",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 50,
+        "text": "3.378",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 50,
+        "text": "2.190",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 60,
+        "text": "2.707",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 60,
+        "text": "2.176",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 60,
+        "text": "2.837",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 60,
+        "text": "17.219",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 60,
+        "text": "3.780",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 60,
+        "text": "3.638",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 60,
+        "text": "2.664",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 70,
+        "text": "2.108",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 70,
+        "text": "2.005",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 70,
+        "text": "2.374",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 70,
+        "text": "27.551",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 70,
+        "text": "3.459",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 70,
+        "text": "5.462",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 70,
+        "text": "4.837",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 80,
+        "text": "1.774",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 80,
+        "text": "1.419",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 80,
+        "text": "1.662",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 80,
+        "text": "6.485",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 80,
+        "text": "4.648",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 80,
+        "text": "3.342",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 80,
+        "text": "2.386",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 90,
+        "text": "1.835",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 90,
+        "text": "1.643",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 90,
+        "text": "3.241",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 90,
+        "text": "7.389",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 90,
+        "text": "4.837",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 90,
+        "text": "3.462",
+        "font": null,
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 90,
+        "text": "2.493",
+        "font": null,
+        "showarrow": false
+      }
+    ],
+    "dragmode": false,
+    "margin": {
+      "b": 30
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 8 May 2023 - 14 May 2023 (ttfb)",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 0.01,
+      "yanchor": "left"
+    },
+    "xaxis": {
+      "automargin": true,
+      "side": "top",
+      "title": {
+        "text": "AWS Region"
+      }
+    },
+    "yaxis": {
+      "automargin": true,
+      "title": {
+        "text": "Percentile"
+      }
+    }
+  },
+  "config": {
+    "modeBarButtonsToRemove": [
+      "zoom2d",
+      "pan2d",
+      "select2d",
+      "lasso2d",
+      "zoomIn2d",
+      "zoomOut2d",
+      "autoScale2d",
+      "resetScale2d"
+    ]
+  },
+  "params": null,
+  "dynamicLayout": null
+}
