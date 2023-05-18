@@ -13,7 +13,7 @@ networks. Currently, our efforts focus primarily on IPFS and its underlying, lib
 
 [`Nebula`](https://github.com/dennis-tra/nebula) is a libp2p DHT crawler and
 monitor that is designed to track the liveliness and availability of peers. This
-experiment is aimed at improving the resilience and reliability of distributed
+Nebula-based experiments are aimed at monitoring and improving the resilience and reliability of distributed
 systems by developing better tools for monitoring and managing peer-to-peer
 networks.
 
