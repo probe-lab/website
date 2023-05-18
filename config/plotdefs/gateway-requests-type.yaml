@@ -1,73 +1,32 @@
 frequency: daily
 datasets:
-  - name: "Bifrost total requests ipfs"
-    source: "static"
+  - name: "ipfs"
+    source: "caracol"
     query: >
-      {
-        "x": [
-          "2023-02-20T00:00:00Z",
-          "2023-02-27T00:00:00Z",
-          "2023-03-06T00:00:00Z",
-          "2023-03-13T00:00:00Z",
-          "2023-03-20T00:00:00Z",
-          "2023-03-27T00:00:00Z",
-          "2023-04-03T00:00:00Z",
-          "2023-04-10T00:00:00Z"
-        ],
-        "y": [
-          1101641550,
-          985134403,
-          1028217115,
-          822388172,
-          988679057,
-          1136809085,
-          799926385,
-          691964456
-        ]
-      }
-  - name: "Bifrost total requests ipns"
-    source: "static"
+      select date, value from get_collected_values(10, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
+  - name: "ipns"
+    source: "caracol"
     query: >
-      {
-        "x": [
-          "2023-02-20T00:00:00Z",
-          "2023-02-27T00:00:00Z",
-          "2023-03-06T00:00:00Z",
-          "2023-03-13T00:00:00Z",
-          "2023-03-20T00:00:00Z",
-          "2023-03-27T00:00:00Z",
-          "2023-04-03T00:00:00Z",
-          "2023-04-10T00:00:00Z"
-        ],
-        "y": [
-          58862447,
-          67443318,
-          76380307,
-          57313675,
-          54795142,
-          68109426,
-          55736105,
-          54111637
-        ]
-      }
+      select date, value from get_collected_values(9, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
 
 series:
   - type: "bar"
     name: "IPFS"
-    dataset: "Bifrost total requests ipfs"
-    labels: "x"
-    values: "y"
+    dataset: "ipfs"
+    labels: date"
+    values: "value"
 
   - type: "bar"
     name: "IPNS"
-    dataset: "Bifrost total requests ipns"
-    labels: "x"
-    values: "y"
+    dataset: "ipns"
+    labels: "date"
+    values: "value"
 
 
 layout:
+  barmode: stack
   title:
-    text: 'Data: static 8 weeks up to 9 Apr 2023'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-90"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}'
     font:
       size: 10
     x: 0.99
