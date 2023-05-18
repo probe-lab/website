@@ -24,7 +24,7 @@ we could configure a scheduler that does the same thing but with nodes from mult
 
 ## Deployment
 
-We are running `parsec` servers in the following AWS regions:
+As of 2023-05, we are running `parsec` servers in the following AWS regions:
 
 ```
 eu-central-1
