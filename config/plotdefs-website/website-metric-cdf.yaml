@@ -50,15 +50,15 @@ layout:
     t: 30
     l: 50
     r: 70
-    b: 40
+    b: 60
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }})"
-    x: 0.01
-    xanchor: left
-    'y': 0.01
-    yanchor: left
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }}, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   xaxis:
     type: "linear"
     range: [0, {{ $xrange_max }}]
@@ -68,6 +68,7 @@ layout:
     spikethickness: 1
     title:
       text: "Latency in s"
+      standoff: 10
   yaxis:
     autorange: true
     rangemode: "tozero"

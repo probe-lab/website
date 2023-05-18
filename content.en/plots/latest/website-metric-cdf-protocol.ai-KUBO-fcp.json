@@ -6772,7 +6772,7 @@
   "layout": {
     "annotations": null,
     "margin": {
-      "b": 40,
+      "b": 60,
       "l": 50,
       "pad": 1,
       "r": 70,
@@ -6826,11 +6826,11 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 8 May 2023 - 14 May 2023 (KUBO)",
-      "x": 0.01,
-      "xanchor": "left",
+      "text": "Data: 8 May 2023 - 14 May 2023 (KUBO, protocol.ai)",
+      "x": 1,
+      "xanchor": "right",
       "y": 0.01,
-      "yanchor": "left"
+      "yanchor": "bottom"
     },
     "xaxis": {
       "range": [
@@ -6842,6 +6842,7 @@
       "spikedash": "dot",
       "spikethickness": 1,
       "title": {
+        "standoff": 10,
         "text": "Latency in s"
       },
       "type": "linear"

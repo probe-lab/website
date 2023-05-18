@@ -191,18 +191,18 @@
       "b": 70,
       "l": 50,
       "pad": 1,
-      "r": 70,
+      "r": 50,
       "t": 5
     },
     "title": {
       "font": {
         "size": 10
       },
-      "text": "Data: 8 May 2023 - 14 May 2023",
-      "x": 0.01,
-      "xanchor": "left",
+      "text": "Data: 8 May 2023 - 14 May 2023 (filecoin.io)",
+      "x": 1,
+      "xanchor": "right",
       "y": 0.01,
-      "yanchor": "left"
+      "yanchor": "bottom"
     },
     "xaxis": {
       "tickfont": {

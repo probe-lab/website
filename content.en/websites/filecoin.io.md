@@ -30,21 +30,21 @@ website [filecoin.io](https://filecoin.io).
 
 ### Time To First Byte {#website-metric-cdf-filecoinio-kubo-ttfb}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-ttfb.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-ttfb.json" height="320px" >}}
 
 ### First Contentful Paint {#website-metric-cdf-filecoinio-kubo-fcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-fcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-fcp.json" height="320px" >}}
 
 ### Largest Contentful Paint {#website-metric-cdf-filecoinio-kubo-lcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-lcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-lcp.json" height="320px" >}}
 
 ## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-filecoinio}
 
 {{< plotly json="../../plots/latest/website-http-ratio-filecoin.io.json" height="500px" >}}
 
-We caluclated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
+We calculated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
 Then we divided the values of Kubo by the ones from HTTP. A resulting number greater than `1` means that Kubo was slower than HTTP in that region for that percentile.
 Conversely, a number less than `1` means that Kubo was faster.
 

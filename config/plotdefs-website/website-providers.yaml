@@ -91,6 +91,9 @@ layout:
   barmode: stack
   legend:
     orientation: "h"
+    x: 0.01
+    y: 1.05
+    xanchor: "left"
   yaxis:
     autorange: true
     rangemode: "tozero"
@@ -98,12 +101,15 @@ layout:
       text: "Number of Providers"
   margin:
     pad: 1
-    t: 30
+    t: 5
+    l: 50
+    r: 20
+    b: 60
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
-    x: 0.01
-    xanchor: left
-    'y': 0.01
-    yanchor: left
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"

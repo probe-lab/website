@@ -48,11 +48,11 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 8 May 2023 - 14 May 2023",
-      "x": 0.01,
-      "xanchor": "left",
+      "text": "Data: 8 May 2023 - 14 May 2023 (protocol.ai)",
+      "x": 1,
+      "xanchor": "right",
       "y": 0.01,
-      "yanchor": "left"
+      "yanchor": "bottom"
     }
   },
   "config": {},

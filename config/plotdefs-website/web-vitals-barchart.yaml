@@ -107,19 +107,19 @@ series:
 layout:
   barmode: "stack"
   title:
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.region }})"
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}<br>({{ .Params.type }}, {{ .Params.region }}, {{ .Params.website }})"
     font:
       size: 10
-    x: 0.01
-    xanchor: "left"
-    y: 0.01
-    yanchor: "left"
+    x: 1
+    xanchor: "right"
+    y: 0.045
+    yanchor: "bottom"
   margin:
     pad: 1
     t: 5
     l: 50
     r: 20
-    b: 40
+    b: 60
   legend:
     orientation: "h"
     x: 0.01
@@ -128,6 +128,7 @@ layout:
   bargap: 0.05
   xaxis:
     title:
+      standoff: 15
       text: "Metric"
   yaxis:
     title:
