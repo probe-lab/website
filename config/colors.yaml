@@ -30,3 +30,27 @@ colors:
     color: "228833"
   - name: deltaworse
     color: "EE6677"
+  - name: region-europe
+    # blue
+    color: "004488"
+  - name: region-north-america
+    # yellow
+    color: "997700"
+  - name: region-north-america-west
+    # yellow
+    color: "997700"
+  - name: region-north-america-east
+    # lightyellow
+    color: "EECC66"
+  - name: region-asia
+    # red
+    color: "994455"
+  - name: region-asia-se
+    # red
+    color: "994455"
+  - name: region-south-america
+    # lightblue
+    color: "6699cc"
+  - name: region-africa
+    # green
+    color: "117733"
