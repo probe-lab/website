@@ -198,7 +198,7 @@ This function will return a JSON array of the following format:
 
 If the website request went through the `kubo` gateway we're running one round of garbage collection by calling the `/api/v0/repo/gc` endpoint. With this we make sure that the next request to that website won't come from the local kubo node cache.
 
-To also measure a "warmed up" kubo node, we also configured a "settle time". This is just the time to wait before the first website requests are made. After the scheduler has looped through all websites we configured another settle time of 10min before all websites are requested again. Each run in between settles also has a "times" counter which is set to `5` right now in our deployment. This means that we request a single website 5 times in between each settle times. The loop looks like this:
+In order to also measure a "warmed up" kubo node, we configured a "settle time". This is just the time to wait before the first website requests are made. After the scheduler has looped through all websites, we configured another settle time of 10min before all websites are requested again. Each run in between settles also has a "times" counter which is set to `5` right now in our deployment. This means that we request a single website 5 times in between each settle time. The loop looks like this:
 
 ```go
 for _, settle := range c.IntSlice("settle-times") {
