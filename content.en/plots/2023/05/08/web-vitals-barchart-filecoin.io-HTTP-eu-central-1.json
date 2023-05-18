@@ -1,0 +1,173 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "228833"
+      },
+      "name": "Good",
+      "orientation": "v",
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        100,
+        99.78632478632478,
+        99.78632478632478,
+        99.78632478632478,
+        1.2820512820512822
+      ]
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "EECC66"
+      },
+      "name": "Needs Improvement",
+      "orientation": "v",
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "EE6677"
+      },
+      "name": "Poor",
+      "orientation": "v",
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0.21367521367521367,
+        0.21367521367521367,
+        0.21367521367521367,
+        0
+      ]
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "lightgray"
+      },
+      "name": "Undefined",
+      "orientation": "v",
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0,
+        0,
+        0,
+        98.71794871794872
+      ]
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "994455"
+      },
+      "name": "Fatal",
+      "orientation": "v",
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "layout": {
+    "bargap": 0.05,
+    "barmode": "stack",
+    "dragmode": false,
+    "hovermode": "closest",
+    "legend": {
+      "orientation": "h",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 1.05
+    },
+    "margin": {
+      "b": 40,
+      "l": 50,
+      "pad": 1,
+      "r": 20,
+      "t": 5
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 1 May 2023 - 7 May 2023 (eu-central-1)",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 0.01,
+      "yanchor": "left"
+    },
+    "xaxis": {
+      "title": {
+        "text": "Metric"
+      }
+    },
+    "yaxis": {
+      "title": {
+        "text": "Share of Probes in %"
+      }
+    }
+  },
+  "config": {
+    "modeBarButtonsToRemove": [
+      "zoom2d",
+      "pan2d",
+      "select2d",
+      "lasso2d",
+      "zoomIn2d",
+      "zoomOut2d",
+      "autoScale2d",
+      "resetScale2d"
+    ]
+  },
+  "params": {
+    "heading": "Web-Vitals Metrics (HTTP)"
+  }
+}

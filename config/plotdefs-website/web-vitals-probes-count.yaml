@@ -1,0 +1,42 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      WITH cte AS (
+        select *, m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+        from measurements m
+          inner join runs r on r.id = m.run_id
+        where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+          and m.created_at < {{ .StartOfWeek | timestamptz }}
+          and m.website = '{{ .Params.website }}'
+      )
+      select
+        sum(1) filter ( where cte.type = 'KUBO' and not cte.has_error) successful_kubo,
+        sum(1) filter ( where cte.type = 'HTTP' and not cte.has_error) successful_http,
+        sum(1) filter ( where cte.type = 'KUBO' ) total_kubo,
+        sum(1) filter ( where cte.type = 'HTTP' ) total_http
+      from cte
+
+scalars:
+  - type: "number"
+    name: "Kubo"
+    dataset: "current"
+    value: "successful_kubo"
+  - type: "number"
+    name: "HTTP"
+    dataset: "current"
+    value: "successful_http"
+
+layout:
+  margin:
+    b: 1
+    t: 1
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left

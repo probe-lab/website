@@ -1,0 +1,61 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      select
+          m.website,
+          r.region,
+          percentile_cont(0.{{ .Params.percentile }}) within group (order by m.{{ .Params.metric }}) p{{ .Params.percentile }}
+      from measurements m
+               inner join runs r on r.id = m.run_id
+      where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+        and m.created_at < {{ .StartOfWeek | timestamptz }}
+        and m.type = '{{ .Params.type }}'
+      group by r.region, m.website;
+
+tables:
+  - type: "heatmap"
+    name: "{{ .Params.metric | toUpper }}"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "website"
+    values: "p{{ .Params.percentile }}"
+    colorbar:
+      title:
+        text: "Latency in s"
+        side: "right"
+
+layout:
+  automargin: true
+  margin:
+    b: 30
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }}, {{ .Params.type }})"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left
+  xaxis:
+    title:
+      text: AWS Region
+    side: top
+    automargin: true
+  yaxis:
+    title:
+      text: Website
+    automargin: true
+  dragmode: false
+
+config:
+  modebarbuttonstoremove:
+    - zoom2d
+    - pan2d
+    - select2d
+    - lasso2d
+    - zoomIn2d
+    - zoomOut2d
+    - autoScale2d
+    - resetScale2d

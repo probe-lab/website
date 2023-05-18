@@ -1,0 +1,135 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      WITH cte AS (
+          select
+              *,
+              m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+          from measurements m
+                   inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfWeek | timestamptz }}
+            and m.website = '{{ .Params.website }}'
+            and m.type = '{{ .Params.type }}'
+      ), data AS (
+          select cte.region, cte.type, 'TTFB' metric, cte.has_error, cte.ttfb val, cte.ttfb_rating val_rating from cte
+          union all
+          select cte.region, cte.type, 'LCP' metric, cte.has_error, cte.lcp val, cte.lcp_rating val_rating from cte
+          union all
+          select cte.region, cte.type, 'FCP' metric, cte.has_error, cte.fcp val, cte.fcp_rating val_rating from cte
+          -- union all
+          -- select cte.region, cte.type, 'CLS' metric, cte.has_error, cte.cls val, cte.cls_rating val_rating from cte
+          -- union all
+          -- select cte.region, cte.type, 'TTI' metric, cte.has_error, cte.tti val, cte.tti_rating val_rating from cte
+      )
+      select
+          data.region,
+          data.metric,
+          100 * coalesce( sum(1) filter ( where data.val_rating = 'GOOD'), 0) / sum(1)::float pct_good,
+          100 * coalesce( sum(1) filter ( where data.val_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float pct_needs_improvement,
+          100 * coalesce( sum(1) filter ( where data.val_rating = 'POOR'), 0) / sum(1)::float pct_poor,
+          100 * coalesce( sum(1) filter ( where data.val_rating is null and data.has_error is false), 0) / sum(1)::float pct_undefined,
+          100 * coalesce( sum(1) filter ( where data.val_rating is null and data.has_error is true), 0) / sum(1)::float pct_fatal,
+          coalesce( sum(1) filter ( where data.has_error is false), 0) successful_probes,
+          count(*) total
+      from data
+      group by data.region, data.metric
+      order by data.region, data.metric;
+
+tables:
+  - type: "category+bar"
+    name: "Good"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "metric"
+    values: "pct_good"
+    color: "deltabetter"
+  - type: "category+bar"
+    name: "Needs Improvement"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "metric"
+    values: "pct_needs_improvement"
+    color: "lightyellow"
+  - type: "category+bar"
+    name: "Poor"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "metric"
+    values: "pct_poor"
+    color: "deltaworse"
+  - type: "category+bar"
+    name: "Undefined"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "metric"
+    values: "pct_undefined"
+    color: "lightgray"
+  - type: "category+bar"
+    name: "Fatal"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "metric"
+    values: "pct_fatal"
+    color: "red"
+  - type: "markers"
+    name: "Probes"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "metric"
+    values: "successful_probes"
+    color: "black"
+    yaxis: "y2"
+
+layout:
+  barmode: stack
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 70
+    b: 70
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.07
+    xanchor: "left"
+  xaxis:
+    title:
+      text: "AWS Region"
+    tickfont:
+      size: 8
+  yaxis:
+    title:
+      text: "Probe Outcome in %"
+  hovermode: "closest"
+  dragmode: false
+
+dynamicLayout:
+  yaxis2:
+    autorange: true
+    rangemode: "tozero"
+    showgrid: false
+    side: "right"
+    overlaying: "y"
+    title:
+      text: "Number of Successful Probes"
+
+config:
+  modebarbuttonstoremove:
+    - pan2d
+    - select2d
+    - lasso2d
+    - zoomIn2d
+    - zoomOut2d
+    - autoScale2d

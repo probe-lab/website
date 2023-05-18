@@ -1,0 +1,109 @@
+frequency: daily
+datasets:
+  - name: "stable_providers"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', p.created_at) date,
+              *
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+      )
+      select
+          cte.date,
+          count (distinct cte.peer_id)
+      from cte
+          where cte.error is null
+            and not exists (
+            select
+            from cte inner_cte
+            where inner_cte.date = cte.date
+              and inner_cte.peer_id = cte.peer_id
+              and inner_cte.is_relayed
+        )
+      group by cte.date
+  - name: "relayed_providers"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', p.created_at) date,
+              *
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+      )
+      select
+          cte.date,
+          count (distinct cte.peer_id)
+      from cte
+          where cte.error is null and cte.is_relayed
+      group by cte.date
+
+  - name: "unreachable_providers"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', p.created_at) date,
+              *
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+      )
+      select
+          cte.date,
+          count (distinct cte.peer_id) count
+      from cte
+          where not exists (
+              select
+              from cte inner_cte
+                where inner_cte.date = cte.date
+                  and inner_cte.peer_id = cte.peer_id
+                  and inner_cte.error is null
+          )
+          and cte.error is not null
+      group by cte.date
+
+series:
+  - type: "bar"
+    name: "Unreachable"
+    dataset: "unreachable_providers"
+    labels: "date"
+    values: "count"
+  - type: "bar"
+    name: "Reachable Relayed"
+    dataset: "relayed_providers"
+    labels: "date"
+    values: "count"
+  - type: "bar"
+    name: "Reachable Non-Relayed"
+    dataset: "stable_providers"
+    labels: "date"
+    values: "count"
+
+layout:
+  barmode: stack
+  legend:
+    orientation: "h"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Number of Providers"
+  margin:
+    pad: 1
+    t: 30
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left

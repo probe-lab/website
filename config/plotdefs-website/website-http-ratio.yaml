@@ -1,0 +1,72 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      with percentiles as (select generate_series(30, 90, 10) val)
+        select
+            val,
+            data.region,
+            data.ratio
+        from percentiles
+        cross join lateral (
+            select
+                r.region,
+                percentiles.val::float/100 percentile,
+                extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'KUBO' )) /
+                extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' )) ratio
+            from measurements m
+                     inner join runs r on r.id = m.run_id
+            where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+              and m.created_at < {{ .StartOfWeek | timestamptz }}
+              and m.website = '{{ .Params.website }}'
+            group by r.region
+        ) data;
+
+tables:
+  - type: "heatmap"
+    name: "name"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "val"
+    values: "ratio"
+    colorbar:
+      title:
+        text: "← Kubo faster | HTTP faster →"
+        side: "right"
+
+layout:
+  automargin: true
+  margin:
+    b: 30
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.metric }})"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left
+  xaxis:
+    title:
+      text: AWS Region
+    side: top
+    automargin: true
+  yaxis:
+    title:
+      text: Percentile
+    automargin: true
+  dragmode: false
+
+config:
+  modebarbuttonstoremove:
+    - zoom2d
+    - pan2d
+    - select2d
+    - lasso2d
+    - zoomIn2d
+    - zoomOut2d
+    - autoScale2d
+    - resetScale2d
+
+

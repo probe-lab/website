@@ -1,0 +1,31 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "nebula_ipfs"
+    query: >
+      select
+        c.started_at, 
+        av.agent_version,
+        cp.count
+      from crawl_properties cp
+        inner join crawls c on c.id = cp.crawl_id
+        inner join agent_versions av on av.id = cp.agent_version_id
+      where c.started_at >= {{ .StartOfWeek | timestamptz }} - '17 week'::interval
+        and c.finished_at < {{ .StartOfWeek | timestamptz }}
+        and cp.count > 50
+      order by c.started_at
+
+series:
+  - type: "line"
+    name: ""
+    dataset: "current"
+    labels: "started_at"
+    values: "count"
+    groupfield: "agent_version"
+    groupvalue: "*"
+
+layout:
+  title:
+    text: "Agent versions over time (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+  legend:
+    orientation: "h"

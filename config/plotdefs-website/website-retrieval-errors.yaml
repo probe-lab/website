@@ -1,0 +1,97 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      WITH cte AS (
+          select
+              *,
+              m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+          from measurements m
+                   inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfWeek | timestamptz }}
+            and m.website = '{{ .Params.website }}'
+      ) select
+            cte.region,
+            cte.type,
+            100 * coalesce(sum(1) filter ( where cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_errors,
+            100 * coalesce(sum(1) filter ( where not cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_success,
+            count(*) total
+      from cte group by cte.region, cte.type
+      order by region, type;
+
+tables:
+  - type: "category+bar"
+    name: "Success"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "type"
+    values: "pct_success"
+    color: "green"
+  - type: "category+bar"
+    name: "Error"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "type"
+    values: "pct_errors"
+    color: "lightred"
+  - type: "markers"
+    name: "Probes"
+    dataset: "current"
+    xLabels: "region"
+    yLabels: "type"
+    values: "total"
+    color: "black"
+    yaxis: "y2"
+
+layout:
+  barmode: stack
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 70
+    b: 70
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }}"
+    x: 0.01
+    xanchor: left
+    'y': 0.01
+    yanchor: left
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.07
+    xanchor: "left"
+  xaxis:
+    title:
+      text: "AWS Region"
+    tickfont:
+      size: 10
+  yaxis:
+    title:
+      text: "Probe Outcome in %"
+  hovermode: "closest"
+  dragmode: false
+
+dynamicLayout:
+  yaxis2:
+    autorange: true
+    rangemode: "tozero"
+    showgrid: false
+    side: "right"
+    overlaying: "y"
+    title:
+      text: "Number of Probes"
+
+config:
+  modebarbuttonstoremove:
+    - pan2d
+    - select2d
+    - lasso2d
+    - zoomIn2d
+    - zoomOut2d
+    - autoScale2d
