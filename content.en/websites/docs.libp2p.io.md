@@ -30,21 +30,21 @@ website [docs.libp2p.io](https://docs.libp2p.io).
 
 ### Time To First Byte {#website-metric-cdf-docslibp2pio-kubo-ttfb}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-docs.libp2p.io-KUBO-ttfb.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-docs.libp2p.io-KUBO-ttfb.json" height="320px" >}}
 
 ### First Contentful Paint {#website-metric-cdf-docslibp2pio-kubo-fcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-docs.libp2p.io-KUBO-fcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-docs.libp2p.io-KUBO-fcp.json" height="320px" >}}
 
 ### Largest Contentful Paint {#website-metric-cdf-docslibp2pio-kubo-lcp}
 
-{{< plotly json="../../plots/latest/website-metric-cdf-docs.libp2p.io-KUBO-lcp.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-metric-cdf-docs.libp2p.io-KUBO-lcp.json" height="320px" >}}
 
 ## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-docslibp2pio}
 
 {{< plotly json="../../plots/latest/website-http-ratio-docs.libp2p.io.json" height="500px" >}}
 
-We caluclated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
+We calculated different percentiles for the Time To First Byte metric in different regions for website requests that were done via Kubo and via plain HTTP.
 Then we divided the values of Kubo by the ones from HTTP. A resulting number greater than `1` means that Kubo was slower than HTTP in that region for that percentile.
 Conversely, a number less than `1` means that Kubo was faster.
 

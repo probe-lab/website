@@ -1280,10 +1280,10 @@
         "size": 10
       },
       "text": "Data: 8 May 2023 - 14 May 2023 (p90, ttfb, KUBO)",
-      "x": 0.01,
-      "xanchor": "left",
+      "x": 0.99,
+      "xanchor": "right",
       "y": 0.01,
-      "yanchor": "left"
+      "yanchor": "bottom"
     },
     "xaxis": {
       "automargin": true,

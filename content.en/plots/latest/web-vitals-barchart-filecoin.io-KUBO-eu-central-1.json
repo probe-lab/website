@@ -129,7 +129,7 @@
       "y": 1.05
     },
     "margin": {
-      "b": 40,
+      "b": 60,
       "l": 50,
       "pad": 1,
       "r": 20,
@@ -139,14 +139,15 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 8 May 2023 - 14 May 2023 (eu-central-1)",
-      "x": 0.01,
-      "xanchor": "left",
-      "y": 0.01,
-      "yanchor": "left"
+      "text": "Data: 8 May 2023 - 14 May 2023\u003cbr\u003e(KUBO, eu-central-1, filecoin.io)",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.045,
+      "yanchor": "bottom"
     },
     "xaxis": {
       "title": {
+        "standoff": 15,
         "text": "Metric"
       }
     },

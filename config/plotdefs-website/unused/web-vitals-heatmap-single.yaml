@@ -48,11 +48,11 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }})"
-    x: 0.01
-    xanchor: left
-    'y': 0.01
-    yanchor: left
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }}, {{ .Params.website}})"
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
   xaxis:
     title:
       text: AWS Region
