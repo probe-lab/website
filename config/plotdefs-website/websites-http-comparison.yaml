@@ -1,0 +1,59 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      select
+          r.region,
+          percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'KUBO' ) p{{ .Params.percentile }}_kubo,
+          percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' ) p{{ .Params.percentile }}_http
+      from measurements m
+               inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfWeek | timestamptz }}
+      group by r.region
+
+series:
+  - type: "bar"
+    name: "Kubo"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}_kubo"
+  - type: "bar"
+    name: "HTTP"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}_http"
+    color: "orange"
+
+
+layout:
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.05
+    xanchor: "left"
+  xaxis:
+    title:
+      text: "AWS Region"
+      standoff: 10
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Time To First Byte in s"
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 20
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+

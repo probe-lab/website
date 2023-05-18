@@ -121,6 +121,13 @@
       percentile: 99
       metric: lcp
 
+
+- source: ./plotdefs-website/websites-http-comparison.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
+  variants:
+    - percentile: 90
+      metric: ttfb
+
 - source: ./plotdefs
   output: '{{.PlotDefFilename}}.json'
 

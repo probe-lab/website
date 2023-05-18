@@ -1,9 +1,15 @@
 ---
+title: IPFS Websites
+weight: 30
 bookCollapseSection: true
 plotly: true
 ---
 
 # Websites
+
+## Kubo vs HTTP (90th percentile) {#websites-http-comparison-ttfb-p90}
+
+{{< plotly json="../../plots/latest/websites-http-comparison-ttfb-p90.json" height="350px" >}}
 
 ## Time To First Byte using Kubo
 
