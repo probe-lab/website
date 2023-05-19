@@ -22,14 +22,14 @@ IPFS gateways can be run by anyone who has access to an IPFS node, and there are
 
 In the following plots, requests are _not_ deduplicated, i.e., if there are two requests for the same [CID](https://docs.ipfs.tech/concepts/content-addressing/#content-identifiers-cids), they count as two requests and not one. This is what makes sense for requests. Deduplicating requests would effectively count the number of CIDs requested and not the requests themselves.
 
-#### HTTP Originated Requests
+#### Daily HTTP Originated Requests
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
-#### HTTP Originated Requests, by region
+#### Daily HTTP Originated Requests, by region
 
 {{< plotly json="../../plots/latest/gateway-requests-region.json" height="600px" >}}
 
-#### HTTP Originated Requests, by type
+#### Weekly HTTP Originated Requests, by type
 
 {{< plotly json="../../plots/latest/gateway-requests-type.json" height="600px" >}}
