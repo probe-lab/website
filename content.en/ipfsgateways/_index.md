@@ -18,18 +18,18 @@ An [IPFS gateway](https://docs.ipfs.tech/concepts/ipfs-gateway/) is a web-based 
 When a user requests content through an IPFS gateway, the gateway retrieves the content from the IPFS network (through [Bitswap](https://docs.ipfs.tech/concepts/bitswap/#bitswap) and/or [kubo](https://docs.ipfs.tech/install/command-line/#install-ipfs-kubo)) and delivers it to the user's browser using standard web protocols such as HTTP or HTTPS. This allows users to access IPFS content in the same way they would access any other web content, with a simple URL or link. IPFS gateways are a key part of the IPFS ecosystem, as they make IPFS content accessible to a wider audience and help to bridge the gap between the traditional web and the decentralized web.
 
 
-IPFS gateways can be run by anyone who has access to an IPFS node, and there are many public gateways available on the internet. The following measurements are made using data from the gateway services operated by Protocol Labs.
+IPFS gateways can be run by anyone who has access to an IPFS node, and there are many public gateways available on the internet. The following measurements are made using data from ipfs.io and dweb.link, the gateway services operated by Protocol Labs.
 
 In the following plots, requests are _not_ deduplicated, i.e., if there are two requests for the same [CID](https://docs.ipfs.tech/concepts/content-addressing/#content-identifiers-cids), they count as two requests and not one. This is what makes sense for requests. Deduplicating requests would effectively count the number of CIDs requested and not the requests themselves.
 
-#### HTTP Originated Requests
+#### Daily HTTP Requests to ipfs.io / dweb.link
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
-#### HTTP Originated Requests, by region
+#### Daily HTTP Requests to ipfs.io / dweb.link, by region
 
 {{< plotly json="../../plots/latest/gateway-requests-region.json" height="600px" >}}
 
-#### HTTP Originated Requests, by type
+#### Daily HTTP Requests to ipfs.io / dweb.link, by type
 
 {{< plotly json="../../plots/latest/gateway-requests-type.json" height="600px" >}}
