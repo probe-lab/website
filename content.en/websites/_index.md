@@ -51,9 +51,11 @@ protocol in different geographic areas.
 
 {{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-ttfb-p90.json" height="700px" >}}
 
-### (99th percentile) {#web-vitals-heatmap-KUBO-ttfb-p99}
+[//]: # ()
+[//]: # (### &#40;99th percentile&#41; {#web-vitals-heatmap-KUBO-ttfb-p99})
 
-{{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-ttfb-p99.json" height="700px" >}}
+[//]: # ()
+[//]: # ({{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-ttfb-p99.json" height="700px" >}})
 
 ## First Contentful Paint using Kubo
 
@@ -65,9 +67,11 @@ protocol in different geographic areas.
 
 {{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-fcp-p90.json" height="700px" >}}
 
-### (99th percentile) {#web-vitals-heatmap-KUBO-fcp-p99}
+[//]: # ()
+[//]: # (### &#40;99th percentile&#41; {#web-vitals-heatmap-KUBO-fcp-p99})
 
-{{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-fcp-p99.json" height="700px" >}}
+[//]: # ()
+[//]: # ({{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-fcp-p99.json" height="700px" >}})
 
 ## Largest Contentful Paint using Kubo
 
@@ -79,6 +83,8 @@ protocol in different geographic areas.
 
 {{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-lcp-p90.json" height="700px" >}}
 
-### (99th percentile) {#web-vitals-heatmap-KUBO-lcp-p99}
+[//]: # ()
+[//]: # (### &#40;99th percentile&#41; {#web-vitals-heatmap-KUBO-lcp-p99})
 
-{{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-lcp-p99.json" height="700px" >}}
+[//]: # ()
+[//]: # ({{< plotly json="../../plots/latest/web-vitals-heatmap-KUBO-lcp-p99.json" height="700px" >}})
