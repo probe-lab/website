@@ -13,6 +13,7 @@ datasets:
             and m.created_at < {{ .StartOfWeek | timestamptz }}
             and m.website = '{{ .Params.website }}'
             and m.type = '{{ .Params.type }}'
+            and m.{{ .Params.metric }} is not null
       )
       select
         cdf.region as region,
