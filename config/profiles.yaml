@@ -1,3 +1,9 @@
+- source: ./plotdefs-website/websites-overall-latency.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}.json"
+  variants:
+    - metric: ttfb
+      type: KUBO
+
 - source: ./plotdefs-website/web-vitals-probes-count.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
   variants:
