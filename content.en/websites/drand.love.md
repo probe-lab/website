@@ -8,39 +8,47 @@ plotly: true
 This page shows performance metrics for the
 website [drand.love](https://drand.love).
 
-## Website Probes
+## Progression
+
+### Time To First Byte Rating {#website-providers-drandlove}
+
+{{< plotly json="../../plots/latest/website-metric-good-rating-drand.love-KUBO-ttfb.json" height="300px" >}}
+
+### Unique Website Providers per Day {#website-providers-drandlove}
+
+{{< plotly json="../../plots/latest/website-providers-drand.love.json" height="350px" >}}
+
+## Snapshot
+
+### Website Probes
 
 {{< plotly json="../../plots/latest/web-vitals-probes-count-drand.love.json" height="150px" >}}
 
-## Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-drandlove-kubo-eu-central-1}
+### Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-drandlove-kubo-eu-central-1}
 
 <small>[What do `CLS`, `FCP`, `LCP`, etc. mean?](#metrics) | [What do `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
 {{< plotly json="../../plots/latest/web-vitals-barchart-drand.love-KUBO-eu-central-1.json" height="400px" >}}
 
-## Website Probing Success rate from different Regions {#website-retrieval-errors-drandlove}
+### Website Probing Success rate from different Regions {#website-retrieval-errors-drandlove}
 
 {{< plotly json="../../plots/latest/website-retrieval-errors-drand.love.json" height="350px" >}}
 
-## Unique Website Providers per Day {#website-providers-drandlove}
+### Kubo Metrics by Region
 
-{{< plotly json="../../plots/latest/website-providers-drand.love.json" height="350px" >}}
-
-## Kubo Metrics by Region
-
-### Time To First Byte {#website-metric-cdf-drandlove-kubo-ttfb}
+#### Time To First Byte {#website-metric-cdf-drandlove-kubo-ttfb}
 
 {{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-ttfb.json" height="320px" >}}
 
-### First Contentful Paint {#website-metric-cdf-drandlove-kubo-fcp}
+#### First Contentful Paint {#website-metric-cdf-drandlove-kubo-fcp}
 
 {{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-fcp.json" height="320px" >}}
 
-### Largest Contentful Paint {#website-metric-cdf-drandlove-kubo-lcp}
+#### Largest Contentful Paint {#website-metric-cdf-drandlove-kubo-lcp}
 
 {{< plotly json="../../plots/latest/website-metric-cdf-drand.love-KUBO-lcp.json" height="320px" >}}
 
-## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-drandlove}
+### Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-drandlove}
 
 {{< plotly json="../../plots/latest/website-http-ratio-drand.love.json" height="500px" >}}
 

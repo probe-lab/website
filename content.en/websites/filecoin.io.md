@@ -8,39 +8,47 @@ plotly: true
 This page shows performance metrics for the
 website [filecoin.io](https://filecoin.io).
 
-## Website Probes
+## Progression
+
+### Time To First Byte Rating {#website-providers-filecoinio}
+
+{{< plotly json="../../plots/latest/website-metric-good-rating-filecoin.io-KUBO-ttfb.json" height="300px" >}}
+
+### Unique Website Providers per Day {#website-providers-filecoinio}
+
+{{< plotly json="../../plots/latest/website-providers-filecoin.io.json" height="350px" >}}
+
+## Snapshot
+
+### Website Probes
 
 {{< plotly json="../../plots/latest/web-vitals-probes-count-filecoin.io.json" height="150px" >}}
 
-## Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-filecoinio-kubo-eu-central-1}
+### Web-Vitals Metrics measured from Europe using Kubo {#web-vitals-barchart-filecoinio-kubo-eu-central-1}
 
 <small>[What do `CLS`, `FCP`, `LCP`, etc. mean?](#metrics) | [What do `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
 {{< plotly json="../../plots/latest/web-vitals-barchart-filecoin.io-KUBO-eu-central-1.json" height="400px" >}}
 
-## Website Probing Success rate from different Regions {#website-retrieval-errors-filecoinio}
+### Website Probing Success rate from different Regions {#website-retrieval-errors-filecoinio}
 
 {{< plotly json="../../plots/latest/website-retrieval-errors-filecoin.io.json" height="350px" >}}
 
-## Unique Website Providers per Day {#website-providers-filecoinio}
+### Kubo Metrics by Region
 
-{{< plotly json="../../plots/latest/website-providers-filecoin.io.json" height="350px" >}}
-
-## Kubo Metrics by Region
-
-### Time To First Byte {#website-metric-cdf-filecoinio-kubo-ttfb}
+#### Time To First Byte {#website-metric-cdf-filecoinio-kubo-ttfb}
 
 {{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-ttfb.json" height="320px" >}}
 
-### First Contentful Paint {#website-metric-cdf-filecoinio-kubo-fcp}
+#### First Contentful Paint {#website-metric-cdf-filecoinio-kubo-fcp}
 
 {{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-fcp.json" height="320px" >}}
 
-### Largest Contentful Paint {#website-metric-cdf-filecoinio-kubo-lcp}
+#### Largest Contentful Paint {#website-metric-cdf-filecoinio-kubo-lcp}
 
 {{< plotly json="../../plots/latest/website-metric-cdf-filecoin.io-KUBO-lcp.json" height="320px" >}}
 
-## Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-filecoinio}
+### Time To First Byte Kubo/HTTP Latency Ratio {#website-http-ratio-filecoinio}
 
 {{< plotly json="../../plots/latest/website-http-ratio-filecoin.io.json" height="500px" >}}
 

@@ -38,7 +38,7 @@ layout:
   legend:
     orientation: "h"
     x: 0.01
-    y: 1.05
+    y: 1.1
     xanchor: "left"
   xaxis:
     title:

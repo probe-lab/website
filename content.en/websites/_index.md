@@ -9,7 +9,7 @@ plotly: true
 
 ## Overall Time To First Byte {#websites-overall-latency-kubo-ttfb}
 
-{{< plotly json="../../plots/latest/websites-overall-latency-KUBO-ttfb.json" height="450px" >}}
+{{< plotly json="../../plots/latest/websites-overall-latency-KUBO-ttfb.json" height="300px" >}}
 
 The graph presents the Time to First Byte (TTFB) metric, which measures the
 duration between the initiation of a request and the receipt of the first byte.
