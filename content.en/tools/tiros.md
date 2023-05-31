@@ -2,16 +2,37 @@
 
 Tiros is an IPFS website measurement tool. It orchestrates the interplay between
 a Kubo node and a headless Chrome instance. The goal is to measure website
-metrics like [TTFB](https://web.dev/ttfb) or [FCP](https://web.dev/fcp) when
-loaded over IPFS and compare them with their HTTPS performance equivalents.
-For that, tiros instructs Chrome to request a website through the gateway
-of a local Kubo node or regularly over HTTPS.
+metrics like [TTFB](https://web.dev/ttfb) or [FCP](https://web.dev/fcp) when loaded over IPFS and compare them with their HTTPS performance equivalents. For that, tiros instructs Chrome to request a website through the gateway of a local Kubo node or regularly over HTTPS.
 
-{{< button href="https://github.com/dennis-tra/nebula" >}}GitHub{{< /button >}}
+{{< button href="https://github.com/dennis-tra/tiros" >}}GitHub{{< /button >}}
+
+## Concepts
+
+Our Tiros measurement consists of three components
+
+1. `scheduler` - [tiros repository](https://github.com/plprobelab/tiros)
+2. `chrome` - [`browserless/chrome`](https://github.com/browserless/chrome)
+3. `kubo` - [ipfs/kubo](https://hub.docker.com/r/ipfs/kubo/)
+
+The `scheduler` gets configured with a list of websites that will then be probed. Probing a website means 1) loading it in headless chrome 2) taking web-vitals + TTI measurements. The scheduler probes each website by instructing headless chrome to load the following two URLs:
+
+1. `http://localhost:8080/ipns/<website>` - this request hits the local Kubo node's gateway endpoint and loads the website over IPFS
+
+2. `https://<website>` - this request uses regular HTTP to load the website's contents.
+
+This allows us to compare the performance of IPFS against HTTP. The web-vitals measurements consist of the following metrics where the thresholds for `good`, `needs-improvement`, and `poor` come from [web.dev](https://web.dev).
+
+| Metric   | Description                                                                                 | Good    | Needs Improvement | Poor     |
+| -------- | ------------------------------------------------------------------------------------------- | -------:| -----------------:| --------:|
+| **CLS**  | [Cumulative Layout Shift](https://web.dev/cls/)                                             | < 0.10s | < 0.25s           | >= 0.25s |
+| **FCP**  | [First Contentful Paint](https://web.dev/fcp/)                                              | < 1.80s | < 3.00s           | >= 3.00s |
+| **LCP**  | [Largest Contentful Paint](https://web.dev/lcp/)                                            | < 2.50s | < 4.00s           | >= 4.00s |
+| **TTFB** | [Time To First Byte](https://web.dev/ttfb/)                                                 | < 0.80s | < 1.80s           | >= 1.80s |
+| **TTI**  | [Time To Interactive](https://developer.chrome.com/docs/lighthouse/performance/interactive) | < 3.80s | < 7.30s           | >= 7.30s |
 
 ## Deployment
 
-We are running Tiros on ECS as a scheduled task every six hours in the following
+We are running Tiros on ECS as scheduled tasks every six hours in the following
 seven AWS regions:
 
 ```
@@ -24,204 +45,33 @@ us-west-1
 af-south-1
 ```
 
-The list of websites that we are currently monitoring is configured [here](https://github.com/protocol/probelab-infra/blob/aabe20d28e833364e0ed17e651d5f810e524cbb9/aws/tf/modules/tiros/_variables.tf#L49).
-At the time of writing the list is:
+The list of websites that we are currently monitoring is configured [here](https://github.com/protocol/probelab-infra/blob/aabe20d28e833364e0ed17e651d5f810e524cbb9/aws/tf/modules/tiros/_variables.tf#L49). At the time of writing the list is:
 
 ```
-filecoin.io
-libp2p.io
-ipld.io
-protocol.ai
-docs.ipfs.tech
-tldr.filecoin.io
-green.filecoin.io
-drand.love
-web3.storage
-consensuslab.world
-strn.network
-research.protocol.ai
-ipfs.tech
 blog.ipfs.tech
-docs.libp2p.io
 blog.libp2p.io
+consensuslab.world
+docs.ipfs.tech
+docs.libp2p.io
+drand.love
 en.wikipedia-on-ipfs.org/wiki
+filecoin.io
+green.filecoin.io
+ipfs.tech
+ipld.io
+libp2p.io
+protocol.ai
+research.protocol.ai
+strn.network
+tldr.filecoin.io
+web3.storage
 ```
 
-Each ECS task consists of three containers:
+Each task run consists of a series of measurements. In each run all the above websites are requested 5 times via Kubo and over HTTP. Then, the task holds for `{settle-time}` minutes (currently 10 minutes [[source](https://github.com/protocol/probelab-infra/blob/1d1867e41cc0a58d641f6edb28ccdf9660f5bdca/aws/tf/tiros.tf#L4)]) and does the same requests again to also take measurements with a "warmed up" kubo node.
 
-1. `scheduler` - [tiros repository](https://github.com/plprobelab/tiros)
-2. `chrome` - via [`browserless/chrome`](https://github.com/browserless/chrome)
-3. `kubo` - via [ipfs/kubo](https://hub.docker.com/r/ipfs/kubo/)
+In total, each task run measures `settle-times * retries * len([http, kubo]) * len(websites)` website requests. In our case it's `2 * 5 * 2 * 14 = 280` requests. As this task runs in all configured regions, we gather `280 * 7 = 1,960` data points every six hours.
 
-`kubo` is running with `LIBP2P_RCMGR=0` which disables the [libp2p Network Resource Manager](https://github.com/libp2p/go-libp2p-resource-manager#readme).
-
-The `scheduler` gets configured with a list of websites that will then be probed. A typical website config looks like this `ipfs.io,docs.libp2p.io,ipld.io`. The scheduler probes each website via `kubo` by requesting `http://localhost:8080/ipns/<website>` and via HTTP  by requesting`https://<website>`. Port `8080` is the default `kubo` HTTP-Gateway port. The `scheduler` uses [`go-rod`](https://github.com/go-rod/rod) to communicate with the `browserless/chrome` instance. The following excerpt is a gist of what's happening when requesting a website:
-
-```go
-browser := rod.New().Context(ctx).ControlURL("ws://localhost:3000")) // default CDP chrome port
-
-browser.Connect()
-defer browser.Close()
-
-var metricsStr string
-rod.Try(func() {
-    browser = browser.Context(c.Context).MustIncognito()
-    browser.MustSetCookies() // clears cookies if parameter is empty
-    
-    page := browser.MustPage() // Get a handle of a new page in our incognito browser
-    
-    page.MustEvalOnNewDocument(jsOnNewDocument) // clears the cache by running `localStorage.clear()`
-    
-    // disable caching in general
-    proto.NetworkSetCacheDisabled{CacheDisabled: true}.Call(page) // make sure we're not hitting the cache
-
-
-    // finally navigate to url and fail out of rod.Try by panicking
-    page.Timeout(websiteRequestTimeout).Navigate(url)
-    page.Timeout(websiteRequestTimeout).WaitLoad() // waits for onload event
-    page.Timeout(websiteRequestTimeout).WaitIdle(time.Minute)
-
-    page.MustEval(wrapInFn(jsTTIPolyfill)) // add TTI polyfill
-    page.MustEval(wrapInFn(jsWebVitalsIIFE)) // add web-vitals
-
-    // finally actually measure the stuff
-    metricsStr = page.MustEval(jsMeasurement).Str()
-    
-    page.MustClose()
-})
-// parse metricsStr
-```
-
-`jsOnNewDocument` contains javascript that gets executed on a new page before anything happens. We're subscribing to performance events which is necessary for TTI polyfill and we're clearing the local storage. This is the code ([link to source](https://github.com/dennis-tra/tiros/blob/main/js/onNewDocument.js)):
-
-```javascript
-// From https://github.com/GoogleChromeLabs/tti-polyfill#usage
-!function(){if('PerformanceLongTaskTiming' in window){var g=window.__tti={e:[]};
-    g.o=new PerformanceObserver(function(l){g.e=g.e.concat(l.getEntries())});
-    g.o.observe({entryTypes:['longtask']})}}();
-
-localStorage.clear();
-```
-
-Then, after the website has loaded we are adding a [TTI polyfill](https://github.com/dennis-tra/tiros/blob/main/js/tti-polyfill.js) and [web-vitals](https://github.com/dennis-tra/tiros/blob/main/js/web-vitals.iife.js) to the page.
-
-We got the tti-polyfill from [GoogleChromeLabs/tti-polyfill](https://github.com/GoogleChromeLabs/tti-polyfill/blob/master/tti-polyfill.js) (archived in favor of the [First Input Delay](https://web.dev/fid/) metric).
-We got the web-vitals javascript from [GoogleChrome/web-vitals](https://github.com/GoogleChrome/web-vitals) by building it ourselves with `npm run build` and then copying the `web-vitals.iife.js` (`iife` = immediately invoked function execution)
-
-Then we execute the following javascript on that page ([link to source](https://github.com/dennis-tra/tiros/blob/main/js/measurement.js)):
-
-```javascript
-async () => {
-
-    const onTTI = async (callback) => {
-        const tti = await window.ttiPolyfill.getFirstConsistentlyInteractive({})
-
-        // https://developer.chrome.com/docs/lighthouse/performance/interactive/#how-lighthouse-determines-your-tti-score
-        let rating = "good";
-        if (tti > 7300) {
-            rating = "poor";
-        } else if (tti > 3800) {
-            rating = "needs-improvement";
-        }
-
-        callback({
-            name: "TTI",
-            value: tti,
-            rating: rating,
-            delta: tti,
-            entries: [],
-        });
-    };
-
-    const {onCLS, onFCP, onLCP, onTTFB} = window.webVitals;
-
-    const wrapMetric = (metricFn) =>
-        new Promise((resolve, reject) => {
-            const timeout = setTimeout(() => resolve(null), 10000);
-            metricFn(
-                (metric) => {
-                    clearTimeout(timeout);
-                    resolve(metric);
-                },
-                {reportAllChanges: true}
-            );
-        });
-
-    const data = await Promise.all([
-        wrapMetric(onCLS),
-        wrapMetric(onFCP),
-        wrapMetric(onLCP),
-        wrapMetric(onTTFB),
-        wrapMetric(onTTI),
-    ]);
-
-    return JSON.stringify(data);
-}
-```
-
-This function will return a JSON array of the following format:
-
-```json
-[
-  {
-    "name": "CLS",
-    "value": 1.3750143983783765e-05,
-    "rating": "good",
-    ...
-  },
-  {
-    "name": "FCP",
-    "value": 872,
-    "rating": "good",
-    ...
-  },
-  {
-    "name": "LCP",
-    "value": 872,
-    "rating": "good",
-    ...
-  },
-  {
-    "name": "TTFB",
-    "value": 717,
-    "rating": "good",
-    ...
-  },
-  {
-    "name": "TTI",
-    "value": 999,
-    "rating": "good",
-    ...
-  }
-]
-```
-
-If the website request went through the `kubo` gateway we're running one round of garbage collection by calling the `/api/v0/repo/gc` endpoint. With this we make sure that the next request to that website won't come from the local kubo node cache.
-
-In order to also measure a "warmed up" kubo node, we configured a "settle time". This is just the time to wait before the first website requests are made. After the scheduler has looped through all websites, we configured another settle time of 10min before all websites are requested again. Each run in between settles also has a "times" counter which is set to `5` right now in our deployment. This means that we request a single website 5 times in between each settle time. The loop looks like this:
-
-```go
-for _, settle := range c.IntSlice("settle-times") {
-    time.Sleep(time.Duration(settle) * time.Second)
-    for i := 0; i < c.Int("times"); i++ {
-        for _, mType := range []string{models.MeasurementTypeKUBO, models.MeasurementTypeHTTP} {
-            for _, website := range websites {
-
-                pr, _ := t.Probe(c, websiteURL(c, website, mType))
-                
-                t.Save(c, pr, website, mType, i)
-
-                if mType == models.MeasurementTypeKUBO {
-                    t.KuboGC(c.Context)
-                }
-            }
-        }
-    }
-}
-```
-
-So in total, each run measures `settle-times * times * len([http, kubo]) * len(websites)` website requests. In our case it's `2 * 5 * 2 * 14 = 280` requests. This takes around `1h` because some websites time out and the second settle time is configured to be `10m`.
-
+On top of that, the above deployment and configuration is replicated for different Kubo versions. The idea is to measure the performance of the latest Kubo version and the most prevalent one in the network. The Kubo versions that we are measuring are configured [here](https://github.com/protocol/probelab-infra/blob/1d1867e41cc0a58d641f6edb28ccdf9660f5bdca/aws/tf/tiros.tf#L3).
 
 ## Contributing
 

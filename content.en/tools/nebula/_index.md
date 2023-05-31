@@ -2,105 +2,86 @@
 
 # Nebula
 
-Nebula is a [libp2p](https://github.com/libp2p/go-libp2p-kad-dht) DHT crawler
-and monitor that tracks the liveliness of peers. The crawler connects
-to [DHT](https://en.wikipedia.org/wiki/Distributed_hash_table) bootstrap peers
-and then recursively follows all entries in
-their [k-buckets](https://en.wikipedia.org/wiki/Kademlia) until all peers have
-been visited. The crawler supports
-the [IPFS](https://ipfs.network), [Filecoin](https://filecoin.io), [Polkadot](https://polkadot.network/), [Kusama](https://kusama.network/), [Rococo](https://substrate.io/developers/rococo-network/), [Westend](https://wiki.polkadot.network/docs/maintain-networks#westend-test-network)
-networks [and more](https://github.com/dennis-tra/nebula/blob/a33a5fd493caaeb07e92ecc73c32ee87ae9e374f/pkg/config/config.go#L11).
+Nebula is a [libp2p](https://github.com/libp2p/go-libp2p-kad-dht) DHT crawler and monitor that tracks the liveliness of peers. The crawler connects to [DHT](https://en.wikipedia.org/wiki/Distributed_hash_table) bootstrap peers and then recursively follows all entries in their [k-buckets](https://en.wikipedia.org/wiki/Kademlia) until all peers have been visited. The crawler supports the [IPFS](https://ipfs.network), [Filecoin](https://filecoin.io), [Polkadot](https://polkadot.network/), [Kusama](https://kusama.network/), [Rococo](https://substrate.io/developers/rococo-network/), [Westend](https://wiki.polkadot.network/docs/maintain-networks#westend-test-network) networks [and more](https://github.com/dennis-tra/nebula/blob/a33a5fd493caaeb07e92ecc73c32ee87ae9e374f/pkg/config/config.go#L11).
 
 {{< button href="https://github.com/dennis-tra/nebula" >}}GitHub{{< /button >}}
 
 ## Components
 
-Nebula is split into two components 1) a **crawler** and 2) a **monitor**. The
-crawler
-is responsible for discovering peers in the DHT and the monitor periodically
-connects to the peers to track their uptime.
+Nebula is split into two components 1) a **crawler** and 2) a **monitor**. The crawler is responsible for discovering peers in the DHT and the monitor is responsible for tracking their uptime.
 
 ## How does it work?
 
-The Kademlia DHT network is a distributed system where each peer maintains a
-routing table containing other peers in the network with specific XOR distances
-to itself. Peers are grouped into "k-buckets" based on the number of shared
-prefix bits between their
-own [`PeerID`](https://docs.libp2p.io/concepts/peer-id/) and the remote PeerID.
-For instance, bucket
-0 includes nodes without any shared prefix bits, and each bucket contains a
-maximum of 20 entries.
+### Crawler
 
-To begin the crawl process, Nebula connects to a configurable set of bootstrap peers and
-constructs a routing table for each peer it connects to. There are bootstrap nodes
-preconfigured for a variety of networks (IPFS, Filecoin, Polkadot, and more). Next, it generates
-random keys with common prefix lengths that fall into each peer's buckets and
-asks remote peers if they know any peers that are closer (in XOR distance) to
-the ones Nebula just constructed. This provides a list of all PeerIDs that a
-peer has in its routing table. The process repeats for all found peers until no
-new PeerIDs are found.
+The Kademlia DHT network is a distributed system where each peer maintains a routing table containing other peers in the network with specific [XOR distances](https://en.wikipedia.org/wiki/Kademlia#Accelerated_lookups) to itself. These peers are grouped into so called _k_-buckets based on the number of leading zeroes of the xor between their PeerID and the own PeerID. Also called shared prefix bits or common prefix length. For example, bucket 0 includes nodes without any shared prefix bits, and bucket 3 contains peers where the first three bits of both PeerIDs match. Each bucket contains a maximum of 20 entries.
 
-If configured to store results in a database, Nebula persists information for
-every visited peer. This information includes latency measurements, current
-multi-addresses, agent version, and supported protocols. If the peer is
-dialable, Nebula also creates a session instance that contains information about
-the node's uptime.
+To begin the crawl process, Nebula connects to a configurable set of bootstrap peers and successively follows every peer in their routing tables until it doesn't find any new peer anymore. Because we know the other peers PeerIDs, Nebula also knows about the _k_-buckets they maintain. To gather information from the routing tables of other peers, Nebula generates random keys that have a certain number of leading zeroes. These keys fall into each of the buckets that the other peers maintain. Nebula sends these keys to the other peers and asks if they know any peers that are closer to those keys. In response, the other peers provide Nebula with the closest peers they know, which are all the peers in their respective buckets. Nebula performs this request in parallel for buckets numbered 0 to 15 [[source](https://github.com/dennis-tra/nebula/blob/a20481d35509411b03b3fcfcf0f148b49a5eda3f/pkg/crawl/crawl_p2p.go#L131)].
 
-The monitoring process periodically queries the database for these sessions and
-tries to dial the comprised peers. If the peer is dialable it updates the
-session row with the new uptime and if the peer was not dialable it "closes" the
-session. This allows for precise peer churn measurements.
+When a new peer is discovered, the crawler records the start of a session of availability and extends the session length with every subsequent successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Depending on the error that the connection attempt returns, Nebula will retry to connect or immediately mark the peer as offline. For example, if the other peer responds with an error that indicates that their resources limit is exceeded, then Nebula retries to connect another two times after five and ten seconds.
 
-## Installation
+### Monitor
 
-### From source
+The monitoring process periodically queries the database for peers that Nebula considers to be online and tries to connect to them. That way we try to gather a precise measurement of the uptime. If the peer is dialable Nebula updates the session with the new uptime and if the peer was not dialable it "closes" the session. The peer is now considered offline. This allows for precise peer churn measurements.
 
-To compile it yourself run:
+As a peer is online for a long duration, Nebula attempts to connect with it less often. This is based on the assumption that if a peer remains online for a while, it is more likely to continue being online. Conversely, if Nebula discovers a new peer in the network, there is a high probability that it will go offline (churn) relatively quickly.
 
-```shell
-go install github.com/dennis-tra/nebula-crawler/cmd/nebula@latest # Go 1.19 or higher is required (may work with a lower version too)
+Nebula calculates when the next probe is due with the following formula
+
+```
+NOW + floor(max_interval, ceil(min_interval, 1.2 * (NOW - previous_successful_dial))
 ```
 
-Make sure the `$GOPATH/bin` is in your PATH variable to access the installed `nebula` executable.
+The maximum interval is set to 15m and the minimum interval is set to 1m.
 
-## Usage
+The monitoring process doesn't establish a proper libp2p connection (which involves the protocol negotiation) but only dials the peer on a transport level by calling [`DialPeer`](https://github.com/libp2p/go-libp2p/blob/8d771355b41297623e05b04a865d029a2522a074/p2p/net/swarm/swarm_dial.go#L229). It also liberally retries dialing peers if errors occur [[source](https://github.com/dennis-tra/nebula/blob/a20481d35509411b03b3fcfcf0f148b49a5eda3f/pkg/monitor/dialer.go#L117)].
 
-Nebula is a command line tool and provides the `crawl` sub-command. To simply crawl the IPFS network run:
+## What data does Nebula gather?
 
-```shell
-nebula crawl --dry-run
-```
+The crawler component establishes a proper libp2p connection to the remote peer. This means Nebula and the peer exchange the list of supported protocols and user agent information. Further, to connect to the peer Nebula must have known the network addresses of the remote peer. It also measures the latency to dial, connect, and crawl. The dial latency just includes the establishment of a connection on the transport level and the connect latency also includes the protocol handshake. The crawl latency measures how long it took to extract information from other peers _k_-buckets.
 
-The crawler can store its results as JSON documents or in a postgres database - the `--dry-run` flag prevents it from doing either. Nebula will print a summary of the crawl at the end instead. A crawl takes ~5-10 min depending on your internet connection. You can also specify the network you want to crawl by appending, e.g., `--network FILECOIN` and limit the number of peers to crawl by providing the `--limit` flag with the value of, e.g., `1000`. Example:
+To summarize, Nebula gathers the following information about all peers it was able to connect to:
 
-```shell
-nebula crawl --dry-run --network FILECOIN --limit 1000
-```
+- peer ID
 
-To store crawl results as JSON files provide the `--json-out` command line flag like so:
+- user agent
 
-```shell
-nebula crawl --json-out ./results/
-```
+- supported protocols
 
-After the crawl has finished, you will find the JSON files in the `./results/` subdirectory.
+- all advertised Multiaddresses
 
-When providing only the `--json-out` command line flag you will see that the `*_neighbors.json` document is empty. This document would contain the full routing table information of each peer in the network which is quite a bit of data (~250MB as of April '23) and is therefore disabled by default. To populate the document you'll need to pass the `--neighbors` flag to the `crawl` subcommand.
+- connection latencies (dial, connect, crawl - see above)
 
-```shell
-nebula crawl --neighbors --json-out ./results/
-```
+- potential connection errors
 
-The routing table information forms a graph and graph visualization tools often operate with [adjacency lists](https://en.wikipedia.org/wiki/Adjacency_list). To convert the `*_neighbors.json` document to an adjacency list, you can use [`jq`](https://stedolan.github.io/jq/) and the following command:
+The monitoring component periodically checks if peers are still online. This allows us to additionally measure sessions of uptime for peers.
 
-```shell
-jq -r '.NeighborIDs[] as $neighbor | [.PeerID, $neighbor] | @csv' ./results/2023-04-16T14:32_neighbors.json > ./results/2023-04-16T14:32_neighbors.csv
-```
+Because we crawl and probe the network periodically, and because Multiaddresses contain IP addresses we can also answer the following questions:
 
-There are a few more command line flags that are documented when you run `nebula crawl --help`.
+- When do peers update their IPFS node?
 
-When Nebula is configured to store its results in a postgres database (see below), then it also tracks session information of remote peers.
+- How long has a peer been online?
 
+- In which country/city is a peer located? (powered by [Maxmind](https://www.maxmind.com/en/home))
+
+- Does the peer run in a data center?(powered by [Udger](https://udger.com/))
+
+On top of the above, Nebula also tracks _neighbor_ information. We consider peers in _k_-buckets to be neighbors of the peer who maintains these _k_-buckets. This information spans a graph where each node is a peer and each edge corresponds to a _k_-bucket entry.
+
+## Deployment
+
+We are running the crawler to measure the following networks:
+
+| Network  | Crawl Frequency  | Crawl duration |
+| -------- | ---------------- | -------------- |
+| IPFS     | every 30 minutes | ~5 minutes     |
+| Filecoin | every 30 minutes | ~1 minute      |
+| Polkadot | every 30 minutes | ~25 minutes    |
+| Kusama   | every 30 minutes | ~9 minutes     |
+| Westend  | every 30 minutes | ~2 minutes     |
+| Rococo   | every 30 minutes | ~2 minutes     |
+
+On this website we currently only report on the IPFS network. If you are interested in the remaining data, reach out to us via probelab@protocol.ai.
 
 ## Contributing
 
