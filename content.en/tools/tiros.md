@@ -14,7 +14,7 @@ Our Tiros measurement consists of three components
 2. `chrome` - [`browserless/chrome`](https://github.com/browserless/chrome)
 3. `kubo` - [ipfs/kubo](https://hub.docker.com/r/ipfs/kubo/)
 
-The `scheduler` gets configured with a list of websites that will then be probed. Probing a website means: 1) loading it in headless chrome, and 2) taking web-vitals + TTI measurements. The scheduler probes each website by instructing headless chrome to load the following two URLs:
+The `scheduler` gets configured with a list of websites that will then be probed. Probing a website means: 1) loading it in headless chrome, and 2) taking [web-vitals](https://web.dev/vitals/) + TTI measurements. The scheduler probes each website by instructing headless chrome to load the following two URLs:
 
 1. `http://localhost:8080/ipns/<website>` - this request hits the local Kubo node's gateway endpoint and loads the website over IPFS
 

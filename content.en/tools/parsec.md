@@ -30,9 +30,9 @@ Our privileged region is `us-east-1`. That's where our main database resides and
 the schedulers run. We currently have three fleets of seven nodes each:
 
 1. `default` - uses the stock `go-libp2p-kad-dht` configuration
-2. `optprov` - uses the Optimistic Provide approach to publish content
-3. `fullrt` - uses the accelerated DHT client (full routing table)
-4. `cid.contact` - uses the InterPlanetary network indexer cid.contact
+2. `optprov` - uses the [Optimistic Provide](https://github.com/ipfs/kubo/blob/master/docs/experimental-features.md#optimistic-provide) approach to publish content
+3. `fullrt` - uses the [accelerated DHT client](https://github.com/ipfs/kubo/blob/master/docs/experimental-features.md#accelerated-dht-client) (full routing table)
+4. `cid.contact` - uses the InterPlanetary network indexer [cid.contact](https://cid.contact)
 
 Each fleet has its own scheduler and they don't interfere with each other.
 
