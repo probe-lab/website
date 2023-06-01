@@ -64,7 +64,7 @@ Because we crawl and probe the network periodically, and because Multiaddresses 
 
 - In which country/city is a peer located? (powered by [Maxmind](https://www.maxmind.com/en/home))
 
-- Does the peer run in a data center?(powered by [Udger](https://udger.com/))
+- Does the peer run in a data center? (powered by [Udger](https://udger.com/))
 
 On top of the above, Nebula also tracks _neighbor_ information. We consider peers in _k_-buckets to be neighbors of the peer who maintains these _k_-buckets. This information spans a graph where each node is a peer and each edge corresponds to a _k_-bucket entry.
 
