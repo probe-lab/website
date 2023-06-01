@@ -54,7 +54,7 @@ To summarize, Nebula gathers the following information about all peers it was ab
 
 - potential connection errors
 
-The monitoring component periodically checks if peers are still online. This allows us to additionally measure sessions of uptime for peers.
+The monitoring component periodically checks if peers are still online. This allows us to additionally measure sessions of uptime for each peer.
 
 Because we crawl and probe the network periodically, and because Multiaddresses contain IP addresses we can also answer the following questions:
 
