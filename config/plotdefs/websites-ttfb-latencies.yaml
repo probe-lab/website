@@ -6,10 +6,10 @@ datasets:
       with cte as (
           select
               date_trunc('day', m.created_at) date,
-              percentile_cont(0.5)  within group (order by m.{{ .Params.metric }}) p50,
-              percentile_cont(0.9)  within group (order by m.{{ .Params.metric }}) p90
+              percentile_cont(0.5)  within group (order by m.ttfb) p50,
+              percentile_cont(0.9)  within group (order by m.ttfb) p90
           from measurements m
-          where m.type = '{{ .Params.type }}'
+          where m.type = 'KUBO'
             and m.created_at >= '2023-03-23'::timestamptz -- earliest date
           group by date_trunc('day', m.created_at)
       )
@@ -62,7 +62,7 @@ layout:
   title:
     font:
       size: 10
-    text: "All available data ({{ .Params.type }}, {{ .Params.metric }})"
+    text: "All available data (KUBO, ttfb)"
     x: 1
     xanchor: "right"
     y: 0.01

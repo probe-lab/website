@@ -5,18 +5,45 @@ plotly: true
 
 # protocol.ai
 
-This page shows performance metrics for the
-website [protocol.ai](https://protocol.ai).
+This page shows performance metrics for the website [protocol.ai](https://protocol.ai).
+
+## Overall Performance {#website-performance-gauge-protocolai-kubo}
+
+{{< plotly json="../../plots/latest/website-performance-gauge-protocol.ai-KUBO.json" height="300px" >}}
+
+The graph presents a comparison of two crucial web performance metrics: Time to First Byte (TTFB) and First Contentful Paint (FCP).
+The data displayed shows the 90th percentile of both metrics and was gathered during the previous week.
+To aid in comparison, the percentage difference between the previous week and the week before is displayed below each gauge indicator. This enables easy identification of performance improvements or regressions over time.
+
+By default, the graph focuses on the `eu-central-1` region, which can be customized as needed in the lower left corner.
+The graph utilizes shaded areas in different colors to denote performance categories based on predefined thresholds set by web-vitals. Green represents "good" performance, yellow indicates "needs improvement," and red signifies "poor" performance (see [Metrics](#metrics)).
 
 ## Progression
-
-### Time To First Byte Rating {#website-providers-protocolai}
-
-{{< plotly json="../../plots/latest/website-metric-good-rating-protocol.ai-KUBO-ttfb.json" height="300px" >}}
 
 ### Unique Website Providers per Day {#website-providers-protocolai}
 
 {{< plotly json="../../plots/latest/website-providers-protocol.ai.json" height="350px" >}}
+
+This graph showcases the unique providing peers as identified by distinct [PeerIDs](https://docs.libp2p.io/concepts/fundamentals/peers/#peer-id) discovered throughout a specific day with our [website measurement infrastructure](/tools/tiros).
+Each peer was attempted to be connected to, and based on the outcome, it was categorized accordingly.
+
+If a peer remained unreachable during the entire day, it was labeled as "Unreachable".
+On the other hand, if we were able to connect to a peer at least once during the day,
+it was marked as either "Reachable Relayed" or "Reachable Non-Relayed."
+
+"Reachable Relayed" indicates that the peer solely advertised relay multiaddresses, meaning we could only establish a connection to it through a proxying peer. These peers act as intermediaries, facilitating the connection between our system and the reachable peer.
+It is important to note that this scenario has performance implications, as relaying introduces additional latency and potential bottlenecks.
+
+"Reachable Non-Relayed" represents peers that were publicly reachable and usually offer the best performance.
+
+In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day.
+Deployments are determined by monitoring the CIDs found within the websites' IPNS records. If the CID changes, we consider this a new deployment. 
+
+
+
+### Time To First Byte Rating {#website-providers-protocolai}
+
+{{< plotly json="../../plots/latest/website-metric-good-rating-protocol.ai-KUBO-ttfb.json" height="300px" >}}
 
 ## Snapshot
 

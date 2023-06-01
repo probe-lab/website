@@ -69,6 +69,29 @@ datasets:
           )
           and cte.error is not null
       group by cte.date
+  - name: "deployments"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              p.created_at,
+              p.path,
+              lag(p.path) over (order by p.created_at),
+              case
+                  when lag(p.path) over (order by p.created_at) != p.path then p.path
+              end deployment_path
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+          order by p.created_at
+      )
+      select
+          date_trunc('day', cte.created_at) date,
+          count(distinct cte.deployment_path) count
+      from cte
+      group by date_trunc('day', cte.created_at)
+      order by 1
 
 series:
   - type: "bar"
@@ -86,6 +109,13 @@ series:
     dataset: "stable_providers"
     labels: "date"
     values: "count"
+  - type: "scatter"
+    name: "Deployments"
+    dataset: "deployments"
+    labels: "date"
+    values: "count"
+    color: "black"
+    yaxis: "y2"
 
 layout:
   barmode: stack
@@ -103,7 +133,7 @@ layout:
     pad: 1
     t: 5
     l: 50
-    r: 20
+    r: 60
     b: 60
   title:
     font:
@@ -113,3 +143,14 @@ layout:
     xanchor: "right"
     y: 0.01
     yanchor: "bottom"
+
+
+dynamicLayout:
+  yaxis2:
+    autorange: true
+    rangemode: "tozero"
+    showgrid: false
+    side: "right"
+    overlaying: "y"
+    title:
+      text: "Deployments / Day"
