@@ -81,7 +81,7 @@ We are running the crawler to measure the following networks:
 | Westend  | every 30 minutes | ~2 minutes     |
 | Rococo   | every 30 minutes | ~2 minutes     |
 
-On this website we currently only report on the IPFS network. If you are interested in the remaining data, reach out to us via probelab@protocol.ai.
+On this website we currently only report on the IPFS network. If you are interested in the data from the rest of the networks, reach out to us through any of the channels listed at the [Contact](https://probelab.io/contact/) page.
 
 ## Contributing
 
