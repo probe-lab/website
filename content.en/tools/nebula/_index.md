@@ -38,7 +38,7 @@ The monitoring process doesn't establish a proper libp2p connection (which invol
 
 ## What data does Nebula gather?
 
-The crawler component establishes a proper libp2p connection to the remote peer. This means Nebula and the peer exchange the list of supported protocols and user agent information. Further, to connect to the peer Nebula must have known the network addresses of the remote peer. It also measures the latency to dial, connect, and crawl. The dial latency just includes the establishment of a connection on the transport level and the connect latency also includes the protocol handshake. The crawl latency measures how long it took to extract information from other peers _k_-buckets.
+The _crawler_ component establishes a proper libp2p connection to the remote peer. This means that Nebula and the remote peer exchange the list of supported protocols and user agent information. Furthermore, in order to connect to the remote peer, Nebula must have knowledge of the network addresses of the remote peer. It also measures the latency to dial, connect, and crawl. The dial latency includes only the establishment of a connection on the transport level and the connect latency also includes the protocol handshake. The crawl latency measures how long it took to extract information from other peers _k_-buckets.
 
 To summarize, Nebula gathers the following information about all peers it was able to connect to:
 
