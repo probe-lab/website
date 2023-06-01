@@ -34,7 +34,7 @@ NOW + floor(max_interval, ceil(min_interval, 1.2 * (NOW - previous_successful_di
 
 The maximum interval is set to 15m and the minimum interval is set to 1m.
 
-The monitoring process doesn't establish a proper libp2p connection (which involves the protocol negotiation) but only dials the peer on a transport level by calling [`DialPeer`](https://github.com/libp2p/go-libp2p/blob/8d771355b41297623e05b04a865d029a2522a074/p2p/net/swarm/swarm_dial.go#L229). It also liberally retries dialing peers if errors occur [[source](https://github.com/dennis-tra/nebula/blob/a20481d35509411b03b3fcfcf0f148b49a5eda3f/pkg/monitor/dialer.go#L117)].
+The _monitoring_ process doesn't establish a proper libp2p connection (which involves the protocol negotiation) but only dials the peer on a transport level by calling [`DialPeer`](https://github.com/libp2p/go-libp2p/blob/8d771355b41297623e05b04a865d029a2522a074/p2p/net/swarm/swarm_dial.go#L229). It also liberally retries dialing peers if errors occur [[source](https://github.com/dennis-tra/nebula/blob/a20481d35509411b03b3fcfcf0f148b49a5eda3f/pkg/monitor/dialer.go#L117)].
 
 ## What data does Nebula gather?
 
