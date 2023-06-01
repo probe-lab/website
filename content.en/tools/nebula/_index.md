@@ -24,7 +24,7 @@ When a new peer is discovered, the crawler records the start of a session of ava
 
 The monitoring process periodically queries the database for peers that Nebula considers to be online and tries to connect to them. That way we try to gather a precise measurement of the uptime. If the peer is dialable Nebula updates the session with the new uptime and if the peer was not dialable it "closes" the session. The peer is now considered offline. This allows for precise peer churn measurements.
 
-As a peer is online for a long duration, Nebula attempts to connect with it less often. This is based on the assumption that if a peer remains online for a while, it is more likely to continue being online. Conversely, if Nebula discovers a new peer in the network, there is a high probability that it will go offline (churn) relatively quickly.
+The longer a peer is seen online, the lower the frequency of connection attempts that is made by Nebula to this particular peer. This is based on the assumption that if a peer remains online for a while, it is more likely to continue being online. Conversely, if Nebula discovers a new peer in the network, there is a high probability that it will go offline (churn) relatively quickly.
 
 Nebula calculates when the next probe is due with the following formula
 
