@@ -363,3 +363,12 @@ body[dir="rtl"] .book-menu {
     padding: $padding-16 * 2 $padding-16;
   }
 }
+
+
+footer.colophon {
+  margin-top: 2em;
+  padding-top: 0.5em;
+  text-align: right;
+  border-top: 1px #aaaaaa solid;
+  width: 100%;
+}
