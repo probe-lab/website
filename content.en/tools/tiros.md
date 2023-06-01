@@ -1,6 +1,6 @@
 # Tiros
 
-Tiros is an IPFS website measurement tool. It orchestrates the interplay between
+Tiros is a performance measurement tool for IPFS-hosted websites. It orchestrates the interplay between
 a Kubo node and a headless Chrome instance. The goal is to measure website
 metrics like [TTFB](https://web.dev/ttfb) or [FCP](https://web.dev/fcp) when loaded over IPFS and compare them with their HTTPS performance equivalents. For that, tiros instructs Chrome to request a website through the gateway of a local Kubo node or regularly over HTTPS.
 
