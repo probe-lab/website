@@ -1,4 +1,6 @@
+{{- if not .Params.hidetoc -}}
 {{ partial "docs/inject/toc-before" . }}
 <h2><header>On this page</header></h2>
 {{ .TableOfContents }}
 {{ partial "docs/inject/toc-after" . }}
+{{- end -}}
