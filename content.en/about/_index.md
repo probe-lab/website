@@ -1,10 +1,11 @@
 ---
-title: How to use this site
-weight: 40
+title: About
+weight: 210
 plotly: false
+hidetoc: true
 ---
 
-# How to use this website
+# About this Website
 
 {{< hint warning >}}
 Please note that this website is a preview and is subject to change at any time. 
@@ -19,6 +20,8 @@ The results presented here give an accurate view of the high-level protocol oper
 
 We do not provide commentary on the results presented on this website. Instead, discussion around results reported here is taking place at the [IPFS Discussion Forum](https://discuss.ipfs.tech/), under the “Testing & Experiments” category and the “Measurements” tab. We occasionally write blogposts (primarily in the [IPFS blog](https://blog.ipfs.tech) and technical reports, which we link from the “News” tab on this site.
 
+## Contact
+
 If you spot inconsistencies, inaccurate claims, or want to request additional results, please reach out using any of the following channels:
 
 - The [IPFS Discussion forum](https://discuss.ipfs.tech/c/testing-and-experiments/measurements/39), under the “Testing & Experiments” category and the “Measurements” tab.
@@ -26,3 +29,4 @@ If you spot inconsistencies, inaccurate claims, or want to request additional re
 - The team’s email: probelab@protocol.ai
 
 We also hold bi-weekly Office Hours, where we invite the community and our collaborators to join and bring up questions, challenges they face and topics for discussion. You can sign up through this lu.ma page: https://lu.ma/ipfs-network-measurements
+
