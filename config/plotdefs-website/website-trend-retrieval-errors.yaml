@@ -1,0 +1,73 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      WITH cte AS (
+          select
+              *,
+              date_trunc('day', m.created_at) date,
+              m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+          from measurements m
+                   inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and m.created_at < {{ .StartOfDay | timestamptz }}
+            and m.website = '{{ .Params.website }}'
+            and m.type = '{{ .Params.type }}'
+      ) select
+            cte.date,
+            100 * coalesce(sum(1) filter ( where cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_errors,
+            100 * coalesce(sum(1) filter ( where not cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_success,
+            count(*) total
+      from cte
+      group by cte.date
+      order by date
+
+series:
+  - type: "bar"
+    name: "Kubo"
+    dataset: "current"
+    color: "blue"
+    labels: "date"
+    values: "pct_errors"
+  - type: "scatter"
+    name: "Probes"
+    dataset: "current"
+    labels: "date"
+    values: "total"
+    color: "black"
+    yaxis: "y2"
+
+layout:
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.05
+    xanchor: "left"
+  yaxis:
+    title:
+      text: "Retrieval Errors in %"
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 60
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "({{ .Params.type }}, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+
+dynamicLayout:
+  yaxis2:
+    autorange: true
+    rangemode: "tozero"
+    showgrid: false
+    side: "right"
+    overlaying: "y"
+    title:
+      text: "Probes per Day"

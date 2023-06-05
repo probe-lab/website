@@ -138,7 +138,7 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.website }})"
+    text: "({{ .Params.website }})"
     x: 1
     xanchor: "right"
     y: 0.01

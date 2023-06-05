@@ -1,5 +1,5 @@
 # ----------------< OK
-#- source: ./plotdefs-website/website-performance-gauge.yaml
+#- source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
 #  variants:
 #    - type: KUBO
@@ -10,8 +10,9 @@
 #      website: docs.libp2p.io
 #    - type: KUBO
 #      website: drand.love
-#
-- source: ./plotdefs-website/website-providers.yaml
+
+# ----------------< OK
+- source: ./plotdefs-website/website-trend-providers.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
   variants:
     - website: protocol.ai
@@ -19,6 +20,27 @@
     - website: docs.libp2p.io
     - website: drand.love
 
+# ----------------< OK
+#- source: ./plotdefs-website/website-trend-metrics.yaml
+#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+#  variants:
+#    - website: protocol.ai
+#    - website: filecoin.io
+#    - website: docs.libp2p.io
+#    - website: drand.love
+
+# ----------------< OK
+#- source: ./plotdefs-website/website-trend-retrieval-errors.yaml
+#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+#  variants:
+#    - website: protocol.ai
+#      type: KUBO
+#    - website: filecoin.io
+#      type: KUBO
+#    - website: docs.libp2p.io
+#      type: KUBO
+#    - website: drand.love
+#      type: KUBO
 
 #- source: ./plotdefs-website/website-metric-good-rating.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
@@ -42,7 +64,7 @@
 #    - metric: ttfb
 #      type: KUBO
 
-#- source: ./plotdefs-website/web-vitals-probes-count.yaml
+#- source: ./plotdefs-website/website-snapshot-probes-count.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
 #  variants:
 #    - website: protocol.ai
@@ -50,7 +72,7 @@
 #    - website: docs.libp2p.io
 #    - website: drand.love
 #
-#- source: ./plotdefs-website/web-vitals-barchart.yaml
+#- source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
 #  variants:
 #    - website: protocol.ai
@@ -66,7 +88,7 @@
 #      type: KUBO
 #      region: eu-central-1
 #
-#- source: ./plotdefs-website/website-retrieval-errors.yaml
+#- source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
 #  variants:
 #    - website: protocol.ai
@@ -74,7 +96,7 @@
 #    - website: docs.libp2p.io
 #    - website: drand.love
 
-#- source: ./plotdefs-website/website-metric-cdf.yaml
+#- source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
 #  variants:
 #    - website: protocol.ai
@@ -114,7 +136,7 @@
 #      type: KUBO
 #      metric: lcp
 #
-#- source: ./plotdefs-website/website-http-ratio.yaml
+#- source: ./plotdefs-website/website-snapshot-http-ratio.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
 #  variants:
 #    - website: protocol.ai
@@ -126,7 +148,7 @@
 #    - website: drand.love
 #      metric: ttfb
 #
-#- source: ./plotdefs-website/web-vitals-heatmap.yaml
+#- source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
 #  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
 #  variants:
 #    - type: KUBO
