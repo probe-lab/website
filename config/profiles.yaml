@@ -1,17 +1,23 @@
-# ----------------< OK
-#- source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
-#  variants:
-#    - type: KUBO
-#      website: protocol.ai
-#    - type: KUBO
-#      website: filecoin.io
-#    - type: KUBO
-#      website: docs.libp2p.io
-#    - type: KUBO
-#      website: drand.love
+- source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+  variants:
+    - type: KUBO
+      website: protocol.ai
+    - type: KUBO
+      website: filecoin.io
+    - type: KUBO
+      website: docs.libp2p.io
+    - type: KUBO
+      website: drand.love
 
-# ----------------< OK
+- source: ./plotdefs-website/website-trend-metrics.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  variants:
+    - website: protocol.ai
+    - website: filecoin.io
+    - website: docs.libp2p.io
+    - website: drand.love
+
 - source: ./plotdefs-website/website-trend-providers.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
   variants:
@@ -20,172 +26,130 @@
     - website: docs.libp2p.io
     - website: drand.love
 
-# ----------------< OK
-#- source: ./plotdefs-website/website-trend-metrics.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
-#  variants:
-#    - website: protocol.ai
-#    - website: filecoin.io
-#    - website: docs.libp2p.io
-#    - website: drand.love
+- source: ./plotdefs-website/website-trend-retrieval-errors.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+  variants:
+    - website: protocol.ai
+      type: KUBO
+    - website: filecoin.io
+      type: KUBO
+    - website: docs.libp2p.io
+      type: KUBO
+    - website: drand.love
+      type: KUBO
 
-# ----------------< OK
-#- source: ./plotdefs-website/website-trend-retrieval-errors.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
-#  variants:
-#    - website: protocol.ai
-#      type: KUBO
-#    - website: filecoin.io
-#      type: KUBO
-#    - website: docs.libp2p.io
-#      type: KUBO
-#    - website: drand.love
-#      type: KUBO
+- source: ./plotdefs-website/website-snapshot-probes-count.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  variants:
+    - website: protocol.ai
+    - website: filecoin.io
+    - website: docs.libp2p.io
+    - website: drand.love
 
-#- source: ./plotdefs-website/website-metric-good-rating.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
-#  variants:
-#    - metric: ttfb
-#      type: KUBO
-#      website: protocol.ai
-#    - metric: ttfb
-#      type: KUBO
-#      website: filecoin.io
-#    - metric: ttfb
-#      type: KUBO
-#      website: docs.libp2p.io
-#    - metric: ttfb
-#      type: KUBO
-#      website: drand.love
+- source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
+  variants:
+    - website: protocol.ai
+      type: KUBO
+      region: eu-central-1
+    - website: filecoin.io
+      type: KUBO
+      region: eu-central-1
+    - website: docs.libp2p.io
+      type: KUBO
+      region: eu-central-1
+    - website: drand.love
+      type: KUBO
+      region: eu-central-1
 
-#- source: ./plotdefs-website/websites-overall-latency.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}.json"
-#  variants:
-#    - metric: ttfb
-#      type: KUBO
+- source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  variants:
+    - website: protocol.ai
+    - website: filecoin.io
+    - website: docs.libp2p.io
+    - website: drand.love
 
-#- source: ./plotdefs-website/website-snapshot-probes-count.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
-#  variants:
-#    - website: protocol.ai
-#    - website: filecoin.io
-#    - website: docs.libp2p.io
-#    - website: drand.love
-#
-#- source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
-#  variants:
-#    - website: protocol.ai
-#      type: KUBO
-#      region: eu-central-1
-#    - website: filecoin.io
-#      type: KUBO
-#      region: eu-central-1
-#    - website: docs.libp2p.io
-#      type: KUBO
-#      region: eu-central-1
-#    - website: drand.love
-#      type: KUBO
-#      region: eu-central-1
-#
-#- source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
-#  variants:
-#    - website: protocol.ai
-#    - website: filecoin.io
-#    - website: docs.libp2p.io
-#    - website: drand.love
+- source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
+  variants:
+    - website: protocol.ai
+      type: KUBO
+      metric: ttfb
+    - website: protocol.ai
+      type: KUBO
+      metric: fcp
+    - website: protocol.ai
+      type: KUBO
+      metric: lcp
+    - website: filecoin.io
+      type: KUBO
+      metric: ttfb
+    - website: filecoin.io
+      type: KUBO
+      metric: fcp
+    - website: filecoin.io
+      type: KUBO
+      metric: lcp
+    - website: docs.libp2p.io
+      type: KUBO
+      metric: ttfb
+    - website: docs.libp2p.io
+      type: KUBO
+      metric: fcp
+    - website: docs.libp2p.io
+      type: KUBO
+      metric: lcp
+    - website: drand.love
+      type: KUBO
+      metric: ttfb
+    - website: drand.love
+      type: KUBO
+      metric: fcp
+    - website: drand.love
+      type: KUBO
+      metric: lcp
 
-#- source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
-#  variants:
-#    - website: protocol.ai
-#      type: KUBO
-#      metric: ttfb
-#    - website: protocol.ai
-#      type: KUBO
-#      metric: fcp
-#    - website: protocol.ai
-#      type: KUBO
-#      metric: lcp
-#    - website: filecoin.io
-#      type: KUBO
-#      metric: ttfb
-#    - website: filecoin.io
-#      type: KUBO
-#      metric: fcp
-#    - website: filecoin.io
-#      type: KUBO
-#      metric: lcp
-#    - website: docs.libp2p.io
-#      type: KUBO
-#      metric: ttfb
-#    - website: docs.libp2p.io
-#      type: KUBO
-#      metric: fcp
-#    - website: docs.libp2p.io
-#      type: KUBO
-#      metric: lcp
-#    - website: drand.love
-#      type: KUBO
-#      metric: ttfb
-#    - website: drand.love
-#      type: KUBO
-#      metric: fcp
-#    - website: drand.love
-#      type: KUBO
-#      metric: lcp
-#
-#- source: ./plotdefs-website/website-snapshot-http-ratio.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
-#  variants:
-#    - website: protocol.ai
-#      metric: ttfb
-#    - website: filecoin.io
-#      metric: ttfb
-#    - website: docs.libp2p.io
-#      metric: ttfb
-#    - website: drand.love
-#      metric: ttfb
-#
-#- source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
-#  variants:
-#    - type: KUBO
-#      percentile: 50
-#      metric: ttfb
-#    - type: KUBO
-#      percentile: 90
-#      metric: ttfb
-#    - type: KUBO
-#      percentile: 99
-#      metric: ttfb
-#    - type: KUBO
-#      percentile: 50
-#      metric: fcp
-#    - type: KUBO
-#      percentile: 90
-#      metric: fcp
-#    - type: KUBO
-#      percentile: 99
-#      metric: fcp
-#    - type: KUBO
-#      percentile: 50
-#      metric: lcp
-#    - type: KUBO
-#      percentile: 90
-#      metric: lcp
-#    - type: KUBO
-#      percentile: 99
-#      metric: lcp
-#
-#
-#- source: ./plotdefs-website/websites-http-comparison.yaml
-#  output: "{{.PlotDefFilename}}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
-#  variants:
-#    - percentile: 90
-#      metric: ttfb
-#
-#- source: ./plotdefs
-#  output: '{{.PlotDefFilename}}.json'
-#
+- source: ./plotdefs-website/website-snapshot-http-ratio.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.metric }}.json"
+  variants:
+    - website: protocol.ai
+      metric: ttfb
+    - website: filecoin.io
+      metric: ttfb
+    - website: docs.libp2p.io
+      metric: ttfb
+    - website: drand.love
+      metric: ttfb
+
+- source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
+  variants:
+    - type: KUBO
+      percentile: 50
+      metric: ttfb
+    - type: KUBO
+      percentile: 90
+      metric: ttfb
+    - type: KUBO
+      percentile: 50
+      metric: fcp
+    - type: KUBO
+      percentile: 90
+      metric: fcp
+    - type: KUBO
+      percentile: 50
+      metric: lcp
+    - type: KUBO
+      percentile: 90
+      metric: lcp
+
+- source: ./plotdefs-website/websites-http-comparison.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
+  variants:
+    - percentile: 90
+      metric: ttfb
+
+- source: ./plotdefs
+  output: '{{.PlotDefFilename}}.json'
+

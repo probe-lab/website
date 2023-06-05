@@ -106,9 +106,9 @@ To provide context and aid interpretation, the graphs incorporate shaded backgro
 
 {{< plotly json="../../plots/latest/website-snapshot-metric-cdf-protocol.ai-KUBO-lcp.json" height="320px" >}}
 
-### Kubo vs HTTP Latency Comparison (TTFB) {#website-snapshot-http-ratio-protocolai}
+### Kubo vs HTTP Latency Comparison (TTFB) {#website-snapshot-http-ratio-protocolai-ttfb}
 
-{{< plotly json="../../plots/latest/website-snapshot-http-ratio-protocol.ai.json" height="500px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-http-ratio-protocol.ai-ttfb.json" height="500px" >}}
 
 We calculated different percentiles for the Time To First Byte (TTFB) metric in different regions for website requests that were done via Kubo and via plain HTTP. Then we divided the values of Kubo by the ones from HTTP. A resulting number greater than `1` means that Kubo was slower than HTTP in that region for that percentile. Conversely, a number less than `1` means that Kubo was faster.
 

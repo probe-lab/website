@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "name": "Kubo",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        1.9234499999999999,
+        1.40744,
+        1.5151400000000002,
+        0.48495,
+        1.4296,
+        0.55189,
+        0.61416
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "orange"
+      },
+      "name": "HTTP",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        1.69128,
+        1.04754,
+        0.8657,
+        0.60844,
+        1.29938,
+        0.79436,
+        0.67092
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "legend": {
+      "orientation": "h",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 1.05
+    },
+    "margin": {
+      "b": 60,
+      "l": 50,
+      "pad": 1,
+      "r": 20,
+      "t": 5
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 29 May 2023 - 4 Jun 2023 (p90, ttfb)",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "xaxis": {
+      "title": {
+        "standoff": 10,
+        "text": "AWS Region"
+      }
+    },
+    "yaxis": {
+      "autorange": true,
+      "rangemode": "tozero",
+      "title": {
+        "text": "Time To First Byte in s"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}

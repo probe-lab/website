@@ -7,9 +7,9 @@ weight: 40
 
 # Websites
 
-## Overall Time To First Byte {#websites-overall-latency-kubo-ttfb}
+## Overall Time To First Byte {#websites-ttfb-latencies}
 
-{{< plotly json="../../plots/latest/websites-overall-latency-KUBO-ttfb.json" height="300px" >}}
+{{< plotly json="../../plots/latest/websites-ttfb-latencies.json" height="300px" >}}
 
 The graph presents the Time to First Byte (TTFB) metric, which measures the
 duration between the initiation of a request and the receipt of the first byte.
@@ -51,12 +51,6 @@ protocol in different geographic areas.
 
 {{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-ttfb-p90.json" height="700px" >}}
 
-[//]: # ()
-[//]: # (### &#40;99th percentile&#41; {#websites-web-vitals-heatmap-KUBO-ttfb-p99})
-
-[//]: # ()
-[//]: # ({{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-ttfb-p99.json" height="700px" >}})
-
 ## First Contentful Paint using Kubo
 
 ### (50th percentile) {#websites-web-vitals-heatmap-KUBO-fcp-p50}
@@ -67,12 +61,6 @@ protocol in different geographic areas.
 
 {{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-fcp-p90.json" height="700px" >}}
 
-[//]: # ()
-[//]: # (### &#40;99th percentile&#41; {#websites-web-vitals-heatmap-KUBO-fcp-p99})
-
-[//]: # ()
-[//]: # ({{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-fcp-p99.json" height="700px" >}})
-
 ## Largest Contentful Paint using Kubo
 
 ### (50th percentile) {#websites-web-vitals-heatmap-KUBO-lcp-p50}
@@ -82,9 +70,3 @@ protocol in different geographic areas.
 ### (90th percentile) {#websites-web-vitals-heatmap-KUBO-lcp-p90}
 
 {{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-lcp-p90.json" height="700px" >}}
-
-[//]: # ()
-[//]: # (### &#40;99th percentile&#41; {#websites-web-vitals-heatmap-KUBO-lcp-p99})
-
-[//]: # ()
-[//]: # ({{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-lcp-p99.json" height="700px" >}})

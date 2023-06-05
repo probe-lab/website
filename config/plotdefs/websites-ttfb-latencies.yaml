@@ -44,10 +44,6 @@ layout:
     title:
       text: "Date"
       standoff: 1
-    rangeslider:
-      visible: true
-      type: linear
-      autorange: true
   yaxis:
     autorange: true
     rangemode: "tozero"
