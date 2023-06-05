@@ -1,0 +1,156 @@
+frequency: daily
+datasets:
+  - name: "stable_providers"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', p.created_at) date,
+              *
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+      )
+      select
+          cte.date,
+          count (distinct cte.peer_id)
+      from cte
+          where cte.error is null
+            and not exists (
+            select
+            from cte inner_cte
+            where inner_cte.date = cte.date
+              and inner_cte.peer_id = cte.peer_id
+              and inner_cte.is_relayed
+        )
+      group by cte.date
+  - name: "relayed_providers"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', p.created_at) date,
+              *
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+      )
+      select
+          cte.date,
+          count (distinct cte.peer_id)
+      from cte
+          where cte.error is null and cte.is_relayed
+      group by cte.date
+
+  - name: "unreachable_providers"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', p.created_at) date,
+              *
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+      )
+      select
+          cte.date,
+          count (distinct cte.peer_id) count
+      from cte
+          where not exists (
+              select
+              from cte inner_cte
+                where inner_cte.date = cte.date
+                  and inner_cte.peer_id = cte.peer_id
+                  and inner_cte.error is null
+          )
+          and cte.error is not null
+      group by cte.date
+  - name: "deployments"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              p.created_at,
+              p.path,
+              lag(p.path) over (order by p.created_at),
+              case
+                  when lag(p.path) over (order by p.created_at) != p.path then p.path
+              end deployment_path
+          from providers p
+          where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+            and p.created_at < {{ .StartOfDay | timestamptz }}
+            and p.website = '{{ .Params.website }}'
+          order by p.created_at
+      )
+      select
+          date_trunc('day', cte.created_at) date,
+          count(distinct cte.deployment_path) count
+      from cte
+      group by date_trunc('day', cte.created_at)
+      order by 1
+
+series:
+  - type: "bar"
+    name: "Unreachable"
+    dataset: "unreachable_providers"
+    labels: "date"
+    values: "count"
+  - type: "bar"
+    name: "Reachable Relayed"
+    dataset: "relayed_providers"
+    labels: "date"
+    values: "count"
+  - type: "bar"
+    name: "Reachable Non-Relayed"
+    dataset: "stable_providers"
+    labels: "date"
+    values: "count"
+  - type: "scatter"
+    name: "Deployments"
+    dataset: "deployments"
+    labels: "date"
+    values: "count"
+    color: "black"
+    yaxis: "y2"
+
+layout:
+  barmode: stack
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.05
+    xanchor: "left"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Number of Providers"
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 60
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "({{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+
+
+dynamicLayout:
+  yaxis2:
+    autorange: true
+    rangemode: "tozero"
+    showgrid: false
+    side: "right"
+    overlaying: "y"
+    title:
+      text: "Deployments / Day"
