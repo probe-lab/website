@@ -1,0 +1,56 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "parsec"
+    query: >
+      with cte as (
+          select
+              n.region,
+              r.*,
+              date_trunc('day', r.created_at) date,
+              row_number() over (partition by r.cid, n.region order by r.created_at) request_number
+          from retrievals_ecs r
+              inner join nodes_ecs n on r.node_id = n.id
+          where n.fleet = '{{ .Params.ipni }}' and r.error is null
+      )
+      select
+          cte.date,
+          cte.region,
+          percentile_cont(0.{{ .Params.percentile }}) within group (order by cte.duration) percentile
+      from cte
+      where request_number = 1
+      group by cte.date, cte.region
+
+series:
+  - type: "line"
+    dataset: "current"
+    labels: "date"
+    values: "percentile"
+    groupfield: "region"
+    groupvalue: "*"
+
+layout:
+  xaxis:
+    title:
+      text: "Date"
+      standoff: 1
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Latency in s"
+  margin:
+    pad: 1
+    t: 30
+    l: 50
+    r: 20
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "All available data (KUBO, ttfb)"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+
