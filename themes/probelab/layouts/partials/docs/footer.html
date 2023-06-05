@@ -20,6 +20,10 @@
   </div>
 {{ end }}
 
+<footer class="colophon">
+Last published on {{ now.Format "2 Jan, 2006 at 3:04pm" }}
+</footer>
+
 </div>
 
 {{ $script := resources.Get "clipboard.js" | resources.Minify }}

@@ -1,8 +1,8 @@
 ---
 title: IPFS Websites
-weight: 30
 bookCollapseSection: true
 plotly: true
+weight: 40
 ---
 
 # Websites
