@@ -1,0 +1,78 @@
+frequency: daily
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', m.created_at) date,
+              extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where m.ttfb is not null )) p90_ttfb,
+              extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where m.fcp is not null )) p90_fcp,
+              extract('epoch' from percentile_disc(0.9) within group ( order by m.lcp ) filter ( where m.lcp is not null )) p90_lcp,
+              extract('epoch' from percentile_disc(0.9) within group ( order by m.cls ) filter ( where m.cls is not null )) p90_cls,
+              extract('epoch' from percentile_disc(0.9) within group ( order by m.tti ) filter ( where m.tti is not null )) p90_tti
+          from measurements m
+              inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfDay | timestamptz }} - '30 days'::interval
+            and m.created_at < {{ .StartOfDay | timestamptz }}
+            and m.website = '{{ .Params.website }}'
+            and m.type = 'KUBO'
+          group by date_trunc('day', m.created_at)
+      )
+      select
+          cte.date,
+          case when count(cte.p90_ttfb) over w = 3 then avg(cte.p90_ttfb) over w end AS p90_ttfb_rolling,
+          case when count(cte.p90_fcp) over w = 3 then avg(cte.p90_fcp) over w end AS p90_fcp_rolling,
+          case when count(cte.p90_lcp) over w = 3 then avg(cte.p90_lcp) over w end AS p90_lcp_rolling,
+          case when count(cte.p90_cls) over w = 3 then avg(cte.p90_cls) over w end AS p90_cls_rolling,
+          case when count(cte.p90_tti) over w = 3 then avg(cte.p90_tti) over w end AS p90_tti_rolling
+      from cte
+      window w as ( order by cte.date rows between 2 preceding and current row )
+
+series:
+  - type: "line"
+    name: "TTFB"
+    dataset: "current"
+    labels: "date"
+    values: "p90_ttfb_rolling"
+  - type: "line"
+    name: "FCP"
+    dataset: "current"
+    labels: "date"
+    values: "p90_fcp_rolling"
+  - type: "line"
+    name: "LCP"
+    dataset: "current"
+    labels: "date"
+    values: "p90_lcp_rolling"
+  - type: "line"
+    name: "CLS"
+    dataset: "current"
+    labels: "date"
+    values: "p90_cls_rolling"
+  - type: "line"
+    name: "TTI"
+    dataset: "current"
+    labels: "date"
+    values: "p90_tti_rolling"
+
+layout:
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Time in s"
+  margin:
+    pad: 1
+    t: 30
+    l: 50
+    r: 60
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "(p90, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"

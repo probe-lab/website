@@ -1,0 +1,155 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      WITH cdf AS (
+          select
+              r.region,
+              m.{{ .Params.metric }},
+              cume_dist() over (partition by r.region order by m.{{ .Params.metric }}) as cumedist
+          from measurements m inner join runs r on r.id = m.run_id
+          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfWeek | timestamptz }}
+            and m.website = '{{ .Params.website }}'
+            and m.type = '{{ .Params.type }}'
+            and m.{{ .Params.metric }} is not null
+      )
+      select
+        cdf.region as region,
+        round(cast(extract('epoch' from cdf.{{ .Params.metric }}) as numeric),4) as dur,
+        max(cdf.cumedist) as fraction
+      from cdf
+      group by region, dur
+      having max(cdf.cumedist) <= 0.999
+      order by dur;
+
+series:
+  - type: "line"
+    name: ""
+    dataset: "current"
+    labels: "dur"
+    values: "fraction"
+    groupfield: "region"
+    groupvalue: "*"
+
+#  {{ $xrange_max := 0 }}
+# {{ if eq .Params.metric "ttfb" }}
+#   {{ $xrange_max = 2 }}
+# {{ else if eq .Params.metric "cls" }}
+#   {{ $xrange_max = 0.1 }}
+# {{ else if eq .Params.metric "fcp" }}
+#   {{ $xrange_max = 4 }}
+# {{ else if eq .Params.metric "tti" }}
+#   {{ $xrange_max = 3.8 }}
+# {{ else if eq .Params.metric "lcp" }}
+#   {{ $xrange_max = 20 }}
+# {{ end }}
+layout:
+  margin:
+    pad: 1
+    t: 30
+    l: 50
+    r: 70
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.type }}, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+  xaxis:
+    type: "linear"
+    range: [0, {{ $xrange_max }}]
+    rangemode: "tozero"
+    showspikes: true
+    spikedash: "dot"
+    spikethickness: 1
+    title:
+      text: "Latency in s"
+      standoff: 10
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    showspikes: true
+    spikedash: "dot"
+    spikethickness: 1
+    title:
+      text: "Cumulative Fraction"
+
+#  {{ $good_threshold := 0 }}
+# {{ if eq .Params.metric "ttfb" }}
+#   {{ $good_threshold = 0.8 }}
+# {{ else if eq .Params.metric "cls" }}
+#   {{ $good_threshold = 0.1 }}
+# {{ else if eq .Params.metric "fcp" }}
+#   {{ $good_threshold = 1.8 }}
+# {{ else if eq .Params.metric "tti" }}
+#   {{ $good_threshold = 3.8 }}
+# {{ else if eq .Params.metric "lcp" }}
+#   {{ $good_threshold = 2.5 }}
+# {{ end }}
+#
+#
+#  {{ $poor_threshold := 0 }}
+# {{ if eq .Params.metric "ttfb" }}
+#   {{ $poor_threshold = 1.8 }}
+# {{ else if eq .Params.metric "cls" }}
+#   {{ $poor_threshold = 0.25 }}
+# {{ else if eq .Params.metric "fcp" }}
+#   {{ $poor_threshold = 3.0 }}
+# {{ else if eq .Params.metric "tti" }}
+#   {{ $poor_threshold = 7.3 }}
+# {{ else if eq .Params.metric "lcp" }}
+#   {{ $poor_threshold = 4.0 }}
+# {{ end }}
+#
+#  {{ $poor_xmax := 0 }}
+# {{ if eq .Params.metric "ttfb" }}
+#   {{ $poor_xmax = 10 }}
+# {{ else if eq .Params.metric "cls" }}
+#   {{ $poor_xmax = 5 }}
+# {{ else if eq .Params.metric "fcp" }}
+#   {{ $poor_xmax = 10 }}
+# {{ else if eq .Params.metric "tti" }}
+#   {{ $poor_xmax = 30 }}
+# {{ else if eq .Params.metric "lcp" }}
+#   {{ $poor_xmax = 25 }}
+# {{ end }}
+
+  shapes:
+    - type: "rect"
+      xref: "x"
+      yref: "paper"
+      x0: 0
+      x1: {{ $good_threshold }}
+      y0: 0
+      y1: 1
+      fillcolor: "green"
+      opacity: 0.05
+      line:
+        width: 0
+    - type: "rect"
+      xref: "x"
+      yref: "paper"
+      x0: {{ $good_threshold }}
+      x1: {{ $poor_threshold }}
+      y0: 0
+      y1: 1
+      fillcolor: "yellow"
+      opacity: 0.05
+      line:
+        width: 0
+    - type: "rect"
+      xref: "x"
+      yref: "paper"
+      x0: {{ $poor_threshold }}
+      x1: {{ $poor_xmax }}
+      y0: 0
+      y1: 1
+      fillcolor: "red"
+      opacity: 0.05
+      line:
+        width: 0

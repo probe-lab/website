@@ -1,0 +1,66 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: |
+      with cte as (
+          select
+              date_trunc('day', m.created_at) date,
+              percentile_cont(0.5)  within group (order by m.ttfb) p50,
+              percentile_cont(0.9)  within group (order by m.ttfb) p90
+          from measurements m
+          where m.type = 'KUBO'
+            and m.created_at >= '2023-03-23'::timestamptz -- earliest date
+          group by date_trunc('day', m.created_at)
+      )
+      select
+          cte.date,
+          cte.p50,
+          cte.p90,
+          case when count(cte.p50) over w = 3 then avg(cte.p50) over w end AS p50_rolling,
+          case when count(cte.p90) over w = 3 then avg(cte.p90) over w end AS p90_rolling
+      from cte
+      window w as ( order by cte.date rows between 2 preceding and current row );
+
+series:
+  - type: "line"
+    name: "50th Percentile"
+    dataset: "current"
+    labels: "date"
+    values: "p50_rolling"
+  - type: "line"
+    name: "90th Percentile"
+    dataset: "current"
+    labels: "date"
+    values: "p90_rolling"
+
+layout:
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.1
+    xanchor: "left"
+  xaxis:
+    title:
+      text: "Date"
+      standoff: 1
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Latency in s"
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 20
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "All available data (KUBO, ttfb)"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+

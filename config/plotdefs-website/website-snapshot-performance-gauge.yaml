@@ -1,0 +1,216 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      select
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'eu-central-1' and m.ttfb is not null )) p90_ttfb_eu_central_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'us-east-2' and m.ttfb is not null )) p90_ttfb_us_east_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'us-west-1' and m.ttfb is not null )) p90_ttfb_us_west_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'ap-south-1' and m.ttfb is not null )) p90_ttfb_ap_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'ap-southeast-2' and m.ttfb is not null )) p90_ttfb_ap_southeast_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'af-south-1' and m.ttfb is not null )) p90_ttfb_af_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'sa-east-1' and m.ttfb is not null )) p90_ttfb_sa_east_1,
+          
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'eu-central-1' and m.fcp is not null )) p90_fcp_eu_central_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'us-east-2' and m.fcp is not null )) p90_fcp_us_east_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'us-west-1' and m.fcp is not null )) p90_fcp_us_west_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'ap-south-1' and m.fcp is not null )) p90_fcp_ap_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'ap-southeast-2' and m.fcp is not null )) p90_fcp_ap_southeast_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'af-south-1' and m.fcp is not null )) p90_fcp_af_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'sa-east-1' and m.fcp is not null )) p90_fcp_sa_east_1
+      from measurements m inner join runs r on r.id = m.run_id
+      where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+        and m.created_at < {{ .StartOfWeek | timestamptz }}
+        and m.website = '{{ .Params.website }}'
+        and m.type = '{{ .Params.type }}'
+  - name: "previous"
+    source: "tiros"
+    query: >
+      select
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'eu-central-1' and m.ttfb is not null )) p90_ttfb_eu_central_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'us-east-2' and m.ttfb is not null )) p90_ttfb_us_east_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'us-west-1' and m.ttfb is not null )) p90_ttfb_us_west_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'ap-south-1' and m.ttfb is not null )) p90_ttfb_ap_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'ap-southeast-2' and m.ttfb is not null )) p90_ttfb_ap_southeast_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'af-south-1' and m.ttfb is not null )) p90_ttfb_af_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.ttfb ) filter ( where r.region = 'sa-east-1' and m.ttfb is not null )) p90_ttfb_sa_east_1,
+      
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'eu-central-1' and m.fcp is not null )) p90_fcp_eu_central_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'us-east-2' and m.fcp is not null )) p90_fcp_us_east_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'us-west-1' and m.fcp is not null )) p90_fcp_us_west_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'ap-south-1' and m.fcp is not null )) p90_fcp_ap_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'ap-southeast-2' and m.fcp is not null )) p90_fcp_ap_southeast_2,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'af-south-1' and m.fcp is not null )) p90_fcp_af_south_1,
+          extract('epoch' from percentile_disc(0.9) within group ( order by m.fcp ) filter ( where r.region = 'sa-east-1' and m.fcp is not null )) p90_fcp_sa_east_1
+      from measurements m inner join runs r on r.id = m.run_id
+      where m.created_at >= {{ .StartOfPreviousWeek | timestamptz }} - '1 week'::interval
+        and m.created_at < {{ .StartOfPreviousWeek | timestamptz }}
+        and m.website = '{{ .Params.website }}'
+        and m.type = '{{ .Params.type }}'
+        and m.ttfb is not null
+
+ttfbScalar: &ttfbScalar
+  type: "gauge"
+  name: "Time To First Byte"
+  dataset: "current"
+  valueSuffix: "s"
+  deltaDataset: "previous"
+  deltaType: "relative"
+  increaseColor: deltaworse
+  decreaseColor: deltabetter
+  domain: { row: 0, column: 0}
+  gauge:
+    axis:
+      range: [ null, 2.6 ]
+    bar:
+      color: "darkblue"
+    steps:
+      - range: [ 0.0, 0.8 ]
+        color: "#79de79"
+      - range: [ 0.8, 1.8 ]
+        color: "#fcfc99"
+      - range: [ 1.8, 2.6 ]
+        color: "#fb6962"
+
+fcpScalar: &fcpScalar
+  type: "gauge"
+  name: "First Contentful Paint"
+  dataset: "current"
+  valueSuffix: "s"
+  deltaDataset: "previous"
+  deltaType: "relative"
+  increaseColor: deltaworse
+  decreaseColor: deltabetter
+  domain: { row: 0, column: 1}
+  gauge:
+    axis:
+      range: [ null, 4.8 ]
+    bar:
+      color: "darkblue"
+    steps:
+      - range: [ 0.0, 1.8 ]
+        color: "#79de79"
+      - range: [ 1.8, 3.0 ]
+        color: "#fcfc99"
+      - range: [ 3.0, 4.8 ]
+        color: "#fb6962"
+
+scalars:
+  - <<: *ttfbScalar
+    value: "p90_ttfb_eu_central_1"
+    deltaValue: "p90_ttfb_eu_central_1"
+  - <<: *fcpScalar
+    value: "p90_fcp_eu_central_1"
+    deltaValue: "p90_fcp_eu_central_1"
+
+  - <<: *ttfbScalar
+    value: "p90_ttfb_us_east_2"
+    deltaValue: "p90_ttfb_us_east_2"
+    visible: false
+  - <<: *fcpScalar
+    value: "p90_fcp_us_east_2"
+    deltaValue: "p90_fcp_us_east_2"
+    visible: false
+
+  - <<: *ttfbScalar
+    value: "p90_ttfb_us_west_1"
+    deltaValue: "p90_ttfb_us_west_1"
+    visible: false
+  - <<: *fcpScalar
+    value: "p90_fcp_us_west_1"
+    deltaValue: "p90_fcp_us_west_1"
+    visible: false
+
+  - <<: *ttfbScalar
+    value: "p90_ttfb_ap_south_1"
+    deltaValue: "p90_ttfb_ap_south_1"
+    visible: false
+  - <<: *fcpScalar
+    value: "p90_fcp_ap_south_1"
+    deltaValue: "p90_fcp_ap_south_1"
+    visible: false
+
+  - <<: *ttfbScalar
+    value: "p90_ttfb_ap_southeast_2"
+    deltaValue: "p90_ttfb_ap_southeast_2"
+    visible: false
+  - <<: *fcpScalar
+    value: "p90_fcp_ap_southeast_2"
+    deltaValue: "p90_fcp_ap_southeast_2"
+    visible: false
+
+  - <<: *ttfbScalar
+    value: "p90_ttfb_af_south_1"
+    deltaValue: "p90_ttfb_af_south_1"
+    visible: false
+  - <<: *fcpScalar
+    value: "p90_fcp_af_south_1"
+    deltaValue: "p90_fcp_af_south_1"
+    visible: false
+
+  - <<: *ttfbScalar
+    value: "p90_ttfb_sa_east_1"
+    deltaValue: "p90_ttfb_sa_east_1"
+    visible: false
+  - <<: *fcpScalar
+    value: "p90_fcp_sa_east_1"
+    deltaValue: "p90_fcp_sa_east_1"
+    visible: false
+
+layout:
+  grid: { rows: 1, columns: 2, xgap: 0.3}
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p90, {{ .Params.type }}, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.103
+    yanchor: "top"
+  margin:
+    l: 10
+    r: 30
+    b: 60
+    t: 60
+  annotations:
+    - text: "Region"
+      x: -0.05
+      y: -0.07
+      align: "left"
+      yanchor: "bottom"
+      yref: "container"
+      showarrow: false
+  updatemenus:
+    - type: "dropdown"
+      y: -0.1
+      x: -0.05
+      title:
+        text: "Region"
+      xanchor: "left"
+      yanchor: "top"
+      direction: up
+      font:
+        size: 10
+      buttons:
+        - label: "eu-central-1"
+          args: ["visible", [true, true, false, false, false, false, false, false, false, false, false, false, false, false]]
+          method: "restyle"
+        - label: "us-east-2"
+          args: ["visible", [false, false, true, true, false, false, false, false, false, false, false, false, false, false]]
+          method: "restyle"
+        - label: "us-west-1"
+          args: ["visible", [false, false, false, false, true, true, false, false, false, false, false, false, false, false]]
+          method: "restyle"
+        - label: "ap-south-1"
+          args: ["visible", [false, false, false, false, false, false, true, true, false, false, false, false, false, false]]
+          method: "restyle"
+        - label: "ap-southeast-2"
+          args: ["visible", [false, false, false, false, false, false, false, false, true, true, false, false, false, false]]
+          method: "restyle"
+        - label: "af-south-1"
+          args: ["visible", [false, false, false, false, false, false, false, false, false, false, true, true, false, false]]
+          method: "restyle"
+        - label: "sa-east-1"
+          args: ["visible", [false, false, false, false, false, false, false, false, false, false, false, false, true, true]]
+          method: "restyle"

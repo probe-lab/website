@@ -1,0 +1,89 @@
+frequency: daily
+datasets:
+  - name: "this"
+    source: "tiros"
+    query: >
+      with cte as (
+        select
+            date_trunc('day', m.created_at) date,
+            100 * (count(case when m.{{ .Params.metric }}_rating = 'GOOD' then 1 end)/count(*)::float) good_percentage
+        from measurements m inner join runs r on r.id = m.run_id
+        where m.created_at >= '2023-03-23'::timestamptz -- earliest date possible
+          and m.website = '{{ .Params.website }}'
+          and m.type = '{{ .Params.type }}'
+          and m.{{ .Params.metric }} is not null
+        group by date_trunc('day', m.created_at)
+        order by date
+      )
+      select
+          cte.date,
+          cte.good_percentage,
+          case when count(good_percentage) over w = 3 then avg(good_percentage) over w end AS good_percentage_rolling
+      from cte
+      window w as ( order by cte.date rows between 2 preceding and current row );
+  - name: "other"
+    source: "tiros"
+    query: >
+      with cte as (
+        select
+            date_trunc('day', m.created_at) date,
+            100 * (count(case when m.{{ .Params.metric }}_rating = 'GOOD' then 1 end)/count(*)::float) good_percentage
+        from measurements m inner join runs r on r.id = m.run_id
+        where m.created_at >= '2023-03-23'::timestamptz
+          and m.website != '{{ .Params.website }}'
+          and m.type = '{{ .Params.type }}'
+          and m.{{ .Params.metric }} is not null
+        group by date_trunc('day', m.created_at), m.website
+      ), avg as (
+        select cte.date, avg(cte.good_percentage) good_percentage
+        from cte
+        group by cte.date
+        order by cte.date
+      )
+      select
+          avg.date,
+          avg.good_percentage,
+          case when count(good_percentage) over w = 3 then avg(good_percentage) over w end AS good_percentage_rolling
+      from avg
+      window w as ( order by avg.date rows between 2 preceding and current row );
+
+series:
+  - type: "line"
+    name: "Websites Average"
+    dataset: "other"
+    labels: "date"
+    values: "good_percentage_rolling"
+    color: "lightgray"
+  - type: "line"
+    name: "{{ .Params.website }}"
+    dataset: "this"
+    labels: "date"
+    values: "good_percentage_rolling"
+    color: "blue"
+
+layout:
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.1
+    xanchor: "left"
+  yaxis:
+    range: [0, 105]
+    rangemode: "tozero"
+
+    title:
+      text: "\"GOOD\" TTFB Performance in %"
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 20
+    b: 60
+  title:
+    font:
+      size: 10
+    text: "All available Data ({{ .Params.type }}, {{ .Params.metric }}, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"

@@ -1,0 +1,132 @@
+frequency: daily
+datasets:
+  - name: "current"
+    source: "tiros"
+    query: >
+      with cte as (
+          select
+              date_trunc('day', m.created_at) date,
+              r.region,
+              percentile_disc(0.5) within group ( order by m.ttfb ) p50,
+              percentile_disc(0.9) within group ( order by m.ttfb ) p90,
+              percentile_disc(0.99) within group ( order by m.ttfb ) p99
+          from measurements m inner join runs r on r.id = m.run_id
+          where m.created_at >= '2023-03-23'::timestamptz -- earliest date possible
+            and m.website = '{{ .Params.website }}'
+            and m.type = '{{ .Params.type }}'
+            and m.ttfb is not null
+          group by date_trunc('day', m.created_at), r.region
+          order by date
+      )
+      select
+          cte.date,
+          cte.region,
+          cte.p50,
+          cte.p90,
+          cte.p99,
+          case when count(cte.p50) over w = 3 then avg(cte.p50) over w end AS p50_rolling,
+          case when count(cte.p90) over w = 3 then avg(cte.p90) over w end AS p90_rolling,
+          case when count(cte.p99) over w = 3 then avg(cte.p99) over w end AS p99_rolling
+      from cte
+      window w as ( order by cte.region, cte.date rows between 2 preceding and current row )
+      order by cte.date, cte.region
+
+series:
+  - type: "line"
+    name: "p50"
+    dataset: "current"
+    labels: "date"
+    values: "p50_rolling"
+    groupfield: "region"
+    groupvalue: "*"
+    visible: true
+  - type: "line"
+    name: "p90"
+    dataset: "current"
+    labels: "date"
+    values: "p90_rolling"
+    groupfield: "region"
+    groupvalue: "*"
+    visible: false
+
+layout:
+  yaxis:
+    automargin: true
+    rangemode: "tozero"
+    range: [0, 2]
+    title:
+      text: "Time To First Byte in s"
+  title:
+    font:
+      size: 10
+    text: "All available Data ({{ .Params.type }}, ttfb, {{ .Params.website }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+  shapes:
+    - type: "rect"
+      layer: "below"
+      xref: "paper"
+      yref: "y"
+      x0: 0
+      x1: 1
+      y0: 0
+      y1: 0.8
+      fillcolor: "green"
+      opacity: 0.05
+      line:
+        width: 0
+    - type: "rect"
+      layer: "below"
+      xref: "paper"
+      yref: "y"
+      x0: 0
+      x1: 1
+      y0: 0.8
+      y1: 1.8
+      fillcolor: "yellow"
+      opacity: 0.05
+      line:
+        width: 0
+    - type: "rect"
+      layer: "below"
+      xref: "paper"
+      yref: "y"
+      x0: 0
+      x1: 1
+      y0: 1.8
+      y1: 5
+      fillcolor: "red"
+      opacity: 0.05
+      line:
+        width: 0
+  updatemenus:
+    - type: "dropdown"
+      y: 1.0
+      x: 0.01
+      xanchor: "left"
+      yanchor: "bottom"
+      buttons:
+        - label: "af-south-1"
+          args: ["visible", [true, false, false, false, false, false, false, true, false, false, false, false, false, false]]
+          method: "restyle"
+        - label: "ap-south-1"
+          args: ["visible", [false, true, false, false, false, false, false, false, true, false, false, false, false, false]]
+          method: "restyle"
+        - label: "ap-southeast-2"
+          args: ["visible", [false, false, true, false, false, false, false, false, false, true, false, false, false, false]]
+          method: "restyle"
+        - label: "eu-central-1"
+          args: ["visible", [false, false, false, true, false, false, false, false, false, false, true, false, false, false]]
+          method: "restyle"
+        - label: "sa-east-1"
+          args: ["visible", [false, false, false, false, true, false, false, false, false, false, false, true, false, false]]
+          method: "restyle"
+        - label: "us-east-2"
+          args: ["visible", [false, false, false, false, false, true, false, false, false, false, false, false, true, false]]
+          method: "restyle"
+        - label: "us-west-1"
+          args: ["visible", [false, false, false, false, false, false, true, false, false, false, false, false, false, true]]
+          method: "restyle"
+
