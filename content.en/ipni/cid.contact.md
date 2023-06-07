@@ -14,7 +14,7 @@ InterPlanetary Network Indexer. We gathered the data with our
 {{< plotly json="../../plots/latest/ipni-trend-latencies-cid.contact.json" height="300px" >}}
 
 The graph shows different percentiles of the "Time To First Provider Record" (TTFPR)
-metrics across time. To measure the TTFPR, we start the stopwatch right before we
+metrics over time. To measure the TTFPR, we start the stopwatch right before we
 do the `https://{ipni}/cid/{cid}` HTTP request to the indexer and stop it when we have received and parsed
 the full record.
 
@@ -34,13 +34,13 @@ identify any notable deviations or improvements in that metric over time.
 
 ## Lookup Latencies
 
-he graphs presented below display the latencies for the "Time To First Provider
+The graphs presented below display the latencies for the "Time To First Provider
 Record" (TTFPR) observed from various regions over the past few days. Each line
-represents the Cumulative Distribution function of the lookup latency in a
-specific region. It is important to note that the x-axis is presented in a
+represents the Cumulative Distribution Function (CDF) of the lookup latency in a
+specific region. Note that the x-axis is presented in a
 logarithmic scale. We distinguish between two types of latencies: uncached,
 which refers to the first request for a CID, and cached, which pertains to
-subsequent requests for a CID. Both graphs are provided underneath.
+subsequent requests for a CID.
 
 ### Uncached
 
