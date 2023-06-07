@@ -7,6 +7,8 @@ plotly: true
 
 This page shows performance metrics for the website [protocol.ai](https://protocol.ai). We gathered the data with our [Tiros](/tools/tiros) measurement tool.
 
+We initially present an Overview of the performance, followed by Trends, i.e., the performance over time, for the last 30 days. We finally take a snapshot of the performance seen during the most recent week and present performance details over this period. The combination of long-term (Trends) and short-term (Snapshot) results provide a comprehensive view of the site's performance, as well as potential areas of improvement.
+
 ## Overview
 
 ### General Performance {#website-snapshot-performance-gauge-protocolai-kubo}
