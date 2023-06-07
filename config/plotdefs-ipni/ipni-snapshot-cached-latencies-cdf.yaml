@@ -18,8 +18,8 @@ datasets:
           m.duration,
           cume_dist() over (partition by m.region order by m.duration) as cumedist
         from m
-        where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
-          and m.created_at < {{ .StartOfWeek | timestamptz }}
+        where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
+          and m.created_at < {{ .StartOfDay | timestamptz }}
           and m.request_number = 2
       )
       select
