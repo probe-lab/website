@@ -1,0 +1,71 @@
+frequency: weekly
+datasets:
+  - name: "current"
+    source: "parsec"
+    query: >
+      with cte as (
+          select
+              *,
+              row_number() over (partition by r.cid, n.region order by r.created_at) request_number
+          from retrievals_ecs r
+                   inner join nodes_ecs n on n.id = r.node_id
+          where r.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            and r.created_at < {{ .StartOfWeek | timestamptz }}
+      )
+      select
+          cte.region,
+          percentile_cont(0.{{ .Params.percentile }}) within group (order by cte.duration) filter ( where cte.fleet = 'default' ) p{{ .Params.percentile }}0_dht,
+          percentile_cont(0.{{ .Params.percentile }}) within group (order by cte.duration) filter ( where cte.request_number = 1 and cte.fleet = '{{ .Params.ipni }}' ) p{{ .Params.percentile }}0_ipni_uncached,
+          percentile_cont(0.{{ .Params.percentile }}) within group (order by cte.duration) filter ( where cte.request_number = 2 and cte.fleet = '{{ .Params.ipni }}' ) p{{ .Params.percentile }}0_ipni_cached
+      from cte
+      group by cte.region
+
+series:
+  - type: "bar"
+    name: "DHT"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}0_dht"
+    color: "blue"
+  - type: "bar"
+    name: "IPNI (uncached)"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}0_ipni_uncached"
+    color: "red"
+  - type: "bar"
+    name: "IPNI (cached)"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}0_ipni_cached"
+    color: "green"
+
+layout:
+  margin:
+    pad: 1
+    t: 5
+    l: 50
+    r: 50
+    b: 70
+  title:
+    font:
+      size: 10
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.ipni }})"
+    x: 1
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+  legend:
+    orientation: "h"
+    x: 0.01
+    y: 1.07
+    xanchor: "left"
+  xaxis:
+    title:
+      text: "AWS Region"
+    tickfont:
+      size: 10
+  yaxis:
+    title:
+      text: "Latency in s"
+  hovermode: "closest"

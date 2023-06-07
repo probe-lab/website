@@ -1,0 +1,134 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "004488"
+      },
+      "name": "DHT",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        1.3192187125,
+        1.0030100050000001,
+        1.3316305406000002,
+        0.3523481878,
+        1.1767111746999999,
+        0.386230567,
+        0.49900099160000005
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "994455"
+      },
+      "name": "IPNI (uncached)",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        0.6083613424000001,
+        0.7985772526,
+        0.7821727112,
+        0.4315229006,
+        0.5117944054,
+        0.304593087800001,
+        0.30668580400000034
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "117733"
+      },
+      "name": "IPNI (cached)",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        0.0210493499,
+        0.0035105858,
+        0.014984108,
+        0.009334341499999992,
+        0.006221560200000001,
+        0.04162114680000001,
+        0.025371528800000005
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "hovermode": "closest",
+    "legend": {
+      "orientation": "h",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 1.07
+    },
+    "margin": {
+      "b": 70,
+      "l": 50,
+      "pad": 1,
+      "r": 50,
+      "t": 5
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 29 May 2023 - 4 Jun 2023 (p90, cid.contact)",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "xaxis": {
+      "tickfont": {
+        "size": 10
+      },
+      "title": {
+        "text": "AWS Region"
+      }
+    },
+    "yaxis": {
+      "title": {
+        "text": "Latency in s"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}
