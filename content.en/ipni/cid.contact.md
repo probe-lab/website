@@ -50,3 +50,14 @@ subsequent requests for a CID.
 
 {{< plotly json="../../plots/latest/ipni-snapshot-cached-latencies-cdf-cid.contact.json" height="300px" >}}
 
+### DHT Comparison
+
+{{< plotly json="../../plots/latest/ipni-snapshot-dht-comparison-cid.contact-p90.json" height="300px" >}}
+
+The bar chart above illustrates the 90th percentile of latency associated with
+looking up a provider record using two different methods: the Distributed Hash
+Table (DHT) and this network indexer.
+
+The network indexer's lookup latencies are divided into two categories: uncached and cached latencies. 
+When a CID is looked up for the first time, the response is cached at the edge. The "uncached" latency
+bars indicate the latencies for initial CID lookups, while the "cached" latency bars represent the latencies for subsequent lookups.

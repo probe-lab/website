@@ -167,3 +167,9 @@
   output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
   variants:
     - ipni: cid.contact
+
+- source: ./plotdefs-ipni/ipni-snapshot-dht-comparison.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}-p{{ .Params.percentile }}.json"
+  variants:
+    - ipni: cid.contact
+      percentile: 90
