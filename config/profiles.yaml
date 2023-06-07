@@ -1,3 +1,6 @@
+- source: ./plotdefs
+  output: '{{.PlotDefFilename}}.json'
+
 - source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
   variants:
@@ -150,6 +153,17 @@
     - percentile: 90
       metric: ttfb
 
-- source: ./plotdefs
-  output: '{{.PlotDefFilename}}.json'
+- source: ./plotdefs-ipni/ipni-snapshot-uncached-latencies-cdf.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
+  variants:
+    - ipni: cid.contact
 
+- source: ./plotdefs-ipni/ipni-snapshot-cached-latencies-cdf.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
+  variants:
+    - ipni: cid.contact
+
+- source: ./plotdefs-ipni/ipni-trend-latencies.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
+  variants:
+    - ipni: cid.contact
