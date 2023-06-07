@@ -153,8 +153,17 @@
     - percentile: 90
       metric: ttfb
 
-- source: ./plotdefs-ipni/ipni-trend-uncached-latencies.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}-p{{ .Params.percentile }}.json"
+- source: ./plotdefs-ipni/ipni-snapshot-uncached-latencies-cdf.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
   variants:
-    - percentile: 90
-      ipni: cid.contact
+    - ipni: cid.contact
+
+- source: ./plotdefs-ipni/ipni-snapshot-cached-latencies-cdf.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
+  variants:
+    - ipni: cid.contact
+
+- source: ./plotdefs-ipni/ipni-trend-latencies.yaml
+  output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
+  variants:
+    - ipni: cid.contact
