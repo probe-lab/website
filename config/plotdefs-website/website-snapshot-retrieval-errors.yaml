@@ -1,4 +1,4 @@
-frequency: weekly
+frequency: daily
 datasets:
   - name: "current"
     source: "tiros"
@@ -9,8 +9,8 @@ datasets:
               m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
           from measurements m
                    inner join runs r on r.id = m.run_id
-          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
-            and m.created_at < {{ .StartOfWeek | timestamptz }}
+          where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfDay | timestamptz }}
             and m.website = '{{ .Params.website }}'
       ) select
             cte.region,
@@ -56,7 +56,7 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.website }})"
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.website }})'
     x: 1
     xanchor: "right"
     y: 0.01

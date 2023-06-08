@@ -1,4 +1,4 @@
-frequency: weekly
+frequency: daily
 datasets:
   - name: "current"
     source: "tiros"
@@ -17,8 +17,8 @@ datasets:
                 extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' )) ratio
             from measurements m
                      inner join runs r on r.id = m.run_id
-            where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
-              and m.created_at < {{ .StartOfWeek | timestamptz }}
+            where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
+              and m.created_at < {{ .StartOfDay | timestamptz }}
               and m.website = '{{ .Params.website }}'
             group by r.region
         ) data;
@@ -42,7 +42,7 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} ({{ .Params.metric }}, {{ .Params.website }})"
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.metric }}, {{ .Params.website }})'
     x: 1
     xanchor: "right"
     y: 0.01
