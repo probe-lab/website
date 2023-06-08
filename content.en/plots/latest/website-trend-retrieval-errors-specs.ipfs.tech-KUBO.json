@@ -1,0 +1,95 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "004488"
+      },
+      "name": "Kubo",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        5.303030303030303,
+        0.2777777777777778,
+        0,
+        0
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {
+        "color": "black",
+        "symbol": "circle"
+      },
+      "mode": "markers",
+      "name": "Probes",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        132,
+        360,
+        480,
+        520
+      ],
+      "yaxis": "y2"
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "legend": {
+      "orientation": "h",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 1.05
+    },
+    "margin": {
+      "b": 60,
+      "l": 50,
+      "pad": 1,
+      "r": 60,
+      "t": 5
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "(KUBO, specs.ipfs.tech)",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "yaxis": {
+      "title": {
+        "text": "Retrieval Errors in %"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": {
+    "yaxis2": {
+      "autorange": true,
+      "overlaying": "y",
+      "rangemode": "tozero",
+      "showgrid": false,
+      "side": "right",
+      "title": {
+        "text": "Probes per Day"
+      }
+    }
+  },
+  "config": null
+}

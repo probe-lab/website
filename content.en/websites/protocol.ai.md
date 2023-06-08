@@ -7,6 +7,8 @@ plotly: true
 
 This page shows performance metrics for the website [protocol.ai](https://protocol.ai). We gathered the data with our [Tiros](/tools/tiros) measurement tool.
 
+We initially present an Overview of the performance, followed by Trends, i.e., the performance over time, for the last 30 days. We finally take a snapshot of the performance seen during the most recent week and present performance details over this period. The combination of long-term (Trends) and short-term (Snapshot) results provide a comprehensive view of the site's performance, as well as potential areas of improvement.
+
 ## Overview
 
 ### General Performance {#website-snapshot-performance-gauge-protocolai-kubo}
@@ -15,9 +17,9 @@ This page shows performance metrics for the website [protocol.ai](https://protoc
 
 The graph presents a comparison of two crucial web performance metrics: Time to First Byte (TTFB) and First Contentful Paint (FCP).
 The data displayed shows the 90th percentile of both metrics and was gathered during the previous week.
-To aid in comparison, the percentage difference between the previous week and the week before is displayed below each gauge indicator. This enables easy identification of performance improvements or regressions over time.
+To aid in comparison, the percentage difference between the previous week and the week before is displayed below each gauge indicator. This enables easy identification of performance improvements or regressions over time. The plots on this page are updated weekly on Monday.
 
-By default, the graph focuses on the `eu-central-1` region, which can be customized as needed in the lower left corner.
+By default, the graph focuses on the `eu-central-1` region, which can be customized as needed in the lower left corner through the drop-down menu.
 The graph utilizes shaded areas in different colors to denote performance categories based on predefined thresholds set by web-vitals. Green represents "good" performance, yellow indicates "needs improvement," and red signifies "poor" performance (see [Metrics](#metrics)).
 
 ## Trends
@@ -46,19 +48,19 @@ It is important to note that the resulting metrics are artificial composites and
 One of the primary reasons why a website (CID) might not be available over Kubo is that there are no providers for the content. This graph showcases the unique providing peers as identified by distinct [PeerIDs](https://docs.libp2p.io/concepts/fundamentals/peers/#peer-id) discovered throughout a specific day in the IPFS DHT. We look up the IPNS record for the website which gives us the current CID of the website's content. Then, we look up all provider records in the IPFS DHT and record the distinct PeerIDs of the providing peers. Finally, we try to connect to all the discovered peers, and based on the outcome, classify them as:
 
 - `Unreachable`: The peer remained unreachable during the entire day. We weren't able to connect to it a single time, which might happen if providers advertise a [provider record](https://docs.ipfs.tech/concepts/dht/#distributed-hash-tables-dhts) and then leave the network (go offline), leaving a stale record behind.
-- `Reachable Relayed`: The peer solely advertised [relay multiaddresses](https://docs.libp2p.io/concepts/nat/circuit-relay/), meaning we could only establish a connection to it through a proxying peer. These peers act as intermediaries, facilitating the connection between our system and the reachable peer. It is important to note that this scenario has performance implications, as relaying introduces additional latency and potential bottlenecks.
+- `Reachable Relayed`: The providing peer solely advertised [relay multiaddresses](https://docs.libp2p.io/concepts/nat/circuit-relay/), meaning we could only establish a connection to it through a proxying peer. Proxying peers act as intermediaries, facilitating the connection between our monitoring system and the providing peer. It is important to note that this scenario has performance implications, as relaying introduces additional latency and potential bottlenecks. However, in all cases where a "Reachable Relayed" peer is counted, the original providing peer has been reached and provided the content successfully (i.e., it was not only the proxying peer that our probes reached, but the original provider).
 - `Reachable Non-Relayed` represents peers that were publicly reachable and usually offer the best performance.
 
 In order for a website (or CID more in general) to be available and accessible in the network, there needs to be at least one “Reachable Provider”. Obviously, the more the “Reachable Providers”, the “healthier” the content will be. This is because the content is more resilient to peer churn (i.e., some of the providers leaving the network) and is also available from more locations, which likely means faster retrieval.
 
-In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day.
+In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day (count shown on the right handside y-axis).
 Deployments are determined by monitoring the CIDs found within the websites' IPNS records. If the CID changes, we consider this a new deployment.
 
 ### IPFS Retrieval Errors {#website-trend-retrieval-errors-protocolai-kubo}
 
 {{< plotly json="../../plots/latest/website-trend-retrieval-errors-protocol.ai-KUBO.json" height="350px" >}}
 
-This graph shows error rates of website requests via Kubo over the past 30 days. It combines measurements from all our measurement regions. The x-axis represents days, while the y-axis displays error rates. Additionally, black markers indicate the actual number of requests per day. This graph offers a concise overview of error rates and request volume, aiding users in assessing website availability in IPFS.
+This graph shows error rates of website requests via Kubo over the past 30 days. It combines measurements from all our measurement regions. The x-axis represents days, while the y-axis displays error rates. Additionally, black markers indicate the actual number of requests (from our infrastructure) per day with the corresponding count shown on the right handside y-axis. This graph offers a concise overview of error rates and probing volume, aiding users in assessing website availability in IPFS.
 
 ## Snapshot
 
@@ -80,13 +82,13 @@ detail further down.
 
 <small>[What do `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
-During the designated time period (indicated in the bottom right corner), we conducted multiple measurements for five metrics along the x-axis. The y-axis represents the proportion of measurement outcomes from the total number of measurements specifically taken in the eu-central-1 region. This visual representation allows us to analyze the distribution of the metric ratings within the specified time frame for that particular region.
+During the designated time period (indicated in the bottom right corner), we conducted multiple measurements for the five metrics shown along the x-axis. The y-axis represents the proportion of measurement outcomes from the total number of measurements specifically taken in the eu-central-1 region. This visual representation allows us to analyze the distribution of the metric ratings within the specified time frame for that particular region.
 
 ### Website Probing Success rate from different Regions {#website-snapshot-retrieval-errors-protocolai}
 
 {{< plotly json="../../plots/latest/website-snapshot-retrieval-errors-protocol.ai.json" height="350px" >}}
 
-While the above graph on [IPFS Retrieval Errors](#website-trend-retrieval-errors-protocolai-kubo) shows the Kubo retrieval errors over time. This graph shows the retrieval errors as seen from different regions in the specified time interval (bottom right corner). Alongside the Kubo retrieval outcomes it also shows the HTTP results. The black markers again show the number of probes performed in each region with each request method.
+While the graph on [IPFS Retrieval Errors](#website-trend-retrieval-errors-protocolai-kubo) further up shows the Kubo retrieval errors over time, this graph shows the retrieval errors as seen from different regions in the specified time interval (bottom right corner). Alongside the Kubo retrieval outcomes it also shows the HTTP results. The black markers again show the number of probes performed in each region with each request method (count shown on the right handside y-axis).
 
 ### Kubo Metrics by Region
 

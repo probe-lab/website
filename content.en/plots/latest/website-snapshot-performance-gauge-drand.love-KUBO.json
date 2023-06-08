@@ -9,7 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.4787,
+        "reference": 0.3729,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.3915,
+        "reference": 1.2804,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -129,7 +129,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.4313,
+        "reference": 0.4393,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -188,7 +188,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.1552,
+        "reference": 1.4399,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -249,7 +249,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.442,
+        "reference": 0.3876,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -308,7 +308,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.3855,
+        "reference": 1.4625,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -369,7 +369,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.381,
+        "reference": 1.4093,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -428,7 +428,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 2.5616,
+        "reference": 2.5136,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -489,7 +489,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.1776,
+        "reference": 0.8654,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -548,7 +548,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 2.5394,
+        "reference": 2.0206,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -609,7 +609,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.9729,
+        "reference": 1.9947,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -668,7 +668,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 3.1389,
+        "reference": 3.1106,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -729,7 +729,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.167,
+        "reference": 1.1584,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -788,7 +788,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 2.3994,
+        "reference": 2.4084,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -869,7 +869,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 29 May 2023 - 4 Jun 2023 (p90, KUBO, drand.love)",
+      "text": "Data: 31 May 2023 - 7 Jun 2023 (p90, KUBO, drand.love)",
       "x": 1,
       "xanchor": "right",
       "y": 0.103,

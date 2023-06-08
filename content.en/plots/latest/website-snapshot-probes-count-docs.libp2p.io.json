@@ -16,7 +16,7 @@
       "title": {
         "text": "Kubo"
       },
-      "value": 418,
+      "value": 1545,
       "visible": true
     },
     {
@@ -36,7 +36,7 @@
       "title": {
         "text": "HTTP"
       },
-      "value": 334,
+      "value": 1522,
       "visible": true
     }
   ],
@@ -50,7 +50,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 29 May 2023 - 4 Jun 2023 (docs.libp2p.io)",
+      "text": "Data: 31 May 2023 - 7 Jun 2023 (docs.libp2p.io)",
       "x": 1,
       "xanchor": "right",
       "y": 0.01,

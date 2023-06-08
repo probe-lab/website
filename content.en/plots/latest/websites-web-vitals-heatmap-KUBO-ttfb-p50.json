@@ -43,166 +43,166 @@
       "yaxis": "",
       "z": [
         [
-          1.3498999999999999,
-          0.9568,
-          1.0983,
-          0.2027,
-          0.98275,
-          0.25715,
-          0.27115
+          0.95705,
+          0.83925,
+          0.8525,
+          0.1749,
+          0.7942,
+          0.19815,
+          0.1548
         ],
         [
-          0.77735,
-          0.6495,
-          0.7007,
-          0.174,
-          0.684,
-          0.20305,
-          0.2219
+          0.7446,
+          0.6452,
+          0.6753,
+          0.1429,
+          0.6019,
+          0.15435,
+          0.1416
         ],
         [
-          0.5631,
-          0.5298,
-          0.5523,
-          0.18,
-          0.5178,
-          0.25165,
-          0.283
+          0.5535,
+          0.5339,
+          0.5443,
+          0.1356,
+          0.4667,
+          0.1914,
+          0.13065
         ],
         [
-          0.78,
-          0.5753,
-          0.6801,
-          0.1817,
-          0.7644,
-          0.1986,
-          0.22105
+          0.68415,
+          0.5819,
+          0.64075,
+          0.1356,
+          0.5718,
+          0.1537,
+          0.1377
         ],
         [
-          1.249,
-          0.8546,
-          0.6782,
-          0.1678,
-          0.95365,
-          0.2131,
-          0.2157
-        ],
-        [
-          1.37115,
-          0.91795,
-          0.7293,
-          0.2767,
-          1.01795,
-          0.3133,
-          0.20125
-        ],
-        [
-          1.59965,
-          1.3612,
-          1.483,
-          0.3323,
-          1.308,
-          0.3857,
-          0.3879
-        ],
-        [
-          0.81795,
-          0.64915,
-          0.71655,
-          0.17845,
-          0.7522,
-          0.21015,
-          0.1818
-        ],
-        [
-          1.32575,
-          1.0261,
-          0.9504,
-          0.216,
-          1.05345,
-          0.2684,
-          0.2736
-        ],
-        [
-          1.6015000000000001,
-          1.0192,
-          0.9335,
-          0.2105,
-          1.22865,
-          0.2865,
-          0.19435
-        ],
-        [
-          0.8736,
-          0.80535,
-          0.595,
-          0.18205,
-          0.7483,
-          0.1957,
-          0.2565
-        ],
-        [
-          1.1284,
-          0.7172,
-          0.55205,
-          0.1673,
-          0.8067,
-          0.1877,
-          0.209
-        ],
-        [
-          1.0287,
-          0.7908,
-          0.7043,
+          1.3106,
+          0.9422,
+          0.6395,
+          0.142,
+          0.9288,
           0.1891,
-          0.8354,
-          0.2101,
-          0.2096
+          0.14205
         ],
         [
-          0.7667,
-          0.6709,
-          0.7284,
-          0.18545,
-          0.7607,
-          0.21325,
-          0.2969
+          1.4102999999999999,
+          0.9938,
+          0.66375,
+          0.1793,
+          0.94,
+          0.2344,
+          0.1411
         ],
         [
-          0.52725,
-          0.2508,
-          0.441,
-          0.10775,
-          0.646,
-          0.34825,
-          0.3836
+          1.4368,
+          1.1998,
+          1.4052,
+          0.2483,
+          1.1614,
+          0.2506,
+          0.2276
         ],
         [
-          0.9392,
-          0.84115,
-          0.90855,
-          0.19785,
-          0.7906,
-          0.2865,
-          0.3114
+          0.7392,
+          0.6133,
+          0.6486,
+          0.1341,
+          0.60195,
+          0.16725,
+          0.1521
         ],
         [
-          0.44375,
-          0.2639,
-          0.01045,
-          0.0116,
-          0.26585,
-          0.0306,
-          0.0136
+          1.0936,
+          0.92325,
+          0.8625,
+          0.1633,
+          0.8796,
+          0.19555,
+          0.1531
         ],
         [
-          1.114,
-          0.9197,
-          1.0211,
-          0.20875,
-          0.8204,
-          0.29515,
-          0.2557
+          1.4776,
+          1.05965,
+          0.7065,
+          0.1576,
+          0.9841,
+          0.2125,
+          0.1657
+        ],
+        [
+          0.9684,
+          0.7012,
+          0.53825,
+          0.12605,
+          0.6859,
+          0.1826,
+          0.1383
+        ],
+        [
+          1.1271,
+          0.8036,
+          0.50835,
+          0.1285,
+          0.804,
+          0.1736,
+          0.141
+        ],
+        [
+          0.9769,
+          0.79,
+          0.6649,
+          0.1457,
+          0.8239,
+          0.1841,
+          0.1569
+        ],
+        [
+          0.7122,
+          0.5984,
+          0.6526,
+          0.1413,
+          0.5858,
+          0.157,
+          0.1399
+        ],
+        [
+          0.5187,
+          0.43905,
+          0.48175,
+          0.1221,
+          0.4431,
+          0.1444,
+          0.13
+        ],
+        [
+          0.8594,
+          0.7409,
+          0.7612,
+          0.1621,
+          0.6794,
+          0.213,
+          0.1571
+        ],
+        [
+          0.455,
+          0.2672,
+          0.0109,
+          0.0107,
+          0.2649,
+          0.0286,
+          0.0119
+        ],
+        [
+          0.91865,
+          0.7913,
+          0.8732,
+          0.1683,
+          0.7052,
+          0.1865,
+          0.1417
         ]
       ]
     }
@@ -214,17 +214,6 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "blog.ipfs.tech",
-        "text": "1.350",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": "blog.ipfs.tech",
         "text": "0.957",
         "font": {
           "color": "#EEEEEE"
@@ -234,9 +223,20 @@
       {
         "xref": "x1",
         "yref": "y1",
+        "x": "ap-south-1",
+        "y": "blog.ipfs.tech",
+        "text": "0.839",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
         "x": "ap-southeast-2",
         "y": "blog.ipfs.tech",
-        "text": "1.098",
+        "text": "0.853",
         "font": {
           "color": "#EEEEEE"
         },
@@ -247,7 +247,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "blog.ipfs.tech",
-        "text": "0.203",
+        "text": "0.175",
         "font": {
           "color": ""
         },
@@ -258,7 +258,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "blog.ipfs.tech",
-        "text": "0.983",
+        "text": "0.794",
         "font": {
           "color": "#EEEEEE"
         },
@@ -269,7 +269,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "blog.ipfs.tech",
-        "text": "0.257",
+        "text": "0.198",
         "font": {
           "color": ""
         },
@@ -280,7 +280,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "blog.ipfs.tech",
-        "text": "0.271",
+        "text": "0.155",
         "font": {
           "color": ""
         },
@@ -291,7 +291,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "blog.libp2p.io",
-        "text": "0.777",
+        "text": "0.745",
         "font": {
           "color": "#EEEEEE"
         },
@@ -302,7 +302,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "blog.libp2p.io",
-        "text": "0.649",
+        "text": "0.645",
         "font": {
           "color": "#EEEEEE"
         },
@@ -313,7 +313,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "blog.libp2p.io",
-        "text": "0.701",
+        "text": "0.675",
         "font": {
           "color": "#EEEEEE"
         },
@@ -324,7 +324,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "blog.libp2p.io",
-        "text": "0.174",
+        "text": "0.143",
         "font": {
           "color": ""
         },
@@ -335,6 +335,116 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "blog.libp2p.io",
+        "text": "0.602",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": "blog.libp2p.io",
+        "text": "0.154",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": "blog.libp2p.io",
+        "text": "0.142",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": "consensuslab.world",
+        "text": "0.553",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": "consensuslab.world",
+        "text": "0.534",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": "consensuslab.world",
+        "text": "0.544",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": "consensuslab.world",
+        "text": "0.136",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": "consensuslab.world",
+        "text": "0.467",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": "consensuslab.world",
+        "text": "0.191",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": "consensuslab.world",
+        "text": "0.131",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": "docs.ipfs.tech",
         "text": "0.684",
         "font": {
           "color": "#EEEEEE"
@@ -344,119 +454,9 @@
       {
         "xref": "x1",
         "yref": "y1",
-        "x": "us-east-2",
-        "y": "blog.libp2p.io",
-        "text": "0.203",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": "blog.libp2p.io",
-        "text": "0.222",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": "consensuslab.world",
-        "text": "0.563",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": "consensuslab.world",
-        "text": "0.530",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": "consensuslab.world",
-        "text": "0.552",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": "consensuslab.world",
-        "text": "0.180",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": "consensuslab.world",
-        "text": "0.518",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": "consensuslab.world",
-        "text": "0.252",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": "consensuslab.world",
-        "text": "0.283",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": "docs.ipfs.tech",
-        "text": "0.780",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
         "x": "ap-south-1",
         "y": "docs.ipfs.tech",
-        "text": "0.575",
+        "text": "0.582",
         "font": {
           "color": "#EEEEEE"
         },
@@ -467,7 +467,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "docs.ipfs.tech",
-        "text": "0.680",
+        "text": "0.641",
         "font": {
           "color": "#EEEEEE"
         },
@@ -478,7 +478,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "docs.ipfs.tech",
-        "text": "0.182",
+        "text": "0.136",
         "font": {
           "color": ""
         },
@@ -489,7 +489,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "docs.ipfs.tech",
-        "text": "0.764",
+        "text": "0.572",
         "font": {
           "color": "#EEEEEE"
         },
@@ -500,7 +500,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "docs.ipfs.tech",
-        "text": "0.199",
+        "text": "0.154",
         "font": {
           "color": ""
         },
@@ -511,7 +511,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "docs.ipfs.tech",
-        "text": "0.221",
+        "text": "0.138",
         "font": {
           "color": ""
         },
@@ -522,7 +522,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "docs.libp2p.io",
-        "text": "1.249",
+        "text": "1.311",
         "font": {
           "color": "#EEEEEE"
         },
@@ -533,7 +533,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "docs.libp2p.io",
-        "text": "0.855",
+        "text": "0.942",
         "font": {
           "color": "#EEEEEE"
         },
@@ -544,7 +544,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "docs.libp2p.io",
-        "text": "0.678",
+        "text": "0.639",
         "font": {
           "color": "#EEEEEE"
         },
@@ -555,7 +555,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "docs.libp2p.io",
-        "text": "0.168",
+        "text": "0.142",
         "font": {
           "color": ""
         },
@@ -566,7 +566,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "docs.libp2p.io",
-        "text": "0.954",
+        "text": "0.929",
         "font": {
           "color": "#EEEEEE"
         },
@@ -577,7 +577,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "docs.libp2p.io",
-        "text": "0.213",
+        "text": "0.189",
         "font": {
           "color": ""
         },
@@ -588,7 +588,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "docs.libp2p.io",
-        "text": "0.216",
+        "text": "0.142",
         "font": {
           "color": ""
         },
@@ -599,7 +599,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "drand.love",
-        "text": "1.371",
+        "text": "1.410",
         "font": {
           "color": "#EEEEEE"
         },
@@ -610,7 +610,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "drand.love",
-        "text": "0.918",
+        "text": "0.994",
         "font": {
           "color": "#EEEEEE"
         },
@@ -621,7 +621,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "drand.love",
-        "text": "0.729",
+        "text": "0.664",
         "font": {
           "color": "#EEEEEE"
         },
@@ -632,7 +632,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "drand.love",
-        "text": "0.277",
+        "text": "0.179",
         "font": {
           "color": ""
         },
@@ -643,7 +643,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "drand.love",
-        "text": "1.018",
+        "text": "0.940",
         "font": {
           "color": "#EEEEEE"
         },
@@ -654,7 +654,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "drand.love",
-        "text": "0.313",
+        "text": "0.234",
         "font": {
           "color": ""
         },
@@ -665,7 +665,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "drand.love",
-        "text": "0.201",
+        "text": "0.141",
         "font": {
           "color": ""
         },
@@ -676,7 +676,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "1.600",
+        "text": "1.437",
         "font": {
           "color": "#EEEEEE"
         },
@@ -687,7 +687,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "1.361",
+        "text": "1.200",
         "font": {
           "color": "#EEEEEE"
         },
@@ -698,7 +698,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "1.483",
+        "text": "1.405",
         "font": {
           "color": "#EEEEEE"
         },
@@ -709,7 +709,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "0.332",
+        "text": "0.248",
         "font": {
           "color": ""
         },
@@ -720,7 +720,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "1.308",
+        "text": "1.161",
         "font": {
           "color": "#EEEEEE"
         },
@@ -731,7 +731,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "0.386",
+        "text": "0.251",
         "font": {
           "color": ""
         },
@@ -742,7 +742,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "en.wikipedia-on-ipfs.org/wiki",
-        "text": "0.388",
+        "text": "0.228",
         "font": {
           "color": ""
         },
@@ -753,7 +753,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "filecoin.io",
-        "text": "0.818",
+        "text": "0.739",
         "font": {
           "color": "#EEEEEE"
         },
@@ -763,6 +763,17 @@
         "xref": "x1",
         "yref": "y1",
         "x": "ap-south-1",
+        "y": "filecoin.io",
+        "text": "0.613",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
         "y": "filecoin.io",
         "text": "0.649",
         "font": {
@@ -773,20 +784,9 @@
       {
         "xref": "x1",
         "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": "filecoin.io",
-        "text": "0.717",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
         "x": "eu-central-1",
         "y": "filecoin.io",
-        "text": "0.178",
+        "text": "0.134",
         "font": {
           "color": ""
         },
@@ -797,7 +797,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "filecoin.io",
-        "text": "0.752",
+        "text": "0.602",
         "font": {
           "color": "#EEEEEE"
         },
@@ -808,7 +808,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "filecoin.io",
-        "text": "0.210",
+        "text": "0.167",
         "font": {
           "color": ""
         },
@@ -819,7 +819,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "filecoin.io",
-        "text": "0.182",
+        "text": "0.152",
         "font": {
           "color": ""
         },
@@ -830,7 +830,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "green.filecoin.io",
-        "text": "1.326",
+        "text": "1.094",
         "font": {
           "color": "#EEEEEE"
         },
@@ -841,7 +841,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "green.filecoin.io",
-        "text": "1.026",
+        "text": "0.923",
         "font": {
           "color": "#EEEEEE"
         },
@@ -852,7 +852,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "green.filecoin.io",
-        "text": "0.950",
+        "text": "0.863",
         "font": {
           "color": "#EEEEEE"
         },
@@ -863,7 +863,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "green.filecoin.io",
-        "text": "0.216",
+        "text": "0.163",
         "font": {
           "color": ""
         },
@@ -874,7 +874,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "green.filecoin.io",
-        "text": "1.053",
+        "text": "0.880",
         "font": {
           "color": "#EEEEEE"
         },
@@ -885,160 +885,6 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "green.filecoin.io",
-        "text": "0.268",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": "green.filecoin.io",
-        "text": "0.274",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": "ipfs.tech",
-        "text": "1.602",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": "ipfs.tech",
-        "text": "1.019",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": "ipfs.tech",
-        "text": "0.933",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": "ipfs.tech",
-        "text": "0.210",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": "ipfs.tech",
-        "text": "1.229",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": "ipfs.tech",
-        "text": "0.286",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": "ipfs.tech",
-        "text": "0.194",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": "ipld.io",
-        "text": "0.874",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": "ipld.io",
-        "text": "0.805",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": "ipld.io",
-        "text": "0.595",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": "ipld.io",
-        "text": "0.182",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": "ipld.io",
-        "text": "0.748",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": "ipld.io",
         "text": "0.196",
         "font": {
           "color": ""
@@ -1049,8 +895,162 @@
         "xref": "x1",
         "yref": "y1",
         "x": "us-west-1",
+        "y": "green.filecoin.io",
+        "text": "0.153",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": "ipfs.tech",
+        "text": "1.478",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": "ipfs.tech",
+        "text": "1.060",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": "ipfs.tech",
+        "text": "0.707",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": "ipfs.tech",
+        "text": "0.158",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": "ipfs.tech",
+        "text": "0.984",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": "ipfs.tech",
+        "text": "0.212",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": "ipfs.tech",
+        "text": "0.166",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
         "y": "ipld.io",
-        "text": "0.257",
+        "text": "0.968",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": "ipld.io",
+        "text": "0.701",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": "ipld.io",
+        "text": "0.538",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": "ipld.io",
+        "text": "0.126",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": "ipld.io",
+        "text": "0.686",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": "ipld.io",
+        "text": "0.183",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": "ipld.io",
+        "text": "0.138",
         "font": {
           "color": ""
         },
@@ -1061,7 +1061,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "libp2p.io",
-        "text": "1.128",
+        "text": "1.127",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1072,7 +1072,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "libp2p.io",
-        "text": "0.717",
+        "text": "0.804",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1083,7 +1083,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "libp2p.io",
-        "text": "0.552",
+        "text": "0.508",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1094,7 +1094,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "libp2p.io",
-        "text": "0.167",
+        "text": "0.129",
         "font": {
           "color": ""
         },
@@ -1105,7 +1105,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "libp2p.io",
-        "text": "0.807",
+        "text": "0.804",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1116,7 +1116,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "libp2p.io",
-        "text": "0.188",
+        "text": "0.174",
         "font": {
           "color": ""
         },
@@ -1127,7 +1127,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "libp2p.io",
-        "text": "0.209",
+        "text": "0.141",
         "font": {
           "color": ""
         },
@@ -1138,7 +1138,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "protocol.ai",
-        "text": "1.029",
+        "text": "0.977",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1149,7 +1149,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "protocol.ai",
-        "text": "0.791",
+        "text": "0.790",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1160,7 +1160,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "protocol.ai",
-        "text": "0.704",
+        "text": "0.665",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1171,7 +1171,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "protocol.ai",
-        "text": "0.189",
+        "text": "0.146",
         "font": {
           "color": ""
         },
@@ -1182,7 +1182,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "protocol.ai",
-        "text": "0.835",
+        "text": "0.824",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1193,7 +1193,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "protocol.ai",
-        "text": "0.210",
+        "text": "0.184",
         "font": {
           "color": ""
         },
@@ -1204,7 +1204,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "protocol.ai",
-        "text": "0.210",
+        "text": "0.157",
         "font": {
           "color": ""
         },
@@ -1215,7 +1215,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": "research.protocol.ai",
-        "text": "0.767",
+        "text": "0.712",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1226,7 +1226,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "research.protocol.ai",
-        "text": "0.671",
+        "text": "0.598",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1237,7 +1237,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "research.protocol.ai",
-        "text": "0.728",
+        "text": "0.653",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1248,7 +1248,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "research.protocol.ai",
-        "text": "0.185",
+        "text": "0.141",
         "font": {
           "color": ""
         },
@@ -1259,6 +1259,138 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "research.protocol.ai",
+        "text": "0.586",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": "research.protocol.ai",
+        "text": "0.157",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": "research.protocol.ai",
+        "text": "0.140",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": "specs.ipfs.tech",
+        "text": "0.519",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": "specs.ipfs.tech",
+        "text": "0.439",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": "specs.ipfs.tech",
+        "text": "0.482",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": "specs.ipfs.tech",
+        "text": "0.122",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": "specs.ipfs.tech",
+        "text": "0.443",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": "specs.ipfs.tech",
+        "text": "0.144",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": "specs.ipfs.tech",
+        "text": "0.130",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": "strn.network",
+        "text": "0.859",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": "strn.network",
+        "text": "0.741",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": "strn.network",
         "text": "0.761",
         "font": {
           "color": "#EEEEEE"
@@ -1268,8 +1400,30 @@
       {
         "xref": "x1",
         "yref": "y1",
+        "x": "eu-central-1",
+        "y": "strn.network",
+        "text": "0.162",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": "strn.network",
+        "text": "0.679",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
         "x": "us-east-2",
-        "y": "research.protocol.ai",
+        "y": "strn.network",
         "text": "0.213",
         "font": {
           "color": ""
@@ -1280,8 +1434,8 @@
         "xref": "x1",
         "yref": "y1",
         "x": "us-west-1",
-        "y": "research.protocol.ai",
-        "text": "0.297",
+        "y": "strn.network",
+        "text": "0.157",
         "font": {
           "color": ""
         },
@@ -1291,8 +1445,8 @@
         "xref": "x1",
         "yref": "y1",
         "x": "af-south-1",
-        "y": "specs.ipfs.tech",
-        "text": "0.527",
+        "y": "tldr.filecoin.io",
+        "text": "0.455",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1302,8 +1456,8 @@
         "xref": "x1",
         "yref": "y1",
         "x": "ap-south-1",
-        "y": "specs.ipfs.tech",
-        "text": "0.251",
+        "y": "tldr.filecoin.io",
+        "text": "0.267",
         "font": {
           "color": ""
         },
@@ -1313,10 +1467,10 @@
         "xref": "x1",
         "yref": "y1",
         "x": "ap-southeast-2",
-        "y": "specs.ipfs.tech",
-        "text": "0.441",
+        "y": "tldr.filecoin.io",
+        "text": "0.011",
         "font": {
-          "color": "#EEEEEE"
+          "color": ""
         },
         "showarrow": false
       },
@@ -1324,8 +1478,8 @@
         "xref": "x1",
         "yref": "y1",
         "x": "eu-central-1",
-        "y": "specs.ipfs.tech",
-        "text": "0.108",
+        "y": "tldr.filecoin.io",
+        "text": "0.011",
         "font": {
           "color": ""
         },
@@ -1335,10 +1489,10 @@
         "xref": "x1",
         "yref": "y1",
         "x": "sa-east-1",
-        "y": "specs.ipfs.tech",
-        "text": "0.646",
+        "y": "tldr.filecoin.io",
+        "text": "0.265",
         "font": {
-          "color": "#EEEEEE"
+          "color": ""
         },
         "showarrow": false
       },
@@ -1346,8 +1500,8 @@
         "xref": "x1",
         "yref": "y1",
         "x": "us-east-2",
-        "y": "specs.ipfs.tech",
-        "text": "0.348",
+        "y": "tldr.filecoin.io",
+        "text": "0.029",
         "font": {
           "color": ""
         },
@@ -1357,127 +1511,6 @@
         "xref": "x1",
         "yref": "y1",
         "x": "us-west-1",
-        "y": "specs.ipfs.tech",
-        "text": "0.384",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": "strn.network",
-        "text": "0.939",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": "strn.network",
-        "text": "0.841",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": "strn.network",
-        "text": "0.909",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": "strn.network",
-        "text": "0.198",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": "strn.network",
-        "text": "0.791",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": "strn.network",
-        "text": "0.286",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": "strn.network",
-        "text": "0.311",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": "tldr.filecoin.io",
-        "text": "0.444",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": "tldr.filecoin.io",
-        "text": "0.264",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": "tldr.filecoin.io",
-        "text": "0.010",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
         "y": "tldr.filecoin.io",
         "text": "0.012",
         "font": {
@@ -1488,42 +1521,9 @@
       {
         "xref": "x1",
         "yref": "y1",
-        "x": "sa-east-1",
-        "y": "tldr.filecoin.io",
-        "text": "0.266",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": "tldr.filecoin.io",
-        "text": "0.031",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": "tldr.filecoin.io",
-        "text": "0.014",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
         "x": "af-south-1",
         "y": "web3.storage",
-        "text": "1.114",
+        "text": "0.919",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1534,7 +1534,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": "web3.storage",
-        "text": "0.920",
+        "text": "0.791",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1545,7 +1545,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": "web3.storage",
-        "text": "1.021",
+        "text": "0.873",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1556,7 +1556,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": "web3.storage",
-        "text": "0.209",
+        "text": "0.168",
         "font": {
           "color": ""
         },
@@ -1567,7 +1567,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": "web3.storage",
-        "text": "0.820",
+        "text": "0.705",
         "font": {
           "color": "#EEEEEE"
         },
@@ -1578,7 +1578,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": "web3.storage",
-        "text": "0.295",
+        "text": "0.186",
         "font": {
           "color": ""
         },
@@ -1589,7 +1589,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": "web3.storage",
-        "text": "0.256",
+        "text": "0.142",
         "font": {
           "color": ""
         },
@@ -1604,7 +1604,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 29 May 2023 - 4 Jun 2023 (p50, ttfb, KUBO)",
+      "text": "Data: 31 May 2023 - 7 Jun 2023 (p50, ttfb, KUBO)",
       "x": 0.99,
       "xanchor": "right",
       "y": 0.01,

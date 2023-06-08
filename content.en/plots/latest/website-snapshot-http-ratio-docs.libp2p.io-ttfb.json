@@ -32,67 +32,67 @@
       "yaxis": "",
       "z": [
         [
-          3.2079976985040273,
-          2.084076433121019,
-          2.3375405697800216,
-          3.509234828496042,
-          2.427544247787611,
-          2.311284046692607,
-          0.7091866588648332
+          2.5618644067796614,
+          2.110515569167943,
+          1.9347826086956523,
+          2.583333333333333,
+          2.5201636469900643,
+          1.6251217137293086,
+          0.605878824235153
         ],
         [
-          2.8613138686131387,
-          2.0958144225920323,
-          2.192358803986711,
-          3.657766990291262,
-          2.4751811108129864,
-          1.1866992068334352,
-          0.9104563835932986
+          2.5478527607361965,
+          2.1580661322645294,
+          2.083582089552239,
+          2.8110599078341014,
+          2.591193181818182,
+          1.0568181818181819,
+          0.6575581395348838
         ],
         [
-          2.562051282051282,
-          2.121648460774578,
-          2.197666882696047,
-          3.8169336384439356,
-          2.2146012555219716,
-          1.2485345838218054,
-          1.2262649232518477
+          2.6177412895474568,
+          2.3042308632917585,
+          2.081028311096648,
+          2.9769392033542976,
+          2.5532031894418474,
+          1.0647522522522521,
+          0.804905875641757
         ],
         [
-          2.5764910921766075,
-          2.1116145957548293,
-          2.0633443410387273,
-          4.032882011605415,
-          2.0618535374431115,
-          1.4017391304347826,
-          1.329896907216495
+          2.4219703574542284,
+          2.256712962962963,
+          2.0823229100191445,
+          3.103448275862069,
+          2.4948051948051946,
+          0.9477782867613377,
+          0.9610745614035088
         ],
         [
-          2.161823187519119,
-          2.1307004145756054,
-          1.4925732637494984,
-          1.208695652173913,
-          1.2873420857072084,
-          0.7911124546553809,
-          1.474860335195531
+          1.9760752316415435,
+          1.8761814744801513,
+          1.6282051282051284,
+          2.8126888217522663,
+          2.1782742006132283,
+          0.6651798160022303,
+          0.6254042928550426
         ],
         [
-          1.6500114600045839,
-          1.2030772844726332,
-          1.0139976884551176,
-          0.5449696523818283,
-          1.2459875167186802,
-          0.48809704321455655,
-          0.6370169274992015
+          1.5873655913978497,
+          1.1752127183161667,
+          0.8878469142060575,
+          0.43247524752475247,
+          1.2961080813088748,
+          0.462196425843898,
+          0.394828368365341
         ],
         [
-          1.5301480083440946,
-          1.206256109481916,
-          1.1249259917110717,
-          0.7685992816829144,
-          1.356863596872285,
-          0.7048923120810155,
-          0.6938350458206054
+          1.5634648370497426,
+          1.1838823153181963,
+          0.9176136363636364,
+          0.4580178940123881,
+          1.2522683992382657,
+          0.5616764788337538,
+          0.5327916424840394
         ]
       ]
     }
@@ -104,160 +104,6 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": 30,
-        "text": "3.208",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": 30,
-        "text": "2.084",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": 30,
-        "text": "2.338",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": 30,
-        "text": "3.509",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": 30,
-        "text": "2.428",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": 30,
-        "text": "2.311",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": 30,
-        "text": "0.709",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": 40,
-        "text": "2.861",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": 40,
-        "text": "2.096",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": 40,
-        "text": "2.192",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": 40,
-        "text": "3.658",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": 40,
-        "text": "2.475",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": 40,
-        "text": "1.187",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": 40,
-        "text": "0.910",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": 50,
         "text": "2.562",
         "font": {
           "color": "#EEEEEE"
@@ -268,8 +114,162 @@
         "xref": "x1",
         "yref": "y1",
         "x": "ap-south-1",
+        "y": 30,
+        "text": "2.111",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 30,
+        "text": "1.935",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 30,
+        "text": "2.583",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 30,
+        "text": "2.520",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 30,
+        "text": "1.625",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 30,
+        "text": "0.606",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
+        "y": 40,
+        "text": "2.548",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 40,
+        "text": "2.158",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 40,
+        "text": "2.084",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 40,
+        "text": "2.811",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 40,
+        "text": "2.591",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 40,
+        "text": "1.057",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 40,
+        "text": "0.658",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
         "y": 50,
-        "text": "2.122",
+        "text": "2.618",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 50,
+        "text": "2.304",
         "font": {
           "color": "#EEEEEE"
         },
@@ -280,7 +280,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": 50,
-        "text": "2.198",
+        "text": "2.081",
         "font": {
           "color": "#EEEEEE"
         },
@@ -291,7 +291,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": 50,
-        "text": "3.817",
+        "text": "2.977",
         "font": {
           "color": "#EEEEEE"
         },
@@ -302,7 +302,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": 50,
-        "text": "2.215",
+        "text": "2.553",
         "font": {
           "color": "#EEEEEE"
         },
@@ -313,7 +313,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": 50,
-        "text": "1.249",
+        "text": "1.065",
         "font": {
           "color": "#EEEEEE"
         },
@@ -324,7 +324,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": 50,
-        "text": "1.226",
+        "text": "0.805",
         "font": {
           "color": "#EEEEEE"
         },
@@ -335,7 +335,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": 60,
-        "text": "2.576",
+        "text": "2.422",
         "font": {
           "color": "#EEEEEE"
         },
@@ -346,7 +346,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": 60,
-        "text": "2.112",
+        "text": "2.257",
         "font": {
           "color": "#EEEEEE"
         },
@@ -357,7 +357,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": 60,
-        "text": "2.063",
+        "text": "2.082",
         "font": {
           "color": "#EEEEEE"
         },
@@ -368,7 +368,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": 60,
-        "text": "4.033",
+        "text": "3.103",
         "font": {
           "color": "#EEEEEE"
         },
@@ -379,7 +379,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": 60,
-        "text": "2.062",
+        "text": "2.495",
         "font": {
           "color": "#EEEEEE"
         },
@@ -390,7 +390,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": 60,
-        "text": "1.402",
+        "text": "0.948",
         "font": {
           "color": "#EEEEEE"
         },
@@ -401,7 +401,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": 60,
-        "text": "1.330",
+        "text": "0.961",
         "font": {
           "color": "#EEEEEE"
         },
@@ -412,7 +412,7 @@
         "yref": "y1",
         "x": "af-south-1",
         "y": 70,
-        "text": "2.162",
+        "text": "1.976",
         "font": {
           "color": "#EEEEEE"
         },
@@ -423,7 +423,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": 70,
-        "text": "2.131",
+        "text": "1.876",
         "font": {
           "color": "#EEEEEE"
         },
@@ -434,7 +434,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": 70,
-        "text": "1.493",
+        "text": "1.628",
         "font": {
           "color": "#EEEEEE"
         },
@@ -445,7 +445,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": 70,
-        "text": "1.209",
+        "text": "2.813",
         "font": {
           "color": "#EEEEEE"
         },
@@ -456,7 +456,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": 70,
-        "text": "1.287",
+        "text": "2.178",
         "font": {
           "color": "#EEEEEE"
         },
@@ -467,7 +467,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": 70,
-        "text": "0.791",
+        "text": "0.665",
         "font": {
           "color": ""
         },
@@ -478,84 +478,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": 70,
-        "text": "1.475",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "af-south-1",
-        "y": 80,
-        "text": "1.650",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-south-1",
-        "y": 80,
-        "text": "1.203",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "ap-southeast-2",
-        "y": 80,
-        "text": "1.014",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "eu-central-1",
-        "y": 80,
-        "text": "0.545",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "sa-east-1",
-        "y": 80,
-        "text": "1.246",
-        "font": {
-          "color": "#EEEEEE"
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-east-2",
-        "y": 80,
-        "text": "0.488",
-        "font": {
-          "color": ""
-        },
-        "showarrow": false
-      },
-      {
-        "xref": "x1",
-        "yref": "y1",
-        "x": "us-west-1",
-        "y": 80,
-        "text": "0.637",
+        "text": "0.625",
         "font": {
           "color": ""
         },
@@ -565,8 +488,85 @@
         "xref": "x1",
         "yref": "y1",
         "x": "af-south-1",
+        "y": 80,
+        "text": "1.587",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-south-1",
+        "y": 80,
+        "text": "1.175",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "ap-southeast-2",
+        "y": 80,
+        "text": "0.888",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "eu-central-1",
+        "y": 80,
+        "text": "0.432",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "sa-east-1",
+        "y": 80,
+        "text": "1.296",
+        "font": {
+          "color": "#EEEEEE"
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-east-2",
+        "y": 80,
+        "text": "0.462",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "us-west-1",
+        "y": 80,
+        "text": "0.395",
+        "font": {
+          "color": ""
+        },
+        "showarrow": false
+      },
+      {
+        "xref": "x1",
+        "yref": "y1",
+        "x": "af-south-1",
         "y": 90,
-        "text": "1.530",
+        "text": "1.563",
         "font": {
           "color": "#EEEEEE"
         },
@@ -577,7 +577,7 @@
         "yref": "y1",
         "x": "ap-south-1",
         "y": 90,
-        "text": "1.206",
+        "text": "1.184",
         "font": {
           "color": "#EEEEEE"
         },
@@ -588,7 +588,7 @@
         "yref": "y1",
         "x": "ap-southeast-2",
         "y": 90,
-        "text": "1.125",
+        "text": "0.918",
         "font": {
           "color": "#EEEEEE"
         },
@@ -599,7 +599,7 @@
         "yref": "y1",
         "x": "eu-central-1",
         "y": 90,
-        "text": "0.769",
+        "text": "0.458",
         "font": {
           "color": ""
         },
@@ -610,7 +610,7 @@
         "yref": "y1",
         "x": "sa-east-1",
         "y": 90,
-        "text": "1.357",
+        "text": "1.252",
         "font": {
           "color": "#EEEEEE"
         },
@@ -621,7 +621,7 @@
         "yref": "y1",
         "x": "us-east-2",
         "y": 90,
-        "text": "0.705",
+        "text": "0.562",
         "font": {
           "color": ""
         },
@@ -632,7 +632,7 @@
         "yref": "y1",
         "x": "us-west-1",
         "y": 90,
-        "text": "0.694",
+        "text": "0.533",
         "font": {
           "color": ""
         },
@@ -647,7 +647,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 29 May 2023 - 4 Jun 2023 (ttfb, docs.libp2p.io)",
+      "text": "Data: 31 May 2023 - 7 Jun 2023 (ttfb, docs.libp2p.io)",
       "x": 1,
       "xanchor": "right",
       "y": 0.01,

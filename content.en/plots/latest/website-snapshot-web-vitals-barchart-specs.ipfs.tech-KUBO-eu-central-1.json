@@ -1,0 +1,173 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "228833"
+      },
+      "name": "Good",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        98.6046511627907,
+        97.67441860465117,
+        98.13953488372093,
+        98.13953488372093,
+        98.13953488372093
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "EECC66"
+      },
+      "name": "Needs Improvement",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0.46511627906976744,
+        0,
+        0,
+        0
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "EE6677"
+      },
+      "name": "Poor",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0.46511627906976744,
+        0.46511627906976744,
+        0.46511627906976744,
+        0.46511627906976744
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "lightgray"
+      },
+      "name": "Undefined",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "%{x} %{y:.1f}%",
+      "marker": {
+        "color": "994455"
+      },
+      "name": "Fatal",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "CLS",
+        "FCP",
+        "LCP",
+        "TTFB",
+        "TTI"
+      ],
+      "y": [
+        1.3953488372093024,
+        1.3953488372093024,
+        1.3953488372093024,
+        1.3953488372093024,
+        1.3953488372093024
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "bargap": 0.05,
+    "barmode": "stack",
+    "dragmode": false,
+    "hovermode": "closest",
+    "legend": {
+      "orientation": "h",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 1.05
+    },
+    "margin": {
+      "b": 60,
+      "l": 50,
+      "pad": 1,
+      "r": 20,
+      "t": 5
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 31 May 2023 - 7 Jun 2023\u003cbr\u003e(KUBO, eu-central-1, specs.ipfs.tech)",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.045,
+      "yanchor": "bottom"
+    },
+    "xaxis": {
+      "title": {
+        "standoff": 15,
+        "text": "Metric"
+      }
+    },
+    "yaxis": {
+      "title": {
+        "text": "Share of all Probes in %"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}

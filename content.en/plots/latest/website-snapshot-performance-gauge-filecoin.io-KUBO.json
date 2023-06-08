@@ -9,7 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.424,
+        "reference": 0.3084,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -68,7 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.7339,
+        "reference": 1.3614,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -129,7 +129,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.4667,
+        "reference": 0.4508,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -188,7 +188,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 2.1384,
+        "reference": 2.0492,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -249,7 +249,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 0.4776,
+        "reference": 0.5439,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -308,7 +308,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 2.2728,
+        "reference": 2.2025,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -369,7 +369,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.0454,
+        "reference": 1.022,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -428,7 +428,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 3.4411,
+        "reference": 3.0984,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -489,7 +489,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.1355,
+        "reference": 0.8579,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -548,7 +548,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 4.986,
+        "reference": 3.6261,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -609,7 +609,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.3058,
+        "reference": 1.5623,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -668,7 +668,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 3.9137,
+        "reference": 3.934,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -729,7 +729,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 1.0001,
+        "reference": 1.0174,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -788,7 +788,7 @@
         "increasing": {
           "color": "EE6677"
         },
-        "reference": 4.2127,
+        "reference": 4.0819,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -869,7 +869,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 29 May 2023 - 4 Jun 2023 (p90, KUBO, filecoin.io)",
+      "text": "Data: 31 May 2023 - 7 Jun 2023 (p90, KUBO, filecoin.io)",
       "x": 1,
       "xanchor": "right",
       "y": 0.103,
