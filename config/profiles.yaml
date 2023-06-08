@@ -4,14 +4,42 @@
 - source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
   variants:
-    - type: KUBO
-      website: protocol.ai
-    - type: KUBO
-      website: filecoin.io
-    - type: KUBO
-      website: docs.libp2p.io
-    - type: KUBO
-      website: drand.love
+    - website: protocol.ai
+      type: KUBO
+    - website: filecoin.io
+      type: KUBO
+    - website: docs.libp2p.io
+      type: KUBO
+    - website: drand.love
+      type: KUBO
+    - website: libp2p.io
+      type: KUBO
+    - website: ipld.io
+      type: KUBO
+    - website: tldr.filecoin.io
+      type: KUBO
+    - website: green.filecoin.io
+      type: KUBO
+    - website: web3.storage
+      type: KUBO
+    - website: consensuslab.world
+      type: KUBO
+    - website: strn.network
+      type: KUBO
+    - website: research.protocol.ai
+      type: KUBO
+    - website: ipfs.tech
+      type: KUBO
+    - website: blog.ipfs.tech
+      type: KUBO
+    - website: docs.libp2p.io
+      type: KUBO
+    - website: blog.libp2p.io
+      type: KUBO
+    - website: en.wikipedia-on-ipfs.org/wiki
+      type: KUBO
+    - website: specs.ipfs.tech
+      type: KUBO
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -20,6 +48,20 @@
     - website: filecoin.io
     - website: docs.libp2p.io
     - website: drand.love
+    - website: libp2p.io
+    - website: ipld.io
+    - website: tldr.filecoin.io
+    - website: green.filecoin.io
+    - website: web3.storage
+    - website: consensuslab.world
+    - website: strn.network
+    - website: research.protocol.ai
+    - website: ipfs.tech
+    - website: blog.ipfs.tech
+    - website: docs.libp2p.io
+    - website: blog.libp2p.io
+    - website: en.wikipedia-on-ipfs.org/wiki
+    - website: specs.ipfs.tech
 
 - source: ./plotdefs-website/website-trend-providers.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -28,6 +70,20 @@
     - website: filecoin.io
     - website: docs.libp2p.io
     - website: drand.love
+    - website: libp2p.io
+    - website: ipld.io
+    - website: tldr.filecoin.io
+    - website: green.filecoin.io
+    - website: web3.storage
+    - website: consensuslab.world
+    - website: strn.network
+    - website: research.protocol.ai
+    - website: ipfs.tech
+    - website: blog.ipfs.tech
+    - website: docs.libp2p.io
+    - website: blog.libp2p.io
+    - website: en.wikipedia-on-ipfs.org/wiki
+    - website: specs.ipfs.tech
 
 - source: ./plotdefs-website/website-trend-retrieval-errors.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
@@ -40,6 +96,34 @@
       type: KUBO
     - website: drand.love
       type: KUBO
+    - website: libp2p.io
+      type: KUBO
+    - website: ipld.io
+      type: KUBO
+    - website: tldr.filecoin.io
+      type: KUBO
+    - website: green.filecoin.io
+      type: KUBO
+    - website: web3.storage
+      type: KUBO
+    - website: consensuslab.world
+      type: KUBO
+    - website: strn.network
+      type: KUBO
+    - website: research.protocol.ai
+      type: KUBO
+    - website: ipfs.tech
+      type: KUBO
+    - website: blog.ipfs.tech
+      type: KUBO
+    - website: docs.libp2p.io
+      type: KUBO
+    - website: blog.libp2p.io
+      type: KUBO
+    - website: en.wikipedia-on-ipfs.org/wiki
+      type: KUBO
+    - website: specs.ipfs.tech
+      type: KUBO
 
 - source: ./plotdefs-website/website-snapshot-probes-count.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -48,6 +132,24 @@
     - website: filecoin.io
     - website: docs.libp2p.io
     - website: drand.love
+    - website: protocol.ai
+    - website: filecoin.io
+    - website: docs.libp2p.io
+    - website: drand.love
+    - website: libp2p.io
+    - website: ipld.io
+    - website: tldr.filecoin.io
+    - website: green.filecoin.io
+    - website: web3.storage
+    - website: consensuslab.world
+    - website: strn.network
+    - website: research.protocol.ai
+    - website: ipfs.tech
+    - website: blog.ipfs.tech
+    - website: docs.libp2p.io
+    - website: blog.libp2p.io
+    - website: en.wikipedia-on-ipfs.org/wiki
+    - website: specs.ipfs.tech
 
 - source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
@@ -64,6 +166,48 @@
     - website: drand.love
       type: KUBO
       region: eu-central-1
+    - website: libp2p.io
+      type: KUBO
+      region: eu-central-1
+    - website: ipld.io
+      type: KUBO
+      region: eu-central-1
+    - website: tldr.filecoin.io
+      type: KUBO
+      region: eu-central-1
+    - website: green.filecoin.io
+      type: KUBO
+      region: eu-central-1
+    - website: web3.storage
+      type: KUBO
+      region: eu-central-1
+    - website: consensuslab.world
+      type: KUBO
+      region: eu-central-1
+    - website: strn.network
+      type: KUBO
+      region: eu-central-1
+    - website: research.protocol.ai
+      type: KUBO
+      region: eu-central-1
+    - website: ipfs.tech
+      type: KUBO
+      region: eu-central-1
+    - website: blog.ipfs.tech
+      type: KUBO
+      region: eu-central-1
+    - website: docs.libp2p.io
+      type: KUBO
+      region: eu-central-1
+    - website: blog.libp2p.io
+      type: KUBO
+      region: eu-central-1
+    - website: en.wikipedia-on-ipfs.org/wiki
+      type: KUBO
+      region: eu-central-1
+    - website: specs.ipfs.tech
+      type: KUBO
+      region: eu-central-1
 
 - source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -72,6 +216,24 @@
     - website: filecoin.io
     - website: docs.libp2p.io
     - website: drand.love
+    - website: protocol.ai
+    - website: filecoin.io
+    - website: docs.libp2p.io
+    - website: drand.love
+    - website: libp2p.io
+    - website: ipld.io
+    - website: tldr.filecoin.io
+    - website: green.filecoin.io
+    - website: web3.storage
+    - website: consensuslab.world
+    - website: strn.network
+    - website: research.protocol.ai
+    - website: ipfs.tech
+    - website: blog.ipfs.tech
+    - website: docs.libp2p.io
+    - website: blog.libp2p.io
+    - website: en.wikipedia-on-ipfs.org/wiki
+    - website: specs.ipfs.tech
 
 - source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
@@ -112,6 +274,132 @@
     - website: drand.love
       type: KUBO
       metric: lcp
+    - website: libp2p.io
+      type: KUBO
+      metric: ttfb
+    - website: libp2p.io
+      type: KUBO
+      metric: fcp
+    - website: libp2p.io
+      type: KUBO
+      metric: lcp
+    - website: ipld.io
+      type: KUBO
+      metric: ttfb
+    - website: ipld.io
+      type: KUBO
+      metric: fcp
+    - website: ipld.io
+      type: KUBO
+      metric: lcp
+    - website: tldr.filecoin.io
+      type: KUBO
+      metric: ttfb
+    - website: tldr.filecoin.io
+      type: KUBO
+      metric: fcp
+    - website: tldr.filecoin.io
+      type: KUBO
+      metric: lcp
+    - website: green.filecoin.io
+      type: KUBO
+      metric: ttfb
+    - website: green.filecoin.io
+      type: KUBO
+      metric: fcp
+    - website: green.filecoin.io
+      type: KUBO
+      metric: lcp
+    - website: web3.storage
+      type: KUBO
+      metric: ttfb
+    - website: web3.storage
+      type: KUBO
+      metric: fcp
+    - website: web3.storage
+      type: KUBO
+      metric: lcp
+    - website: consensuslab.world
+      type: KUBO
+      metric: ttfb
+    - website: consensuslab.world
+      type: KUBO
+      metric: fcp
+    - website: consensuslab.world
+      type: KUBO
+      metric: lcp
+    - website: strn.network
+      type: KUBO
+      metric: ttfb
+    - website: strn.network
+      type: KUBO
+      metric: fcp
+    - website: strn.network
+      type: KUBO
+      metric: lcp
+    - website: research.protocol.ai
+      type: KUBO
+      metric: ttfb
+    - website: research.protocol.ai
+      type: KUBO
+      metric: fcp
+    - website: research.protocol.ai
+      type: KUBO
+      metric: lcp
+    - website: ipfs.tech
+      type: KUBO
+      metric: ttfb
+    - website: ipfs.tech
+      type: KUBO
+      metric: fcp
+    - website: ipfs.tech
+      type: KUBO
+      metric: lcp
+    - website: blog.ipfs.tech
+      type: KUBO
+      metric: ttfb
+    - website: blog.ipfs.tech
+      type: KUBO
+      metric: fcp
+    - website: blog.ipfs.tech
+      type: KUBO
+      metric: lcp
+    - website: docs.libp2p.io
+      type: KUBO
+      metric: ttfb
+    - website: docs.libp2p.io
+      type: KUBO
+      metric: fcp
+    - website: docs.libp2p.io
+      type: KUBO
+      metric: lcp
+    - website: blog.libp2p.io
+      type: KUBO
+      metric: ttfb
+    - website: blog.libp2p.io
+      type: KUBO
+      metric: fcp
+    - website: blog.libp2p.io
+      type: KUBO
+      metric: lcp
+    - website: en.wikipedia-on-ipfs.org/wiki
+      type: KUBO
+      metric: ttfb
+    - website: en.wikipedia-on-ipfs.org/wiki
+      type: KUBO
+      metric: fcp
+    - website: en.wikipedia-on-ipfs.org/wiki
+      type: KUBO
+      metric: lcp
+    - website: specs.ipfs.tech
+      type: KUBO
+      metric: ttfb
+    - website: specs.ipfs.tech
+      type: KUBO
+      metric: fcp
+    - website: specs.ipfs.tech
+      type: KUBO
+      metric: lcp
 
 - source: ./plotdefs-website/website-snapshot-http-ratio.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.metric }}.json"
@@ -123,6 +411,34 @@
     - website: docs.libp2p.io
       metric: ttfb
     - website: drand.love
+      metric: ttfb
+    - website: libp2p.io
+      metric: ttfb
+    - website: ipld.io
+      metric: ttfb
+    - website: tldr.filecoin.io
+      metric: ttfb
+    - website: green.filecoin.io
+      metric: ttfb
+    - website: web3.storage
+      metric: ttfb
+    - website: consensuslab.world
+      metric: ttfb
+    - website: strn.network
+      metric: ttfb
+    - website: research.protocol.ai
+      metric: ttfb
+    - website: ipfs.tech
+      metric: ttfb
+    - website: blog.ipfs.tech
+      metric: ttfb
+    - website: docs.libp2p.io
+      metric: ttfb
+    - website: blog.libp2p.io
+      metric: ttfb
+    - website: en.wikipedia-on-ipfs.org/wiki
+      metric: ttfb
+    - website: specs.ipfs.tech
       metric: ttfb
 
 - source: ./plotdefs-website/websites-web-vitals-heatmap.yaml

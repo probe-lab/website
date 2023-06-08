@@ -1,0 +1,134 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "marker": {},
+      "mode": "lines",
+      "name": "TTFB",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        null,
+        null,
+        0.6314000000000001,
+        0.6020666666666666
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {},
+      "mode": "lines",
+      "name": "FCP",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        null,
+        null,
+        1.3469,
+        1.3020333333333334
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {},
+      "mode": "lines",
+      "name": "LCP",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        null,
+        null,
+        2.0177,
+        2.0191333333333334
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {},
+      "mode": "lines",
+      "name": "CLS",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        null,
+        null,
+        0.000001,
+        0.000001
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {},
+      "mode": "lines",
+      "name": "TTI",
+      "visible": true,
+      "x": [
+        "2023-06-02T00:00:00Z",
+        "2023-06-05T00:00:00Z",
+        "2023-06-06T00:00:00Z",
+        "2023-06-07T00:00:00Z"
+      ],
+      "y": [
+        null,
+        null,
+        1.2321333333333333,
+        1.2224666666666666
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "margin": {
+      "b": 60,
+      "l": 50,
+      "pad": 1,
+      "r": 60,
+      "t": 30
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "(p90, specs.ipfs.tech)",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "yaxis": {
+      "autorange": true,
+      "rangemode": "tozero",
+      "title": {
+        "text": "Time in s"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}

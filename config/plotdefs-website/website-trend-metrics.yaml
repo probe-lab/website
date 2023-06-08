@@ -13,7 +13,7 @@ datasets:
               extract('epoch' from percentile_disc(0.9) within group ( order by m.tti ) filter ( where m.tti is not null )) p90_tti
           from measurements m
               inner join runs r on r.id = m.run_id
-          where m.created_at >= {{ .StartOfDay | timestamptz }} - '30 days'::interval
+          where m.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
             and m.created_at < {{ .StartOfDay | timestamptz }}
             and m.website = '{{ .Params.website }}'
             and m.type = 'KUBO'

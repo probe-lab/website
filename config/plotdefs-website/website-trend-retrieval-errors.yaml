@@ -1,4 +1,4 @@
-frequency: weekly
+frequency: daily
 datasets:
   - name: "current"
     source: "tiros"

@@ -1,4 +1,4 @@
-frequency: weekly
+frequency: daily
 datasets:
   - name: "current"
     source: "tiros"
@@ -9,8 +9,8 @@ datasets:
           percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' ) p{{ .Params.percentile }}_http
       from measurements m
                inner join runs r on r.id = m.run_id
-          where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
-            and m.created_at < {{ .StartOfWeek | timestamptz }}
+          where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
+            and m.created_at < {{ .StartOfDay | timestamptz }}
       group by r.region
 
 series:
@@ -51,7 +51,7 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }})"
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }})'
     x: 1
     xanchor: "right"
     y: 0.01
