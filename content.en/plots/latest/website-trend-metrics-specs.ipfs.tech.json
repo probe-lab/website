@@ -64,26 +64,6 @@
       "type": "scatter",
       "marker": {},
       "mode": "lines",
-      "name": "CLS",
-      "visible": true,
-      "x": [
-        "2023-06-02T00:00:00Z",
-        "2023-06-05T00:00:00Z",
-        "2023-06-06T00:00:00Z",
-        "2023-06-07T00:00:00Z"
-      ],
-      "y": [
-        null,
-        null,
-        0.000001,
-        0.000001
-      ],
-      "yaxis": ""
-    },
-    {
-      "type": "scatter",
-      "marker": {},
-      "mode": "lines",
       "name": "TTI",
       "visible": true,
       "x": [
