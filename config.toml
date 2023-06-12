@@ -23,6 +23,10 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 # [[menu.before]]
 # [[menu.after]]
 [[menu.after]]
+  name = "Weekly Reports ⇢"
+  url = "https://github.com/protocol/network-measurements/tree/master/reports"
+  weight = 9
+[[menu.after]]
   name = "Discuss ⇢"
   url = "https://discuss.ipfs.tech/c/testing-and-experiments/35"
   weight = 10
