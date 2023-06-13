@@ -40,6 +40,8 @@
       type: KUBO
     - website: specs.ipfs.tech
       type: KUBO
+    - website: probelab.io
+      type: KUBO
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -62,6 +64,7 @@
     - website: blog.libp2p.io
     - website: en.wikipedia-on-ipfs.org/wiki
     - website: specs.ipfs.tech
+    - website: probelab.io
 
 - source: ./plotdefs-website/website-trend-providers.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -84,6 +87,7 @@
     - website: blog.libp2p.io
     - website: en.wikipedia-on-ipfs.org/wiki
     - website: specs.ipfs.tech
+    - website: probelab.io
 
 - source: ./plotdefs-website/website-trend-retrieval-errors.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
@@ -124,6 +128,8 @@
       type: KUBO
     - website: specs.ipfs.tech
       type: KUBO
+    - website: probelab.io
+      type: KUBO
 
 - source: ./plotdefs-website/website-snapshot-probes-count.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -150,6 +156,7 @@
     - website: blog.libp2p.io
     - website: en.wikipedia-on-ipfs.org/wiki
     - website: specs.ipfs.tech
+    - website: probelab.io
 
 - source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
@@ -208,6 +215,9 @@
     - website: specs.ipfs.tech
       type: KUBO
       region: eu-central-1
+    - website: probelab.io
+      type: KUBO
+      region: eu-central-1
 
 - source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -234,6 +244,7 @@
     - website: blog.libp2p.io
     - website: en.wikipedia-on-ipfs.org/wiki
     - website: specs.ipfs.tech
+    - website: probelab.io
 
 - source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
@@ -400,6 +411,15 @@
     - website: specs.ipfs.tech
       type: KUBO
       metric: lcp
+    - website: probelab.io
+      type: KUBO
+      metric: ttfb
+    - website: probelab.io
+      type: KUBO
+      metric: fcp
+    - website: probelab.io
+      type: KUBO
+      metric: lcp
 
 - source: ./plotdefs-website/website-snapshot-http-ratio.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.metric }}.json"
@@ -439,6 +459,8 @@
     - website: en.wikipedia-on-ipfs.org/wiki
       metric: ttfb
     - website: specs.ipfs.tech
+      metric: ttfb
+    - website: probelab.io
       metric: ttfb
 
 - source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
