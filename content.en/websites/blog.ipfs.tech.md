@@ -15,7 +15,7 @@ We initially present an Overview of the performance, followed by Trends, i.e., t
 
 {{< plotly json="../../plots/latest/website-snapshot-performance-gauge-blog.ipfs.tech-KUBO.json" height="300px" >}}
 
-The graph presents a comparison of two crucial web performance metrics: Time to First Byte (TTFB) and First Contentful Paint (FCP).
+The graph presents a comparison of two crucial Kubo web performance metrics (90th percentile): Time to First Byte (TTFB) and First Contentful Paint (FCP).
 The data displayed shows the 90th percentile of both metrics and was gathered during the previous week.
 To aid in comparison, the percentage difference between the previous week and the week before is displayed below each gauge indicator. This enables easy identification of performance improvements or regressions over time. The plots on this page are updated weekly on Monday.
 

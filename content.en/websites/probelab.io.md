@@ -1,19 +1,19 @@
 ---
-title: web3.storage
+title: probelab.io
 plotly: true
 ---
 
-# `web3.storage`
+# `probelab.io`
 
-This page shows performance metrics for the website [web3.storage](https://web3.storage). We gathered the data with our [Tiros](/tools/tiros) measurement tool.
+This page shows performance metrics for the website [probelab.io](https://probelab.io). We gathered the data with our [Tiros](/tools/tiros) measurement tool.
 
 We initially present an Overview of the performance, followed by Trends, i.e., the performance over time, for the last 30 days. We finally take a snapshot of the performance seen during the most recent week and present performance details over this period. The combination of long-term (Trends) and short-term (Snapshot) results provide a comprehensive view of the site's performance, as well as potential areas of improvement.
 
 ## Overview
 
-### General Performance {#website-snapshot-performance-gauge-web3storage-kubo}
+### General Performance {#website-snapshot-performance-gauge-probelabio-kubo}
 
-{{< plotly json="../../plots/latest/website-snapshot-performance-gauge-web3.storage-KUBO.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-performance-gauge-probelab.io-KUBO.json" height="300px" >}}
 
 The graph presents a comparison of two crucial Kubo web performance metrics (90th percentile): Time to First Byte (TTFB) and First Contentful Paint (FCP).
 The data displayed shows the 90th percentile of both metrics and was gathered during the previous week.
@@ -26,9 +26,9 @@ The graph utilizes shaded areas in different colors to denote performance catego
 
 The website measurement data can be viewed from two distinct perspectives: as a snapshot of the most recent data points (see [Snapshot](#snapshot)) and as a progression over time. This section provides insights into the overall trends by presenting metrics over time. Analyzing data solely as a snapshot can offer a momentary glimpse into the current state, but it may lack context and fail to capture the bigger picture. However, by examining data over time, patterns and trends emerge, allowing for a deeper understanding of the data's trajectory and potential future outcomes. This section's focus on metrics over time enhances the ability to identify and interpret these trends, enabling informed decision-making and strategic planning.
 
-### Web-Vitals Metrics (90th Percentile) {#website-trend-metrics-web3storage}
+### Web-Vitals Metrics (90th Percentile) {#website-trend-metrics-probelabio}
 
-{{< plotly json="../../plots/latest/website-trend-metrics-web3.storage.json" height="300px" >}}
+{{< plotly json="../../plots/latest/website-trend-metrics-probelab.io.json" height="300px" >}}
 
 The [Web-Vitals](https://web.dev/vitals/) Metrics graph provides high-level insights into the websites' performance, allowing you to monitor key metrics over the past 30 days.
 
@@ -41,9 +41,9 @@ The graph showcases five essential web vitals metrics, enabling you to assess th
 
 It is important to note that the resulting metrics are artificial composites and do not reflect the specific performance of any individual region. Rather, it allows discerning general tendencies and fluctuations in these metrics across the combined dataset.
 
-### Unique IPFS Website Providers per Day {#website-trend-providers-web3storage}
+### Unique IPFS Website Providers per Day {#website-trend-providers-probelabio}
 
-{{< plotly json="../../plots/latest/website-trend-providers-web3.storage.json" height="350px" >}}
+{{< plotly json="../../plots/latest/website-trend-providers-probelab.io.json" height="350px" >}}
 
 One of the primary reasons why a website (CID) might not be available over Kubo is that there are no providers for the content. This graph showcases the unique providing peers as identified by distinct [PeerIDs](https://docs.libp2p.io/concepts/fundamentals/peers/#peer-id) discovered throughout a specific day in the IPFS DHT. We look up the IPNS record for the website which gives us the current CID of the website's content. Then, we look up all provider records in the IPFS DHT and record the distinct PeerIDs of the providing peers. Finally, we try to connect to all the discovered peers, and based on the outcome, classify them as:
 
@@ -56,9 +56,9 @@ In order for a website (or CID more in general) to be available and accessible i
 In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day (count shown on the right handside y-axis).
 Deployments are determined by monitoring the CIDs found within the websites' IPNS records. If the CID changes, we consider this a new deployment.
 
-### IPFS Retrieval Errors {#website-trend-retrieval-errors-web3storage-kubo}
+### IPFS Retrieval Errors {#website-trend-retrieval-errors-probelabio-kubo}
 
-{{< plotly json="../../plots/latest/website-trend-retrieval-errors-web3.storage-KUBO.json" height="350px" >}}
+{{< plotly json="../../plots/latest/website-trend-retrieval-errors-probelab.io-KUBO.json" height="350px" >}}
 
 This graph shows error rates of website requests via Kubo over the past 30 days. It combines measurements from all our measurement regions. The x-axis represents days, while the y-axis displays error rates. Additionally, black markers indicate the actual number of requests (from our infrastructure) per day with the corresponding count shown on the right handside y-axis. This graph offers a concise overview of error rates and probing volume, aiding users in assessing website availability in IPFS.
 
@@ -66,9 +66,9 @@ This graph shows error rates of website requests via Kubo over the past 30 days.
 
 This section presents a snapshot of the most recent week's data, offering a concise overview of the current state. By focusing on this specific timeframe, readers gain immediate insights into the prevailing metrics and performance indicators. While a single snapshot may lack the context of historical data, it serves as a valuable tool for assessing the present situation. Analyzing the data in this way allows for quick identification of key trends, patterns, and potential areas of concern or success. This section's emphasis on the snapshot of data enables decision-makers to make informed, real-time assessments and take immediate actions based on the current status.
 
-### Website Probes {#website-snapshot-probes-count-web3storage}
+### Website Probes {#website-snapshot-probes-count-probelabio}
 
-{{< plotly json="../../plots/latest/website-snapshot-probes-count-web3.storage.json" height="150px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-probes-count-probelab.io.json" height="150px" >}}
 
 We perform on average 500 requests per week from each of the seven AWS regions
 where our infrastructure is deployed using [Kubo](https://github.com/ipfs/kubo)
@@ -76,19 +76,19 @@ and HTTP. Above is the number of requests for each of the request methods. The n
 vary depending on errors during the fetching process, which we look into more
 detail further down.
 
-### Web-Vitals Metrics measured from Europe using Kubo {#website-snapshot-web-vitals-barchart-web3storage-kubo-eu-central-1}
+### Web-Vitals Metrics measured from Europe using Kubo {#website-snapshot-web-vitals-barchart-probelabio-kubo-eu-central-1}
 
-{{< plotly json="../../plots/latest/website-snapshot-web-vitals-barchart-web3.storage-KUBO-eu-central-1.json" height="400px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-web-vitals-barchart-probelab.io-KUBO-eu-central-1.json" height="400px" >}}
 
 <small>[What do `Fatal`, `Undefined`, `Poor` etc. mean?](#values)</small>
 
 During the designated time period (indicated in the bottom right corner), we conducted multiple measurements for the five metrics shown along the x-axis. The y-axis represents the proportion of measurement outcomes from the total number of measurements specifically taken in the eu-central-1 region. This visual representation allows us to analyze the distribution of the metric ratings within the specified time frame for that particular region.
 
-### Website Probing Success rate from different Regions {#website-snapshot-retrieval-errors-web3storage}
+### Website Probing Success rate from different Regions {#website-snapshot-retrieval-errors-probelabio}
 
-{{< plotly json="../../plots/latest/website-snapshot-retrieval-errors-web3.storage.json" height="350px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-retrieval-errors-probelab.io.json" height="350px" >}}
 
-While the graph on [IPFS Retrieval Errors](#website-trend-retrieval-errors-web3storage-kubo) further up shows the Kubo retrieval errors over time, this graph shows the retrieval errors as seen from different regions in the specified time interval (bottom right corner). Alongside the Kubo retrieval outcomes it also shows the HTTP results. The black markers again show the number of probes performed in each region with each request method (count shown on the right handside y-axis).
+While the graph on [IPFS Retrieval Errors](#website-trend-retrieval-errors-probelabio-kubo) further up shows the Kubo retrieval errors over time, this graph shows the retrieval errors as seen from different regions in the specified time interval (bottom right corner). Alongside the Kubo retrieval outcomes it also shows the HTTP results. The black markers again show the number of probes performed in each region with each request method (count shown on the right handside y-axis).
 
 ### Kubo Metrics by Region
 
@@ -96,21 +96,21 @@ This series of graphs presents a comprehensive analysis of latency performance a
 
 To provide context and aid interpretation, the graphs incorporate shaded background areas. These areas are color-coded, with green representing good performance, yellow indicating areas that require improvement, and red denoting poor performance. The thresholds are defined by [web-vitals](https://web.dev/vitals) (more info below in [Metrics](#metrics)). By analyzing the position of the CDF lines in relation to the shaded regions, one can quickly identify regions with superior, average, or subpar latency performance for TTFB, FCP, and LCP.
 
-#### Time To First Byte {#website-snapshot-metric-cdf-web3storage-kubo-ttfb}
+#### Time To First Byte {#website-snapshot-metric-cdf-probelabio-kubo-ttfb}
 
-{{< plotly json="../../plots/latest/website-snapshot-metric-cdf-web3.storage-KUBO-ttfb.json" height="320px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-metric-cdf-probelab.io-KUBO-ttfb.json" height="320px" >}}
 
-#### First Contentful Paint {#website-snapshot-metric-cdf-web3storage-kubo-fcp}
+#### First Contentful Paint {#website-snapshot-metric-cdf-probelabio-kubo-fcp}
 
-{{< plotly json="../../plots/latest/website-snapshot-metric-cdf-web3.storage-KUBO-fcp.json" height="320px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-metric-cdf-probelab.io-KUBO-fcp.json" height="320px" >}}
 
-#### Largest Contentful Paint {#website-snapshot-metric-cdf-web3storage-kubo-lcp}
+#### Largest Contentful Paint {#website-snapshot-metric-cdf-probelabio-kubo-lcp}
 
-{{< plotly json="../../plots/latest/website-snapshot-metric-cdf-web3.storage-KUBO-lcp.json" height="320px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-metric-cdf-probelab.io-KUBO-lcp.json" height="320px" >}}
 
-### Kubo vs HTTP Latency Comparison (TTFB) {#website-snapshot-http-ratio-web3storage-ttfb}
+### Kubo vs HTTP Latency Comparison (TTFB) {#website-snapshot-http-ratio-probelabio-ttfb}
 
-{{< plotly json="../../plots/latest/website-snapshot-http-ratio-web3.storage-ttfb.json" height="500px" >}}
+{{< plotly json="../../plots/latest/website-snapshot-http-ratio-probelab.io-ttfb.json" height="500px" >}}
 
 We calculated different percentiles for the Time To First Byte (TTFB) metric in different regions for website requests that were done via Kubo and via plain HTTP. Then we divided the values of Kubo by the ones from HTTP. A resulting number greater than `1` means that Kubo was slower than HTTP in that region for that percentile. Conversely, a number less than `1` means that Kubo was faster.
 
