@@ -24,6 +24,7 @@ datasets:
         and m.created_at < {{ .StartOfWeek | timestamptz }}
         and m.website = '{{ .Params.website }}'
         and m.type = '{{ .Params.type }}'
+        and m.ttfb is not null
   - name: "previous"
     source: "tiros"
     query: >
