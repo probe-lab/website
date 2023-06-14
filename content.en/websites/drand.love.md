@@ -15,7 +15,7 @@ We initially present an Overview of the performance, followed by Trends, i.e., t
 
 {{< plotly json="../../plots/latest/website-snapshot-performance-gauge-drand.love-KUBO.json" height="300px" >}}
 
-The graph presents a comparison of two crucial web performance metrics: Time to First Byte (TTFB) and First Contentful Paint (FCP).
+The graph presents a comparison of two crucial Kubo web performance metrics (90th percentile): Time to First Byte (TTFB) and First Contentful Paint (FCP).
 The data displayed shows the 90th percentile of both metrics and was gathered during the previous week.
 To aid in comparison, the percentage difference between the previous week and the week before is displayed below each gauge indicator. This enables easy identification of performance improvements or regressions over time. The plots on this page are updated weekly on Monday.
 
@@ -55,6 +55,12 @@ In order for a website (or CID more in general) to be available and accessible i
 
 In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day (count shown on the right handside y-axis).
 Deployments are determined by monitoring the CIDs found within the websites' IPNS records. If the CID changes, we consider this a new deployment.
+
+#### Known Stable Providers {#website-trend-hosters-drandlove}
+
+{{< plotly json="../../plots/latest/website-trend-hosters-drand.love.json" height="250px" >}}
+
+For the above graph, we obtained the PeerIDs from two hosters: [Protocol Labs' IPFS Websites Collab-Cluster](https://collab.ipfscluster.io/) and [Fleek](https://fleek.co). Each day, we examined how many of their PeerIDs appear in the list of peers providing the website in the DHT. Specifically, we monitor six PeerIDs for Fleek and seven PeerIDs for the Collab-Cluster. The sum of both bars should always be less than or equal to the number of `Reachable Non-Relayed` peers in the previous graph.
 
 ### IPFS Retrieval Errors {#website-trend-retrieval-errors-drandlove-kubo}
 

@@ -56,6 +56,12 @@ In order for a website (or CID more in general) to be available and accessible i
 In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day (count shown on the right handside y-axis).
 Deployments are determined by monitoring the CIDs found within the websites' IPNS records. If the CID changes, we consider this a new deployment.
 
+#### Known Stable Providers {#website-trend-hosters-|| .Anchor ||}
+
+{{< plotly json="../../plots/latest/website-trend-hosters-|| .Website ||.json" height="250px" >}}
+
+For the above graph, we obtained the PeerIDs from two hosters: [Protocol Labs' IPFS Websites Collab-Cluster](https://collab.ipfscluster.io/) and [Fleek](https://fleek.co). Each day, we examined how many of their PeerIDs appear in the list of peers providing the website in the DHT. Specifically, we monitor six PeerIDs for Fleek and seven PeerIDs for the Collab-Cluster. The sum of both bars should always be less than or equal to the number of `Reachable Non-Relayed` peers in the previous graph.
+
 ### IPFS Retrieval Errors {#website-trend-retrieval-errors-|| .Anchor ||-kubo}
 
 {{< plotly json="../../plots/latest/website-trend-retrieval-errors-|| .Website ||-KUBO.json" height="350px" >}}
