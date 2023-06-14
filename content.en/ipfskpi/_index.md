@@ -23,6 +23,14 @@ The total number of peers in the network is estimated using the number of unique
 
 {{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
 
+### Unique Software Agents
+
+The total number of unique software agents operating in the network is estimated from those seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node) when a peer connects. The number of unique agents seen by the [Nebula crawler](https://github.com/dennis-tra/nebula) when crawling the IPFS DHT is included for comparison. The software agent strings have not been refined or processed, resulting in the count treating major and minor versions of each software agent as distinct entries.
+
+
+{{< plotly json="../../plots/latest/ipfs-unique-agents.json" height="400px" >}}
+
+
 ## Content Routing 
 
 IPFS employs several content routing subsystems, with the [Kademlia](https://docs.ipfs.tech/concepts/dht/#kademlia) Distributed Hash Table (DHT) being the most established. Within the network, peers commonly use this system to locate other peers that hold the content being requested. We measure the availability of DHT server nodes and the latency of [DHT lookups](https://docs.ipfs.tech/concepts/dht/#lookup-algorithm) for random content.
