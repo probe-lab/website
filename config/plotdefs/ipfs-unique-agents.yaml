@@ -1,4 +1,4 @@
-frequency: daily
+frequency: weekly
 datasets:
   # preload unique agents is calculated from total unique agents seen connecting to preload and bootstrap servers
   # caracol started collecting this data automatically from week ending 20 Mar 2023
