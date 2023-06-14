@@ -1,5 +1,5 @@
-#- source: ./plotdefs
-#  output: '{{.PlotDefFilename}}.json'
+- source: ./plotdefs
+  output: '{{.PlotDefFilename}}.json'
 
 - source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
