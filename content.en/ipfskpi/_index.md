@@ -19,13 +19,13 @@ Our KPIs are currently focusing primarily on the public [IPFS DHT](https://docs.
 
 ### Client vs Server Node Estimate
 
-The total number of peers in the network is estimated using the number of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node). The number of unique [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) peer IDs identified by the [Nebula crawler](https://github.com/dennis-tra/nebula) is then subtracted from the total number of peers (seen by the bootstrappers) to estimate the number of peers that exclusively function as DHT Clients.
+The total number of peers in the network is estimated using the number of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node). The number of unique [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) peer IDs identified by the [Nebula crawler](/tools/nebula/) is then subtracted from the total number of peers (seen by the bootstrappers) to estimate the number of peers that exclusively function as DHT Clients.
 
 {{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
 
 ### Unique Software Agents
 
-The total number of unique software agents operating in the network is estimated from those seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node) when a peer connects. The number of unique agents seen by the [Nebula crawler](https://github.com/dennis-tra/nebula) when crawling the IPFS DHT is included for comparison. The software agent strings have not been refined or processed, resulting in the count treating major and minor versions of each software agent as distinct entries.
+The total number of unique software agents operating in the network is estimated from those seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node) when a peer connects. The number of unique agents seen by the [Nebula crawler](/tools/nebula/) when crawling the IPFS DHT is included for comparison. The software agent strings have not been refined or processed, resulting in the count treating major and minor versions of each software agent as distinct entries.
 
 
 {{< plotly json="../../plots/latest/ipfs-unique-agents.json" height="400px" >}}
@@ -43,6 +43,8 @@ We categorize [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) 
 - "Mostly Offline": the node has been found online between 10%-40% of time.
 - "Offline": the node has been found online less than 10% of time.  
 
+Data is collected using the [Nebula crawler](/tools/nebula/).
+
 #### DHT Server Availability
 
 {{< plotly json="../../plots/latest/dht-availability-classified-current.json" height="250px" >}}
@@ -54,15 +56,15 @@ We categorize [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) 
 
 ### DHT Lookup performance
 
-We have instrumented the following experiment to capture the [DHT Lookup](https://docs.ipfs.tech/concepts/dht/#lookup-algorithm) performance over time and from several different geographic locations.
-We have set up IPFS DHT Server nodes in seven (7) different geographic locations. Each node periodically publishes a unique [Content Identifier (CID)](https://docs.ipfs.tech/concepts/content-addressing/#content-identifiers-cids) and makes it known to the rest of the nodes, who subsequently request it through the DHT (acting as clients). This way we capture the DHT Lookup performance from each location.
-In this section we present the average performance over all regions.
+We use [Parsec](/tools/parsec) to capture the [DHT Lookup](https://docs.ipfs.tech/concepts/dht/#lookup-algorithm) performance over time and from several different geographic locations. In this section we present the average performance over all regions.
 
 #### DHT Lookup Performance
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-quartiles.json" height="250px" >}}
 
 #### Historic DHT Lookup Performance
+
+The historic trend over time is currently provided by [Parsec](/tools/parsec). Before 21 April 2023 an older script was used that queried IPFS preload servers to measure DHT lookup performance.
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-long.json" height="600px" >}}
 
@@ -73,18 +75,19 @@ In this section we present the average performance over all regions.
 {{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}}
 
 
-## Websites and Traffic
+## Websites
 
-A common use-case for IPFS is hosting websites, addressed using [IPNS](https://docs.ipfs.tech/concepts/dht/) or [DNSLink](https://docs.ipfs.tech/concepts/dnslink/). We monitor the time it takes to load sample websites through a browser and the number of requests to the public Protocol Labs operated [IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/). 
+A common use-case for IPFS is hosting websites, addressed using [IPNS](https://docs.ipfs.tech/concepts/dht/) or [DNSLink](https://docs.ipfs.tech/concepts/dnslink/). We monitor the time it takes to load sample websites using the [Tiros](/tools/tiros) monitoring tool.
 
 #### Time to First Byte for IPFS Hosted Websites
 
 {{< plotly json="../../plots/latest/websites-ttfb-quartiles.json" height="250px" >}}
 
+## HTTP Gateway Usage
+
 #### Gateway Requests
 
-The following plot shows the total number of requests made per day to the [public IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/#gateway-providers) operated by Protocol Labs (ipfs.io and dweb.link).
-
+The following plot shows the total number of requests made per day to the [public IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/#gateway-providers) operated by Protocol Labs (ipfs.io and dweb.link). Data is collated from nginx access logs that front the gateway infrastructure.
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 

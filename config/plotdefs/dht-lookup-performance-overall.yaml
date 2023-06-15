@@ -37,7 +37,7 @@ series:
 
 layout:
   title:
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-90"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-90"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }}. Source: Parsec.'
     font:
       size: 10
     x: 0.99

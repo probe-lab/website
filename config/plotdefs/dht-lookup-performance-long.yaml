@@ -286,7 +286,7 @@ series:
 
 layout:
   title:
-    text: 'Data: 12 Feb 2021 to {{ .EndOfPreviousWeek | simpledate }}'
+    text: 'Data: 12 Feb 2021 to {{ .EndOfPreviousWeek | simpledate }}. Source: Legacy monitoring script and Parsec.'
     font:
       size: 10
     x: 0.99

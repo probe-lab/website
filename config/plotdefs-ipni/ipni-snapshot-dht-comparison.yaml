@@ -50,7 +50,7 @@ layout:
   title:
     font:
       size: 10
-    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.ipni }})"
+    text: "Data: {{ .StartOfPreviousWeek | simpledate }} - {{ .EndOfPreviousWeek | simpledate }} (p{{ .Params.percentile }}, {{ .Params.ipni }}). Source: Parsec."
     x: 1
     xanchor: "right"
     y: 0.01
