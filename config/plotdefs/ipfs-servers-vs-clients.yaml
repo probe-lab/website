@@ -89,7 +89,7 @@ series:
 layout:
   barmode: stack
   title:
-    text: 'Data: {{ .EndOfPreviousWeek | weekModify "-14"  | simpledate}} to {{ .EndOfPreviousWeek | simpledate }}. Source: Bootstrap+preload server logs; Nebula crawler.'
+    text: 'Data: {{ .EndOfPreviousWeek | weekModify "-14"  | simpledate}} to {{ .EndOfPreviousWeek | simpledate }}. Sources: Bootstrap+preload server logs; Nebula.'
     font:
       size: 10
     x: 0.99
