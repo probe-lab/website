@@ -42,7 +42,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.metric }}, {{ .Params.website }})'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.metric }}, {{ .Params.website }}). Source: Tiros.'
     x: 1
     xanchor: "right"
     y: 0.01

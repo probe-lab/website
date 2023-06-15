@@ -39,7 +39,7 @@ series:
 
 layout:
   title:
-    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}. Source: Nebula.'
     font:
       size: 10
     x: 0.99

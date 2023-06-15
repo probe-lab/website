@@ -84,7 +84,7 @@ scalars:
 
 layout:
   title:
-    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}. Source: Parsec.'
     font:
       size: 10
     x: 0.99

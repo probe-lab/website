@@ -107,7 +107,7 @@ series:
 layout:
   barmode: "stack"
   title:
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }}<br>({{ .Params.type }}, {{ .Params.region }}, {{ .Params.website }})'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }}<br>({{ .Params.type }}, {{ .Params.region }}, {{ .Params.website }}). Source: Tiros.'
     font:
       size: 10
     x: 1

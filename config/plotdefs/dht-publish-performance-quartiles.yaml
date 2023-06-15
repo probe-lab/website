@@ -85,4 +85,4 @@ scalars:
 
 layout:
   title:
-    text: "DHT publish performance (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+    text: "DHT publish performance (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous). Source: Parsec."
