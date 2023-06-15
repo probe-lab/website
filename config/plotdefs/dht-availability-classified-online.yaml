@@ -69,4 +69,4 @@ scalars:
 
 layout:
   title:
-    text: "DHT server availability (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous)"
+    text: "DHT server availability (week ending {{ .EndOfPreviousWeek | simpledate }} compared with previous). Source: Nebula crawler."

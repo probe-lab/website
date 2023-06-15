@@ -15,7 +15,7 @@ series:
 
 layout:
   title:
-    text: "Daily HTTP Originated Requests (90 days up to {{ .EndOfPreviousDay | simpledate }})"
+    text: "Daily HTTP Originated Requests (90 days up to {{ .EndOfPreviousDay | simpledate }}). Source: ipfs.io / dweb.link access logs"
   legend:
     orientation: "h"
   yaxis:

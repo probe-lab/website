@@ -64,7 +64,7 @@ layout:
   title:
     font:
       size: 10
-    text: "(p90, {{ .Params.website }})"
+    text: "(p90, {{ .Params.website }}). Source: Tiros."
     x: 1
     xanchor: "right"
     y: 0.01
