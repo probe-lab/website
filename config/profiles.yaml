@@ -64,7 +64,7 @@
     - website: blog.libp2p.io
     - website: en.wikipedia-on-ipfs.org/wiki
     - website: specs.ipfs.tech
-    - website: probelab.io
+    - website: docs.ipfs.tech
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
