@@ -71,7 +71,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-30"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.ipni }}, all regions)'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-30"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.ipni }}, all regions). Source: Parsec.'
     x: 1
     xanchor: "right"
     y: 0.01

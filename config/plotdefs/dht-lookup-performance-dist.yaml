@@ -41,5 +41,5 @@ series:
 
 layout:
   title:
-    text: "Overall DHT lookup distribution (30 days up to {{ .EndOfPreviousDay | simpledate }})"
+    text: "Overall DHT lookup distribution (30 days up to {{ .EndOfPreviousDay | simpledate }}). Source: Parsec."
   boxpoints: false

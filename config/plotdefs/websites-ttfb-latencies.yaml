@@ -58,7 +58,7 @@ layout:
   title:
     font:
       size: 10
-    text: "All available data (KUBO, ttfb)"
+    text: "All available data (KUBO, ttfb). Source: Tiros."
     x: 1
     xanchor: "right"
     y: 0.01

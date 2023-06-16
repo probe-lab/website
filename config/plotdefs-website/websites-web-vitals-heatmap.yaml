@@ -33,7 +33,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }}, {{ .Params.type }})'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }}, {{ .Params.type }}). Source: Tiros.'
     x: 0.99
     xanchor: "right"
     y: 0.01

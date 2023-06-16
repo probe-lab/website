@@ -60,7 +60,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }} ({{ .Params.ipni }})'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} to {{ .EndOfPreviousDay | simpledate }} ({{ .Params.ipni }}). Source: Parsec.'
     x: 1
     xanchor: "right"
     y: 0.01

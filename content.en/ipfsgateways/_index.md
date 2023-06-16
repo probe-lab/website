@@ -19,7 +19,7 @@ When a user requests content through an IPFS gateway, the gateway retrieves the 
 
 ## HTTP Requests to ipfs.io / dweb.link
 
-IPFS gateways can be run by anyone who has access to an IPFS node, and there are many public gateways available on the internet. The following measurements are made using data from ipfs.io and dweb.link, the gateway services operated by Protocol Labs.
+IPFS gateways can be run by anyone who has access to an IPFS node, and there are many public gateways available on the internet. The following measurements are made using data derived from the nginx access logs for ipfs.io and dweb.link, the gateway services operated by Protocol Labs.
 
 In the following plots, requests are _not_ deduplicated, i.e., if there are two requests for the same [CID](https://docs.ipfs.tech/concepts/content-addressing/#content-identifiers-cids), they count as two requests and not one. This is what makes sense for requests. Deduplicating requests would effectively count the number of CIDs requested and not the requests themselves.
 
@@ -34,3 +34,12 @@ In the following plots, requests are _not_ deduplicated, i.e., if there are two 
 #### Daily HTTP Requests to ipfs.io / dweb.link, by type
 
 {{< plotly json="../../plots/latest/gateway-requests-type.json" height="600px" >}}
+
+#### Daily Unique Clients accessing ipfs.io / dweb.link
+
+In the following plot we aggregate the total number of unique client IP addresses that appear in the ipfs.io and dweb.link log files for each day. 
+{{< plotly json="../../plots/latest/gateway-clients-overall.json" height="600px" >}}
+
+
+
+

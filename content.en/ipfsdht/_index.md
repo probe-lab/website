@@ -23,7 +23,7 @@ assess the health and overall efficiency of the network.
 
 ### Availability
 
-The Nebula crawler attempts to connect to [DHT Server](https://docs.ipfs.tech/concepts/dht/#qualification) peers in the IPFS DHT periodically. When a new DHT Server peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. 
+The [Nebula crawler](/tools/nebula) attempts to connect to [DHT Server](https://docs.ipfs.tech/concepts/dht/#qualification) peers in the IPFS DHT periodically. When a new DHT Server peer is discovered, the crawler records the start of a session of availability and extends the session length with every successful connection attempt. However, a failed connection terminates the session, and a later successful attempt starts a new session. Peers can have multiple sessions of availability during each measurement period. 
 
 In the following, a peer is classified as "online" if it was available for at least 80% of the measurement period. If a peer was available between 40% and 80% of the period, it is considered "mostly online," while "mostly offline" indicates availability between 10% and 40% of the time. Any peer that was available for less than 10% of the period is classified as "offline."
 
@@ -101,7 +101,7 @@ Measuring participation in the IPFS DHT is crucial to understanding the health a
 
 ### Client vs Server Node Estimate
 
-The plot presented below illustrates an estimate of the number of peers that exclusively function as clients. This estimate is derived by deducting the total number of unique peer IDs observed by the [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node), operated by Protocol Labs, from the number of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) visited by the [Nebula crawler](https://github.com/dennis-tra/nebula) during the same period. Additionally, the plot also shows the number of unique IP addresses observed by the Nebula crawler.
+The plot presented below illustrates an estimate of the number of peers that exclusively function as clients. This estimate is derived by deducting the total number of unique peer IDs observed by the [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node), operated by Protocol Labs, from the number of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) visited by the [Nebula crawler](/tools/nebula/) during the same period. Additionally, the plot also shows the number of unique IP addresses observed by the Nebula crawler.
 
 {{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
 

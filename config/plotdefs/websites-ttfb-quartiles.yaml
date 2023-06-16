@@ -8,6 +8,7 @@ datasets:
         from measurements m
         where m.created_at >= {{ .StartOfWeek | timestamptz }}-'1 week'::interval
           and m.created_at < {{ .StartOfWeek | timestamptz }}
+          and m.type = 'KUBO'
           and m.error is null
       )
       select percentile_disc(0.50) within group (order by m.ttfb) as p50,
@@ -22,6 +23,7 @@ datasets:
         from measurements m
         where m.created_at >= {{ .StartOfWeek | timestamptz }}-'2 week'::interval
           and m.created_at < {{ .StartOfWeek | timestamptz }}-'1 week'::interval
+          and m.type = 'KUBO'
           and m.error is null
       )
       select percentile_disc(0.50) within group (order by m.ttfb) as p50,
@@ -65,7 +67,7 @@ scalars:
 
 layout:
   title:
-    text: 'Data: {{ .EndOfPreviousWeek | simpledate }}'
+    text: 'Data: {{ .EndOfPreviousWeek | simpledate }} (KUBO, ttfb). Source: Tiros.'
     font:
       size: 10
     x: 0.99

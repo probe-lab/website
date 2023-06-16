@@ -1,0 +1,64 @@
+frequency: weekly
+datasets:
+  # preload unique agents is calculated from total unique agents seen connecting to preload and bootstrap servers
+  # caracol started collecting this data automatically from week ending 20 Mar 2023
+  - name: "preload unique agents"
+    source: "caracol"
+    query: >
+      select date, value from get_collected_values(17, {{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .Now | timestamptz }})
+      order by date;
+  - name: "nebula unique agents"
+    source: "nebula_ipfs"
+    query: >
+      with period as (
+        select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
+        from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+      )
+      select period.end as date, count(DISTINCT agent_versions.agent_version) as value
+      from period, visits v join agent_versions on agent_versions.id=v.agent_version_id
+      where
+          v.visit_started_at >= period.start
+          and v.visit_started_at < period.end
+      and v.type = 'crawl'
+      and v.connect_error is null
+      group by period.end
+      order by period.end;
+
+series:
+  - type: "bar"
+    name: "Bootstrap Unique Agents"
+    dataset: "preload unique agents"
+    labels: "date"
+    values: "value"
+    color: "lightred"
+  - type: "bar"
+    name: "DHT Unique Agents"
+    dataset: "nebula unique agents"
+    labels: "date"
+    values: "value"
+    color: "lightblue"
+
+layout:
+  barmode: group
+  title:
+    text: 'Data: {{ .EndOfPreviousWeek | weekModify "-14"  | simpledate}} to {{ .EndOfPreviousWeek | simpledate }}. Sources: Bootstrap+preload server logs; Nebula.'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+  legend:
+    orientation: "h"
+    yanchor: "top"
+    y: -0.2
+  xaxis:
+    tick0: '{{ .StartOfWeek | weekModify "-14"  | isodate}}'
+    dtick: 604800000.0
+    tickmode: "linear"
+    type: "date"
+  yaxis:
+    autorange: true
+    rangemode: "tozero"
+    title:
+      text: "Number of unique agents"

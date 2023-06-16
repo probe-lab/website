@@ -55,7 +55,7 @@ series:
 layout:
   barmode: stack
   title:
-    text: 'Data: {{ .EndOfPreviousWeek | weekModify "-8" | simpledate }} to {{ .EndOfPreviousWeek | simpledate }}'
+    text: 'Data: {{ .EndOfPreviousWeek | weekModify "-8" | simpledate }} to {{ .EndOfPreviousWeek | simpledate }}. Source: Nebula.'
     font:
       size: 10
     x: 0.99
