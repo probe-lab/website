@@ -11,7 +11,7 @@ We initially present an Overview of the performance, followed by Trends, i.e., t
 
 ## Overview
 
-### General Performance {#website-snapshot-performance-gauge-libp2pio-kubo}
+### Performance over Kubo {#website-snapshot-performance-gauge-libp2pio-kubo}
 
 {{< plotly json="../../plots/latest/website-snapshot-performance-gauge-libp2p.io-KUBO.json" height="300px" >}}
 
@@ -60,7 +60,9 @@ Deployments are determined by monitoring the CIDs found within the websites' IPN
 
 {{< plotly json="../../plots/latest/website-trend-hosters-libp2p.io.json" height="250px" >}}
 
-For the above graph, we obtained the PeerIDs from two hosters: [Protocol Labs' IPFS Websites Collab-Cluster](https://collab.ipfscluster.io/) and [Fleek](https://fleek.co). Each day, we examined how many of their PeerIDs appear in the list of peers providing the website in the DHT. Specifically, we monitor six PeerIDs for Fleek and seven PeerIDs for the Collab-Cluster. The sum of both bars should always be less than or equal to the number of `Reachable Non-Relayed` peers in the previous graph.
+For the above graph, we obtained the PeerIDs from two hosting providers/pinning services: [Protocol Labs' IPFS Websites Collab-Cluster](https://collab.ipfscluster.io/) and [Fleek](https://fleek.co). We monitor how many of their PeerIDs appear in the list of peers providing the website to the DHT on a daily basis. We gather the list of providing peers every six hours from seven different vantage points with two different Kubo versions (see [Tiros](/tools/tiros)), and aggregate the distinct peers we have found. Then we count the number of peerIDs that belong to either Fleek or PL's Collab-Cluster. We monitor six PeerIDs for Fleek and seven PeerIDs for PL's Collab-Cluster. The sum of both bars should always be less than or equal to the number of `Reachable Non-Relayed` peers in the previous graph.
+
+More importantly, if both bars (for Fleek and the PL Cluster) are at zero, then this very likely means that the website has no stable providers on the IPFS DHT.
 
 ### IPFS Retrieval Errors {#website-trend-retrieval-errors-libp2pio-kubo}
 
