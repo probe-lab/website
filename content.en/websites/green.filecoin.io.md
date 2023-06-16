@@ -11,11 +11,11 @@ We initially present an Overview of the performance, followed by Trends, i.e., t
 
 ## Overview
 
-### General Performance {#website-snapshot-performance-gauge-greenfilecoinio-kubo}
+### Performance over Kubo {#website-snapshot-performance-gauge-greenfilecoinio-kubo}
 
 {{< plotly json="../../plots/latest/website-snapshot-performance-gauge-green.filecoin.io-KUBO.json" height="300px" >}}
 
-The graph presents a comparison of two crucial web performance metrics: Time to First Byte (TTFB) and First Contentful Paint (FCP).
+The graph presents a comparison of two crucial Kubo web performance metrics (90th percentile): Time to First Byte (TTFB) and First Contentful Paint (FCP).
 The data displayed shows the 90th percentile of both metrics and was gathered during the previous week.
 To aid in comparison, the percentage difference between the previous week and the week before is displayed below each gauge indicator. This enables easy identification of performance improvements or regressions over time. The plots on this page are updated weekly on Monday.
 
@@ -55,6 +55,14 @@ In order for a website (or CID more in general) to be available and accessible i
 
 In addition to the peer-related information, the graph also includes black markers that represent the number of website deployments per day (count shown on the right handside y-axis).
 Deployments are determined by monitoring the CIDs found within the websites' IPNS records. If the CID changes, we consider this a new deployment.
+
+#### Known Stable Providers {#website-trend-hosters-greenfilecoinio}
+
+{{< plotly json="../../plots/latest/website-trend-hosters-green.filecoin.io.json" height="250px" >}}
+
+For the above graph, we obtained the PeerIDs from two hosting providers/pinning services: [Protocol Labs' IPFS Websites Collab-Cluster](https://collab.ipfscluster.io/) and [Fleek](https://fleek.co). We monitor how many of their PeerIDs appear in the list of peers providing the website to the DHT on a daily basis. We gather the list of providing peers every six hours from seven different vantage points with two different Kubo versions (see [Tiros](/tools/tiros)), and aggregate the distinct peers we have found. Then we count the number of peerIDs that belong to either Fleek or PL's Collab-Cluster. We monitor six PeerIDs for Fleek and seven PeerIDs for PL's Collab-Cluster. The sum of both bars should always be less than or equal to the number of `Reachable Non-Relayed` peers in the previous graph.
+
+More importantly, if both bars (for Fleek and the PL Cluster) are at zero, then this very likely means that the website has no stable providers on the IPFS DHT.
 
 ### IPFS Retrieval Errors {#website-trend-retrieval-errors-greenfilecoinio-kubo}
 
