@@ -22,13 +22,13 @@ The `scheduler` gets configured with a list of websites that will then be probed
 
 This allows us to compare the performance of IPFS against HTTP. The web-vitals measurements consist of the following metrics where the thresholds for `good`, `needs-improvement`, and `poor` come from [web.dev](https://web.dev).
 
-| Metric   | Description                                                                                 | Good    | Needs Improvement | Poor     |
-| -------- | ------------------------------------------------------------------------------------------- | -------:| -----------------:| --------:|
-| **CLS**  | [Cumulative Layout Shift](https://web.dev/cls/)                                             | < 0.10s | < 0.25s           | >= 0.25s |
-| **FCP**  | [First Contentful Paint](https://web.dev/fcp/)                                              | < 1.80s | < 3.00s           | >= 3.00s |
-| **LCP**  | [Largest Contentful Paint](https://web.dev/lcp/)                                            | < 2.50s | < 4.00s           | >= 4.00s |
-| **TTFB** | [Time To First Byte](https://web.dev/ttfb/)                                                 | < 0.80s | < 1.80s           | >= 1.80s |
-| **TTI**  | [Time To Interactive](https://developer.chrome.com/docs/lighthouse/performance/interactive) | < 3.80s | < 7.30s           | >= 7.30s |
+| Metric   | Description                                                                                 |    Good | Needs Improvement |     Poor |
+| -------- | ------------------------------------------------------------------------------------------- |--------:|------------------:|---------:|
+| **CLS**  | [Cumulative Layout Shift](https://web.dev/cls/)                                             |  < 0.10 |            < 0.25 |  >= 0.25 |
+| **FCP**  | [First Contentful Paint](https://web.dev/fcp/)                                              | < 1.80s |           < 3.00s | >= 3.00s |
+| **LCP**  | [Largest Contentful Paint](https://web.dev/lcp/)                                            | < 2.50s |           < 4.00s | >= 4.00s |
+| **TTFB** | [Time To First Byte](https://web.dev/ttfb/)                                                 | < 0.80s |           < 1.80s | >= 1.80s |
+| **TTI**  | [Time To Interactive](https://developer.chrome.com/docs/lighthouse/performance/interactive) | < 3.80s |           < 7.30s | >= 7.30s |
 
 ## Deployment
 
@@ -45,7 +45,7 @@ us-west-1
 af-south-1
 ```
 
-The list of websites that we are currently monitoring is configured [here](https://github.com/protocol/probelab-infra/blob/aabe20d28e833364e0ed17e651d5f810e524cbb9/aws/tf/modules/tiros/_variables.tf#L49). At the time of writing the list is:
+The list of websites that we are currently monitoring is configured [here](https://github.com/plprobelab/probelab-infra/blob/main/aws/tf/modules/tiros/_variables.tf#L49). At the time of writing, the list is:
 
 ```
 blog.ipfs.tech
@@ -60,8 +60,10 @@ green.filecoin.io
 ipfs.tech
 ipld.io
 libp2p.io
+probelab.io
 protocol.ai
 research.protocol.ai
+specs.ipfs.tech
 strn.network
 tldr.filecoin.io
 web3.storage
