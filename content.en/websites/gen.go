@@ -26,6 +26,7 @@ var websites = []string{
 	"blog.libp2p.io",
 	//"en.wikipedia-on-ipfs.org/wiki",
 	"specs.ipfs.tech",
+	"probelab.io",
 }
 
 type TemplateData struct {
