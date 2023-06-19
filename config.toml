@@ -1,8 +1,9 @@
 baseURL = 'https://probelab.io/'
 languageCode = 'en-us'
 title = 'ProbeLab'
-
 theme = "probelab"
+
+relativeURLs=true
 
 # (Optional) Set this to true to enable 'Last Modified by' date and git author
 #  information on 'doc' type pages.
