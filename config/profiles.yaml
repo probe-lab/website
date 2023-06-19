@@ -68,7 +68,6 @@
     - website: specs.ipfs.tech
     - website: probelab.io
     - website: docs.ipfs.tech
-      type: KUBO
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
