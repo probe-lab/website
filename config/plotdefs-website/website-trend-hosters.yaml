@@ -11,6 +11,10 @@ datasets:
           -- that the collab cluster's peer IDs are stable. We didn't get such
           -- information from fleek.
           --
+          -- Source of truth for the collab-cluster are the fields `ipfs_config_identity_peerid`
+          -- in all files matching "collab-cluster-.*" in:
+          -- https://github.com/protocol/bifrost-infra/blob/master/ansible/inventories/bifrost/host_vars/
+          --
           -- Relevant discussion threads:
           --   - https://protocollabs.slack.com/archives/C013HFZA08L/p1683894752759359
           --   - https://filecoinproject.slack.com/archives/C03CKEPVA1Y/p1683895575201369
