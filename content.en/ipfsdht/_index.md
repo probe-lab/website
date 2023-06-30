@@ -6,12 +6,6 @@ plotly: true
 
 # IPFS DHT
 
-{{< hint warning >}}
-Please note that this website is a preview and is subject to change at any time. 
-We strive to provide accurate and up-to-date information, but we cannot guarantee 
-the completeness or reliability of the information presented during the preview. 
-{{< /hint >}}
-
 One of the core components of IPFS is the [Distributed Hash Table (DHT)](https://docs.ipfs.tech/concepts/dht/#distributed-hash-tables-dhts), which enables nodes to locate and retrieve content from other nodes on the network. The IPFS DHT is a distributed key-value store that maps content addresses (_aka_ CIDs) to the nodes that are currently storing that content. It works by dividing the content address space into small, hash-based ["buckets"](https://docs.ipfs.tech/concepts/dht/#peer-buckets) that are distributed across the network. When a node wants to find a piece of content, it queries the DHT with the content's [CID](https://docs.ipfs.tech/concepts/content-addressing/#what-is-a-cid), and the DHT returns the nodes that are currently storing that content, in the form of [Provider Records](https://docs.ipfs.tech/concepts/dht/#provider-records). This allows content to be located and retrieved in a decentralized, efficient, and fault-tolerant manner. The IPFS DHT is a key component of the IPFS network, and is used by many IPFS implementations, tools, as well as a variety of decentralized applications and systems built on top of IPFS.
 
 ## Health

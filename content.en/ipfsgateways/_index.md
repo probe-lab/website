@@ -6,13 +6,6 @@ plotly: true
 
 # IPFS Gateways
 
-{{< hint warning >}}
-Please note that this website is a preview and is subject to change at any time. 
-We strive to provide accurate and up-to-date information, but we cannot guarantee 
-the completeness or reliability of the information presented during the preview. 
-{{< /hint >}}
-
-
 An [IPFS gateway](https://docs.ipfs.tech/concepts/ipfs-gateway/) is a web-based interface that allows users to access IPFS content using a regular web browser. The gateway acts as a bridge between the IPFS network and the traditional web, allowing users to browse and retrieve IPFS content without having to install any specialized software or run a full IPFS node.
 
 When a user requests content through an IPFS gateway, the gateway retrieves the content from the IPFS network (through [Bitswap](https://docs.ipfs.tech/concepts/bitswap/#bitswap) and/or [kubo](https://docs.ipfs.tech/install/command-line/#install-ipfs-kubo)) and delivers it to the user's browser using standard web protocols such as HTTP or HTTPS. This allows users to access IPFS content in the same way they would access any other web content, with a simple URL or link. IPFS gateways are a key part of the IPFS ecosystem, as they make IPFS content accessible to a wider audience and help to bridge the gap between the traditional web and the decentralized web.
