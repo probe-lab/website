@@ -5,13 +5,6 @@ plotly: true
 ---
 # IPFS KPIs
 
-{{< hint warning >}}
-Please note that this website is a preview and is subject to change at any time. 
-We strive to provide accurate and up-to-date information, but we cannot guarantee 
-the completeness or reliability of the information presented during the preview. 
-{{< /hint >}}
-
-
 IPFS relies on the coordinated participation of a swarm of independent peers to function correctly. Therefore, measuring the performance and health of the network is crucial for ensuring its reliability and efficiency. In this context, we summarise a number of network characteristics as key performance indicators. 
 Our KPIs are currently focusing primarily on the public [IPFS DHT](https://docs.ipfs.tech/concepts/dht/) (although we do report on other parts of the architecture too). Understanding that IPFS is an ecosystem of [content routing subsystems](https://docs.ipfs.tech/concepts/how-ipfs-works/#subsystems-overview), over time, we plan to expand to other content routing subsystems too.
 
