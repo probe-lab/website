@@ -7,13 +7,6 @@ hidetoc: true
 
 # About this Website
 
-{{< hint warning >}}
-Please note that this website is a preview and is subject to change at any time. 
-We strive to provide accurate and up-to-date information, but we cannot guarantee 
-the completeness or reliability of the information presented during the preview. 
-{{< /hint >}}
-
-
 This is a space where we present results from our measurement and monitoring efforts. The site, as well as the infrastructure and scripts used to produce the plots are maintained by the ProbeLab team @ Protocol Labs. The results focus on the IPFS network, as well as protocols of its underlaying protocol stack (e.g., Bitswap, the libp2p DHT and [libp2p](https://libp2p.io) more generally).
 
 The results presented here give an accurate view of the high-level protocol operation and occasionally dive into protocol specific parameters that are primarily of interest to protocol designers and engineers. What is different about this website is that it is not a “raw” dashboard, but instead includes description of the experiments we’re carrying out in order to produce the results. Where possible, we also make the tools used to produce the results available to the community to re-use.
