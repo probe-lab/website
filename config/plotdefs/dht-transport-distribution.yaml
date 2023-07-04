@@ -1,0 +1,79 @@
+frequency: daily
+datasets:
+  - name: "main"
+    source: "nebula_ipfs"
+    query: >
+      with cte as (
+          select
+              v.peer_id,
+              ma.maddr,
+              (ma.maddr like '%quic%' and ma.maddr not like '%quic-v1%') listens_on_quic,
+              ma.maddr like '%quic-v1%' listens_on_quic_v1,
+              ma.maddr like '%tcp%' listens_on_tcp,
+              (ma.maddr like '%ws%' and ma.maddr not like '%wss%') listens_on_ws,
+              ma.maddr like '%wss%' listens_on_wss,
+              ma.maddr like '%webtransport%' listens_on_wt,
+              ma.maddr like '%webrtc%' listens_on_webrtc
+          from visits v
+             cross join unnest(v.multi_address_ids) listen_multi_addresses(multi_address_id)
+             inner join multi_addresses ma on ma.id = listen_multi_addresses.multi_address_id
+             inner join agent_versions av on v.agent_version_id = av.id
+          where v.visit_started_at >= (select started_at from crawls c where c.state = 'succeeded' and c.started_at >= {{ .StartOfDay | timestamptz }} - '1 hour'::interval order by c.started_at limit 1)
+            and v.crawl_id = (select id from crawls c where c.state = 'succeeded' and c.started_at >= {{ .StartOfDay | timestamptz }} - '1 hour'::interval order by started_at desc limit 1)
+      ), peer_listens as (
+          select
+              p.id peer_id,
+              p.multi_hash,
+              bool_or(listens_on_quic) listens_on_quic,
+              bool_or(listens_on_quic_v1) listens_on_quic_v1,
+              bool_or(listens_on_tcp) listens_on_tcp,
+              bool_or(listens_on_ws) listens_on_ws,
+              bool_or(listens_on_wss) listens_on_wss,
+              bool_or(listens_on_wt) listens_on_webtransport,
+              bool_or(listens_on_webrtc) listens_on_webrtc
+          from cte
+              inner join peers p on p.id = cte.peer_id
+          group by p.id
+      ), transports as (
+        select 'All' transport, (select crawled_peers from crawls c where c.state = 'succeeded' and c.started_at >= {{ .StartOfDay | timestamptz }} - '1 hour'::interval order by c.started_at limit 1) count from peer_listens
+        union
+        select 'QUIC' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_quic ) count from peer_listens
+        union
+        select 'QUIC v1' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_quic_v1 ) count from peer_listens
+        union
+        select 'TCP' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_tcp ) count from peer_listens
+        union
+        select 'WebRTC' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_webrtc ) count from peer_listens
+        union
+        select 'WS' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_ws ) count from peer_listens
+        union
+        select 'WSS' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_wss ) count from peer_listens
+        union
+        select 'WT' transport, count(distinct peer_listens.multi_hash) filter ( where peer_listens.listens_on_webtransport ) count from peer_listens
+      )
+      select * from transports order by transport;
+      
+
+series:
+  - type: "bar"
+    name: "Mostly online"
+    dataset: "main"
+    labels: "transport"
+    values: "count"
+
+layout:
+  title:
+    text: 'Data: {{ .StartOfDay | simpledate }}. Source: Nebula.'
+    font:
+      size: 10
+    x: 0.99
+    xanchor: "right"
+    y: 0.01
+    yanchor: "bottom"
+  xaxis:
+    title:
+      text: Transport
+  yaxis:
+    automargin: true
+    title:
+      text: Count

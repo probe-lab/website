@@ -25,7 +25,6 @@ In the following, a peer is classified as "online" if it was available for at le
 
 {{< plotly json="../../plots/latest/dht-availability-classified-current.json" height="250px" >}}
 
-
 #### DHT Server Availability, classified over time
 
 {{< plotly json="../../plots/latest/dht-availability-classified-overall.json" height="600px" >}}
@@ -44,6 +43,14 @@ The cumulative distribution of session lengths for peers found in the network is
 
 {{< plotly json="../../plots/latest/dht-peers-churn-cdf-overall.json" height="600px" >}}
 
+
+## Capabilities
+
+### Transports {#dht-transport-distribution}
+
+{{< plotly json="../../plots/latest/dht-transport-distribution.json" height="400px" >}}
+
+The above graph shows the distribution of transports that peers in the IPFS DHT are listening on. `WS` = WebSocket, `WSS` = Websocket Secure, `WT` = WebTransport. The data comes from a single crawl at the beginning of the indicated date in the lower right corner.
 
 ## Performance
 
