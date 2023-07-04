@@ -14,14 +14,23 @@ datasets:
             and m.created_at < {{ .StartOfDay | timestamptz }}
             and m.website = '{{ .Params.website }}'
             and m.type = '{{ .Params.type }}'
-      ) select
-            cte.date,
-            100 * coalesce(sum(1) filter ( where cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_errors,
-            100 * coalesce(sum(1) filter ( where not cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_success,
-            count(*) total
-      from cte
-      group by cte.date
-      order by date
+      ), series as (
+        select
+              cte.date,
+              100 * coalesce(sum(1) filter ( where cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_errors,
+              100 * coalesce(sum(1) filter ( where not cte.has_error), 0)::FLOAT / coalesce(sum(1), 0) pct_success,
+              count(*) total
+        from cte
+        group by cte.date
+        order by date
+      )
+      select
+        date_trunc('day', date_range.day) date,
+        coalesce(series.pct_errors, 0.0) pct_errors,
+        coalesce(series.pct_success, 0.0) pct_success,
+        coalesce(series.total, 0) total
+      from generate_series({{ .StartOfDay | timestamptz }} - '30d'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) date_range(day)
+      left join series on series.date = date_trunc('day', date_range.day)
 
 series:
   - type: "bar"
