@@ -12,6 +12,8 @@ datasets:
       where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
         and m.created_at < {{ .StartOfDay | timestamptz }}
         and m.type = '{{ .Params.type }}'
+        and m.status_code >= 200
+        and m.status_code < 400
       group by r.region, m.website;
 
 tables:
