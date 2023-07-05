@@ -14,6 +14,8 @@ datasets:
             and m.website = '{{ .Params.website }}'
             and m.type = '{{ .Params.type }}'
             and m.{{ .Params.metric }} is not null
+            and m.status_code >= 200
+            and m.status_code < 400
       )
       select
         cdf.region as region,

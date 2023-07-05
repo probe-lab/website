@@ -4,12 +4,15 @@ datasets:
     source: "tiros"
     query: >
       WITH cte AS (
-        select *, m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+        select
+          *,
+          (m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null) or m.status_code >= 400 or m.status_code < 200 has_error
         from measurements m
           inner join runs r on r.id = m.run_id
         where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
           and m.created_at < {{ .StartOfDay | timestamptz }}
           and m.website = '{{ .Params.website }}'
+          and (m.error is null or m.error not like '%ERR_CONNECTION_REFUSED%') -- this is a measurement error and not a website error
       )
       select
         sum(1) filter ( where cte.type = 'KUBO' and not cte.has_error) successful_kubo,

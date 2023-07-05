@@ -11,7 +11,7 @@ datasets:
               m.fcp_rating,
               m.tti_rating,
               m.cls_rating,
-              m.ttfb is null and lcp is null and fcp is null and tti is null and cls is null error
+              (m.ttfb is null and lcp is null and fcp is null and tti is null and cls is null) or m.status_code >= 400 or m.status_code < 200 has_error
           from measurements m
                    inner join runs r on r.id = m.run_id
           where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
@@ -19,50 +19,51 @@ datasets:
             and r.region = '{{ .Params.region }}'
             and m.type = '{{ .Params.type }}'
             and m.website = '{{ .Params.website }}'
+            and (m.error is null or m.error not like '%ERR_CONNECTION_REFUSED%') -- this is a measurement error and not a website error
       ), agg as (
           select
               'TTFB' metric,
-              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'GOOD'), 0) / sum(1)::float count_good,
-              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
-              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'POOR'), 0) / sum(1)::float count_poor,
-              100 * coalesce( sum(1) filter ( where cte.ttfb_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
-              100 * coalesce( sum(1) filter ( where cte.ttfb_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'GOOD' and not cte.has_error), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'NEEDS_IMPROVEMENT' and not cte.has_error), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating = 'POOR' and not cte.has_error), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.ttfb_rating is null and not cte.has_error), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.has_error), 0) / sum(1)::float count_fatal
           from cte
           union
           select
               'FCP' metric,
-              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'GOOD'), 0) / sum(1)::float count_good,
-              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
-              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'POOR'), 0) / sum(1)::float count_poor,
-              100 * coalesce( sum(1) filter ( where cte.fcp_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
-              100 * coalesce( sum(1) filter ( where cte.fcp_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'GOOD' and not cte.has_error), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'NEEDS_IMPROVEMENT' and not cte.has_error), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating = 'POOR' and not cte.has_error), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.fcp_rating is null and not cte.has_error), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.has_error), 0) / sum(1)::float count_fatal
           from cte
           union
           select
               'LCP' metric,
-              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'GOOD'), 0) / sum(1)::float count_good,
-              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
-              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'POOR'), 0) / sum(1)::float count_poor,
-              100 * coalesce( sum(1) filter ( where cte.lcp_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
-              100 * coalesce( sum(1) filter ( where cte.lcp_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'GOOD' and not cte.has_error), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'NEEDS_IMPROVEMENT' and not cte.has_error), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating = 'POOR' and not cte.has_error), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.lcp_rating is null and not cte.has_error), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.has_error), 0) / sum(1)::float count_fatal
           from cte
           union
           select
               'TTI' metric,
-              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'GOOD'), 0) / sum(1)::float count_good,
-              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
-              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'POOR'), 0) / sum(1)::float count_poor,
-              100 * coalesce( sum(1) filter ( where cte.tti_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
-              100 * coalesce( sum(1) filter ( where cte.tti_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'GOOD' and not cte.has_error), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'NEEDS_IMPROVEMENT' and not cte.has_error), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating = 'POOR' and not cte.has_error), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.tti_rating is null and not cte.has_error), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.has_error), 0) / sum(1)::float count_fatal
           from cte
           union
           select
               'CLS' metric,
-              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'GOOD'), 0) / sum(1)::float count_good,
-              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'NEEDS_IMPROVEMENT'), 0) / sum(1)::float count_needs_improvement,
-              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'POOR'), 0) / sum(1)::float count_poor,
-              100 * coalesce( sum(1) filter ( where cte.cls_rating is null and cte.error is false), 0) / sum(1)::float count_undefined,
-              100 * coalesce( sum(1) filter ( where cte.cls_rating is null and cte.error is true), 0) / sum(1)::float count_fatal
+              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'GOOD' and not cte.has_error), 0) / sum(1)::float count_good,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'NEEDS_IMPROVEMENT' and not cte.has_error), 0) / sum(1)::float count_needs_improvement,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating = 'POOR' and not cte.has_error), 0) / sum(1)::float count_poor,
+              100 * coalesce( sum(1) filter ( where cte.cls_rating is null and not cte.has_error), 0) / sum(1)::float count_undefined,
+              100 * coalesce( sum(1) filter ( where cte.has_error), 0) / sum(1)::float count_fatal
           from cte
       )
       select * from agg order by metric;

@@ -11,20 +11,26 @@ datasets:
           where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
             and p.created_at < {{ .StartOfDay | timestamptz }}
             and p.website = '{{ .Params.website }}'
+      ), series as (
+        select
+            cte.date,
+            count(distinct cte.peer_id) count
+        from cte
+            where cte.error is null
+              and not exists (
+              select
+              from cte inner_cte
+              where inner_cte.date = cte.date
+                and inner_cte.peer_id = cte.peer_id
+                and inner_cte.is_relayed
+          )
+        group by cte.date
       )
       select
-          cte.date,
-          count (distinct cte.peer_id)
-      from cte
-          where cte.error is null
-            and not exists (
-            select
-            from cte inner_cte
-            where inner_cte.date = cte.date
-              and inner_cte.peer_id = cte.peer_id
-              and inner_cte.is_relayed
-        )
-      group by cte.date
+        date_trunc('day', date_range.day) date,
+        coalesce(series.count, 0) count
+      from generate_series ({{ .StartOfDay | timestamptz }} - '30d'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) date_range(day)
+      left join series on series.date = date_trunc('day', date_range.day)
   - name: "relayed_providers"
     source: "tiros"
     query: >
@@ -36,13 +42,19 @@ datasets:
           where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
             and p.created_at < {{ .StartOfDay | timestamptz }}
             and p.website = '{{ .Params.website }}'
+      ), series as (
+        select
+            cte.date,
+            count(distinct cte.peer_id) count
+        from cte
+            where cte.error is null and cte.is_relayed
+        group by cte.date
       )
       select
-          cte.date,
-          count (distinct cte.peer_id)
-      from cte
-          where cte.error is null and cte.is_relayed
-      group by cte.date
+        date_trunc('day', date_range.day) date,
+        coalesce(series.count, 0) count
+      from generate_series ({{ .StartOfDay | timestamptz }} - '30d'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) date_range(day)
+      left join series on series.date = date_trunc('day', date_range.day)
 
   - name: "unreachable_providers"
     source: "tiros"
@@ -55,20 +67,27 @@ datasets:
           where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
             and p.created_at < {{ .StartOfDay | timestamptz }}
             and p.website = '{{ .Params.website }}'
+      ), series as (
+        select
+            cte.date,
+            count(distinct cte.peer_id) count
+        from cte
+            where not exists (
+                select
+                from cte inner_cte
+                  where inner_cte.date = cte.date
+                    and inner_cte.peer_id = cte.peer_id
+                    and inner_cte.error is null
+            )
+            and cte.error is not null
+        group by cte.date
       )
       select
-          cte.date,
-          count (distinct cte.peer_id) count
-      from cte
-          where not exists (
-              select
-              from cte inner_cte
-                where inner_cte.date = cte.date
-                  and inner_cte.peer_id = cte.peer_id
-                  and inner_cte.error is null
-          )
-          and cte.error is not null
-      group by cte.date
+        date_trunc('day', date_range.day) date,
+        coalesce(series.count, 0) count
+      from generate_series ({{ .StartOfDay | timestamptz }} - '30d'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) date_range(day)
+      left join series on series.date = date_trunc('day', date_range.day)
+
   - name: "deployments"
     source: "tiros"
     query: >
@@ -85,14 +104,19 @@ datasets:
             and p.created_at < {{ .StartOfDay | timestamptz }}
             and p.website = '{{ .Params.website }}'
           order by p.created_at
+      ), series as (
+        select
+            date_trunc('day', cte.created_at) date,
+            count(distinct cte.deployment_path) count
+        from cte
+        group by date_trunc('day', cte.created_at)
+        order by 1
       )
       select
-          date_trunc('day', cte.created_at) date,
-          count(distinct cte.deployment_path) count
-      from cte
-      group by date_trunc('day', cte.created_at)
-      order by 1
-
+        date_trunc('day', date_range.day) date,
+        coalesce(series.count, 0) count
+      from generate_series ({{ .StartOfDay | timestamptz }} - '30d'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) date_range(day)
+      left join series on series.date = date_trunc('day', date_range.day)
 series:
   - type: "bar"
     name: "Unreachable"

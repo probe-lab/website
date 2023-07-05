@@ -6,7 +6,7 @@ datasets:
       WITH cte AS (
           select
               *,
-              m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null has_error
+              (m.ttfb is null and m.lcp is null and m.fcp is null and m.tti is null and m.cls is null) or m.status_code >= 400 or m.status_code < 200 has_error
           from measurements m
                    inner join runs r on r.id = m.run_id
           where m.created_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval

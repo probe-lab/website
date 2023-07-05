@@ -16,6 +16,8 @@ datasets:
             and m.created_at < {{ .StartOfDay | timestamptz }}
             and m.website = '{{ .Params.website }}'
             and m.type = 'KUBO'
+            and m.status_code >= 200
+            and m.status_code < 400
           group by date_trunc('day', m.created_at)
       )
       select

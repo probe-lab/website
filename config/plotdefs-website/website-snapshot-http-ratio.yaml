@@ -13,13 +13,15 @@ datasets:
             select
                 r.region,
                 percentiles.val::float/100 percentile,
-                extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'KUBO' )) /
-                extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' )) ratio
+                coalesce(extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'KUBO' )) /
+                extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' )), -1) ratio
             from measurements m
                      inner join runs r on r.id = m.run_id
             where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
               and m.created_at < {{ .StartOfDay | timestamptz }}
               and m.website = '{{ .Params.website }}'
+              and m.status_code >= 200
+              and m.status_code < 400
             group by r.region
         ) data;
 
