@@ -11,6 +11,8 @@ datasets:
                inner join runs r on r.id = m.run_id
           where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
             and m.created_at < {{ .StartOfDay | timestamptz }}
+            and m.status_code >= 200
+            and m.status_code < 400
       group by r.region
 
 series:

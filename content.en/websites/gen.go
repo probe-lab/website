@@ -13,7 +13,6 @@ var websites = []string{
 	"ipld.io",
 	"protocol.ai",
 	"docs.ipfs.tech",
-	"tldr.filecoin.io",
 	"green.filecoin.io",
 	"drand.love",
 	"web3.storage",

@@ -3,30 +3,38 @@ datasets:
   - name: "current"
     source: "tiros"
     query: >
+      with cte as (
+        select
+            date_trunc('day', p.created_at) date,
+            -- Below you can find the PeerIDs we monitor for Fleek and PL's collab
+            -- cluster. This is quite a brittle state we're in because we're running
+            -- the risk of reporting on out-of-date peerIDs. We got the information
+            -- that the collab cluster's peer IDs are stable. We didn't get such
+            -- information from fleek.
+            --
+            -- Source of truth for the collab-cluster are the fields `ipfs_config_identity_peerid`
+            -- in all files matching "collab-cluster-.*" in:
+            -- https://github.com/protocol/bifrost-infra/blob/master/ansible/inventories/bifrost/host_vars/
+            --
+            -- Relevant discussion threads:
+            --   - https://protocollabs.slack.com/archives/C013HFZA08L/p1683894752759359
+            --   - https://filecoinproject.slack.com/archives/C03CKEPVA1Y/p1683895575201369
+            --
+            count(distinct p.peer_id) filter ( where p.peer_id = any('{12D3KooWGmAkyVtRv6VKQer5JNZorty9sJQifJq6Xa7Nj7tSTzos,12D3KooWAqq9U7bd7bmoEgyKNszJ3pxnzppYdcGHch5vDzBqn5Vm,12D3KooWJVYkh57EV7vyksxVksTheTdNrtAk7yEUgJpRj9XQXhaN,12D3KooWLkmAk3MaexCmXim4h4hnBLUJtfBLmcqAfJK3KGcs8adb,12D3KooWS6RknQm8Ku36ATdbsRfcNBmzNh5JS2zGD3m5zkhJEXTU,12D3KooWJQE1SyG3ohYKGsz67dAjuESkLejtta2MzbPRqAPtKwDc}'::text[]) ) fleek,
+            count(distinct p.peer_id) filter ( where p.peer_id = any('{12D3KooWRNijznEQoXrxBeNLb2TqbSFm8gG8jKtfEsbC1C9nPqce,12D3KooWCrBiagtZMzpZePCr1tfBbrZTh4BRQf7JurRqNMRi8YHF,12D3KooWDpp7U7W9Q8feMZPPEpPP5FKXTUakLgnVLbavfjb9mzrT,12D3KooWHVXoJnv2ifmr9K6LWwJPXxkfvzZRHzjiTZMvybeTnwPy,12D3KooWEDBLgMaCr6ZFwjDXr7eMXzb7s7SnHJHrYRYWYbQSxMif,12D3KooWQHS83N7ykf2pJMBSjsDMtyv5MrEukHdoiCJke2e6GjFf,12D3KooWJXVWMbcxGh2jkPiw3pjZTmB78jSQja3ke7n6vQ1y2Jdi}'::text[]) ) collab
+        from providers p
+        where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
+          and p.created_at < {{ .StartOfDay | timestamptz }}
+          and p.website = '{{ .Params.website }}'
+        group by date_trunc('day', p.created_at)
+        order by 1
+      )
       select
-          date_trunc('day', p.created_at) date,
-          -- Below you can find the PeerIDs we monitor for Fleek and PL's collab
-          -- cluster. This is quite a brittle state we're in because we're running
-          -- the risk of reporting on out-of-date peerIDs. We got the information
-          -- that the collab cluster's peer IDs are stable. We didn't get such
-          -- information from fleek.
-          --
-          -- Source of truth for the collab-cluster are the fields `ipfs_config_identity_peerid`
-          -- in all files matching "collab-cluster-.*" in:
-          -- https://github.com/protocol/bifrost-infra/blob/master/ansible/inventories/bifrost/host_vars/
-          --
-          -- Relevant discussion threads:
-          --   - https://protocollabs.slack.com/archives/C013HFZA08L/p1683894752759359
-          --   - https://filecoinproject.slack.com/archives/C03CKEPVA1Y/p1683895575201369
-          --
-          count(distinct p.peer_id) filter ( where p.peer_id = any('{12D3KooWGmAkyVtRv6VKQer5JNZorty9sJQifJq6Xa7Nj7tSTzos,12D3KooWAqq9U7bd7bmoEgyKNszJ3pxnzppYdcGHch5vDzBqn5Vm,12D3KooWJVYkh57EV7vyksxVksTheTdNrtAk7yEUgJpRj9XQXhaN,12D3KooWLkmAk3MaexCmXim4h4hnBLUJtfBLmcqAfJK3KGcs8adb,12D3KooWS6RknQm8Ku36ATdbsRfcNBmzNh5JS2zGD3m5zkhJEXTU,12D3KooWJQE1SyG3ohYKGsz67dAjuESkLejtta2MzbPRqAPtKwDc}'::text[]) ) fleek,
-          count(distinct p.peer_id) filter ( where p.peer_id = any('{12D3KooWRNijznEQoXrxBeNLb2TqbSFm8gG8jKtfEsbC1C9nPqce,12D3KooWCrBiagtZMzpZePCr1tfBbrZTh4BRQf7JurRqNMRi8YHF,12D3KooWDpp7U7W9Q8feMZPPEpPP5FKXTUakLgnVLbavfjb9mzrT,12D3KooWHVXoJnv2ifmr9K6LWwJPXxkfvzZRHzjiTZMvybeTnwPy,12D3KooWEDBLgMaCr6ZFwjDXr7eMXzb7s7SnHJHrYRYWYbQSxMif,12D3KooWQHS83N7ykf2pJMBSjsDMtyv5MrEukHdoiCJke2e6GjFf,12D3KooWJXVWMbcxGh2jkPiw3pjZTmB78jSQja3ke7n6vQ1y2Jdi}'::text[]) ) collab
-      from providers p
-      where p.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
-        and p.created_at < {{ .StartOfDay | timestamptz }}
-        and p.website = '{{ .Params.website }}'
-      group by date_trunc('day', p.created_at)
-      order by 1
+        date_trunc('day', date_range.day) date,
+        coalesce(cte.fleek, 0) fleek,
+        coalesce(cte.collab, 0) collab
+      from generate_series ({{ .StartOfDay | timestamptz }} - '30d'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) date_range(day)
+      left join cte on cte.date::date = date_trunc('day', date_range.day)
 
 series:
   - type: "bar"

@@ -16,8 +16,6 @@
       type: KUBO
     - website: ipld.io
       type: KUBO
-    - website: tldr.filecoin.io
-      type: KUBO
     - website: green.filecoin.io
       type: KUBO
     - website: web3.storage
@@ -54,7 +52,6 @@
     - website: drand.love
     - website: libp2p.io
     - website: ipld.io
-    - website: tldr.filecoin.io
     - website: green.filecoin.io
     - website: web3.storage
     - website: consensuslab.world
@@ -78,7 +75,6 @@
     - website: drand.love
     - website: libp2p.io
     - website: ipld.io
-    - website: tldr.filecoin.io
     - website: green.filecoin.io
     - website: web3.storage
     - website: consensuslab.world
@@ -102,7 +98,6 @@
     - website: drand.love
     - website: libp2p.io
     - website: ipld.io
-    - website: tldr.filecoin.io
     - website: green.filecoin.io
     - website: web3.storage
     - website: consensuslab.world
@@ -131,8 +126,6 @@
     - website: libp2p.io
       type: KUBO
     - website: ipld.io
-      type: KUBO
-    - website: tldr.filecoin.io
       type: KUBO
     - website: green.filecoin.io
       type: KUBO
@@ -174,7 +167,6 @@
     - website: drand.love
     - website: libp2p.io
     - website: ipld.io
-    - website: tldr.filecoin.io
     - website: green.filecoin.io
     - website: web3.storage
     - website: consensuslab.world
@@ -208,9 +200,6 @@
       type: KUBO
       region: eu-central-1
     - website: ipld.io
-      type: KUBO
-      region: eu-central-1
-    - website: tldr.filecoin.io
       type: KUBO
       region: eu-central-1
     - website: green.filecoin.io
@@ -266,7 +255,6 @@
     - website: drand.love
     - website: libp2p.io
     - website: ipld.io
-    - website: tldr.filecoin.io
     - website: green.filecoin.io
     - website: web3.storage
     - website: consensuslab.world
@@ -336,15 +324,6 @@
       type: KUBO
       metric: fcp
     - website: ipld.io
-      type: KUBO
-      metric: lcp
-    - website: tldr.filecoin.io
-      type: KUBO
-      metric: ttfb
-    - website: tldr.filecoin.io
-      type: KUBO
-      metric: fcp
-    - website: tldr.filecoin.io
       type: KUBO
       metric: lcp
     - website: green.filecoin.io
@@ -479,8 +458,6 @@
     - website: libp2p.io
       metric: ttfb
     - website: ipld.io
-      metric: ttfb
-    - website: tldr.filecoin.io
       metric: ttfb
     - website: green.filecoin.io
       metric: ttfb
