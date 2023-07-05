@@ -15,8 +15,7 @@ ProbeLab is running multiple sets of experiments that aim to push the boundaries
 
 ## Parsec
 
-Another tool that ProbeLab has developed is
-called [`parsec`](https://github.com/plprobelab/parsec). Parsec is a DHT lookup performance measurement tool that is used to gather accurate data on the performance of DHT lookups and publications. `parsec`-based experiments are aimed at improving the efficiency and speed of distributed systems by developing better algorithms for routing and data retrieval.
+[`parsec`](https://github.com/plprobelab/parsec) is a DHT and IPNI performance measurement tool that is used to gather accurate data on the performance of DHT and IPNI lookups and publications. `parsec`-based experiments are aimed at improving the efficiency and speed of distributed systems by developing better algorithms for routing and data retrieval.
 
 {{< button relref="/parsec" >}}Learn more{{< /button >}}
 
