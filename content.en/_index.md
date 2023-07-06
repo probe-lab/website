@@ -59,7 +59,7 @@ We found that:
 1. `75%` of the initial Provider Record Holders stay online for more than `48` hours, showing a healthy current provider record's liveness.
 2. `70%` of the PR Holders stay inside the `K=20` closest peers for more than `48` hours.
 3. The non-hydra part of the network performs well, showing a healthy non-hydra dependency.
-4. From the tested *`K`* values (*`K* = 15, 20, 25, 40`):
+4. From the tested *`K`* values (*`K`*`= 15, 20, 25, 40`):
     - reducing `K` reduces the provider record traffic-related overheard by `25%`, decreases the provider record publication time by `2` seconds, maintains the same `70%` of active Provider Record Holders as `K=20`, and increases hydra-dependency.
     - increasing `K` increases the record publication time, adds extra traffic overhead, but also increases resilience to network fragmentation.
 
