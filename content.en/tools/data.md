@@ -4,7 +4,7 @@ title: Data Provenance
 # Data Provenance
 
 The majority of the data used to generate the plots and charts on this site originates from the experiments run by 
-the ProbeLab team as part of its continuous measurement infrastructure.
+the ProbeLab team as part of its continuous measurement infrastructure (CMI).
 
 The principal measurement tools ([Nebula](/tools/nebula), [Parsec](/tools/parsec) and [Tiros](/tools/tiros)) write 
 data to a single Postgresql database ("the CMI database") which is used to populate the plots on this site, 
