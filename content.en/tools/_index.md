@@ -26,3 +26,11 @@ ProbeLab has built a website performance measurement tool, called [`tiros`](http
 the performance of their IPFS-hosted websites. `Tiros`-based experiments measure retrieval and rendering metrics of websites loaded over IPFS. It also measures and compares the IPFS metrics with their HTTPS counterparts.
 
 {{< button relref="/tiros" >}}Learn more{{< /button >}}
+
+## Data Provenance
+
+The data produced by the tools above is used to generate the majority of plots on this website. Some external sources of data such as metrics produced by 
+IPFS gateway infrastructure are also aggregated and used in their own plots or as a supplement to existing ones. Each plot is defined in an open format that
+includes the underlying data sources and queries made to extract the view of the data.
+
+{{< button relref="/data" >}}Learn more{{< /button >}}
