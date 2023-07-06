@@ -23,7 +23,7 @@ a time series of data points. The external systems currently aggregated for use 
 ## Access to Data
 
 Read access to the ProbeLab CMI database may be granted to collaborators on request. Access to other data sources such as
-Protocol Labs Prometheus and Elasticsearch instances may also possible in some circumstances. Please 
+Protocol Labs Prometheus and Elasticsearch instances may also be possible in some circumstances. Please 
 [contact the team](/about#contact) through any of the usual channels to discuss your requirements. 
 
 ## Determining Plot Data Sources
