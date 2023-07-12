@@ -3,26 +3,52 @@ datasets:
   - name: "main"
     source: "nebula_ipfs"
     query: >
-      with u as (
-        with period as (
-          select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
-          from generate_series({{ .StartOfWeek | timestamptz }}-'15 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
-        ) -- 10 weeks
-        select period.end as date, s.peer_id,
-          extract(epoch from sum(upper(s.uptime * period.range) - lower(s.uptime * period.range ))::interval)/period.duration as uptime
-        from period, sessions s
-        where s.uptime && period.range
-        group by period.end, s.peer_id, period.duration
+      with period as (
+          select
+              d::date-'1 week'::interval AS start,
+              d::date as end,
+              tstzrange(d::date-'1 week'::interval, d::date) as range,
+              extract(epoch from '1 week'::interval) as duration
+          from generate_series({{ .StartOfWeek | timestamptz }} -'15 week'::interval, {{ .StartOfWeek | timestamptz }} , '1 week'::interval) d
+      ), u as (
+          select
+              period.end as date,
+              s.peer_id,
+              extract(epoch from sum(upper(s.uptime * period.range) - lower(s.uptime * period.range ))::interval)/period.duration as uptime
+          from period, sessions s
+          where s.uptime && period.range
+          group by period.end, s.peer_id, period.duration
+      ), common as (
+          select
+              u.date,
+              sum(case when uptime >= 0.8 then 1 else 0 end) as online,
+              sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
+              sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
+              sum(case when uptime < 0.1 then 1 else 0 end) offline
+          from u
+          group by u.date
+          union all
+          select
+              date_trunc('week', v.visit_started_at)::date date,
+              0 online,
+              0 mostlyonline,
+              0 mostlyoffline,
+              count(distinct v.peer_id) offline
+          from visits v
+          where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} -'15 week'::interval
+            and v.visit_started_at < {{ .StartOfWeek | timestamptz }}
+          group by date_trunc('week', v.visit_started_at), v.peer_id
+          having bool_and(v.connect_error IS not null)
       )
-      select date,
-        sum(case when uptime >= 0.8 then 1 else 0 end) as online,
-        sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
-        sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
-        sum(case when uptime < 0.1 then 1 else 0 end) as offline
-      from u
-      group by date
-      order by date;
-
+      select
+          c.date,
+          sum(c.online) online,
+          sum(c.mostlyonline) mostlyonline,
+          sum(c.mostlyoffline) mostlyoffline,
+          sum(c.offline) offline
+      from common c
+      group by c.date
+      order by c.date;
 
 series:
   - type: "bar"
