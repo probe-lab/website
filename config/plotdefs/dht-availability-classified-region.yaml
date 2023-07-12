@@ -3,40 +3,79 @@ datasets:
   - name: "main"
     source: "nebula_ipfs"
     query: >
-      with u as (
-        with period as (
-          select {{ .StartOfWeek | timestamptz }}-'1 week'::interval AS start,{{ .StartOfWeek | timestamptz }} as end, tstzrange({{ .StartOfWeek | timestamptz }}-'1 week'::interval, {{ .StartOfWeek | timestamptz }}) as range, extract(epoch from '1 week'::interval) as duration
-        )
-        , vma as (
-          select v.peer_id, unnest(v.multi_address_ids) multi_address_id
-          from period, visits v
-          where v.visit_started_at >= period.start
-            and v.visit_started_at <  period.end
-            and v.type = 'crawl'
-          group by v.peer_id, unnest(v.multi_address_ids)
-        )
-        select period.end as date, ma.continent, s.peer_id,
+      with period as (
+        select
+          {{ .StartOfWeek | timestamptz }}-'1 week'::interval AS start,
+          {{ .StartOfWeek | timestamptz }} as end,
+          tstzrange({{ .StartOfWeek | timestamptz }}-'1 week'::interval,
+          {{ .StartOfWeek | timestamptz }}) as range,
+          extract(epoch from '1 week'::interval) as duration
+      ), vma as (
+        select
+          v.peer_id,
+          bool_and(v.connect_error is not null) connect_error,
+          unnest(v.multi_address_ids) multi_address_id
+        from period, visits v
+        where v.visit_started_at >= period.start
+          and v.visit_started_at <  period.end
+          and v.type = 'crawl'
+        group by v.peer_id, unnest(v.multi_address_ids)
+      ), u as (
+        select
+          period.end as date,
+          ma.continent,
+          s.peer_id,
           extract(epoch from sum(upper(s.uptime * period.range) - lower(s.uptime * period.range ))::interval)/period.duration as uptime
         from period, sessions s
-          left join vma on vma.peer_id=s.peer_id
+          left join vma on vma.peer_id = s.peer_id
           inner join multi_addresses ma on vma.multi_address_id = ma.id
         where s.uptime && period.range
         group by period.end, ma.continent, s.peer_id, period.duration
+      ), offline as (
+        select
+          case
+            when continent = 'NA' then 'North America'
+            when continent = 'AS' then 'Asia'
+            when continent = 'EU' then 'Europe'
+            when continent = 'AF' then 'Africa'
+            when continent = 'OC' then 'Oceania'
+            when continent = 'SA' then 'South America'
+            else 'Uncategorised'
+          end as continent,
+          0 online,
+          0 mostlyonline,
+          0 mostlyoffline,
+          count(distinct vma.peer_id) offline
+        from vma
+          inner join multi_addresses ma on vma.multi_address_id = ma.id
+        group by ma.continent, vma.peer_id
+        having bool_and(vma.connect_error)
+      ), union_table as (
+        select case
+            when continent = 'NA' then 'North America'
+            when continent = 'AS' then 'Asia'
+            when continent = 'EU' then 'Europe'
+            when continent = 'AF' then 'Africa'
+            when continent = 'OC' then 'Oceania'
+            when continent = 'SA' then 'South America'
+            else 'Uncategorised'
+          end as continent,
+          sum(case when uptime >= 0.8 then 1 else 0 end) as online,
+          sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
+          sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
+          sum(case when uptime < 0.1 then 1 else 0 end) as offline
+        from u
+        group by continent
+        union all
+        select * from offline
       )
-      select case
-          when continent = 'NA' then 'North America'
-          when continent = 'AS' then 'Asia'
-          when continent = 'EU' then 'Europe'
-          when continent = 'AF' then 'Africa'
-          when continent = 'OC' then 'Oceania'
-          when continent = 'SA' then 'South America'
-          else 'Uncategorised'
-        end as continent,
-        sum(case when uptime >= 0.8 then 1 else 0 end) as online,
-        sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
-        sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
-        sum(case when uptime < 0.1 then 1 else 0 end) as offline
-      from u
+      select
+        ut.continent,
+        sum(ut.online) online,
+        sum(ut.mostlyonline) mostlyonline,
+        sum(ut.mostlyoffline) mostlyoffline,
+        sum(ut.offline) offline
+      from union_table ut
       group by continent
       order by continent;
 
