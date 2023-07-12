@@ -37,6 +37,7 @@ datasets:
           from visits v
           where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} -'15 week'::interval
             and v.visit_started_at < {{ .StartOfWeek | timestamptz }}
+            and v.type = 'crawl'
           group by date_trunc('week', v.visit_started_at), v.peer_id
           having bool_and(v.connect_error IS not null)
       )
