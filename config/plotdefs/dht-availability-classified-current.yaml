@@ -14,8 +14,19 @@ datasets:
         sum(case when uptime >= 0.8 then 1 else 0 end) as online,
         sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
         sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
-        sum(case when uptime < 0.1 then 1 else 0 end) as offline
-      from u;
+        sum(case when uptime < 0.1 then 1 else 0 end) + (
+          with cte as (
+            select v.peer_id
+            from visits v
+            where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+              and v.visit_started_at < {{ .StartOfWeek | timestamptz }}
+              and v.type = 'crawl'
+            group by v.peer_id
+            having bool_and(v.connect_error IS not null)
+          ) select count(distinct peer_id) from cte
+        ) as offline
+      from u
+      
   - name: "previous"
     source: "nebula_ipfs"
     query: >
@@ -30,7 +41,17 @@ datasets:
         sum(case when uptime >= 0.8 then 1 else 0 end) as online,
         sum(case when uptime >= 0.4 and uptime < 0.8 then 1 else 0 end) as mostlyonline,
         sum(case when uptime >= 0.1 and uptime < 0.4 then 1 else 0 end) as mostlyoffline,
-        sum(case when uptime < 0.1 then 1 else 0 end) as offline
+        sum(case when uptime < 0.1 then 1 else 0 end) + (
+          with cte as (
+            select v.peer_id
+            from visits v
+            where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} - '2 week'::interval
+              and v.visit_started_at < {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+              and v.type = 'crawl'
+            group by v.peer_id
+            having bool_and(v.connect_error IS not null)
+          ) select count(distinct peer_id) from cte
+        ) as offline
       from u;
 
 scalars:
