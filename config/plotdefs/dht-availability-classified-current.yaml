@@ -18,8 +18,8 @@ datasets:
           with cte as (
             select v.peer_id
             from visits v
-            where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} - '2 week'::interval
-              and v.visit_started_at < {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+            where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} - '1 week'::interval
+              and v.visit_started_at < {{ .StartOfWeek | timestamptz }}
               and v.type = 'crawl'
             group by v.peer_id
             having bool_and(v.connect_error IS not null)
