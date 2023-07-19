@@ -8,25 +8,25 @@ datasets:
         from generate_series({{ .StartOfDay | timestamptz }}-'90 day'::interval, {{ .StartOfDay | timestamptz }}, '1 day'::interval) d
       ),
       m as (
-        select m1.created_at, duration
+        select m1.created_at, duration, n.region
         from retrievals m1
           inner join nodes n on n.id = m1.node_id
         where m1.error is null
           and m1.rt_size > 200
           and n.instance_type = 't3.small'
         union all
-        select m2.created_at, duration
+        select m2.created_at, duration, n.region
         from retrievals_ecs m2
           inner join nodes_ecs n on n.id = m2.node_id
         where m2.error is null
           and m2.rt_size > 200
           and n.fleet = 'default'
       )
-      select period.end::date as date, percentile_disc(0.5) within group (order by m.duration) as median
+      select period.end::date as date, m.region, percentile_disc(0.5) within group (order by m.duration) as median
       from period, m
       where m.created_at >= period.start
         and m.created_at < period.end
-      group by period.end;
+      group by period.end, m.region;
 
 series:
   - type: "line"
@@ -34,6 +34,8 @@ series:
     dataset: "main"
     labels: "date"
     values: "median"
+    groupfield: "region"
+    groupvalue: "*"
 
 layout:
   title:
