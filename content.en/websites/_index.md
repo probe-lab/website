@@ -1,5 +1,5 @@
 ---
-title: IPFS Websites
+title: Website Monitoring
 bookCollapseSection: true
 plotly: true
 weight: 40
