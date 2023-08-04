@@ -32,6 +32,10 @@ combined dataset. By focusing on these overall trends, we can gain valuable
 insights into the performance of IPNI TTFPR performance as a whole, making it easier to
 identify any notable deviations or improvements in that metric over time.
 
+The sample size corresponds to the number of cached retrievals at a specific day
+summed across all considered regions. The number of uncached retrievals is usually
+exactly the same and therefore not shown separately.
+
 ## Lookup Latencies
 
 The graphs presented below display the latencies for the "Time To First Provider

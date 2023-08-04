@@ -11,7 +11,7 @@ datasets:
           row_number() over (partition by r.cid, n.region order by r.created_at) request_number
         from retrievals_ecs r
           inner join nodes_ecs n on r.node_id = n.id
-        where n.fleet = 'cid.contact' and r.error is null
+        where n.fleet = '{{ .Params.ipni }}' and r.error is null
           and r.created_at >= {{ .StartOfDay | timestamptz }} - '30 days'::interval
           and r.created_at < {{ .StartOfDay | timestamptz }}
       )
@@ -21,6 +21,29 @@ datasets:
           percentile_cont(0.9) within group (order by cte.duration) filter ( where cte.request_number = 1 ) p90_uncached,
           percentile_cont(0.5) within group (order by cte.duration) filter ( where cte.request_number = 2 ) p50_cached,
           percentile_cont(0.9) within group (order by cte.duration) filter ( where cte.request_number = 2 ) p90_cached
+      from cte
+      group by cte.date
+      order by cte.date
+
+  - name: "samples"
+    source: "parsec"
+    query: >
+      with cte as (
+        select
+          n.region,
+          r.*,
+          date_trunc('day', r.created_at) date,
+          row_number() over (partition by r.cid, n.region order by r.created_at) request_number
+        from retrievals_ecs r
+          inner join nodes_ecs n on r.node_id = n.id
+        where n.fleet = '{{ .Params.ipni }}' and r.error is null
+          and r.created_at >= {{ .StartOfDay | timestamptz }} - '30 days'::interval
+          and r.created_at < {{ .StartOfDay | timestamptz }}
+      )
+      select
+          cte.date,
+          sum(1) filter ( where cte.request_number = 1 ) samples_uncached,
+          sum(1) filter ( where cte.request_number = 2 ) samples_cached
       from cte
       group by cte.date
       order by cte.date
@@ -46,6 +69,13 @@ series:
     dataset: "main"
     labels: "date"
     values: "p90_uncached"
+  - type: "scatter"
+    name: "Samples"
+    dataset: "samples"
+    labels: "date"
+    values: "samples_cached"
+    color: "gray"
+    yaxis: "y2"
 
 layout:
   legend:
@@ -66,7 +96,7 @@ layout:
     pad: 1
     t: 30
     l: 50
-    r: 20
+    r: 50
     b: 60
   title:
     font:
@@ -76,3 +106,13 @@ layout:
     xanchor: "right"
     y: 0.01
     yanchor: "bottom"
+
+dynamicLayout:
+  yaxis2:
+    autorange: true
+    rangemode: "tozero"
+    showgrid: false
+    side: "right"
+    overlaying: "y"
+    title:
+      text: "Samples / Day"
