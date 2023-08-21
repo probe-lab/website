@@ -18,7 +18,7 @@ datasets:
               end
               end as agent,
              case
-            when position('@' in agent_version) = 0 then split_part(split_part(agent_version, '/',2), '-',1)
+            when position('@' in agent_version) = 0 then substring(agent_version from 'kubo\/[0-9]+\.([0-9]+)\.[0-9]+.*')
             else split_part(agent_version, '@',2)
              end as version
         from agent_versions
