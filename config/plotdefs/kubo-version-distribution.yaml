@@ -32,7 +32,7 @@ datasets:
                 AND v.type = 'crawl' AND v.connect_error IS NULL
                 and (av.agent = 'go-ipfs' or av.agent = 'kubo')
         group by av.agent, av.version
-        order by cast(split_part(av.version, '.',1) as numeric)*10000+cast(split_part(av.version, '.',2) as numeric)*100+cast(split_part(av.version, '.',3) as numeric);
+        order by cast(coalesce(nullif(split_part(av.version, '.',1),''),'0') as numeric)*10000+cast(coalesce(nullif(split_part(av.version, '.',2),''),'0') as numeric)*100+cast(coalesce(nullif(split_part(av.version, '.',3),''),'0') as numeric);
 
 series:
   - type: "hbar"
