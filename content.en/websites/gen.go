@@ -26,6 +26,7 @@ var websites = []string{
 	//"en.wikipedia-on-ipfs.org/wiki",
 	"specs.ipfs.tech",
 	"probelab.io",
+	"singularity.storage",
 }
 
 type TemplateData struct {
