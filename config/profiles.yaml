@@ -46,6 +46,8 @@
       type: KUBO
     - website: n0.computer
       type: KUBO
+    - website: fil.org
+      type: KUBO
 
 - source: ./plotdefs-website/website-trend-hosters.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -71,6 +73,7 @@
     - website: docs.ipfs.tech
     - website: singularity.storage
     - website: n0.computer
+    - website: fil.org
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -96,6 +99,7 @@
     - website: docs.ipfs.tech
     - website: singularity.storage
     - website: n0.computer
+    - website: fil.org
 
 - source: ./plotdefs-website/website-trend-providers.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -121,6 +125,7 @@
     - website: docs.ipfs.tech
     - website: singularity.storage
     - website: n0.computer
+    - website: fil.org
 
 - source: ./plotdefs-website/website-trend-retrieval-errors.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
@@ -167,6 +172,8 @@
       type: KUBO
     - website: n0.computer
       type: KUBO
+    - website: fil.org
+      type: KUBO
 
 - source: ./plotdefs-website/website-snapshot-probes-count.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -196,6 +203,7 @@
     - website: docs.ipfs.tech
     - website: singularity.storage
     - website: n0.computer
+    - website: fil.org
 
 - source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
@@ -263,6 +271,9 @@
     - website: n0.computer
       type: KUBO
       region: eu-central-1
+    - website: fil.org
+      type: KUBO
+      region: eu-central-1
 
 - source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -292,6 +303,7 @@
     - website: docs.ipfs.tech
     - website: singularity.storage
     - website: n0.computer
+    - website: fil.org
 
 - source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
@@ -485,6 +497,15 @@
     - website: n0.computer
       type: KUBO
       metric: lcp
+    - website: fil.org
+      type: KUBO
+      metric: ttfb
+    - website: fil.org
+      type: KUBO
+      metric: fcp
+    - website: fil.org
+      type: KUBO
+      metric: lcp
 
 - source: ./plotdefs-website/website-snapshot-http-ratio.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.metric }}.json"
@@ -530,6 +551,8 @@
     - website: singularity.storage
       metric: ttfb
     - website: n0.computer
+      metric: ttfb
+    - website: fil.org
       metric: ttfb
 
 - source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
