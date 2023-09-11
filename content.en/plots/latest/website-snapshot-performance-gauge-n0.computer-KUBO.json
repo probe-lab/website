@@ -9,6 +9,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 1.6668,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -55,6 +56,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 1.6668,
       "visible": true
     },
     {
@@ -66,6 +68,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 7.0062,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -114,6 +117,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 7.0062,
       "visible": true
     },
     {
@@ -125,6 +129,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 3.8203,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -171,6 +176,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 3.8203,
       "visible": false
     },
     {
@@ -182,6 +188,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 11.226,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -230,6 +237,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 11.226,
       "visible": false
     },
     {
@@ -241,6 +249,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 5.2677,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -287,6 +296,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 5.2677,
       "visible": false
     },
     {
@@ -298,6 +308,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 11.5657,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -346,6 +357,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 11.5657,
       "visible": false
     },
     {
@@ -357,6 +369,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 2.7516,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -403,6 +416,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 2.7516,
       "visible": false
     },
     {
@@ -414,6 +428,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 7.12,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -462,6 +477,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 7.12,
       "visible": false
     },
     {
@@ -473,6 +489,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 3.4842,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -519,6 +536,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 3.4842,
       "visible": false
     },
     {
@@ -530,6 +548,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 9.026,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -578,6 +597,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 9.026,
       "visible": false
     },
     {
@@ -589,6 +609,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 3.1622,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -635,6 +656,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 3.1622,
       "visible": false
     },
     {
@@ -646,6 +668,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 9.547,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -694,6 +717,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 9.547,
       "visible": false
     },
     {
@@ -705,6 +729,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 3.4433,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -751,6 +776,7 @@
       "title": {
         "text": "Time To First Byte"
       },
+      "value": 3.4433,
       "visible": false
     },
     {
@@ -762,6 +788,7 @@
         "increasing": {
           "color": "EE6677"
         },
+        "reference": 5.5868,
         "relative": true,
         "valueformat": ".2%"
       },
@@ -810,6 +837,7 @@
       "title": {
         "text": "First Contentful Paint"
       },
+      "value": 5.5868,
       "visible": false
     }
   ],
@@ -841,7 +869,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 21 Aug 2023 - 28 Aug 2023 (p90, KUBO, n0.computer). Source: Tiros.",
+      "text": "Data: 3 Sep 2023 - 10 Sep 2023 (p90, KUBO, n0.computer). Source: Tiros.",
       "x": 1,
       "xanchor": "right",
       "y": 0.103,

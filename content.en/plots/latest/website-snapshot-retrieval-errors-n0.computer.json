@@ -1,4 +1,181 @@
 {
+  "data": [
+    {
+      "type": "bar",
+      "marker": {
+        "color": "117733"
+      },
+      "name": "Success",
+      "x": [
+        [
+          "af-south-1",
+          "af-south-1",
+          "ap-south-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-2",
+          "eu-central-1",
+          "eu-central-1",
+          "sa-east-1",
+          "sa-east-1",
+          "us-east-2",
+          "us-east-2",
+          "us-west-1",
+          "us-west-1"
+        ],
+        [
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO"
+        ]
+      ],
+      "y": [
+        100,
+        20.892857142857142,
+        100,
+        20.25089605734767,
+        100,
+        25.892857142857142,
+        100,
+        24.682395644283122,
+        100,
+        20.178571428571427,
+        100,
+        21.25,
+        100,
+        18.659420289855074
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "marker": {
+        "color": "EE99AA"
+      },
+      "name": "Error",
+      "x": [
+        [
+          "af-south-1",
+          "af-south-1",
+          "ap-south-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-2",
+          "eu-central-1",
+          "eu-central-1",
+          "sa-east-1",
+          "sa-east-1",
+          "us-east-2",
+          "us-east-2",
+          "us-west-1",
+          "us-west-1"
+        ],
+        [
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO"
+        ]
+      ],
+      "y": [
+        0,
+        79.10714285714286,
+        0,
+        79.74910394265233,
+        0,
+        74.10714285714286,
+        0,
+        75.31760435571688,
+        0,
+        79.82142857142857,
+        0,
+        78.75,
+        0,
+        81.34057971014492
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {
+        "color": "black"
+      },
+      "mode": "markers",
+      "name": "Probes",
+      "x": [
+        [
+          "af-south-1",
+          "af-south-1",
+          "ap-south-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-2",
+          "eu-central-1",
+          "eu-central-1",
+          "sa-east-1",
+          "sa-east-1",
+          "us-east-2",
+          "us-east-2",
+          "us-west-1",
+          "us-west-1"
+        ],
+        [
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO",
+          "HTTP",
+          "KUBO"
+        ]
+      ],
+      "y": [
+        560,
+        560,
+        558,
+        558,
+        560,
+        560,
+        550,
+        551,
+        560,
+        560,
+        560,
+        560,
+        553,
+        552
+      ],
+      "yaxis": "y2"
+    }
+  ],
   "layout": {
     "annotations": null,
     "barmode": "stack",
@@ -21,7 +198,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 21 Aug 2023 - 28 Aug 2023 (n0.computer). Source: Tiros.",
+      "text": "Data: 3 Sep 2023 - 10 Sep 2023 (n0.computer). Source: Tiros.",
       "x": 1,
       "xanchor": "right",
       "y": 0.01,
