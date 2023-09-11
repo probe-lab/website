@@ -28,6 +28,7 @@ var websites = []string{
 	"probelab.io",
 	"singularity.storage",
 	"n0.computer",
+	"fil.org",
 }
 
 type TemplateData struct {
