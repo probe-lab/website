@@ -27,6 +27,7 @@ var websites = []string{
 	"specs.ipfs.tech",
 	"probelab.io",
 	"singularity.storage",
+	"n0.computer",
 }
 
 type TemplateData struct {
