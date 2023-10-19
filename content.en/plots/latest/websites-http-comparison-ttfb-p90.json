@@ -3,6 +3,9 @@
     {
       "type": "bar",
       "hovertemplate": "",
+      "marker": {
+        "color": "994455"
+      },
       "name": "Helia",
       "orientation": "v",
       "visible": true,
@@ -16,19 +19,22 @@
         "us-west-1"
       ],
       "y": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "yaxis": ""
     },
     {
       "type": "bar",
       "hovertemplate": "",
+      "marker": {
+        "color": "004488"
+      },
       "name": "Kubo",
       "orientation": "v",
       "visible": true,
@@ -42,13 +48,13 @@
         "us-west-1"
       ],
       "y": [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
+        1.73082,
+        1.4423,
+        1.7295,
+        0.34626,
+        1.49332,
+        0.57496,
+        0.5007
       ],
       "yaxis": ""
     },

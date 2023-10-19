@@ -838,7 +838,6 @@
   variants:
     - percentile: 90
       metric: ttfb
-      impl: KUBO
 
 - source: ./plotdefs-ipni/ipni-snapshot-uncached-latencies-cdf.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.ipni }}.json"
