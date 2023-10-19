@@ -15,7 +15,8 @@ datasets:
           where m.created_at >= {{ .StartOfDay | timestamptz }} - '30d'::interval
             and m.created_at < {{ .StartOfDay | timestamptz }}
             and m.website = '{{ .Params.website }}'
-            and m.type = 'KUBO'
+            and m.type = '{{ .Params.type }}'
+            and (r.ipfs_impl = '{{ .Params.impl }}' or '{{ .Params.type }}' = 'HTTP')
             and ((m.status_code >= 200 and m.status_code < 400) or m.status_code is null)
           group by date_trunc('day', m.created_at)
       )
@@ -50,6 +51,11 @@ series:
     labels: "date"
     values: "p90_tti_rolling"
 
+# {{ $title_label := .Params.type }}
+# {{ if eq .Params.type "IPFS" }}
+#   {{ $title_label = .Params.impl }}
+# {{ end }}
+
 layout:
   yaxis:
     autorange: true
@@ -65,7 +71,7 @@ layout:
   title:
     font:
       size: 10
-    text: "(p90, {{ .Params.website }}). Source: Tiros."
+    text: "(p90, {{ $title_label }}, {{ .Params.website }}). Source: Tiros."
     x: 1
     xanchor: "right"
     y: 0.01

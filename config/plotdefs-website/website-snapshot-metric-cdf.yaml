@@ -8,7 +8,8 @@ datasets:
               r.region,
               m.{{ .Params.metric }},
               cume_dist() over (partition by r.region order by m.{{ .Params.metric }}) as cumedist
-          from measurements m inner join runs r on r.id = m.run_id
+          from measurements m
+            inner join runs r on r.id = m.run_id
           where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
             and m.created_at < {{ .StartOfDay | timestamptz }}
             and m.website = '{{ .Params.website }}'
@@ -16,6 +17,7 @@ datasets:
             and m.{{ .Params.metric }} is not null
             and m.status_code >= 200
             and m.status_code < 400
+            and (r.ipfs_impl = '{{ .Params.impl }}' or '{{ .Params.type }}' = 'HTTP')
       )
       select
         cdf.region as region,
@@ -35,7 +37,12 @@ series:
     groupfield: "region"
     groupvalue: "*"
 
-#  {{ $xrange_max := 0 }}
+# {{ $title_label := .Params.type }}
+# {{ if eq .Params.type "IPFS" }}
+#   {{ $title_label = .Params.impl }}
+# {{ end }}
+
+# {{ $xrange_max := 0 }}
 # {{ if eq .Params.metric "ttfb" }}
 #   {{ $xrange_max = 2 }}
 # {{ else if eq .Params.metric "cls" }}
@@ -57,7 +64,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.type }}, {{ .Params.website }}). Source: Tiros.'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ $title_label }}, {{ .Params.website }}). Source: Tiros.'
     x: 1
     xanchor: "right"
     y: 0.01
