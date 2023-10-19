@@ -5,22 +5,23 @@ datasets:
     query: >
       select
           r.region,
-          percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'KUBO' ) p{{ .Params.percentile }}_kubo,
+          percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'IPFS' ) p{{ .Params.percentile }}_ipfs,
           percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' ) p{{ .Params.percentile }}_http
       from measurements m
-               inner join runs r on r.id = m.run_id
-          where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
-            and m.created_at < {{ .StartOfDay | timestamptz }}
-            and m.status_code >= 200
-            and m.status_code < 400
+        inner join runs r on r.id = m.run_id
+      where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
+        and m.created_at < {{ .StartOfDay | timestamptz }}
+        and m.status_code >= 200
+        and m.status_code < 400
+        and r.ipfs_impl = '{{ .Params.impl }}'
       group by r.region
 
 series:
   - type: "bar"
-    name: "Kubo"
+    name: "{{ .Params.impl }}"
     dataset: "current"
     labels: "region"
-    values: "p{{ .Params.percentile }}_kubo"
+    values: "p{{ .Params.percentile }}_ipfs"
   - type: "bar"
     name: "HTTP"
     dataset: "current"
