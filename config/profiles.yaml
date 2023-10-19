@@ -2,7 +2,7 @@
   output: '{{.PlotDefFilename}}.json'
 
 - source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
       type: IPFS
@@ -98,7 +98,7 @@
     - website: fil.org
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
       type: IPFS
@@ -194,7 +194,7 @@
     - website: fil.org
 
 - source: ./plotdefs-website/website-trend-retrieval-errors.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
       type: IPFS
@@ -264,7 +264,7 @@
       impl: KUBO
 
 - source: ./plotdefs-website/website-snapshot-probes-count.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
       impl: KUBO
@@ -320,7 +320,7 @@
       impl: KUBO
 
 - source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}-{{ .Params.region }}.json"
   variants:
     - website: protocol.ai
       type: IPFS
@@ -412,7 +412,7 @@
       region: eu-central-1
 
 - source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
       impl: KUBO
@@ -468,7 +468,7 @@
       impl: KUBO
 
 - source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}-{{ .Params.metric }}.json"
   variants:
     - website: protocol.ai
       type: IPFS
@@ -736,7 +736,7 @@
       metric: lcp
 
 - source: ./plotdefs-website/website-snapshot-http-ratio.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.metric }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.impl }}-{{ .Params.metric }}.json"
   variants:
     - website: protocol.ai
       metric: ttfb
@@ -806,7 +806,7 @@
       impl: KUBO
 
 - source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.impl }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
   variants:
     - type: IPFS
       impl: KUBO

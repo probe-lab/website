@@ -24,7 +24,7 @@ datasets:
 
 scalars:
   - type: "number"
-    name: "IPFS"
+    name: "{{ .Params.impl }}"
     dataset: "current"
     value: "successful_ipfs"
   - type: "number"
