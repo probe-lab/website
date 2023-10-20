@@ -28,45 +28,46 @@ combined dataset. By focusing on these overall trends, we can gain valuable
 insights into the performance of Kubo TTFB performance as a whole, making it easier to
 identify any notable deviations or improvements in that metric over time.
 
-## Kubo vs HTTP (90th percentile) {#websites-http-comparison-ttfb-p90}
+## Helia vs Kubo vs HTTP (90th percentile) {#websites-http-comparison-ttfb-p90}
 
 {{< plotly json="../../plots/latest/websites-http-comparison-ttfb-p90.json" height="350px" >}}
 
 The graph shows the 90th percentile of the Time to First Byte (TTFB) metric for
-both HTTP and Kubo protocols across seven distinct regions. The horizontal axis
-represents the seven regions, while the vertical axis indicates TTFB in seconds.
+retrievals via HTTP, through Helia, and through Kubo across seven distinct
+regions. The horizontal axis represents the seven regions, while the vertical
+axis indicates TTFB in seconds.
 
-By displaying separate bars for HTTP and Kubo in each region, the graph allows
+By displaying separate bars for HTTP, Helia, and Kubo in each region, the graph allows
 for a direct comparison of their TTFB performance. This comparison reveals
 performance differences and provides insights into the efficiency of each
-protocol in different geographic areas.
+protocol/implementation in different geographic areas.
 
 ## Time To First Byte using Kubo
 
-### (50th percentile) {#websites-web-vitals-heatmap-KUBO-ttfb-p50}
+### (50th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-ttfb-p50}
 
-{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-ttfb-p50.json" height="700px" >}}
+{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-IPFS-KUBO-ttfb-p50.json" height="700px" >}}
 
-### (90th percentile) {#websites-web-vitals-heatmap-KUBO-ttfb-p90}
+### (90th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-ttfb-p90}
 
-{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-ttfb-p90.json" height="700px" >}}
+{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-IPFS-KUBO-ttfb-p90.json" height="700px" >}}
 
 ## First Contentful Paint using Kubo
 
-### (50th percentile) {#websites-web-vitals-heatmap-KUBO-fcp-p50}
+### (50th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-fcp-p50}
 
-{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-fcp-p50.json" height="700px" >}}
+{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-IPFS-KUBO-fcp-p50.json" height="700px" >}}
 
-### (90th percentile) {#websites-web-vitals-heatmap-KUBO-fcp-p90}
+### (90th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-fcp-p90}
 
-{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-fcp-p90.json" height="700px" >}}
+{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-IPFS-KUBO-fcp-p90.json" height="700px" >}}
 
 ## Largest Contentful Paint using Kubo
 
-### (50th percentile) {#websites-web-vitals-heatmap-KUBO-lcp-p50}
+### (50th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-lcp-p50}
 
-{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-lcp-p50.json" height="700px" >}}
+{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-IPFS-KUBO-lcp-p50.json" height="700px" >}}
 
-### (90th percentile) {#websites-web-vitals-heatmap-KUBO-lcp-p90}
+### (90th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-lcp-p90}
 
-{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-KUBO-lcp-p90.json" height="700px" >}}
+{{< plotly json="../../plots/latest/websites-web-vitals-heatmap-IPFS-KUBO-lcp-p90.json" height="700px" >}}

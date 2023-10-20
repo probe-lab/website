@@ -12,20 +12,21 @@ datasets:
         where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
           and m.created_at < {{ .StartOfDay | timestamptz }}
           and m.website = '{{ .Params.website }}'
+          and r.ipfs_impl = '{{ .Params.impl }}'
           and (m.error is null or m.error not like '%ERR_CONNECTION_REFUSED%') -- this is a measurement error and not a website error
       )
       select
-        sum(1) filter ( where cte.type = 'KUBO' and not cte.has_error) successful_kubo,
+        sum(1) filter ( where cte.type = 'IPFS' and not cte.has_error) successful_ipfs,
         sum(1) filter ( where cte.type = 'HTTP' and not cte.has_error) successful_http,
-        sum(1) filter ( where cte.type = 'KUBO' ) total_kubo,
+        sum(1) filter ( where cte.type = 'IPFS' ) total_ipfs,
         sum(1) filter ( where cte.type = 'HTTP' ) total_http
       from cte
 
 scalars:
   - type: "number"
-    name: "Kubo"
+    name: "{{ .Params.impl }}"
     dataset: "current"
-    value: "successful_kubo"
+    value: "successful_ipfs"
   - type: "number"
     name: "HTTP"
     dataset: "current"
@@ -38,7 +39,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.website }}). Source: Tiros.'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} ({{ .Params.impl }}, {{ .Params.website }}). Source: Tiros.'
     x: 1
     xanchor: "right"
     y: 0.01

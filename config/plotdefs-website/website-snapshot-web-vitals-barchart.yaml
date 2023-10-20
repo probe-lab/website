@@ -17,6 +17,7 @@ datasets:
           where m.created_at >= {{ .StartOfDay | timestamptz }} - '1 week'::interval
             and m.created_at < {{ .StartOfDay | timestamptz }}
             and r.region = '{{ .Params.region }}'
+            and (r.ipfs_impl = '{{ .Params.impl }}' or '{{ .Params.type }}' = 'HTTP')
             and m.type = '{{ .Params.type }}'
             and m.website = '{{ .Params.website }}'
             and (m.error is null or m.error not like '%ERR_CONNECTION_REFUSED%') -- this is a measurement error and not a website error
@@ -105,10 +106,15 @@ series:
     color: "red"
     hovertemplate: "%{x} %{y:.1f}%"
 
+# {{ $title_label := .Params.type }}
+# {{ if eq .Params.type "IPFS" }}
+#   {{ $title_label = .Params.impl }}
+# {{ end }}
+
 layout:
   barmode: "stack"
   title:
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }}<br>({{ .Params.type }}, {{ .Params.region }}, {{ .Params.website }}). Source: Tiros.'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }}<br>({{ $title_label }}, {{ .Params.region }}, {{ .Params.website }}). Source: Tiros.'
     font:
       size: 10
     x: 1

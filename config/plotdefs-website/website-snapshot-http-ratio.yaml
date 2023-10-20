@@ -13,7 +13,7 @@ datasets:
             select
                 r.region,
                 percentiles.val::float/100 percentile,
-                coalesce(extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'KUBO' )) /
+                coalesce(extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'IPFS' )) /
                 extract('epoch' from percentile_disc(percentiles.val::float/100) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' )), -1) ratio
             from measurements m
                      inner join runs r on r.id = m.run_id
@@ -22,6 +22,7 @@ datasets:
               and m.website = '{{ .Params.website }}'
               and m.status_code >= 200
               and m.status_code < 400
+              and r.ipfs_impl = '{{ .Params.impl }}'
             group by r.region
         ) data;
 
@@ -34,7 +35,7 @@ tables:
     values: "ratio"
     colorbar:
       title:
-        text: "← Kubo faster | HTTP faster →"
+        text: "← {{ .Params.impl }} faster | HTTP faster →"
         side: "right"
 
 layout:
