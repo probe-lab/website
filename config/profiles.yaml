@@ -2,52 +2,74 @@
   output: '{{.PlotDefFilename}}.json'
 
 - source: ./plotdefs-website/website-snapshot-performance-gauge.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: drand.love
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: ipld.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: green.filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: web3.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: consensuslab.world
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: strn.network
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: research.protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: blog.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: blog.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: en.wikipedia-on-ipfs.org/wiki
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: specs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: probelab.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: docs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: singularity.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: n0.computer
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: fil.org
-      type: KUBO
+      type: IPFS
+      impl: KUBO
 
 - source: ./plotdefs-website/website-trend-hosters.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -76,30 +98,74 @@
     - website: fil.org
 
 - source: ./plotdefs-website/website-trend-metrics.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
+      type: IPFS
+      impl: KUBO
     - website: filecoin.io
+      type: IPFS
+      impl: KUBO
     - website: docs.libp2p.io
+      type: IPFS
+      impl: KUBO
     - website: drand.love
+      type: IPFS
+      impl: KUBO
     - website: libp2p.io
+      type: IPFS
+      impl: KUBO
     - website: ipld.io
+      type: IPFS
+      impl: KUBO
     - website: green.filecoin.io
+      type: IPFS
+      impl: KUBO
     - website: web3.storage
+      type: IPFS
+      impl: KUBO
     - website: consensuslab.world
+      type: IPFS
+      impl: KUBO
     - website: strn.network
+      type: IPFS
+      impl: KUBO
     - website: research.protocol.ai
+      type: IPFS
+      impl: KUBO
     - website: ipfs.tech
+      type: IPFS
+      impl: KUBO
     - website: blog.ipfs.tech
+      type: IPFS
+      impl: KUBO
     - website: docs.libp2p.io
+      type: IPFS
+      impl: KUBO
     - website: blog.libp2p.io
+      type: IPFS
+      impl: KUBO
     - website: en.wikipedia-on-ipfs.org/wiki
+      type: IPFS
+      impl: KUBO
     - website: specs.ipfs.tech
+      type: IPFS
+      impl: KUBO
     - website: probelab.io
+      type: IPFS
+      impl: KUBO
     - website: docs.ipfs.tech
+      type: IPFS
+      impl: KUBO
     - website: singularity.storage
+      type: IPFS
+      impl: KUBO
     - website: n0.computer
+      type: IPFS
+      impl: KUBO
     - website: fil.org
+      type: IPFS
+      impl: KUBO
 
 - source: ./plotdefs-website/website-trend-providers.yaml
   output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
@@ -128,452 +194,642 @@
     - website: fil.org
 
 - source: ./plotdefs-website/website-trend-retrieval-errors.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: drand.love
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: ipld.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: green.filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: web3.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: consensuslab.world
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: strn.network
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: research.protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: blog.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: blog.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: en.wikipedia-on-ipfs.org/wiki
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: specs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: probelab.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: docs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: singularity.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: n0.computer
-      type: KUBO
+      type: IPFS
+      impl: KUBO
     - website: fil.org
-      type: KUBO
+      type: IPFS
+      impl: KUBO
 
 - source: ./plotdefs-website/website-snapshot-probes-count.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
+      impl: KUBO
     - website: filecoin.io
+      impl: KUBO
     - website: docs.libp2p.io
+      impl: KUBO
     - website: drand.love
+      impl: KUBO
     - website: protocol.ai
+      impl: KUBO
     - website: filecoin.io
+      impl: KUBO
     - website: docs.libp2p.io
+      impl: KUBO
     - website: drand.love
+      impl: KUBO
     - website: libp2p.io
+      impl: KUBO
     - website: ipld.io
+      impl: KUBO
     - website: green.filecoin.io
+      impl: KUBO
     - website: web3.storage
+      impl: KUBO
     - website: consensuslab.world
+      impl: KUBO
     - website: strn.network
+      impl: KUBO
     - website: research.protocol.ai
+      impl: KUBO
     - website: ipfs.tech
+      impl: KUBO
     - website: blog.ipfs.tech
+      impl: KUBO
     - website: docs.libp2p.io
+      impl: KUBO
     - website: blog.libp2p.io
+      impl: KUBO
     - website: en.wikipedia-on-ipfs.org/wiki
+      impl: KUBO
     - website: specs.ipfs.tech
+      impl: KUBO
     - website: probelab.io
+      impl: KUBO
     - website: docs.ipfs.tech
+      impl: KUBO
     - website: singularity.storage
+      impl: KUBO
     - website: n0.computer
+      impl: KUBO
     - website: fil.org
+      impl: KUBO
 
 - source: ./plotdefs-website/website-snapshot-web-vitals-barchart.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.region }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}-{{ .Params.region }}.json"
   variants:
     - website: protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: drand.love
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: ipld.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: green.filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: web3.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: consensuslab.world
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: strn.network
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: research.protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: blog.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: blog.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: en.wikipedia-on-ipfs.org/wiki
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: specs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: probelab.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: docs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: singularity.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: n0.computer
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
     - website: fil.org
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       region: eu-central-1
 
 - source: ./plotdefs-website/website-snapshot-retrieval-errors.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.impl }}.json"
   variants:
     - website: protocol.ai
+      impl: KUBO
     - website: filecoin.io
+      impl: KUBO
     - website: docs.libp2p.io
+      impl: KUBO
     - website: drand.love
+      impl: KUBO
     - website: protocol.ai
+      impl: KUBO
     - website: filecoin.io
+      impl: KUBO
     - website: docs.libp2p.io
+      impl: KUBO
     - website: drand.love
+      impl: KUBO
     - website: libp2p.io
+      impl: KUBO
     - website: ipld.io
+      impl: KUBO
     - website: green.filecoin.io
+      impl: KUBO
     - website: web3.storage
+      impl: KUBO
     - website: consensuslab.world
+      impl: KUBO
     - website: strn.network
+      impl: KUBO
     - website: research.protocol.ai
+      impl: KUBO
     - website: ipfs.tech
+      impl: KUBO
     - website: blog.ipfs.tech
+      impl: KUBO
     - website: docs.libp2p.io
+      impl: KUBO
     - website: blog.libp2p.io
+      impl: KUBO
     - website: en.wikipedia-on-ipfs.org/wiki
+      impl: KUBO
     - website: specs.ipfs.tech
+      impl: KUBO
     - website: probelab.io
+      impl: KUBO
     - website: docs.ipfs.tech
+      impl: KUBO
     - website: singularity.storage
+      impl: KUBO
     - website: n0.computer
+      impl: KUBO
     - website: fil.org
+      impl: KUBO
 
 - source: ./plotdefs-website/website-snapshot-metric-cdf.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.metric }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.type }}-{{ .Params.impl }}-{{ .Params.metric }}.json"
   variants:
     - website: protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: drand.love
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: drand.love
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: drand.love
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: ipld.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: ipld.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: ipld.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: green.filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: green.filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: green.filecoin.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: web3.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: web3.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: web3.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: consensuslab.world
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: consensuslab.world
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: consensuslab.world
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: strn.network
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: strn.network
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: strn.network
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: research.protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: research.protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: research.protocol.ai
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: blog.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: blog.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: blog.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: docs.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: blog.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: blog.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: blog.libp2p.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: en.wikipedia-on-ipfs.org/wiki
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: en.wikipedia-on-ipfs.org/wiki
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: en.wikipedia-on-ipfs.org/wiki
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: specs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: specs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: specs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: probelab.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: probelab.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: probelab.io
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: docs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: docs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: docs.ipfs.tech
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: singularity.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: singularity.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: singularity.storage
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: n0.computer
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: n0.computer
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: n0.computer
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
     - website: fil.org
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: ttfb
     - website: fil.org
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: fcp
     - website: fil.org
-      type: KUBO
+      type: IPFS
+      impl: KUBO
       metric: lcp
 
 - source: ./plotdefs-website/website-snapshot-http-ratio.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.metric }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.website }}-{{ .Params.impl }}-{{ .Params.metric }}.json"
   variants:
     - website: protocol.ai
       metric: ttfb
+      impl: KUBO
     - website: filecoin.io
       metric: ttfb
+      impl: KUBO
     - website: docs.libp2p.io
       metric: ttfb
+      impl: KUBO
     - website: drand.love
       metric: ttfb
+      impl: KUBO
     - website: libp2p.io
       metric: ttfb
+      impl: KUBO
     - website: ipld.io
       metric: ttfb
+      impl: KUBO
     - website: green.filecoin.io
       metric: ttfb
+      impl: KUBO
     - website: web3.storage
       metric: ttfb
+      impl: KUBO
     - website: consensuslab.world
       metric: ttfb
+      impl: KUBO
     - website: strn.network
       metric: ttfb
+      impl: KUBO
     - website: research.protocol.ai
       metric: ttfb
+      impl: KUBO
     - website: ipfs.tech
       metric: ttfb
+      impl: KUBO
     - website: blog.ipfs.tech
       metric: ttfb
+      impl: KUBO
     - website: docs.libp2p.io
       metric: ttfb
+      impl: KUBO
     - website: blog.libp2p.io
       metric: ttfb
+      impl: KUBO
     - website: en.wikipedia-on-ipfs.org/wiki
       metric: ttfb
+      impl: KUBO
     - website: specs.ipfs.tech
       metric: ttfb
+      impl: KUBO
     - website: probelab.io
       metric: ttfb
+      impl: KUBO
     - website: docs.ipfs.tech
       metric: ttfb
+      impl: KUBO
     - website: singularity.storage
       metric: ttfb
+      impl: KUBO
     - website: n0.computer
       metric: ttfb
+      impl: KUBO
     - website: fil.org
       metric: ttfb
+      impl: KUBO
 
 - source: ./plotdefs-website/websites-web-vitals-heatmap.yaml
-  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
+  output: "{{.PlotDefFilename}}-{{ .Params.type }}-{{ .Params.impl }}-{{ .Params.metric }}-p{{ .Params.percentile }}.json"
   variants:
-    - type: KUBO
+    - type: IPFS
+      impl: KUBO
       percentile: 50
       metric: ttfb
-    - type: KUBO
+    - type: IPFS
+      impl: KUBO
       percentile: 90
       metric: ttfb
-    - type: KUBO
+    - type: IPFS
+      impl: KUBO
       percentile: 50
       metric: fcp
-    - type: KUBO
+    - type: IPFS
+      impl: KUBO
       percentile: 90
       metric: fcp
-    - type: KUBO
+    - type: IPFS
+      impl: KUBO
       percentile: 50
       metric: lcp
-    - type: KUBO
+    - type: IPFS
+      impl: KUBO
       percentile: 90
       metric: lcp
 

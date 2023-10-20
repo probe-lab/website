@@ -14,6 +14,7 @@ datasets:
         and m.type = '{{ .Params.type }}'
         and m.status_code >= 200
         and m.status_code < 400
+        and (r.ipfs_impl = '{{ .Params.impl }}' or '{{ .Params.type }}' = 'HTTP')
       group by r.region, m.website;
 
 tables:
@@ -28,6 +29,11 @@ tables:
         text: "Latency in s"
         side: "right"
 
+# {{ $title_label := .Params.type }}
+# {{ if eq .Params.type "IPFS" }}
+#   {{ $title_label = .Params.impl }}
+# {{ end }}
+
 layout:
   automargin: true
   margin:
@@ -35,7 +41,7 @@ layout:
   title:
     font:
       size: 10
-    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }}, {{ .Params.type }}). Source: Tiros.'
+    text: 'Data: {{ .EndOfPreviousDay | dayModify "-7"  | simpledate}} - {{ .EndOfPreviousDay | simpledate }} (p{{ .Params.percentile }}, {{ .Params.metric }}, {{ $title_label }}). Source: Tiros.'
     x: 0.99
     xanchor: "right"
     y: 0.01
