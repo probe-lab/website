@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "name": "Mostly online",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "All",
+        "QUIC",
+        "QUIC v1",
+        "TCP",
+        "WebRTC",
+        "WS",
+        "WSS",
+        "WT"
+      ],
+      "y": [
+        24145,
+        17848,
+        13743,
+        17009,
+        0,
+        154,
+        5,
+        2701
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 1 Nov 2023. Source: Nebula.",
+      "x": 0.99,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "xaxis": {
+      "title": {
+        "text": "Transport"
+      }
+    },
+    "yaxis": {
+      "automargin": true,
+      "title": {
+        "text": "Count"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}

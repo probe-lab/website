@@ -6,10 +6,12 @@ datasets:
       with m as (
         select extract(epoch from m.ttfb) as ttfb
         from measurements m
+          inner join runs r on r.id = m.run_id
         where m.created_at >= {{ .StartOfWeek | timestamptz }}-'1 week'::interval
           and m.created_at < {{ .StartOfWeek | timestamptz }}
-          and m.type = 'KUBO'
+          and m.type = 'IPFS'
           and m.error is null
+          and r.ipfs_impl = 'KUBO'
       )
       select percentile_disc(0.50) within group (order by m.ttfb) as p50,
         percentile_disc(0.90) within group (order by m.ttfb) as p90,
@@ -21,10 +23,12 @@ datasets:
       with m as (
         select extract(epoch from m.ttfb) as ttfb
         from measurements m
+          inner join runs r on r.id = m.run_id
         where m.created_at >= {{ .StartOfWeek | timestamptz }}-'2 week'::interval
           and m.created_at < {{ .StartOfWeek | timestamptz }}-'1 week'::interval
-          and m.type = 'KUBO'
+          and m.type = 'IPFS'
           and m.error is null
+          and r.ipfs_impl = 'KUBO'
       )
       select percentile_disc(0.50) within group (order by m.ttfb) as p50,
         percentile_disc(0.90) within group (order by m.ttfb) as p90,
