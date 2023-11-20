@@ -13,9 +13,19 @@ datasets:
       with period as (
         select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
         from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+      ), all_visits as (
+        select * from period, visits
+        where visit_started_at >= period.start
+          and visit_started_at < period.end
+          and type = 'crawl'
+        union all
+        select * from period, visits_old
+        where visit_started_at >= period.start
+          and visit_started_at < period.end
+          and type = 'crawl'
       )
       select period.end as date, count(DISTINCT agent_versions.agent_version) as value
-      from period, visits v join agent_versions on agent_versions.id=v.agent_version_id
+      from period, all_visits v join agent_versions on agent_versions.id=v.agent_version_id
       where
           v.visit_started_at >= period.start
           and v.visit_started_at < period.end
