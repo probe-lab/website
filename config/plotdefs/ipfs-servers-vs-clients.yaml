@@ -27,31 +27,45 @@ datasets:
       with period as (
         select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
         from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+      ), all_visits as (
+        select * from period, visits
+        where visit_started_at >= period.start
+          and visit_started_at < period.end
+          and type = 'crawl'
+        union all
+        select * from period, visits_old
+        where visit_started_at >= period.start
+          and visit_started_at < period.end
+          and type = 'crawl'
       )
       SELECT period.end as date, count(DISTINCT peer_id) as value
-      FROM period, visits v
-      WHERE visit_started_at >= period.start
-        AND visit_started_at < period.end
-        AND type = 'crawl'
+      FROM period, all_visits v
       group by period.end;
   - name: "dht server ip addresses"
     source: "nebula_ipfs"
     query: >
       with period as (
-          select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
-          from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
-        ), peers AS (
-          select period.end, v.peer_id, unnest(v.multi_address_ids) multi_address_id
-          from period, visits v
-          where visit_started_at >= period.start
-            and visit_started_at < period.end
+        select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
+        from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
+      ), all_visits as (
+        select * from period, visits
+        where visit_started_at >= period.start
+          and visit_started_at < period.end
           and type = 'crawl'
-          group by period.end, v.peer_id, unnest(v.multi_address_ids)
-        )
-        select period.end as date, count(distinct ma.addr) as value
-          from peers inner join multi_addresses ma on ma.id = peers.multi_address_id
-          join period on peers.end = period.end
-        group by period.end;
+        union all
+        select * from period, visits_old
+        where visit_started_at >= period.start
+          and visit_started_at < period.end
+          and type = 'crawl'
+      ), peers AS (
+        select period.end, v.peer_id, unnest(v.multi_address_ids) multi_address_id
+        from period, all_visits v
+        group by period.end, v.peer_id, unnest(v.multi_address_ids)
+      )
+      select period.end as date, count(distinct ma.addr) as value
+        from peers inner join multi_addresses ma on ma.id = peers.multi_address_id
+        join period on peers.end = period.end
+      group by period.end;
 
 computed:
   - name: "dht clients"
