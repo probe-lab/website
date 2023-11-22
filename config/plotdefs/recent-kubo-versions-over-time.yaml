@@ -27,13 +27,13 @@ datasets:
           select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
           from generate_series({{ .StartOfWeek | timestamptz }}-'8 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
         ), all_visits as (
-        select * from period, visits
+        select * from period, visits_old
         where visit_started_at >= period.start
           and visit_started_at < period.end
           and type = 'crawl'
           and connect_error is null
         union all
-        select * from period, visits_old
+        select * from period, visits
         where visit_started_at >= period.start
           and visit_started_at < period.end
           and type = 'crawl'
