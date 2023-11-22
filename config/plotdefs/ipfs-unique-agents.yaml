@@ -13,26 +13,37 @@ datasets:
       with period as (
         select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
         from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
-      ), all_visits as (
-        select * from period, visits
-        where visit_started_at >= period.start
-          and visit_started_at < period.end
-          and type = 'crawl'
-        union all
-        select * from period, visits_old
-        where visit_started_at >= period.start
-          and visit_started_at < period.end
-          and type = 'crawl'
       )
+      select * from (values
+        ('2023-07-31'::date, 286),
+        ('2023-08-07'::date, 288),
+        ('2023-08-14'::date, 299),
+        ('2023-08-21'::date, 294),
+        ('2023-08-28'::date, 293),
+        ('2023-09-04'::date, 289),
+        ('2023-09-11'::date, 296),
+        ('2023-09-18'::date, 292),
+        ('2023-09-25'::date, 293),
+        ('2023-10-02'::date, 299),
+        ('2023-10-09'::date, 328),
+        ('2023-10-16'::date, 288),
+        ('2023-10-23'::date, 302),
+        ('2023-10-30'::date, 301),
+        ('2023-11-06'::date, 289)
+      ) as t (date, value)
+      where t.date >= {{ .StartOfWeek | timestamptz }} -'14 week'::interval
+        and t.date < {{ .StartOfWeek | timestamptz }}
+      union all
       select period.end as date, count(DISTINCT agent_versions.agent_version) as value
-      from period, all_visits v join agent_versions on agent_versions.id=v.agent_version_id
+      from period, visits v
+        inner join agent_versions on agent_versions.id = v.agent_version_id
       where
-          v.visit_started_at >= period.start
-          and v.visit_started_at < period.end
+        v.visit_started_at >= period.start
+        and v.visit_started_at < period.end
       and v.type = 'crawl'
       and v.connect_error is null
       group by period.end
-      order by period.end;
+      order by 1;
 
 series:
   - type: "bar"

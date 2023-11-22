@@ -1,1 +1,166 @@
-{"data":[{"type":"bar","hovertemplate":"","marker":{"color":"6699cc"},"name":"DHT Servers","orientation":"v","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z"],"y":[39113,41999],"yaxis":""},{"type":"bar","hovertemplate":"","marker":{"color":"EE99AA"},"name":"DHT Clients","orientation":"v","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z"],"y":[258286,149695],"yaxis":""},{"type":"scatter","marker":{"color":"black","symbol":"circle"},"mode":"lines+markers","name":"DHT Server IP Addresses","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z"],"y":[48655,56791],"yaxis":""}],"layout":{"annotations":null,"barmode":"stack","legend":{"orientation":"h"},"title":{"font":{"size":10},"text":"Data: 13 Aug 2023 to 19 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.","x":0.99,"xanchor":"right","y":0.01,"yanchor":"bottom"},"yaxis":{"autorange":true,"rangemode":"tozero","title":{"text":"Number of unique peers"}}},"params":null,"dynamicLayout":null,"config":null}
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "6699cc"
+      },
+      "name": "DHT Servers",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "2023-08-14T00:00:00Z",
+        "2023-08-21T00:00:00Z",
+        "2023-08-28T00:00:00Z",
+        "2023-09-04T00:00:00Z",
+        "2023-09-11T00:00:00Z",
+        "2023-09-18T00:00:00Z",
+        "2023-09-25T00:00:00Z",
+        "2023-10-02T00:00:00Z",
+        "2023-10-09T00:00:00Z",
+        "2023-10-16T00:00:00Z",
+        "2023-10-23T00:00:00Z",
+        "2023-10-30T00:00:00Z",
+        "2023-11-06T00:00:00Z",
+        "2023-11-13T00:00:00Z",
+        "2023-11-20T00:00:00Z"
+      ],
+      "y": [
+        43855,
+        48752,
+        44689,
+        45159,
+        45627,
+        45204,
+        45702,
+        47355,
+        46291,
+        46650,
+        42353,
+        40709,
+        40435,
+        42442,
+        41999
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "EE99AA"
+      },
+      "name": "DHT Clients",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "2023-08-14T00:00:00Z",
+        "2023-08-21T00:00:00Z",
+        "2023-08-28T00:00:00Z",
+        "2023-09-04T00:00:00Z",
+        "2023-09-11T00:00:00Z",
+        "2023-09-18T00:00:00Z",
+        "2023-09-25T00:00:00Z",
+        "2023-10-02T00:00:00Z",
+        "2023-10-09T00:00:00Z",
+        "2023-10-16T00:00:00Z",
+        "2023-10-23T00:00:00Z",
+        "2023-10-30T00:00:00Z",
+        "2023-11-06T00:00:00Z",
+        "2023-11-13T00:00:00Z",
+        "2023-11-20T00:00:00Z"
+      ],
+      "y": [
+        214323,
+        167693,
+        166303,
+        216182,
+        230509,
+        246644,
+        203217,
+        204726,
+        217033,
+        170922,
+        207863,
+        185882,
+        258037,
+        254957,
+        149695
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "scatter",
+      "marker": {
+        "color": "black",
+        "symbol": "circle"
+      },
+      "mode": "lines+markers",
+      "name": "DHT Server IP Addresses",
+      "visible": true,
+      "x": [
+        "2023-08-14T00:00:00Z",
+        "2023-08-21T00:00:00Z",
+        "2023-08-28T00:00:00Z",
+        "2023-09-04T00:00:00Z",
+        "2023-09-11T00:00:00Z",
+        "2023-09-18T00:00:00Z",
+        "2023-09-25T00:00:00Z",
+        "2023-10-02T00:00:00Z",
+        "2023-10-09T00:00:00Z",
+        "2023-10-16T00:00:00Z",
+        "2023-10-23T00:00:00Z",
+        "2023-10-30T00:00:00Z",
+        "2023-11-06T00:00:00Z",
+        "2023-11-13T00:00:00Z",
+        "2023-11-20T00:00:00Z"
+      ],
+      "y": [
+        60865,
+        61365,
+        60324,
+        59462,
+        58625,
+        60639,
+        62135,
+        62735,
+        62196,
+        64176,
+        56457,
+        55522,
+        56063,
+        55501,
+        56791
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "barmode": "stack",
+    "legend": {
+      "orientation": "h"
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 13 Aug 2023 to 19 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.",
+      "x": 0.99,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "yaxis": {
+      "autorange": true,
+      "rangemode": "tozero",
+      "title": {
+        "text": "Number of unique peers"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}
