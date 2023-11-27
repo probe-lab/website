@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-{"data":[{"type":"bar","hovertemplate":"","marker":{"color":"EE99AA"},"name":"Bootstrap Unique Agents","orientation":"v","visible":true,"x":["2023-08-21T00:00:00Z","2023-08-28T00:00:00Z","2023-09-04T00:00:00Z","2023-09-11T00:00:00Z","2023-09-18T00:00:00Z","2023-09-25T00:00:00Z","2023-10-02T00:00:00Z","2023-10-09T00:00:00Z","2023-10-16T00:00:00Z","2023-10-23T00:00:00Z","2023-10-30T00:00:00Z","2023-11-06T00:00:00Z","2023-11-13T00:00:00Z","2023-11-20T00:00:00Z","2023-11-27T00:00:00Z"],"y":[944,894,816,844,776,915,832,891,826,876,872,820,873,808,851],"yaxis":""},{"type":"bar","hovertemplate":"","marker":{"color":"6699cc"},"name":"DHT Unique Agents","orientation":"v","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z","2023-11-27T00:00:00Z"],"y":[286,284,272],"yaxis":""}],"layout":{"annotations":null,"barmode":"group","legend":{"orientation":"h","y":-0.2,"yanchor":"top"},"title":{"font":{"size":10},"text":"Data: 20 Aug 2023 to 26 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.","x":0.99,"xanchor":"right","y":0.01,"yanchor":"bottom"},"xaxis":{"dtick":604800000,"tick0":"2023-08-21T00:00:00Z","tickmode":"linear","type":"date"},"yaxis":{"autorange":true,"rangemode":"tozero","title":{"text":"Number of unique agents"}}},"params":null,"dynamicLayout":null,"config":null}
-=======
 {
   "data": [
     {
@@ -13,7 +10,6 @@
       "orientation": "v",
       "visible": true,
       "x": [
-        "2023-08-14T00:00:00Z",
         "2023-08-21T00:00:00Z",
         "2023-08-28T00:00:00Z",
         "2023-09-04T00:00:00Z",
@@ -27,10 +23,10 @@
         "2023-10-30T00:00:00Z",
         "2023-11-06T00:00:00Z",
         "2023-11-13T00:00:00Z",
-        "2023-11-20T00:00:00Z"
+        "2023-11-20T00:00:00Z",
+        "2023-11-27T00:00:00Z"
       ],
       "y": [
-        870,
         944,
         894,
         816,
@@ -44,7 +40,8 @@
         872,
         820,
         873,
-        808
+        808,
+        851
       ],
       "yaxis": ""
     },
@@ -58,7 +55,6 @@
       "orientation": "v",
       "visible": true,
       "x": [
-        "2023-08-14T00:00:00Z",
         "2023-08-21T00:00:00Z",
         "2023-08-28T00:00:00Z",
         "2023-09-04T00:00:00Z",
@@ -72,10 +68,10 @@
         "2023-10-30T00:00:00Z",
         "2023-11-06T00:00:00Z",
         "2023-11-13T00:00:00Z",
-        "2023-11-20T00:00:00Z"
+        "2023-11-20T00:00:00Z",
+        "2023-11-27T00:00:00Z"
       ],
       "y": [
-        299,
         294,
         293,
         289,
@@ -89,7 +85,8 @@
         301,
         289,
         286,
-        284
+        284,
+        272
       ],
       "yaxis": ""
     }
@@ -106,7 +103,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 13 Aug 2023 to 19 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.",
+      "text": "Data: 20 Aug 2023 to 26 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.",
       "x": 0.99,
       "xanchor": "right",
       "y": 0.01,
@@ -114,7 +111,7 @@
     },
     "xaxis": {
       "dtick": 604800000,
-      "tick0": "2023-08-14T00:00:00Z",
+      "tick0": "2023-08-21T00:00:00Z",
       "tickmode": "linear",
       "type": "date"
     },
@@ -130,4 +127,3 @@
   "dynamicLayout": null,
   "config": null
 }
->>>>>>> c5be4873 (add static data to plots)

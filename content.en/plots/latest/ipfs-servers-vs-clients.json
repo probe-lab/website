@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-{"data":[{"type":"bar","hovertemplate":"","marker":{"color":"6699cc"},"name":"DHT Servers","orientation":"v","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z","2023-11-27T00:00:00Z"],"y":[39113,41999,43515],"yaxis":""},{"type":"bar","hovertemplate":"","marker":{"color":"EE99AA"},"name":"DHT Clients","orientation":"v","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z","2023-11-27T00:00:00Z"],"y":[258286,149695,129450],"yaxis":""},{"type":"scatter","marker":{"color":"black","symbol":"circle"},"mode":"lines+markers","name":"DHT Server IP Addresses","visible":true,"x":["2023-11-13T00:00:00Z","2023-11-20T00:00:00Z","2023-11-27T00:00:00Z"],"y":[48655,56791,59818],"yaxis":""}],"layout":{"annotations":null,"barmode":"stack","legend":{"orientation":"h"},"title":{"font":{"size":10},"text":"Data: 20 Aug 2023 to 26 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.","x":0.99,"xanchor":"right","y":0.01,"yanchor":"bottom"},"yaxis":{"autorange":true,"rangemode":"tozero","title":{"text":"Number of unique peers"}}},"params":null,"dynamicLayout":null,"config":null}
-=======
 {
   "data": [
     {
@@ -13,7 +10,6 @@
       "orientation": "v",
       "visible": true,
       "x": [
-        "2023-08-14T00:00:00Z",
         "2023-08-21T00:00:00Z",
         "2023-08-28T00:00:00Z",
         "2023-09-04T00:00:00Z",
@@ -27,10 +23,10 @@
         "2023-10-30T00:00:00Z",
         "2023-11-06T00:00:00Z",
         "2023-11-13T00:00:00Z",
-        "2023-11-20T00:00:00Z"
+        "2023-11-20T00:00:00Z",
+        "2023-11-27T00:00:00Z"
       ],
       "y": [
-        43855,
         48752,
         44689,
         45159,
@@ -44,7 +40,8 @@
         40709,
         40435,
         42442,
-        41999
+        41999,
+        43515
       ],
       "yaxis": ""
     },
@@ -58,7 +55,6 @@
       "orientation": "v",
       "visible": true,
       "x": [
-        "2023-08-14T00:00:00Z",
         "2023-08-21T00:00:00Z",
         "2023-08-28T00:00:00Z",
         "2023-09-04T00:00:00Z",
@@ -72,10 +68,10 @@
         "2023-10-30T00:00:00Z",
         "2023-11-06T00:00:00Z",
         "2023-11-13T00:00:00Z",
-        "2023-11-20T00:00:00Z"
+        "2023-11-20T00:00:00Z",
+        "2023-11-27T00:00:00Z"
       ],
       "y": [
-        214323,
         167693,
         166303,
         216182,
@@ -89,7 +85,8 @@
         185882,
         258037,
         254957,
-        149695
+        149695,
+        129450
       ],
       "yaxis": ""
     },
@@ -103,7 +100,6 @@
       "name": "DHT Server IP Addresses",
       "visible": true,
       "x": [
-        "2023-08-14T00:00:00Z",
         "2023-08-21T00:00:00Z",
         "2023-08-28T00:00:00Z",
         "2023-09-04T00:00:00Z",
@@ -117,10 +113,10 @@
         "2023-10-30T00:00:00Z",
         "2023-11-06T00:00:00Z",
         "2023-11-13T00:00:00Z",
-        "2023-11-20T00:00:00Z"
+        "2023-11-20T00:00:00Z",
+        "2023-11-27T00:00:00Z"
       ],
       "y": [
-        60865,
         61365,
         60324,
         59462,
@@ -134,7 +130,8 @@
         55522,
         56063,
         55501,
-        56791
+        56791,
+        59818
       ],
       "yaxis": ""
     }
@@ -149,7 +146,7 @@
       "font": {
         "size": 10
       },
-      "text": "Data: 13 Aug 2023 to 19 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.",
+      "text": "Data: 20 Aug 2023 to 26 Nov 2023. Sources: Bootstrap+preload server logs; Nebula.",
       "x": 0.99,
       "xanchor": "right",
       "y": 0.01,
@@ -167,4 +164,3 @@
   "dynamicLayout": null,
   "config": null
 }
->>>>>>> c5be4873 (add static data to plots)
