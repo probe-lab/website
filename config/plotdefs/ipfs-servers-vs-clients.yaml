@@ -28,9 +28,30 @@ datasets:
         select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
         from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
       )
+      select * from (values
+        ('2023-07-31'::date, 44248),
+        ('2023-08-07'::date, 44735),
+        ('2023-08-14'::date, 43855),
+        ('2023-08-21'::date, 48752),
+        ('2023-08-28'::date, 44689),
+        ('2023-09-04'::date, 45159),
+        ('2023-09-11'::date, 45627),
+        ('2023-09-18'::date, 45204),
+        ('2023-09-25'::date, 45702),
+        ('2023-10-02'::date, 47355),
+        ('2023-10-09'::date, 46291),
+        ('2023-10-16'::date, 46650),
+        ('2023-10-23'::date, 42353),
+        ('2023-10-30'::date, 40709),
+        ('2023-11-06'::date, 40435),
+        ('2023-11-13'::date, 42442)
+      ) as t (date, value)
+      WHERE t.date >= {{ .StartOfWeek | timestamptz }} - '14 week'::interval
+        AND t.date < {{ .StartOfWeek | timestamptz }}
+      union all
       SELECT period.end as date, count(DISTINCT peer_id) as value
       FROM period, visits v
-      WHERE visit_started_at >= period.start
+      WHERE visit_started_at >= greatest(period.start, '2023-11-13'::timestamptz)
         AND visit_started_at < period.end
         AND type = 'crawl'
       group by period.end;
@@ -40,18 +61,39 @@ datasets:
       with period as (
           select d::date-'1 week'::interval AS start, d::date as end, tstzrange(d::date-'1 week'::interval, d::date) as range, extract(epoch from '1 week'::interval) as duration
           from generate_series({{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .StartOfWeek | timestamptz }}, '1 week'::interval) d
-        ), peers AS (
-          select period.end, v.peer_id, unnest(v.multi_address_ids) multi_address_id
-          from period, visits v
-          where visit_started_at >= period.start
-            and visit_started_at < period.end
-          and type = 'crawl'
-          group by period.end, v.peer_id, unnest(v.multi_address_ids)
-        )
-        select period.end as date, count(distinct ma.addr) as value
-          from peers inner join multi_addresses ma on ma.id = peers.multi_address_id
-          join period on peers.end = period.end
-        group by period.end;
+      ), peers AS (
+        select period.end, v.peer_id, unnest(v.multi_address_ids) multi_address_id
+        from period, visits v
+        where visit_started_at >= greatest(period.start, '2023-11-13'::timestamptz)
+          and visit_started_at < period.end
+        and type = 'crawl'
+        group by period.end, v.peer_id, unnest(v.multi_address_ids)
+      )
+      select * from (values
+        ('2023-07-31'::date, 61871),
+        ('2023-08-07'::date, 61259),
+        ('2023-08-14'::date, 60865),
+        ('2023-08-21'::date, 61365),
+        ('2023-08-28'::date, 60324),
+        ('2023-09-04'::date, 59462),
+        ('2023-09-11'::date, 58625),
+        ('2023-09-18'::date, 60639),
+        ('2023-09-25'::date, 62135),
+        ('2023-10-02'::date, 62735),
+        ('2023-10-09'::date, 62196),
+        ('2023-10-16'::date, 64176),
+        ('2023-10-23'::date, 56457),
+        ('2023-10-30'::date, 55522),
+        ('2023-11-06'::date, 56063),
+        ('2023-11-13'::date, 55501)
+      ) as t (date, value)
+      WHERE t.date >= {{ .StartOfWeek | timestamptz }} - '14 week'::interval
+        AND t.date < {{ .StartOfWeek | timestamptz }}
+      union all
+      select period.end as date, count(distinct ma.addr) as value
+        from peers inner join multi_addresses ma on ma.id = peers.multi_address_id
+        join period on peers.end = period.end
+      group by period.end
 
 computed:
   - name: "dht clients"

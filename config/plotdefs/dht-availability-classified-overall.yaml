@@ -35,11 +35,33 @@ datasets:
               0 mostlyoffline,
               count(distinct v.peer_id) offline
           from visits v
-          where v.visit_started_at >= {{ .StartOfWeek | timestamptz }} -'15 week'::interval
+          where v.visit_started_at >= greatest({{ .StartOfWeek | timestamptz }} -'15 week'::interval, '2023-11-13'::timestamptz)
             and v.visit_started_at < {{ .StartOfWeek | timestamptz }}
             and v.type = 'crawl'
           group by date_trunc('week', v.visit_started_at), v.peer_id
           having bool_and(v.connect_error IS not null)
+          union all
+          select * from (values
+            ('2023-07-17'::date, 0, 0, 0, 5782),
+            ('2023-07-24'::date, 0, 0, 0, 13504),
+            ('2023-07-31'::date, 0, 0, 0, 14113),
+            ('2023-08-07'::date, 0, 0, 0, 13347),
+            ('2023-08-14'::date, 0, 0, 0, 18319),
+            ('2023-08-21'::date, 0, 0, 0, 13893),
+            ('2023-08-28'::date, 0, 0, 0, 14434),
+            ('2023-09-04'::date, 0, 0, 0, 15004),
+            ('2023-09-11'::date, 0, 0, 0, 13666),
+            ('2023-09-18'::date, 0, 0, 0, 14081),
+            ('2023-09-25'::date, 0, 0, 0, 15330),
+            ('2023-10-02'::date, 0, 0, 0, 14811),
+            ('2023-10-09'::date, 0, 0, 0, 15279),
+            ('2023-10-16'::date, 0, 0, 0, 17584),
+            ('2023-10-23'::date, 0, 0, 0, 17555),
+            ('2023-10-30'::date, 0, 0, 0, 17599),
+            ('2023-11-06'::date, 0, 0, 0, 13923) -- lower because of outage
+          ) as t (date, online, mostlyonline, mostlyoffline, offline)
+          where t.date >= {{ .StartOfWeek | timestamptz }} -'15 week'::interval
+            and t.date < {{ .StartOfWeek | timestamptz }}
       )
       select
           c.date,
