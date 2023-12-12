@@ -44,8 +44,8 @@ protocol/implementation in different geographic areas.
 
 For Helia in the above graph, the different variations work out as follows:
 
-`Helia (DR)` - Helia in NodeJS: blocks fetched via [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/) only
-`Helia (TG)` - Helia in NodeJS: blocks fetched via [delegated routing](https://specs.ipfs.tech/routing/http-routing-v1/) with direct peer retrieval only 
+`Helia (TG)` - Helia in NodeJS: blocks fetched via [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/) only
+`Helia (DR)` - Helia in NodeJS: blocks fetched via [delegated routing](https://specs.ipfs.tech/routing/http-routing-v1/) with direct peer retrieval only 
 `Helia` - Helia in NodeJS: blocks fetched via [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/) & [delegated routing](https://specs.ipfs.tech/routing/http-routing-v1/) with direct peer retrieval
 
 ## Time To First Byte using Kubo
