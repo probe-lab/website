@@ -42,6 +42,12 @@ for a direct comparison of their TTFB performance. This comparison reveals
 performance differences and provides insights into the efficiency of each
 protocol/implementation in different geographic areas.
 
+For Helia in the above graph, the different variations work out as follows:
+
+`Helia (DR)` - Helia in NodeJS: blocks fetched via [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/) only
+`Helia (TG)` - Helia in NodeJS: blocks fetched via [delegated routing](https://specs.ipfs.tech/routing/http-routing-v1/) with direct peer retrieval only 
+`Helia` - Helia in NodeJS: blocks fetched via [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/) & [delegated routing](https://specs.ipfs.tech/routing/http-routing-v1/) with direct peer retrieval
+
 ## Time To First Byte using Kubo
 
 ### (50th percentile) {#websites-web-vitals-heatmap-IPFS-KUBO-ttfb-p50}
