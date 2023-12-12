@@ -1,1 +1,191 @@
-{"data":[{"type":"bar","hovertemplate":"","marker":{"color":"994455"},"name":"Helia","orientation":"v","visible":true,"x":["af-south-1","ap-south-1","ap-southeast-2","eu-central-1","sa-east-1","us-east-2","us-west-1"],"y":[6.09065,10.00852,3.9424799999999998,1.84798,8.95842,5.9851600000000005,5.22778],"yaxis":""},{"type":"bar","hovertemplate":"","marker":{"color":"004488"},"name":"Kubo","orientation":"v","visible":true,"x":["af-south-1","ap-south-1","ap-southeast-2","eu-central-1","sa-east-1","us-east-2","us-west-1"],"y":[1.7598,1.5862,1.57175,0.33381,1.31946,0.41413,0.5132],"yaxis":""},{"type":"bar","hovertemplate":"","marker":{"color":"orange"},"name":"HTTP","orientation":"v","visible":true,"x":["af-south-1","ap-south-1","ap-southeast-2","eu-central-1","sa-east-1","us-east-2","us-west-1"],"y":[1.42195,1.2872,1.0402,0.1959,0.95926,0.54485,0.59112],"yaxis":""}],"layout":{"annotations":null,"legend":{"orientation":"h","x":0.01,"xanchor":"left","y":1.05},"margin":{"b":60,"l":50,"pad":1,"r":20,"t":5},"title":{"font":{"size":10},"text":"Data: 4 Dec 2023 - 11 Dec 2023 (p90, ttfb). Source: Tiros.","x":1,"xanchor":"right","y":0.01,"yanchor":"bottom"},"xaxis":{"title":{"standoff":10,"text":"AWS Region"}},"yaxis":{"autorange":true,"rangemode":"tozero","title":{"text":"Time To First Byte in s"}}},"params":null,"dynamicLayout":null,"config":null}
+{
+  "data": [
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "994455"
+      },
+      "name": "Helia",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        6.09065,
+        10.00852,
+        3.9424799999999998,
+        1.84798,
+        8.95842,
+        5.9851600000000005,
+        5.22778
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "117733"
+      },
+      "name": "Helia (TG)",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        3.68848,
+        10.0083,
+        2.29707,
+        1.70139,
+        4.76905,
+        1.16468,
+        1.4751
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "purple"
+      },
+      "name": "Helia (DR)",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        5.91604,
+        5.34808,
+        6.47179,
+        2.17936,
+        1.54948,
+        1.12491,
+        2.84152
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "004488"
+      },
+      "name": "Kubo",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        1.7598,
+        1.5862,
+        1.57175,
+        0.33381,
+        1.31946,
+        0.41413,
+        0.5132
+      ],
+      "yaxis": ""
+    },
+    {
+      "type": "bar",
+      "hovertemplate": "",
+      "marker": {
+        "color": "orange"
+      },
+      "name": "HTTP",
+      "orientation": "v",
+      "visible": true,
+      "x": [
+        "af-south-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "sa-east-1",
+        "us-east-2",
+        "us-west-1"
+      ],
+      "y": [
+        1.42195,
+        1.2872,
+        1.0402,
+        0.1959,
+        0.95926,
+        0.54485,
+        0.59112
+      ],
+      "yaxis": ""
+    }
+  ],
+  "layout": {
+    "annotations": null,
+    "legend": {
+      "orientation": "h",
+      "x": 0.01,
+      "xanchor": "left",
+      "y": 1.05
+    },
+    "margin": {
+      "b": 60,
+      "l": 50,
+      "pad": 1,
+      "r": 20,
+      "t": 5
+    },
+    "title": {
+      "font": {
+        "size": 10
+      },
+      "text": "Data: 4 Dec 2023 - 11 Dec 2023 (p90, ttfb). Source: Tiros.",
+      "x": 1,
+      "xanchor": "right",
+      "y": 0.01,
+      "yanchor": "bottom"
+    },
+    "xaxis": {
+      "title": {
+        "standoff": 10,
+        "text": "AWS Region"
+      }
+    },
+    "yaxis": {
+      "autorange": true,
+      "rangemode": "tozero",
+      "title": {
+        "text": "Time To First Byte in s"
+      }
+    }
+  },
+  "params": null,
+  "dynamicLayout": null,
+  "config": null
+}
