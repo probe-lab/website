@@ -7,6 +7,8 @@ datasets:
           r.region,
           coalesce(percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'IPFS' and r.ipfs_impl = 'KUBO' ), '0 seconds'::interval) p{{ .Params.percentile }}_kubo,
           coalesce(percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'IPFS' and r.ipfs_impl = 'HELIA' ), '0 seconds'::interval) p{{ .Params.percentile }}_helia,
+          coalesce(percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'IPFS' and r.ipfs_impl = 'HELIATG' ), '0 seconds'::interval) p{{ .Params.percentile }}_helia_tg,
+          coalesce(percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'IPFS' and r.ipfs_impl = 'HELIADR' ), '0 seconds'::interval) p{{ .Params.percentile }}_helia_dr,
           coalesce(percentile_cont(0.{{ .Params.percentile }}) within group ( order by m.{{ .Params.metric }} ) filter ( where m.type = 'HTTP' ), '0 seconds'::interval) p{{ .Params.percentile }}_http
       from measurements m
         inner join runs r on r.id = m.run_id
@@ -23,6 +25,18 @@ series:
     labels: "region"
     values: "p{{ .Params.percentile }}_helia"
     color: "red"
+  - type: "bar"
+    name: "Helia (TG)"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}_helia_tg"
+    color: "green"
+  - type: "bar"
+    name: "Helia (DR)"
+    dataset: "current"
+    labels: "region"
+    values: "p{{ .Params.percentile }}_helia_dr"
+    color: "purple"
   - type: "bar"
     name: "Kubo"
     dataset: "current"
