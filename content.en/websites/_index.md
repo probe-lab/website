@@ -44,8 +44,11 @@ protocol/implementation in different geographic areas.
 
 For Helia in the above graph, the different variations work out as follows:
 
+
 `Helia (TG)` - Helia in NodeJS delegating [content routing](https://docs.ipfs.tech/concepts/how-ipfs-works/#how-content-routing-works-in-ipfs), [peer routing](https://docs.ipfs.tech/concepts/glossary/#peer-routing), and block retrieval entirely to [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/).  js-libp2p is not used.  This is the simplest case scenario for the Helia node since an external server is doing all of the heavy lifting.
+
 `Helia (DR)` - Helia in NodeJS that [delegates content and peer routing to an external server using HTTP](https://docs.ipfs.tech/concepts/how-ipfs-works/#how-content-routing-works-in-ipfs) but then uses js-libp2p for direct peer retrieval.  (HTTP Trustless Gateways are not used.)
+
 `Helia` - Effectively the combination of "Helia (TG)" + "Helia (DR)".  Helia in NodeJS in parallel is:
  - delegating content, peer routing, and block entirely to [trustless gateways](https://specs.ipfs.tech/http-gateways/trustless-gateway/) AND
  - delegating content and peer routing to an external server using HTTP but then uses js-libp2p for direct peer retrieval. 
