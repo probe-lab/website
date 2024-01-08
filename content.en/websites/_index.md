@@ -56,7 +56,7 @@ It's expected that this would yield more reliable results than "Helia (TG)" or "
 
 Important scenarios that aren't measured yet:
 1. Helia in NodeJS where content, peer, and block retrieval are done entirely in a p2p fashion.  
-2. The scenarios above but instead from within Chromium rather than NodeJS.  This will be coming soon per ISSUE X.
+2. The scenarios above but instead from within Chromium rather than NodeJS.
 
 ## Time To First Byte using Kubo
 
