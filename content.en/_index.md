@@ -11,6 +11,12 @@ We focus on understanding the mechanics of internal network protocols, as well a
 
 Our team specializes in cross-protocol interoperation and network architecture, works to identify potential bottlenecks and inefficiencies in the system and provide solutions, accordingly. 
 
+## Blog
+
+[Check out our Blog ⇢](/blog)
+
+## Recent Projects
+
 Some of our recent major projects include:
 
 {{< details title="Performance Benefit of Hydra nodes in the IPFS DHT" >}}
