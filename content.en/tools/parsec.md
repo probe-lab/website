@@ -2,9 +2,9 @@
 
 `parsec` is a Distributed Hash Table (DHT) and InterPlanetary Network Intexer ([IPNI](https://github.com/ipni)) lookup performance measurement tool. It specifically measures the `PUT` and `GET` performance of the **IPFS** public DHT but could also be configured to measure other [libp2p-kad-dht](https://github.com/libp2p/specs/blob/master/kad-dht/README.md) networks. The setup is split into two components 1) a **scheduler** and 2) a **server**.
 
-The server is just a normal libp2p peer that supports and participates in the public IPFS DHT and IPNI gossipsub topics, and exposes a [lean HTTP API](https://github.com/plprobelab/parsec/blob/main/server.yaml) that allows the scheduler to issue publication and retrieval operations to either the DHT or an IPNI. It is important to note that we are _not_ running Kubo. Currently, the scheduler goes around all our deployed server nodes (see [below](#deployment)), instructs one to publish provider records for a random data blob and asks the other six to look it up. All servers take timing measurements about the publication and retrieval latencies and/or report back the results to the scheduler. The scheduler then tracks this information in a database for later analysis.
+The server is just a normal libp2p peer that supports and participates in the public IPFS DHT and IPNI gossipsub topics, and exposes a [lean HTTP API](https://github.com/probe-lab/parsec/blob/main/server.yaml) that allows the scheduler to issue publication and retrieval operations to either the DHT or an IPNI. It is important to note that we are _not_ running Kubo. Currently, the scheduler goes around all our deployed server nodes (see [below](#deployment)), instructs one to publish provider records for a random data blob and asks the other six to look it up. All servers take timing measurements about the publication and retrieval latencies and/or report back the results to the scheduler. The scheduler then tracks this information in a database for later analysis.
 
-{{< button href="https://github.com/plprobelab/parsec" >}}GitHub{{< /button >}}
+{{< button href="https://github.com/probe-lab/parsec" >}}GitHub{{< /button >}}
 
 ## Concepts
 
@@ -38,6 +38,6 @@ Each fleet has its own scheduler and they don't interfere with each other.
 
 ## Contributing
 
-Feel free to head over to the GitHub repository and dive in! [Open an issue](https://github.com/plprobelab/parsec/issues/new) or submit PRs.
+Feel free to head over to the GitHub repository and dive in! [Open an issue](https://github.com/probe-lab/parsec/issues/new) or submit PRs.
 
-{{< button href="https://github.com/plprobelab/parsec" >}}GitHub{{< /button >}}
+{{< button href="https://github.com/probe-lab/parsec" >}}GitHub{{< /button >}}

@@ -10,7 +10,7 @@ metrics like [TTFB](https://web.dev/ttfb) or [FCP](https://web.dev/fcp) when loa
 
 Our Tiros measurement consists of three components
 
-1. `scheduler` - [tiros repository](https://github.com/plprobelab/tiros)
+1. `scheduler` - [tiros repository](https://github.com/probe-lab/tiros)
 2. `chrome` - [`browserless/chrome`](https://github.com/browserless/chrome)
 3. `kubo` - [ipfs/kubo](https://hub.docker.com/r/ipfs/kubo/)
 
@@ -45,7 +45,7 @@ us-west-1
 af-south-1
 ```
 
-The list of websites that we are currently monitoring is configured [here](https://github.com/plprobelab/probelab-infra/blob/main/aws/tf/modules/tiros/_variables.tf#L49). At the time of writing, the list is:
+The list of websites that we are currently monitoring is configured [here](https://github.com/probe-lab/probelab-infra/blob/main/aws/tf/modules/tiros/_variables.tf#L49). At the time of writing, the list is:
 
 ```
 blog.ipfs.tech
@@ -77,6 +77,6 @@ On top of that, the above deployment and configuration is replicated for differe
 
 ## Contributing
 
-Feel free to head over to the GitHub repository and dive in! [Open an issue](https://github.com/plprobelab/tiros/issues/new) or submit PRs.
+Feel free to head over to the GitHub repository and dive in! [Open an issue](https://github.com/probe-lab/tiros/issues/new) or submit PRs.
 
-{{< button href="https://github.com/plprobelab/tiros" >}}GitHub{{< /button >}}
+{{< button href="https://github.com/probe-lab/tiros" >}}GitHub{{< /button >}}
