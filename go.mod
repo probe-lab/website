@@ -1,4 +1,4 @@
-module github.com/plprobelab/website
+module github.com/probe-lab/website
 
 go 1.20
 

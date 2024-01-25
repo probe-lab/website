@@ -16,13 +16,13 @@ ProbeLab is running multiple sets of experiments that aim to push the boundaries
 
 ## Parsec
 
-[`parsec`](https://github.com/plprobelab/parsec) is a DHT and IPNI performance measurement tool that is used to gather accurate data on the performance of DHT and IPNI lookups and publications. `parsec`-based experiments are aimed at improving the efficiency and speed of distributed systems by developing better algorithms for routing and data retrieval.
+[`parsec`](https://github.com/probe-lab/parsec) is a DHT and IPNI performance measurement tool that is used to gather accurate data on the performance of DHT and IPNI lookups and publications. `parsec`-based experiments are aimed at improving the efficiency and speed of distributed systems by developing better algorithms for routing and data retrieval.
 
 {{< button relref="/parsec" >}}Learn more{{< /button >}}
 
 ## Tiros
 
-ProbeLab has built a website performance measurement tool, called [`tiros`](https://github.com/plprobelab/tiros) for websites hosted on IPFS. Tiros is designed to help developers monitor and optimize
+ProbeLab has built a website performance measurement tool, called [`tiros`](https://github.com/probe-lab/tiros) for websites hosted on IPFS. Tiros is designed to help developers monitor and optimize
 the performance of their IPFS-hosted websites. `Tiros`-based experiments measure retrieval and rendering metrics of websites loaded over IPFS. It also measures and compares the IPFS metrics with their HTTPS counterparts.
 
 {{< button relref="/tiros" >}}Learn more{{< /button >}}
