@@ -96,7 +96,7 @@ We are classifying _cached_ requests as only "request number 2 from any region".
 
 #### References
 
-Additional context in [this GitHub issue](https://github.com/plprobelab/network-measurements/issues/47).
+Additional context in [this GitHub issue](https://github.com/probe-lab/network-measurements/issues/47).
 
 ---
 
