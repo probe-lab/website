@@ -18,21 +18,24 @@ In the following plots, requests are _not_ deduplicated, i.e., if there are two 
 
 #### Daily HTTP Requests to ipfs.io / dweb.link
 
-{{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-overall.json" height="450px" >}}
 
 #### Daily HTTP Requests to ipfs.io / dweb.link, by region
 
-{{< plotly json="../../plots/latest/gateway-requests-region.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-region.json" height="450px" >}}
 
 #### Daily HTTP Requests to ipfs.io / dweb.link, by type
 
-{{< plotly json="../../plots/latest/gateway-requests-type.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-requests-type.json" height="450px" >}}
 
 #### Daily Unique Clients accessing ipfs.io / dweb.link
 
 In the following plot we aggregate the total number of unique client IP addresses that appear in the ipfs.io and dweb.link log files for each day. 
-{{< plotly json="../../plots/latest/gateway-clients-overall.json" height="600px" >}}
+{{< plotly json="../../plots/latest/gateway-clients-overall.json" height="450px" >}}
 
+#### Daily p95 TTFB accessing ipfs.io / dweb.link
 
+The following graph shows the 95th percentile of the time to first byte (TTFB) for accessing the ipfs.io and dweb.link gateways.
 
+{{< plotly json="../../plots/latest/gateway-ttfb-daily.json" height="450px" >}}
 
