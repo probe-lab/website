@@ -167,7 +167,7 @@ enableGitInfo = true
 
 # (Optional) Theme is intended for documentation use, therefore it doesn't render taxonomy.
 # You can remove related files with config below
-disableKinds = ['taxonomy']
+disableKinds = ['taxonomy', 'taxonomyTerm']
 
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
