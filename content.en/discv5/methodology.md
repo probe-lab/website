@@ -24,11 +24,13 @@ The `discv5` DHT network is used by other projects besides Ethereum mainnet. Our
 
 Sometimes, some nodes refuse to open a libp2p connection with our crawler, for different reasons. Our plots only display _online_ nodes, that are answering the crawler's queries.
 
+<!--
 ### Peer ID mismatch
 
 We've noted that a single Ethereum node may generate multiple Ethereum Node Records (ENRs) that specify the same IP address and port but different libp2p peer IDs. This occurs when the node updates its libp2p peer ID, leading to an outdated ENR alongside a current one. Using any ENR to make a `discv5` request to the remote node should work. It's crucial to use the most recent ENR when initiating discv5 requests or establishing libp2p connections to ensure accurate node representation and avoid duplicate counting of the same node under different peer IDs.
 
 We classify nodes as online if they meet either of the following criteria: they successfully establish a libp2p connection, or they respond positively to discv5 requests but encounter a libp2p connection error that is not a `peer_id_mismatch`.
+-->
 
 ## Node classification
 
