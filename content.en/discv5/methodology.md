@@ -8,9 +8,9 @@ slug: methodology
 
 ## DHT Crawling
 
-We crawl the `discv5` network using the Nebula Crawler [[1](#references)].
+We crawl the Ethereum `discv5` DHT network using the Nebula Crawler [[1](#references)].
 
-The crawler can get a dump of the routing table of a remote peer by crafting `discv5` requests, matching every Kademlia [[2](#references)] bucket of the remote peer's routing table. Upon receiving a request for a node ID, a peer will compute in which bucket the target node ID falls in its own routing table, and return the content of this bucket. The buckets contain [Ethereum Node Records](https://ethereum.org/en/developers/docs/networking-layer/network-addresses/#enr) (ENR), containing information of how to reach the corresponding nodes (fork_digest, attnet, tcp and udp addresses).
+The crawler gets a dump of the routing table of a remote peer by crafting `discv5` requests, matching every Kademlia [[2](#references)] bucket of the remote peer's routing table. Upon receiving a request for a node ID, a peer will compute in which bucket the target node ID falls in its own routing table, and return the content of this bucket. The buckets contain [Ethereum Node Records](https://ethereum.org/en/developers/docs/networking-layer/network-addresses/#enr) (ENR), containing information of how to reach the corresponding nodes (fork_digest, attnet, tcp and udp addresses).
 
 The crawler starts by connecting to [hardcoded bootstrap nodes](https://github.com/dennis-tra/nebula/blob/038116e979ade06ecc4518f287faace47c6580bf/config/bootstrap.go#L176-L199) extracted from [`eth2-networks`](https://github.com/eth-clients/eth2-networks/blob/master/shared/mainnet/bootstrap_nodes.txt). From there, it learns the routing table of the bootstrap nodes, and can continue crawling discovered peers until all of them have been queried. For future crawls, Nebula doesn't only depend on the hardcoded bootstrap nodes, but will also try to connect to all nodes discovered in previous crawls.
 
