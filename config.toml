@@ -20,18 +20,6 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   contentDir = 'content.en'
   weight = 1
 
-[menu]
-# [[menu.before]]
-# [[menu.after]]
-[[menu.after]]
-  name = "Weekly Reports ⇢"
-  url = "https://github.com/protocol/network-measurements/tree/main/reports"
-  weight = 9
-[[menu.after]]
-  name = "Discuss ⇢"
-  url = "https://discuss.ipfs.tech/c/testing-and-experiments/35"
-  weight = 10
-
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
   # Theme 'auto' switches between dark and light modes based on browser/os preferences
