@@ -22,7 +22,7 @@ Some of our recent major projects include:
 {{< details title="Performance Benefit of Hydra nodes in the IPFS DHT" >}}
 **TL;DR:** [Hydra Boosters](https://github.com/libp2p/hydra-booster) are a special type of DHT server node designed to accelerate content routing performance in the IPFS network. They were introduced in 2019 and were intended as an interim solution while exploring other DHT scalability techniques. The IPFS DHT network and its supporting protocols have advanced significantly since then, and the (not insignificant) cost of operating Hydras was put in question by our team. We have found that Hydras improve content routing performance by not more than 10-15% on average, which was considered minor, compared to its operational cost. The team carried out a progressive dial down of Hydras after communicating our intentions with the community (see [details](https://discuss.ipfs.tech/t/dht-hydra-peers-dialling-down-non-bridging-functionality-on-2022-12-01/15567)) and confirmed our performance estimates of a Hydra-less network.
 
-[Read the full report ⇢](https://github.com/protocol/network-measurements/blob/master/results/rfm21-hydras-performance-contribution.md)
+[Read the full report ⇢](https://github.com/probe-lab/network-measurements/blob/main/results/rfm21-hydras-performance-contribution.md)
 
 {{< /details >}}
 
@@ -34,7 +34,7 @@ Some of our recent major projects include:
 - Hole punch success doesn’t depend on the round trip time between the two peers.
 - QUIC/UDP is not likelier to succeed than TCP.
 
-[Read the full report ⇢](https://github.com/protocol/network-measurements/blob/master/results/rfm15-nat-hole-punching.md)
+[Read the full report ⇢](https://github.com/probe-lab/network-measurements/blob/main/results/rfm15-nat-hole-punching.md)
 {{< /details >}}
 
 {{< details title="The IPFS DHT Routing Table Health" >}}
@@ -50,7 +50,7 @@ Our study focused particularly on:
 
 Our measurements show that the Kademlia DHT Routing Table appears to be healthy on all measured aspects in the IPFS network. We showed that `95.21%` of the peers in the IPFS network know at least `18` of their `20` closest peers, which is surprisingly good given the high churn rate observed in the IPFS network. We found that on average 0.12 peers are missing per full k-bucket, and 19.76% per non-full k-bucket, which indicates great performance in terms of keeping routing tables up to date, given that the Kademlia DHT may miss some peers in the k-buckets by design.****
 
-[Read the full report ⇢](https://github.com/protocol/network-measurements/blob/master/results/rfm19-dht-routing-table-health.md)
+[Read the full report ⇢](https://github.com/probe-lab/network-measurements/blob/main/results/rfm19-dht-routing-table-health.md)
 {{< /details >}}
 
 
@@ -71,5 +71,5 @@ We found that:
 
 As a result of the study, we suggested increasing the provider record `republish.Interval` to 24 hours as the first action to reduce the overhead, but maintain the same performance.
 
-[Read the full report ⇢](https://github.com/protocol/network-measurements/blob/master/results/rfm17-provider-record-liveness.md)
+[Read the full report ⇢](https://github.com/probe-lab/network-measurements/blob/main/results/rfm17-provider-record-liveness.md)
 {{< /details >}}

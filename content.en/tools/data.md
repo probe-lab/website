@@ -8,7 +8,7 @@ the ProbeLab team as part of its continuous measurement infrastructure (CMI).
 
 The principal measurement tools ([Nebula](/tools/nebula), [Parsec](/tools/parsec) and [Tiros](/tools/tiros)) write 
 data to a single Postgresql database ("the CMI database") which is used to populate the plots on this site, 
-perform general analysis and to generate the [IPFS weekly reports](https://github.com/protocol/network-measurements/tree/master/reports).
+perform general analysis and to generate the [IPFS weekly reports](https://github.com/probe-lab/network-measurements/tree/main/reports).
 
 Some data used on this site is sourced from external systems and aggregated into the CMI database by a system called [Caracol](https://github.com/probe-lab/caracol). Caracol is configured to run specific queries against these external systems on a periodic basis, usually daily or weekly, to build
 a time series of data points. The external systems currently aggregated for use in plots on this site are:
