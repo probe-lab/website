@@ -1,5 +1,5 @@
 ---
-title: Metholology
+title: Methodology
 plotly: true
 weight: 10
 slug: methodology
