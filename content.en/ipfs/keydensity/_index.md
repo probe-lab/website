@@ -1,5 +1,5 @@
 ---
-title: Celestia
+title: Amino Key Density
 bookHidden: true
 bookCollapseSection: true
 plotly: true
