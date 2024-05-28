@@ -27,7 +27,7 @@ sa-east-1
 ```
 
 Our privileged region is `us-east-1`. That's where our main database resides and
-the schedulers run. We currently have three fleets of seven nodes each:
+the schedulers run. We currently have four fleets of seven nodes each:
 
 1. `default` - uses the stock `go-libp2p-kad-dht` configuration
 2. `optprov` - uses the [Optimistic Provide](https://github.com/ipfs/kubo/blob/master/docs/experimental-features.md#optimistic-provide) approach to publish content
