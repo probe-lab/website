@@ -1,5 +1,5 @@
 ---
 title: Celestia
-bookHidden: true
 bookCollapseSection: true
+weight: 30
 ---
