@@ -1,5 +1,5 @@
 ---
-title: Metholology
+title: Methodology
 plotly: true
 weight: 10
 slug: methodology
@@ -8,6 +8,9 @@ aliases:
 ---
 
 # discv5 reports methodology
+
+## Report Title Format
+Reports are titled after the year and calendar week (YYYY-WW) which the data in the corresponding report represent. For example, "Report 2024-09" represents calendar week 09 of 2024.
 
 ## DHT Crawling
 

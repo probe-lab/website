@@ -12,7 +12,7 @@ InterPlanetary Network Indexer. We gathered the data with our
 
 ## Trends
 
-{{< plotly json="../../plots/latest/ipni-trend-latencies-cid.contact.json" height="300px" >}}
+{{< plotly json="../../../plots/latest/ipni-trend-latencies-cid.contact.json" height="300px" >}}
 
 The graph shows different percentiles of the "Time To First Provider Record" (TTFPR)
 metrics over time. To measure the TTFPR, we start the stopwatch right before we
@@ -49,15 +49,15 @@ subsequent requests for a CID.
 
 ### Uncached
 
-{{< plotly json="../../plots/latest/ipni-snapshot-uncached-latencies-cdf-cid.contact.json" height="300px" >}}
+{{< plotly json="../../../plots/latest/ipni-snapshot-uncached-latencies-cdf-cid.contact.json" height="300px" >}}
 
 ### Cached
 
-{{< plotly json="../../plots/latest/ipni-snapshot-cached-latencies-cdf-cid.contact.json" height="300px" >}}
+{{< plotly json="../../../plots/latest/ipni-snapshot-cached-latencies-cdf-cid.contact.json" height="300px" >}}
 
 ### DHT Comparison
 
-{{< plotly json="../../plots/latest/ipni-snapshot-dht-comparison-cid.contact-p90.json" height="300px" >}}
+{{< plotly json="../../../plots/latest/ipni-snapshot-dht-comparison-cid.contact-p90.json" height="300px" >}}
 
 The bar chart above illustrates the 90th percentile of latency associated with
 looking up a provider record using two different methods: the Distributed Hash
