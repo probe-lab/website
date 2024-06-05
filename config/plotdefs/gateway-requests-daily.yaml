@@ -3,7 +3,7 @@ datasets:
   - name: "Bifrost total requests by day"
     source: "caracol"
     query: >
-      select date, value from get_collected_values(19, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
+      select date, value from get_collected_values(23, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
 
 series:
   - type: "bar"
