@@ -1,0 +1,11 @@
+---
+title: "Nebula Measurement Results Calendar Week 2 - 2024"
+plotly: true
+slug: 2024-22
+---
+
+# Nebula Measurement Results Calendar Week 22 - 2024
+
+{{< plotly json="../../plots/2024/05/27/discv5-agents-overall.json" height="250px" >}}
+
+{{< plotly json="../../plots/2024/05/27/discv5-crawl-properties.json" height="250px" >}}
