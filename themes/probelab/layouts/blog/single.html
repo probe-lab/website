@@ -4,6 +4,15 @@
     {{ partial "docs/title.html" . }}
   </h1>
   {{ partial "docs/post-meta" . }}
+
+  {{ if .Params.authors }}
+  <b>Authors:
+    {{ range .Params.authors }}
+    {{ . }}
+    {{ end }}
+  </b>
+  {{ end }}
+
   {{- .Content -}}
 </article>
 
@@ -11,5 +20,5 @@
 
 
 {{ define "toc" }}
-  {{ partial "docs/toc" . }}
+{{ partial "docs/toc" . }}
 {{ end }}

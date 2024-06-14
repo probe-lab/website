@@ -13,7 +13,6 @@ relativeURLs=true
 # You can remove related files with config below
 disableKinds = ['taxonomy', 'taxonomyTerm']
 
-
 [languages]
 [languages.en]
   languageName = 'English'
