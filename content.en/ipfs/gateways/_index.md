@@ -2,6 +2,7 @@
 title: Gateways
 weight: 30
 plotly: true
+bookHidden: true
 aliases:
     - /ipfsgateways/
 ---
@@ -18,6 +19,7 @@ IPFS gateways can be run by anyone who has access to an IPFS node, and there are
 
 In the following plots, requests are _not_ deduplicated, i.e., if there are two requests for the same [CID](https://docs.ipfs.tech/concepts/content-addressing/#content-identifiers-cids), they count as two requests and not one. This is what makes sense for requests. Deduplicating requests would effectively count the number of CIDs requested and not the requests themselves.
 
+<!--
 #### Daily HTTP Requests to ipfs.io / dweb.link
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="450px" >}}
@@ -34,7 +36,7 @@ In the following plots, requests are _not_ deduplicated, i.e., if there are two 
 
 In the following plot we aggregate the total number of unique client IP addresses that appear in the ipfs.io and dweb.link log files for each day. 
 {{< plotly json="../../plots/latest/gateway-clients-overall.json" height="450px" >}}
-
+-->
 #### Daily p95 TTFB accessing ipfs.io / dweb.link
 
 The following graph shows the 95th percentile of the time to first byte (TTFB) for accessing the ipfs.io and dweb.link gateways.
