@@ -28,7 +28,7 @@ ProbeLab has built a website performance measurement tool, called [`tiros`](http
 
 ## Hermes
 
-[Hermes](https://github.com/probe-lab/hermes) is a [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) listener and tracer for [Libp2p](https://libp2p.io/)-based networks. `Hermes`-base experiments aim to measure the efficiency and performance of the GossipSub message broadcasting protocol in any `libp2p`-based networks, helping developers to tune their network's protocols based on the message propagation latency and control messages' overhead. `Hermes` currently supports `Ethereum CL`-based networks.  
+[Hermes](https://github.com/probe-lab/hermes) is a [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) listener and tracer for [libp2p](https://libp2p.io/)-based networks. `Hermes`-based experiments aim to measure the efficiency and performance of the GossipSub message broadcasting protocol in any `libp2p`-based network. `Hermes` can help developers tune their network's protocols based on the message propagation latency and control message overhead. `Hermes` currently supports `Ethereum CL`-based networks.  
 
 {{< button relref="/hermes" >}}Learn more{{< /button >}}
 
