@@ -1,3 +1,8 @@
+---
+title: Tiros
+weight: 30
+---
+
 # Tiros
 
 Tiros is a performance measurement tool for IPFS-hosted websites. It orchestrates the interplay between

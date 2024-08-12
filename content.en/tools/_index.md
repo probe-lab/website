@@ -1,7 +1,7 @@
 ---
 title: Tools & Data
 bookCollapseSection: true
-weight: 50
+weight: 60
 ---
 
 # Tools
@@ -25,6 +25,7 @@ ProbeLab is running multiple sets of experiments that aim to push the boundaries
 ProbeLab has built a website performance measurement tool, called [`tiros`](https://github.com/probe-lab/tiros) for websites hosted on IPFS. Tiros is designed to help developers monitor and optimize the performance of their IPFS-hosted websites. `Tiros`-based experiments measure retrieval and rendering metrics of websites loaded over IPFS. It also measures and compares the IPFS metrics with their HTTPS counterparts.
 
 {{< button relref="/tiros" >}}Learn more{{< /button >}}
+
 
 ## Hermes
 
