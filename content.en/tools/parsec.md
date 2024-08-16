@@ -1,3 +1,8 @@
+---
+title: Parsec
+weight: 20
+---
+
 # Parsec
 
 `parsec` is a Distributed Hash Table (DHT) and InterPlanetary Network Intexer ([IPNI](https://github.com/ipni)) lookup performance measurement tool. It specifically measures the `PUT` and `GET` performance of the **IPFS** public DHT but could also be configured to measure other [libp2p-kad-dht](https://github.com/libp2p/specs/blob/master/kad-dht/README.md) networks. The setup is split into two components 1) a **scheduler** and 2) a **server**.

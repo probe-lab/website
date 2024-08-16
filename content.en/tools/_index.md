@@ -1,7 +1,7 @@
 ---
 title: Tools & Data
 bookCollapseSection: true
-weight: 50
+weight: 60
 ---
 
 # Tools
@@ -25,6 +25,13 @@ ProbeLab is running multiple sets of experiments that aim to push the boundaries
 ProbeLab has built a website performance measurement tool, called [`tiros`](https://github.com/probe-lab/tiros) for websites hosted on IPFS. Tiros is designed to help developers monitor and optimize the performance of their IPFS-hosted websites. `Tiros`-based experiments measure retrieval and rendering metrics of websites loaded over IPFS. It also measures and compares the IPFS metrics with their HTTPS counterparts.
 
 {{< button relref="/tiros" >}}Learn more{{< /button >}}
+
+
+## Hermes
+
+[Hermes](https://github.com/probe-lab/hermes) is a [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) listener and tracer for [libp2p](https://libp2p.io/)-based networks. `Hermes`-based experiments aim to measure the efficiency and performance of the GossipSub message broadcasting protocol in any `libp2p`-based network. `Hermes` can help developers tune their network's protocols based on the message propagation latency and control message overhead. `Hermes` currently supports `Ethereum CL`-based networks.  
+
+{{< button relref="/hermes" >}}Learn more{{< /button >}}
 
 ## Data Provenance
 
