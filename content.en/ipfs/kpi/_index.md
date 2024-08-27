@@ -78,7 +78,7 @@ A common use-case for IPFS is hosting websites, addressed using [IPNS](https://d
 
 {{< plotly json="../../plots/latest/websites-ttfb-quartiles.json" height="250px" >}}
 
-<!--
+
 ## HTTP Gateway Usage
 
 #### Gateway Requests
@@ -86,5 +86,5 @@ A common use-case for IPFS is hosting websites, addressed using [IPNS](https://d
 The following plot shows the total number of requests made per day to the [public IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/#gateway-providers) operated by Protocol Labs (ipfs.io and dweb.link). Data is collated from nginx access logs that front the gateway infrastructure.
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
--->
+
 
