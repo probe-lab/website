@@ -7,21 +7,23 @@ hidetoc: true
 
 # About this Website
 
-This is a space where we present results from our measurement and monitoring efforts. The site, as well as the infrastructure and scripts used to produce the plots are maintained by the ProbeLab team @ Protocol Labs. The results focus on the IPFS network, as well as protocols of its underlaying protocol stack (e.g., Bitswap, the libp2p DHT and [libp2p](https://libp2p.io) more generally).
+This is the space where the ProbeLab team presents results from its measurement and monitoring studies across various Web3.0 and blockchain networks. The site, as well as the infrastructure and scripts used to produce the plots are maintained by the ProbeLab team.
 
-The results presented here give an accurate view of the high-level protocol operation and occasionally dive into protocol specific parameters that are primarily of interest to protocol designers and engineers. What is different about this website is that it is not a “raw” dashboard, but instead includes description of the experiments we’re carrying out in order to produce the results. Where possible, we also make the tools used to produce the results available to the community to re-use.
+The results presented here give an accurate view of the high-level protocol operation and occasionally dive into protocol specific parameters that are primarily of interest to protocol designers and engineers. What is different about this website is that it is not a “raw” dashboard, but instead includes description of the experiments we’re carrying out in order to produce the results. This helps engineers and protocol designers understand accurately the methodology of the experiments, as well as the results presented.
 
-We do not provide commentary on the results presented on this website. Instead, discussion around results reported here is taking place at the [IPFS Discussion Forum](https://discuss.ipfs.tech/), under the “Testing & Experiments” category and the “Measurements” tab. We occasionally write blogposts (primarily in the [IPFS blog](https://blog.ipfs.tech) and technical reports, which we link from the “News” tab on this site.
+We do not provide commentary on the results presented on this website. Instead, discussion around results reported here is taking place at the respective community forums of the networks we're monitoring.
 
-Page views of this website can be found at: [https://plausible.io/probelab.io](https://plausible.io/probelab.io).
+# About the ProbeLab Team
+
+Details about the ProbeLab team members can be found at: [probelab.network/our-team](https://www.probelab.network/our-team).
+
+# About the ProbeLab's Service Offering
+
+Details on the full range of services we provide can be found at: [probelab.network/services](https://www.probelab.network/services).
 
 ## Contact
 
-If you spot inconsistencies, inaccurate claims, or want to request additional results, please reach out using any of the following channels:
+If you spot inconsistencies, inaccurate claims, or want to collaborate with us, please reach out through:
 
-- The [IPFS Discussion forum](https://discuss.ipfs.tech/c/testing-and-experiments/measurements/39), under the “Testing & Experiments” category and the “Measurements” tab.
-- The #probe-lab channel in IPFS Discord [[invite link](https://discord.gg/ipfs)], or Filecoin Slack [[invite link](https://filecoin.io/slack)] (bridged channel).
-- The team’s email: team@probelab.io
-
-We also hold bi-weekly Office Hours, where we invite the community and our collaborators to join and bring up questions, challenges they face and topics for discussion. You can sign up through this lu.ma page: https://lu.ma/ipfs-network-measurements
-
+- the contact form at: [probelab.network/contact](https://www.probelab.network/contact)
+- the team’s email: team@probelab.io

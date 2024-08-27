@@ -1,3 +1,8 @@
+---
+title: Nebula
+weight: 10
+---
+
 ![Nebula Logo](./nebula.png)
 
 # Nebula
