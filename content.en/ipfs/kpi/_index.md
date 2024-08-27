@@ -83,7 +83,7 @@ A common use-case for IPFS is hosting websites, addressed using [IPNS](https://d
 
 #### Gateway Requests
 
-The following plot shows the total number of requests made per day to the ipfs.io [public IPFS gateways](https://docs.ipfs.tech/concepts/ipfs-gateway/#gateway-providers) operated by [Interplanetary Shipyard](https://ipshipyard.com/). Data is collated from nginx access logs that front the gateway infrastructure.
+The following plot shows the total number of requests made per day to the ipfs.io, the main domain at [public IPFS gateway](https://docs.ipfs.tech/concepts/public-utilities/#public-ipfs-gateways) operated by [Interplanetary Shipyard](https://ipshipyard.com/). Data is collated from nginx access logs that front the gateway infrastructure and currently does not include requests made to less popular dweb.link and trustless-gateway.link domains.
 
 {{< plotly json="../../plots/latest/gateway-requests-overall.json" height="600px" >}}
 
