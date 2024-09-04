@@ -1,4 +1,0 @@
----
-title: Mainnet
-bookCollapseSection: true
----
