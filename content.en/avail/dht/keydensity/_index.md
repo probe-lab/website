@@ -1,8 +1,7 @@
 ---
-title: Avail DHT Key Density
-bookHidden: true
-bookCollapseSection: true
+title: DHT Key Density
 plotly: true
+weight: 90
 ---
 
 # Avail DHT Key Density Monitoring
@@ -19,7 +18,7 @@ The following plots examine the peer distribution within the keyspace, aiding in
 
 **What to look out for:** The red dashed line represents the expected density per region, corresponding to the number of peers matching a prefix. A bar exceeding the expected density by more than twice suggests that a region of the keyspace might be under an eclipse attack.
 
-{{< plotly json="../../plots/latest/avail-regions-population.json" height="600px" >}}
+{{< plotly json="../../../plots/latest/avail-regions-population.json" height="600px" >}}
 
 ## Keyspace density distribution
 
@@ -29,4 +28,4 @@ The following plots examine the peer distribution within the keyspace, aiding in
 
 **What to look out for:** If a bar significantly exceeds its expected value on the right side of the plot, or if an isolated bar appears on the far right, it may indicate a potential eclipse attack, warranting further investigation.
 
-{{< plotly json="../../plots/latest/avail-density-distributions.json" height="600px" >}}
+{{< plotly json="../../../plots/latest/avail-density-distributions.json" height="600px" >}}
