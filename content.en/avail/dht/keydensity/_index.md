@@ -4,7 +4,7 @@ plotly: true
 weight: 90
 ---
 
-# Avail DHT Key Density Monitoring
+# Avail Mainnet DHT Key Density Monitoring
 
 In Kademlia, every object indexed by the DHT requires a binary identifier. In the libp2p DHT implementation, peers are identified by the digest of `sha256(peer_id)` and CIDs are identified by the digest of `sha256(cid)`. This Kademlia identifier determines the location of an object within the Kademlia XOR keyspace.
 
