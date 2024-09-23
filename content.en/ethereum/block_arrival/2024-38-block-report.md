@@ -14,11 +14,12 @@ This report provides charts and metrics for the beacon block broadcasting latenc
 ## Block arrival time within the slot
 The line plot displays the Cumulative Distribution Function (CDF) of the block arrival times within the slot for the different Ethereum clients (listed [here](../methodology#data-source)). The line plot aggregates all the locations we collect data from for each client.
 
-{{< plotly json="/plots/2024/09/16/gossipsub_arrival_times_within_slot_on_by_continent_mainnet_beacon_block.json" height="600px" >}}
+{{< plotly json="/plots/2024/09/16/gossipsub_arrival_times_within_slot_by_agent_on_mainnet_beacon_block.json" height="600px" >}}
 
 The following line plot shows the CDF of the block arrival time within the slot, aggregating all the data points by the continent that the clients were in.
 
-{{< plotly json="/plots/2024/09/16/gossipsub_arrival_times_within_slot_on_by_continent_on_mainnet_beacon_block.json" height="600px" >}}
+{{< plotly json="/plots/2024/09/16/gossipsub_arrival_times_within_slot_on_by_continent_mainnet_beacon_block.json" height="600px" >}}
+
 
 ## Block arrival time to block size correlation
 The following heatmap shows the concentration of block arrival times, aggregating the block size in 50KB range increments. The number displayed within each square represents the corresponding percentage of blocks falling into: i) the block size, and ii) arrival time, out of the total number of blocks seen.
