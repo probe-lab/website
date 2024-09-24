@@ -5,7 +5,7 @@ weight: 40
 
 # Hermes
 
-Hermes is a light-node for [libp2p](https://libp2p.io/)-based networks that can be used to monitor the effectiveness and performance of the [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) message propagation protocol. The tool behaves like a light-node in the network, connecting to other participants in the network, relying on a trusted local node that ensures we can reply to any incoming request and maintain stable connections. The tool currently supports any [Ethereum](https://ethereum.org/en/) network (at the `Consensus Layer`), although there might me more networks coming in the future.
+Hermes is a light-node for [libp2p](https://libp2p.io/)-based networks that can be used to monitor the effectiveness and performance of the [GossipSub](https://docs.libp2p.io/concepts/pubsub/overview/) message propagation protocol. The tool behaves like a light-node in the network, connecting to other participants in the network, relying on a trusted local node that ensures we can reply to any incoming request and maintain stable connections. The tool currently supports any [Ethereum](https://ethereum.org/en/) network (at the `Consensus Layer`), although there might be more networks coming in the future.
 
 {{< button href="https://github.com/probe-lab/hermes" >}}GitHub{{< /button >}}
 
@@ -40,7 +40,7 @@ As `Hermes` maintains stable connections with the rest of the network nodes, it 
 
 - Sent and received messages
 
-- Protoco RPCs
+- Protocol RPCs
 
 ## Deployment
 `Hermes` has been developed with the intention of leaving it running for an indefinite time duration. If you are interested in the data from other networks, reach out to us through any of the channels listed at the [Contact](/about/#contact) page.
