@@ -12,6 +12,13 @@ Our KPIs are currently focusing primarily on the public [IPFS DHT](https://docs.
 
 ## Network Size & Stability
 
+<!--TODO: remove after gap isn't visible anymore-->
+{{< hint info >}}
+⚠️ Due to a migration, data from preload servers was not collected between
+`2024-09-07` and `2024-09-26`. As a result, the DHT clients count and bootstrap
+unique agents for this period are unavailable.
+{{< /hint >}}
+
 ### Client vs Server Node Estimate
 
 The total number of peers in the network is estimated using the number of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node). The number of unique [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) peer IDs identified by the [Nebula crawler](/tools/nebula/) is then subtracted from the total number of peers (seen by the bootstrappers) to estimate the number of peers that exclusively function as DHT Clients.

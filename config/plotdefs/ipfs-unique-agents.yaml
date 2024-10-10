@@ -5,8 +5,16 @@ datasets:
   - name: "preload unique agents"
     source: "caracol"
     query: >
-      select date, value from get_collected_values(17, {{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .Now | timestamptz }})
-      order by date;
+      SELECT date, value
+      FROM get_collected_values(17, {{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .Now | timestamptz }})
+      WHERE date NOT IN (
+        '2024-09-09 00:00:00 Z'::timestamptz,
+        '2024-09-16 00:00:00 Z'::timestamptz,
+        '2024-09-23 00:00:00 Z'::timestamptz,
+        '2024-09-30 00:00:00 Z'::timestamptz
+      )
+      ORDER BY date;
+
   - name: "nebula unique agents"
     source: "nebula_ipfs"
     query: >
@@ -83,3 +91,4 @@ layout:
     rangemode: "tozero"
     title:
       text: "Number of unique agents"
+
