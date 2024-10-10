@@ -2,24 +2,19 @@ frequency: daily
 datasets:
   # unique peers is calculated from total unique peers seen connecting to preload and bootstrap servers
   # caracol started collecting this data automatically from week ending 20 Mar 2023
+  # between 2024-09-09 and 2024-09-30 the IPFS team had an outage and we didn't collect data
   - name: "unique peers"
     source: "caracol"
     query: >
-      select * from (values
-        ('2023-01-09 00:00:00 Z'::timestamptz, 317798),
-        ('2023-01-16 00:00:00 Z'::timestamptz, 420280),
-        ('2023-01-23 00:00:00 Z'::timestamptz, 487695),
-        ('2023-01-30 00:00:00 Z'::timestamptz, 458967),
-        ('2023-02-06 00:00:00 Z'::timestamptz, 490907),
-        ('2023-02-13 00:00:00 Z'::timestamptz, 397445),
-        ('2023-02-20 00:00:00 Z'::timestamptz, 342812),
-        ('2023-02-27 00:00:00 Z'::timestamptz, 327501),
-        ('2023-03-06 00:00:00 Z'::timestamptz, 401014),
-        ('2023-03-13 00:00:00 Z'::timestamptz, 304623)
-      ) as t (date,value)
-      union
-      select date, value from get_collected_values(3, '2023-03-20 00:00:00 Z'::timestamptz, {{ .Now | timestamptz }})
-      order by date;
+      SELECT date, value
+      FROM get_collected_values(3, {{ .StartOfWeek | timestamptz }}-'14 week'::interval, {{ .Now | timestamptz }})
+      WHERE date NOT IN (
+        '2024-09-09 00:00:00 Z'::timestamptz,
+        '2024-09-16 00:00:00 Z'::timestamptz,
+        '2024-09-23 00:00:00 Z'::timestamptz,
+        '2024-09-30 00:00:00 Z'::timestamptz
+      )
+      ORDER BY date;
 
   - name: "dht servers"
     source: "nebula_ipfs"
@@ -127,7 +122,6 @@ series:
     color: "black"
     marker: "circle"
 
-
 layout:
   barmode: stack
   title:
@@ -145,3 +139,4 @@ layout:
     rangemode: "tozero"
     title:
       text: "Number of unique peers"
+
