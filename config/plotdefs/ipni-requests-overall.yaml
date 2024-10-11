@@ -3,7 +3,7 @@ datasets:
   - name: "IPNI total requests"
     source: "caracol"
     query: >
-      select date, value from get_collected_values(2, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
+      select date, value from get_collected_values(25, {{ .StartOfDay | timestamptz }} - '90 day'::interval, {{ .StartOfDay | timestamptz }});
 
 series:
   - type: "bar"
@@ -11,7 +11,6 @@ series:
     dataset: "IPNI total requests"
     labels: "date"
     values: "value"
-
 
 layout:
   title:
