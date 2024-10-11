@@ -68,12 +68,11 @@ The historic trend over time is currently provided by [Parsec](/tools/parsec). B
 
 {{< plotly json="../../plots/latest/dht-lookup-performance-long.json" height="600px" >}}
 
-<!-- ### IPNI utilization -->
-<!---->
-<!-- [IPNI](https://github.com/ipni) is a set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the [IPFS DHT](https://docs.ipfs.tech/concepts/dht/) to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by [cid.contact](https://cid.contact/). -->
-<!---->
-<!-- {{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}} -->
-<!---->
+### IPNI utilization
+
+[IPNI](https://github.com/ipni) is a set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the [IPFS DHT](https://docs.ipfs.tech/concepts/dht/) to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by [cid.contact](https://cid.contact/).
+
+{{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}}
 
 ## Websites
 
