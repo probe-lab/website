@@ -1,5 +1,5 @@
 ---
-title: Avail
+title: Filecoin
 bookCollapseSection: true
-weight: 50
+weight: 40
 ---
