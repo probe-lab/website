@@ -14,11 +14,13 @@
 
 {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
 <link rel="manifest" href="{{ $manifest.RelPermalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "favicon/apple-touch-icon.png" | relURL }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon/favicon-32x32.png" | relURL }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon/favicon-16x16.png" | relURL }}">
-<link rel="mask-icon" href="{{ "favicon/safari-pinned-tab.svg" | relURL }}" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#2d89ef">
+<link rel="icon" type="image/png" href="{{ "favicon/favicon-48x48.png" | relURL }}" sizes="48x48" />
+<link rel="icon" type="image/svg+xml" href="{{ "favicon/favicon.svg" | relURL }}" />
+<link rel="shortcut icon" href="{{ "favicon/favicon.ico" | relURL }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}" />
+<meta name="apple-mobile-web-app-title" content="ProbeLab" />
+
 
 <script defer data-domain="probelab.io" src="https://plausible.io/js/script.js"></script>
 
