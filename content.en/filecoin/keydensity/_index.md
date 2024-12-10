@@ -13,10 +13,13 @@ The following plots examine the peer distribution within the keyspace, aiding in
 ## Keyspace population distribution
 
 **Description**: The plot illustrates the number of peers whose Kademlia identifier matches each prefix for all prefixes of a given size, for a given network crawl. Since the density of keyspace regions follows a [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution) distribution, it is expected to observe some regions that are significantly more populated than others.
+A successful full eclipse attack requires a density of at least `20x` (bucket size) the expected population density.
 
 **How to read the plot:** The selected `depth` indicates the prefix size. There are `2^i` distinct prefixes at depth `i`. The slider at the bottom of the plot enables visualization of the population evolution over time across multiple crawls.
 
-**What to look out for:** The red dashed line represents the expected density per region, corresponding to the number of peers matching a prefix. A bar exceeding the expected density by more than twice suggests that a region of the keyspace might be under an eclipse attack.
+**What to look out for:** The red dashed line represents the expected density per region, corresponding to the number of peers matching a prefix. A bar exceeding the expected density by close to or more than `20x` (bucket size) suggests that a region of the keyspace is likely to be under an eclipse attack. For more information about the distribution of keyspace regions, please refer to the density distribution plot below.
+
+**Attention required**: If a region is significantly more populated (e.g `10x`) than the expected value, it is at risk of eclipse attack. Note that a density of `20x` is considered a threshold for a successful eclipse attack, but a density of `10x` is unusual and a cause for concern.
 
 {{< plotly json="../../../plots/latest/filecoin-regions-population.json" height="600px" >}}
 
@@ -29,4 +32,3 @@ The following plots examine the peer distribution within the keyspace, aiding in
 **What to look out for:** If a bar significantly exceeds its expected value on the right side of the plot, or if an isolated bar appears on the far right, it may indicate a potential eclipse attack, warranting further investigation.
 
 {{< plotly json="../../../plots/latest/filecoin-density-distributions.json" height="600px" >}}
-
