@@ -7,7 +7,7 @@ weight: 10
 
 # Nebula
 
-Nebula is a [libp2p](https://github.com/libp2p/go-libp2p-kad-dht) DHT crawler and monitor that tracks the liveliness of peers. The crawler connects to [DHT](https://en.wikipedia.org/wiki/Distributed_hash_table) bootstrap peers and then recursively follows all entries in their [k-buckets](https://en.wikipedia.org/wiki/Kademlia) until all peers have been visited. The crawler supports the [IPFS](https://ipfs.network), [Filecoin](https://filecoin.io), [Polkadot](https://polkadot.network/), [Kusama](https://kusama.network/), [Rococo](https://substrate.io/developers/rococo-network/), [Westend](https://wiki.polkadot.network/docs/maintain-networks#westend-test-network) networks [and more](https://github.com/dennis-tra/nebula/blob/a33a5fd493caaeb07e92ecc73c32ee87ae9e374f/pkg/config/config.go#L11).
+Nebula is a [libp2p](https://github.com/libp2p/go-libp2p-kad-dht) DHT crawler and monitor that tracks the liveliness of peers. The crawler connects to [DHT](https://en.wikipedia.org/wiki/Distributed_hash_table) bootstrap peers and then recursively follows all entries in their [k-buckets](https://en.wikipedia.org/wiki/Kademlia) until all peers have been visited. The crawler supports the [IPFS](https://ipfs.network), [Filecoin](https://filecoin.io), [Ethereum](https://ethereum.org/en/), [Celestia](https://celestia.org/), [Avail](https://www.availproject.org/), [Polkadot](https://polkadot.network/), [Kusama](https://kusama.network/), [Rococo](https://substrate.io/developers/rococo-network/), [Westend](https://wiki.polkadot.network/docs/maintain-networks#westend-test-network) networks [and more](https://github.com/dennis-tra/nebula/blob/a33a5fd493caaeb07e92ecc73c32ee87ae9e374f/pkg/config/config.go#L11).
 
 {{< button href="https://github.com/dennis-tra/nebula" >}}GitHub{{< /button >}}
 
@@ -67,7 +67,7 @@ Because we crawl and probe the network periodically, and because Multiaddresses 
 
 - How long has a peer been online?
 
-- In which country/city is a peer located? (powered by [Maxmind](https://www.maxmind.com/en/home))
+- In which country/city is a peer located?
 
 - Does the peer run in a data center? (powered by [Udger](https://udger.com/))
 
@@ -79,14 +79,16 @@ We are running the crawler to measure the following networks:
 
 | Network  | Crawl Frequency  | Crawl duration |
 | -------- | ---------------- | -------------- |
-| IPFS     | every 30 minutes | ~5 minutes     |
-| Filecoin | every 30 minutes | ~1 minute      |
-| Polkadot | every 30 minutes | ~25 minutes    |
-| Kusama   | every 30 minutes | ~9 minutes     |
-| Westend  | every 30 minutes | ~2 minutes     |
-| Rococo   | every 30 minutes | ~2 minutes     |
+| IPFS     | every 2 hours | ~5 minutes     |
+| Filecoin | every 2 hours | ~1 minute      |
+| Ethereum | every 2 hours | ??             |
+| Polkadot | every 2 hours | ~25 minutes    |
+| Celestia | every 2 hours | ??             |
+| Avail    | every 2 hours | ??             |
+| Kusama   | every 2 hours | ~9 minutes     |
+| Westend  | every 2 hours | ~2 minutes     |
+| Rococo   | every 2 hours | ~2 minutes     |
 
-On this website we currently only report on the IPFS network. If you are interested in the data from the rest of the networks, reach out to us through any of the channels listed at the [Contact](/about/#contact) page.
 
 ## Contributing
 
