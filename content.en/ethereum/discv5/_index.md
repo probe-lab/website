@@ -1,4 +1,5 @@
 ---
-title: discv5 weekly reports
+title: Discv5 Weekly Reports
 bookCollapseSection: true
+weight: 10
 ---
