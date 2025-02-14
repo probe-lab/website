@@ -1,5 +1,5 @@
 ---
-title: Light Clients DHT Key Density
+title: DHT Key Density
 plotly: true
 weight: 90
 ---
