@@ -2,20 +2,21 @@
 title: Week 2025-06 day 04
 plotly: true
 slug: 2025-06-04
-weight: 1045599
+weight: 936
 ---
 
 # Ethereum report for message duplicates 2025-06 day 04
 
 The following results show measurement data that were collected in **calendar week** 06  day 04 **of** 
-2025 in `2025-02-13`.
+2025 (`2025-02-13`).
 
-This report provides charts and metrics for the beacon block broadcasting latency on the Ethereum network.
+This report provides charts for several metrics for all of Gossipsub's topics on the Ethereum network.
+The report focuses primarily on the broadcasting latency and number of duplicates.
 We've produced these reports in collaboration with the Ethereum Foundation using out tool [Hermes](/tools/hermes/).
 
 ## Time distribution of duplicates
 
-The following line plot displays the aggregated number of duplicates received over the entire hour every 5 minutes.
+The following line plot displays the number of duplicates received per hour, aggregated in 5 minutes intervals.
 The graph includes most of the main Ethereum CL gossipsub topics. 
 
 {{< plotly json="/plots/2025/02/06/04/ethereum_mainnet_ef-msg-duplicates-per-topic.json" height="600px" >}}
@@ -41,10 +42,9 @@ Once again, the chart aggregates the distributions for each topic.
 {{< plotly json="/plots/2025/02/06/04/ethereum_mainnet_ef-cdf-time-to-first-duplicate-per-msg-topic.json" height="600px" >}}
 
 ## Correlation between message size and number of duplicates
+Under the same network bandwidth, larger messages take longer to be fully transmitted between peers. Since a peer can only detect a message after downloading it completely, the likelihood of receiving duplicates increases with message size.
+For reference, check out our ethresear.ch [post](https://ethresear.ch/t/number-duplicate-messages-in-ethereums-gossipsub-network/19921#cdf-of-duplicate-messages-7) about message duplicates.
 
-The following heatmap chart shows the correlation between the size of a message and the number of duplicate received.
-The chart shows how many messages per topic were aggregated by defined message size and number of duplicate ranges.
-We could expect larger messages to have larger number of duplicates, thus, this graph should help understanding
-if there is any clear threshold.
+The heatmap below shows the correlation between message size and duplicate count, showing the number of messages per topic aggregated by "message size" and "number of duplicates" ranges.
 
 {{< plotly json="/plots/2025/02/06/04/ethereum_mainnet_ef-correlation-size-duplicates-topic.json" height="600px" >}}
