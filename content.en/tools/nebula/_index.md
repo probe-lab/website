@@ -67,9 +67,9 @@ Because we crawl and probe the network periodically, and because Multiaddresses 
 
 - How long has a peer been online?
 
-- In which country/city is a peer located?
+- In which country/city is a peer located? (powered by [ipregistry](https://ipregistry.co/))
 
-- Does the peer run in a data center? (powered by [Udger](https://udger.com/))
+- Does the peer run in a data center? (powered by [ipregistry](https://ipregistry.co/))
 
 On top of the above, Nebula also tracks _neighbor_ information. We consider peers in _k_-buckets to be neighbors of the peer who maintains these _k_-buckets. This information spans a graph where each node is a peer and each edge corresponds to a _k_-bucket entry.
 
@@ -79,16 +79,13 @@ We are running the crawler to measure the following networks:
 
 | Network  | Crawl Frequency  | Crawl duration |
 | -------- | ---------------- | -------------- |
-| IPFS     | every 2 hours | ~5 minutes     |
-| Filecoin | every 2 hours | ~1 minute      |
-| Ethereum | every 2 hours | ??             |
-| Polkadot | every 2 hours | ~25 minutes    |
-| Celestia | every 2 hours | ??             |
-| Avail    | every 2 hours | ??             |
-| Kusama   | every 2 hours | ~9 minutes     |
-| Westend  | every 2 hours | ~2 minutes     |
-| Rococo   | every 2 hours | ~2 minutes     |
-
+| IPFS     | every 2 hours | 5 minutes     |
+| Filecoin | every 2 hours | 1 minute      |
+| Ethereum CL | every 2 hours | 20 minutes  |
+| Ethereum EL | every 2 hours | 23 minutes  |
+| Polkadot | every 2 hours | 3 minutes     |
+| Celestia | every 2 hours | 1 minute       |
+| Avail    | every 2 hours | 2 minutes      |
 
 ## Contributing
 
