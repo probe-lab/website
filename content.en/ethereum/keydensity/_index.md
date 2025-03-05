@@ -18,7 +18,7 @@ The following plots examine the peer distribution within the keyspace, aiding in
 
 **What to look out for:** The red dashed line represents the expected density per region, corresponding to the number of peers matching a prefix. A bar significantly exceeding the expected density suggests that a region of the keyspace might be under an eclipse attack, especially if the value is above the risk threshold.
 
-{{< plotly json="../../../plots/latest/filecoin-regions-population.json" height="600px" >}}
+{{< plotly json="../../../plots/latest/discv5-regions-population.json" height="600px" >}}
 
 ## Keyspace density distribution
 
@@ -28,4 +28,4 @@ The following plots examine the peer distribution within the keyspace, aiding in
 
 **What to look out for:** If an isolated bar appears on the far right beyond the risk threshold line, it may indicate a potential eclipse attack, warranting further investigation.
 
-{{< plotly json="../../../plots/latest/filecoin-density-distributions.json" height="600px" >}}
+{{< plotly json="../../../plots/latest/discv5-density-distributions.json" height="600px" >}}
