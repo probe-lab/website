@@ -33,6 +33,12 @@ ProbeLab has built a website performance measurement tool, called [`tiros`](http
 
 {{< button relref="/hermes" >}}Learn more{{< /button >}}
 
+## Ants Watch
+
+[ants-watch](https://github.com/probe-lab/ants-watch) is a DHT client monitoring tool. It is able to log the activity of all nodes in a DHT network by carefully placing ants in the DHT keyspace. For nodes to utilize the DHT they need to perform routing table maintenance tasks. These tasks consist of sending requests to several other nodes close to oneself in the DHT keyspace. ants watch ensures that at least one of these requests will always hit one of the deployed ants. When a request hits an ant, we record information about the requesting peer like agent version, supported protocols, IP addresses, and more.  
+
+{{< button relref="/ants" >}}Learn more{{< /button >}}
+
 ## Data Provenance
 
 The data produced by the tools above is used to generate the majority of plots on this website. Some external sources of data such as metrics produced by 
