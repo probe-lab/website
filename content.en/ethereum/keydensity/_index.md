@@ -6,7 +6,7 @@ weight: 90
 
 # Ethereum Mainnet discv5 Key Density Monitoring
 
-Every object indexed by discv5 requires a binary identifier. In the discv5 implementation, peers are identified by the digest of `secp256k1(peer_id)` and CIDs are identified by the digest of `keccak256(cid)`. This identifier determines the location of an object within the XOR keyspace.
+Every object indexed by discv5 requires a binary identifier. In the discv5 implementation, peers are identified by their NodeID (extracted from their [ENR](https://github.com/ethereum/devp2p/blob/master/enr.md)) which is the keccak256 hash of its uncompressed [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key. This identifier determines the location of an object within the XOR keyspace.
 
 The following plots examine the peer distribution within the keyspace, aiding in the identification of potential [Sybil](https://en.wikipedia.org/wiki/Sybil_attack) and eclipse attacks.
 
