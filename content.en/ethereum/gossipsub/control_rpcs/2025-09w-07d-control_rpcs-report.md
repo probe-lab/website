@@ -22,7 +22,7 @@ Some implementations, such as [`go-libp2p-pubsub`](https://github.com/libp2p/go-
 
 > **Note:** `IHAVE` messages still include multiple topics within a single Control Message.
 
-{{< plotly json="https://prod-use1-data-public-website-plots.s3.us-east-1.amazonaws.com/control_rpcs_reports/ethereum_mainnet/2025/3/2/control_rpc_ratio_ts_plot.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/control_rpcs_reports/ethereum_mainnet/2025/3/2/control_rpc_ratio_ts_plot.json" height="600px" >}}
 
 ---
 
@@ -30,7 +30,7 @@ Some implementations, such as [`go-libp2p-pubsub`](https://github.com/libp2p/go-
 
 The following chart visualizes the number of **Message IDs** sent and received within each type of Control Message, aggregated over 5 minutes intervals.
 
-{{< plotly json="https://prod-use1-data-public-website-plots.s3.us-east-1.amazonaws.com/control_rpcs_reports/ethereum_mainnet/2025/3/2/control_rpc_effectiveness_msg_id_ts_plot.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/control_rpcs_reports/ethereum_mainnet/2025/3/2/control_rpc_effectiveness_msg_id_ts_plot.json" height="600px" >}}
 
 ---
 
@@ -38,4 +38,4 @@ The following chart visualizes the number of **Message IDs** sent and received w
 
 This chart extends the previous visualization by breaking down sent and received **Message IDs** per topic, aggregated over 5 minutes intervals.
 
-{{< plotly json="https://prod-use1-data-public-website-plots.s3.us-east-1.amazonaws.com/control_rpcs_reports/ethereum_mainnet/2025/3/2/control_rpc_effectiveness_msg_id_per_topic_ts_plot.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/control_rpcs_reports/ethereum_mainnet/2025/3/2/control_rpc_effectiveness_msg_id_per_topic_ts_plot.json" height="600px" >}}
