@@ -2,7 +2,7 @@
 title: Week 2025-09
 plotly: true
 slug: 2025-09
-weight: 1045595
+weight: 1045596
 ---
 
 # Ethereum block broadcasting latency report 2025-09
