@@ -1,0 +1,8 @@
+<style>
+	.{{ .Get "css-class" }} {
+		height: {{ .Get "height" }};
+		width: {{ .Get "width" }};
+	}
+</style>
+
+<iframe class="{{ .Get "css-class" }}" src="{{ .Get "src" }}" title="{{ .Get "title" }}"></iframe>
