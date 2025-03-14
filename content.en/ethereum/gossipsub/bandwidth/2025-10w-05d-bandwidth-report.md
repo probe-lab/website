@@ -17,12 +17,12 @@ We've produced these reports in collaboration with the Ethereum Foundation using
 ## Incoming vs. Outgoing Bandwidth Usage
 The following time series graph displays the **incoming (`in`)** and **outgoing (`out`)** bandwidth usage of the GossipSub protocol throughout the day. The data is aggregated into time windows of **5 minutes**.
 
-{{< plotly json="https://cdn.probelab.io/bandwidth_reports/ethereum_mainnet/2025/3/7/bandwidth_direction_ts_plot.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/bandwidth_reports/ethereum_mainnet/2025/3/7/bandwidth_direction_aggregation_ts_plot.json" height="600px" >}}
 
 ## Bandwidth Usage by Message Type
 Extending the previous visualization, this time series graph further breaks down the **incoming** and **outgoing** bandwidth usage by message type, providing deeper insight into the distribution of network traffic.
 
-{{< plotly json="https://cdn.probelab.io/bandwidth_reports/ethereum_mainnet/2025/3/7/bandwidth_direction_aggregation_ts_plot.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/bandwidth_reports/ethereum_mainnet/2025/3/7/bandwidth_per_msg_type_ts_plot.json" height="600px" >}}
 
 ## Bandwidth Distribution by Message Type
 The final visualization illustrates the percentage of total bandwidth attributed to each message type. This helps identify which types of messages contribute the most to network traffic.
