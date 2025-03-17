@@ -2,6 +2,7 @@
 title: Bootstrappers
 plotly: true
 slug: bootstrappers
+weight: 1
 ---
 
 # Bootstrappers
