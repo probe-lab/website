@@ -1,6 +1,6 @@
 ---
 title: DHT Weekly Reports
 bookCollapseSection: true
-bookHidden: false
+bookHidden: true
 weight: 50
 ---

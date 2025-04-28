@@ -1,6 +1,6 @@
 ---
 title: Unichain
 bookCollapseSection: true
-bookHidden: false
+bookHidden: true
 weight: 42
 ---
