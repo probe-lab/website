@@ -16,13 +16,13 @@ Our KPIs are currently focusing primarily on the public [IPFS DHT](https://docs.
 
 The total number of peers in the network is estimated using the number of unique [Peer IDs](https://docs.ipfs.tech/concepts/glossary/#peer-id) seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node). The number of unique [DHT Server](https://docs.ipfs.tech/concepts/dht/#routing-tables) peer IDs identified by the [Nebula crawler](/tools/nebula/) is then subtracted from the total number of peers (seen by the bootstrappers) to estimate the number of peers that exclusively function as DHT Clients.
 
-{{< plotly json="../../plots/latest/ipfs-servers-vs-clients.json" height="400px" >}}
+{{< plotly json="https://cdn.probelab.io/plots/ipfs_amino/latest/servers_vs_clients_plot.json" height="400px" >}}
 
 ### Unique Software Agents
 
 The total number of unique software agents operating in the network is estimated from those seen by Protocol Labs' [bootstrap nodes](https://docs.ipfs.tech/concepts/glossary/#bootstrap-node) when a peer connects. The number of unique agents seen by the [Nebula crawler](/tools/nebula/) when crawling the IPFS DHT is included for comparison. The software agent strings have not been refined or processed, resulting in the count treating major and minor versions of each software agent as distinct entries.
 
-{{< plotly json="../../plots/latest/ipfs-unique-agents.json" height="400px" >}}
+{{< plotly json="https://cdn.probelab.io/plots/ipfs_amino/latest/unique_agents_plot.json" height="400px" >}}
 
 ## Content Routing
 
@@ -65,7 +65,7 @@ The historic trend over time is currently provided by [Parsec](/tools/parsec). B
 
 [IPNI](https://github.com/ipni) is a set of protocols that describe how data can be indexed across the IPFS and Filecoin networks. Network indexers complement the [IPFS DHT](https://docs.ipfs.tech/concepts/dht/) to enable peers to locate content-addressed data. The data in the plot below shows the number of requests made per day to the network indexers operated by [cid.contact](https://cid.contact/).
 
-{{< plotly json="../../plots/latest/ipni-requests-overall.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/plots/ipfs_amino/latest/ipni_requests_plot.json" height="600px" >}}
 
 ## Websites
 
