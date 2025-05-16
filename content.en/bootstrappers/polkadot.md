@@ -1,4 +1,4 @@
 ---
 type: redirect
-target: https://probelab.grafana.net/public-dashboards/ab73ce27ee7c43f6b1651ee0e3bb1068
+target: https://probelab.grafana.net/public-dashboards/de1efd2a96e740cb9b45d903b5c1049e
 ---

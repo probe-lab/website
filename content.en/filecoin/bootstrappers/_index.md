@@ -29,4 +29,4 @@ Below is the list of PeerIDs that are currently being probed in the order in whi
 |ChainSafe 0| `12D3KooWKKkCZbcigsWTEu1cgNetNbZJqeNtysRtFpq7DTqw3eqH`|
 |filincubator.com| `QmQu8C6deXwKvJP2D8B6QGyhngc3ZiDnFzEHBDx8yeBXST`|
 	
-{{< iframe src="https://grafana-public.probelab.io/public-dashboards/a74f2ece31a749919bc83364fd9798bc" title="Filecoin Bootstrappers Grafana Dashboard" css-class="filecoin-bootstrapper-grafana-iframe" width="100%" height="100vh">}}
+{{< iframe src="https://grafana-public.probelab.io/public-dashboards/e65e04dbd0624714a81d114b221f1f91" title="Filecoin Bootstrappers Grafana Dashboard" css-class="filecoin-bootstrapper-grafana-iframe" width="100%" height="100vh">}}
