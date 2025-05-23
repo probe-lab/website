@@ -23,7 +23,7 @@ Below is the list of PeerIDs that are currently being probed in the order in whi
 | Operator| PeerID |
 |---|---|
 |FIL DevTTY| `12D3KooWAke3M2ji7tGNKx3BQkTHCyxVhtV1CN68z6Fkrpmfr37F`|
-|Glif.io| `12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt`|
+|chain.love| `12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt`|
 |ChainSafe 1| `12D3KooWGnkd9GQKo3apkShQDaq1d6cKJJmsVe6KiQkacUk1T8oZ`|
 |ChainSafe 2| `12D3KooWHQRSDFv4FvAjtU32shQ7znz7oRbLBryXzZ9NMK2feyyH`|
 |ChainSafe 0| `12D3KooWKKkCZbcigsWTEu1cgNetNbZJqeNtysRtFpq7DTqw3eqH`|
