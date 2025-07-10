@@ -1,5 +1,5 @@
 ---
 title: Gnosis
 bookCollapseSection: true
-weight: 41
+weight: 21
 ---
