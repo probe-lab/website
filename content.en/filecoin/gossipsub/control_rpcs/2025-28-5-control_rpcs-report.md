@@ -2,7 +2,7 @@
 title: Week 2025-28 day 05
 plotly: true
 slug: 2025-28-05
-weight: 1045577
+weight: 1027591
 ---
 
 # Filecoin report for GossipSub's Control Messages 2025-28 day 05
