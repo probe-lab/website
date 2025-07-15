@@ -2,7 +2,7 @@
 title: Week 2025-25 day 04
 plotly: true
 slug: 2025-25-04
-weight: 1045580
+weight: 1027613
 ---
 
 # Filecoin report for GossipSub's Control Messages 2025-25 day 04
@@ -12,7 +12,7 @@ The following results show measurement data that were collected in **calendar we
 
 This report provides charts for several metrics for all of GossipSub's topics on the Filecoin network.
 The report focuses primarily at the Control Messages that GossipSub exchanges with other peers in the network.
-We've produced these reports in collaboration with the Filecoin Foundation using our tool [Hermes](/tools/hermes/).
+We've produced these reports in collaboration with the Filecoin Foundation using our tool [Hermes](/tools/hermes).
 
 ## Sent and Received Control Messages
 
