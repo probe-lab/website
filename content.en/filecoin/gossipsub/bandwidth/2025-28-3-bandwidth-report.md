@@ -2,7 +2,7 @@
 title: Week 2025-28 day 03
 plotly: true
 slug: 2025-28-03
-weight: 1045574
+weight: 1027593
 ---
 
 # Filecoin report for GossipSub Bandwidth usage 2025-28 day 03
