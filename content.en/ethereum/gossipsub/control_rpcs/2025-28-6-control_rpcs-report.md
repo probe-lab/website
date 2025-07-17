@@ -2,7 +2,7 @@
 title: Week 2025-28 day 06
 plotly: true
 slug: 2025-28-06
-weight: 1045577
+weight: 1027590
 ---
 
 # Ethereum report for GossipSub's Control Messages 2025-28 day 06
