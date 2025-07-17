@@ -2,7 +2,7 @@
 title: Week 2025-15 day 06
 plotly: true
 slug: 2025-15-06
-weight: 844
+weight: 1027681
 ---
 
 # Ethereum report for GossipSub Bandwidth usage 2025-15 day 06
