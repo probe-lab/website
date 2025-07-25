@@ -28,7 +28,7 @@ ProbeLab is running multiple sets of experiments that aim to push the boundaries
 
 ## Akai 
 
-[akai](https://github.com/probe-lab/akai) is a libp2p generic data availability (DA) sampler. It was originaly developed to perform data availability sampling (DAS) of DA Cells in the Avail DA DHT. However, it has been extended to support more DHT items in other p2p networks. As of 2025-Q3, Akai supports sampling items in the Avail network (Mainnet, Turing, Hex), Celestia network (Mainnet, Mocha-4), and IPFS (Amino DHT).
+[akai](https://github.com/probe-lab/akai) is a libp2p generic data availability (DA) sampler. It was originaly developed to perform Data Availability Sampling (DAS) of DA Cells in the Avail DA DHT. However, it has been extended to support more DHT networks. As of 2025-Q3, Akai supports sampling items in the Avail network (Mainnet, Turing, Hex), Celestia network (Mainnet, Mocha-4), and IPFS (Amino DHT).
 
 {{< button ref="[/ants](https://github.com/probe-lab/akai)" >}}Learn more{{< /button >}}
 
