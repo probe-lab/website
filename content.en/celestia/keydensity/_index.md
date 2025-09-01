@@ -29,4 +29,4 @@ The following plots examine the peer distribution within the keyspace, aiding in
 
 **What to look out for:** If an isolated bar appears on the far right beyond the risk threshold line, it may indicate a potential eclipse attack, warranting further investigation.
 
-{{< plotly json="https://cdn.probelab.io/plots/celestia_mainnet/latest/keyspace_regions_distribution_plot.json" height="600px" >}}
+{{< plotly json="https://cdn.probelab.io/plots/celestia_mainnet/latest/keyspace_density_distribution_plot.json" height="600px" >}}
