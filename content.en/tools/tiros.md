@@ -55,22 +55,13 @@ The list of websites that we are currently monitoring is configured [here](https
 ```
 blog.ipfs.tech
 blog.libp2p.io
-consensuslab.world
 docs.ipfs.tech
 docs.libp2p.io
-drand.love
-en.wikipedia-on-ipfs.org/wiki
-filecoin.io
-green.filecoin.io
 ipfs.tech
 ipld.io
 libp2p.io
 probelab.io
-protocol.ai
-research.protocol.ai
 specs.ipfs.tech
-strn.network
-tldr.filecoin.io
 web3.storage
 ```
 

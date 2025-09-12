@@ -8,17 +8,10 @@ import (
 )
 
 var websites = []string{
-	"filecoin.io",
 	"libp2p.io",
 	"ipld.io",
-	"protocol.ai",
 	"docs.ipfs.tech",
-	"green.filecoin.io",
-	"drand.love",
 	"web3.storage",
-	"consensuslab.world",
-	"strn.network",
-	"research.protocol.ai",
 	"ipfs.tech",
 	"blog.ipfs.tech",
 	"docs.libp2p.io",
@@ -26,9 +19,6 @@ var websites = []string{
 	//"en.wikipedia-on-ipfs.org/wiki",
 	"specs.ipfs.tech",
 	"probelab.io",
-	"singularity.storage",
-	"n0.computer",
-	"fil.org",
 }
 
 type TemplateData struct {
