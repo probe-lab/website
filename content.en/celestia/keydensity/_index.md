@@ -1,7 +1,7 @@
 ---
 title: DHT Key Density
 plotly: true
-bookHidden: true
+bookHidden: false
 weight: 120
 ---
 
