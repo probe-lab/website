@@ -8,14 +8,14 @@ datasets:
         from provides m1
           inner join nodes n on n.id = m1.node_id
         where m1.error is null
-          and m1.rt_size > 200
+          and m1.rt_size > 50
           and n.instance_type = 't3.small'
         union all
         select m2.created_at, duration
         from provides_ecs m2
           inner join nodes_ecs n on n.id = m2.node_id
         where m2.error is null
-          and m2.rt_size > 200
+          and m2.rt_size > 50
           and n.fleet = 'default'
       ),
       cdf as (
